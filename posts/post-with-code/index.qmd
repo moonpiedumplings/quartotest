@@ -6,4 +6,10 @@ categories: [news, code, analysis]
 image: "image.jpg"
 ---
 
+```{python}
+
+print("Hello World")
+
+```
+
 This is a post with executable code.
