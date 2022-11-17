@@ -3,7 +3,7 @@ on:
   push:
     branches: main
 
-name: Quarto Publish
+name: Quarto Run
 
 jobs:
   build-deploy:
