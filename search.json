@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Quartotest",
     "section": "",
-    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "nginx\n\n\nlinux\n\n\n\n\nJust a collection of my thoughts.\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncollegeboard\n\n\n\n\nI only got one wrong.\n\n\n\n\n\n\nNov 10, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n1.B\n\n\n4.C\n\n\n\n\nPractice with identifying and correcting code blocks\n\n\n\n\n\n\nOct 3, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n1.A\n\n\n5.B\n\n\n5.D\n\n\n\n\nAPIs can be found all over the internet. A great consolidator of many APIs is RapidAPI. In this blog we will use a site to consolidates API stats. Learning a few lines of code and you can start extracting lots of data from the internet via APIs.\n\n\n\n\n\n\nOct 3, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\naws\n\n\nec2\n\n\ndocker\n\n\nlinux\n\n\n\n\ncockpit is a gui to manage linux servers.\n\n\n\n\n\n\nSep 30, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 28, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncollegeboard\n\n\n\n\n\n\n\n\n\n\n\nAug 26, 2022\n\n\nmoonpie\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncollegeboard\n\n\n\n\nA set of bash scripts that demonstrate that I have all my tools installed\n\n\n\n\n\n\nAug 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJul 27, 2020\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\njupyter\n\n\n\n\nA tutorial of fastpages for Jupyter notebooks.\n\n\n\n\n\n\nFeb 20, 2020\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -26,5 +26,145 @@
     "title": "Welcome To My Blog",
     "section": "",
     "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/2020-02-20-test.html",
+    "href": "posts/2020-02-20-test.html",
+    "title": "Fastpages Notebook Blog Post",
+    "section": "",
+    "text": "This notebook is a demonstration of some of capabilities of fastpages with notebooks.\nWith fastpages you can save your jupyter notebooks into the _notebooks folder at the root of your repository, and they will be automatically be converted to Jekyll compliant blog posts!\n\n\nThe first cell in your Jupyter Notebook or markdown blog post contains front matter. Front matter is metadata that can turn on/off options in your Notebook. It is formatted like this:\n# \"My Title\"\n> \"Awesome summary\"\n\n- toc: true\n- branch: master\n- badges: true\n- comments: true\n- author: Hamel Husain & Jeremy Howard\n- categories: [fastpages, jupyter]\n\nSetting toc: true will automatically generate a table of contents\nSetting badges: true will automatically include GitHub and Google Colab links to your notebook.\nSetting comments: true will enable commenting on your blog post, powered by utterances.\n\nThe title and description need to be enclosed in double quotes only if they include special characters such as a colon. More details and options for front matter can be viewed on the front matter section of the README.\n\n\n\nA #hide comment at the top of any code cell will hide both the input and output of that cell in your blog post.\nA #hide_input comment at the top of any code cell will only hide the input of that cell.\n\n\nThe comment #hide_input was used to hide the code that produced this.\n\n\nput a #collapse-hide flag at the top of any cell if you want to hide that cell by default, but give the reader the option to show it:\n\n\nCode\nimport pandas as pd\nimport altair as alt\n\n\nput a #collapse-show flag at the top of any cell if you want to show that cell by default, but give the reader the option to hide it:\n\n\nCode\ncars = 'https://vega.github.io/vega-datasets/data/cars.json'\nmovies = 'https://vega.github.io/vega-datasets/data/movies.json'\nsp500 = 'https://vega.github.io/vega-datasets/data/sp500.csv'\nstocks = 'https://vega.github.io/vega-datasets/data/stocks.csv'\nflights = 'https://vega.github.io/vega-datasets/data/flights-5k.json'\n\n\nplace a #collapse-output flag at the top of any cell if you want to put the output under a collapsable element that is closed by default, but give the reader the option to open it:\n\n#collapse-output\nprint('The comment #collapse-output was used to collapse the output of this cell by default but you can expand it.')\n\nThe comment #collapse-output was used to collapse the output of this cell by default but you can expand it.\n\n\n\n\n\nCharts made with Altair remain interactive. Example charts taken from this repo, specifically this notebook.\n\n\n\n# single-value selection over [Major_Genre, MPAA_Rating] pairs\n# use specific hard-wired values as the initial selected values\nselection = alt.selection_single(\n    name='Select',\n    fields=['Major_Genre', 'MPAA_Rating'],\n    init={'Major_Genre': 'Drama', 'MPAA_Rating': 'R'},\n    bind={'Major_Genre': alt.binding_select(options=genres), 'MPAA_Rating': alt.binding_radio(options=mpaa)}\n)\n  \n# scatter plot, modify opacity based on selection\nalt.Chart(df).mark_circle().add_selection(\n    selection\n).encode(\n    x='Rotten_Tomatoes_Rating:Q',\n    y='IMDB_Rating:Q',\n    tooltip='Title:N',\n    opacity=alt.condition(selection, alt.value(0.75), alt.value(0.05))\n)\n\n\n\n\n\n\n\n\n\n\n\nalt.Chart(df).mark_circle().add_selection(\n    alt.selection_interval(bind='scales', encodings=['x'])\n).encode(\n    alt.X('Rotten_Tomatoes_Rating', type='quantitative'),\n    alt.Y('IMDB_Rating', type='quantitative', axis=alt.Axis(minExtent=30)),\n#     y=alt.Y('IMDB_Rating:Q', ), # use min extent to stabilize axis title placement\n    tooltip=['Title:N', 'Release_Date:N', 'IMDB_Rating:Q', 'Rotten_Tomatoes_Rating:Q']\n).properties(\n    width=500,\n    height=400\n)\n\n\n\n\n\n\n\n\n\n\n\n# select a point for which to provide details-on-demand\nlabel = alt.selection_single(\n    encodings=['x'], # limit selection to x-axis value\n    on='mouseover',  # select on mouseover events\n    nearest=True,    # select data point nearest the cursor\n    empty='none'     # empty selection includes no data points\n)\n\n# define our base line chart of stock prices\nbase = alt.Chart().mark_line().encode(\n    alt.X('date:T'),\n    alt.Y('price:Q', scale=alt.Scale(type='log')),\n    alt.Color('symbol:N')\n)\n\nalt.layer(\n    base, # base line chart\n    \n    # add a rule mark to serve as a guide line\n    alt.Chart().mark_rule(color='#aaa').encode(\n        x='date:T'\n    ).transform_filter(label),\n    \n    # add circle marks for selected time points, hide unselected points\n    base.mark_circle().encode(\n        opacity=alt.condition(label, alt.value(1), alt.value(0))\n    ).add_selection(label),\n\n    # add white stroked text to provide a legible background for labels\n    base.mark_text(align='left', dx=5, dy=-5, stroke='white', strokeWidth=2).encode(\n        text='price:Q'\n    ).transform_filter(label),\n\n    # add text labels for stock prices\n    base.mark_text(align='left', dx=5, dy=-5).encode(\n        text='price:Q'\n    ).transform_filter(label),\n    \n    data=stocks\n).properties(\n    width=500,\n    height=400\n)\n\n\n\n\n\n\n\n\n\n\nYou can display tables per the usual way in your blog:\n\n# display table with pandas\ndf[['Title', 'Worldwide_Gross', \n    'Production_Budget', 'Distributor', 'MPAA_Rating', 'IMDB_Rating', 'Rotten_Tomatoes_Rating']].head()\n\n\n\n\n\n  \n    \n      \n      Title\n      Worldwide_Gross\n      Production_Budget\n      Distributor\n      MPAA_Rating\n      IMDB_Rating\n      Rotten_Tomatoes_Rating\n    \n  \n  \n    \n      0\n      The Land Girls\n      146083.0\n      8000000.0\n      Gramercy\n      R\n      6.1\n      NaN\n    \n    \n      1\n      First Love, Last Rites\n      10876.0\n      300000.0\n      Strand\n      R\n      6.9\n      NaN\n    \n    \n      2\n      I Married a Strange Person\n      203134.0\n      250000.0\n      Lionsgate\n      None\n      6.8\n      NaN\n    \n    \n      3\n      Let's Talk About Sex\n      373615.0\n      300000.0\n      Fine Line\n      None\n      NaN\n      13.0\n    \n    \n      4\n      Slam\n      1087521.0\n      1000000.0\n      Trimark\n      R\n      3.4\n      62.0\n    \n  \n\n\n\n\n\n\n\n\n\nYou can reference local images and they will be copied and rendered on your blog automatically. You can include these with the following markdown syntax:\n![](my_icons/fastai_logo.png)\n\n\n\n\nRemote images can be included with the following markdown syntax:\n![](https://image.flaticon.com/icons/svg/36/36686.svg)\n\n\n\n\nAnimated Gifs work, too!\n![](https://upload.wikimedia.org/wikipedia/commons/7/71/ChessPawnSpecialMoves.gif)\n\n\n\n\nYou can include captions with markdown images like this:\n![](https://www.fast.ai/images/fastai_paper/show_batch.png \"Credit: https://www.fast.ai/2020/02/13/fastai-A-Layered-API-for-Deep-Learning/\")"
+  },
+  {
+    "objectID": "posts/2020-02-20-test.html#github-flavored-emojis",
+    "href": "posts/2020-02-20-test.html#github-flavored-emojis",
+    "title": "Fastpages Notebook Blog Post",
+    "section": "GitHub Flavored Emojis",
+    "text": "GitHub Flavored Emojis\nTyping I give this post two :+1:! will render this:\nI give this post two :+1:!"
+  },
+  {
+    "objectID": "posts/2020-02-20-test.html#tweetcards",
+    "href": "posts/2020-02-20-test.html#tweetcards",
+    "title": "Fastpages Notebook Blog Post",
+    "section": "Tweetcards",
+    "text": "Tweetcards\nTyping > twitter: https://twitter.com/jakevdp/status/1204765621767901185?s=20 will render this:\n\ntwitter: https://twitter.com/jakevdp/status/1204765621767901185?s=20"
+  },
+  {
+    "objectID": "posts/2020-02-20-test.html#youtube-videos",
+    "href": "posts/2020-02-20-test.html#youtube-videos",
+    "title": "Fastpages Notebook Blog Post",
+    "section": "Youtube Videos",
+    "text": "Youtube Videos\nTyping > youtube: https://youtu.be/XfoYk_Z5AkI will render this:"
+  },
+  {
+    "objectID": "posts/2020-02-20-test.html#boxes-callouts",
+    "href": "posts/2020-02-20-test.html#boxes-callouts",
+    "title": "Fastpages Notebook Blog Post",
+    "section": "Boxes / Callouts",
+    "text": "Boxes / Callouts\nTyping > Warning: There will be no second warning! will render this:\n\n\n\n\n\n\nWarning\n\n\n\nThere will be no second warning!\n\n\nTyping > Important: Pay attention! It's important. will render this:\n\n\n\n\n\n\nImportant\n\n\n\nPay attention! It’s important.\n\n\nTyping > Tip: This is my tip. will render this:\n\n\n\n\n\n\nTip\n\n\n\nThis is my tip.\n\n\nTyping > Note: Take note of this. will render this:\n\n\n\n\n\n\nNote\n\n\n\nTake note of this.\n\n\nTyping > Note: A doc link to [an example website: fast.ai](https://www.fast.ai/) should also work fine. will render in the docs:\n\n\n\n\n\n\nNote\n\n\n\nA doc link to an example website: fast.ai should also work fine."
+  },
+  {
+    "objectID": "posts/2020-02-20-test.html#footnotes",
+    "href": "posts/2020-02-20-test.html#footnotes",
+    "title": "Fastpages Notebook Blog Post",
+    "section": "Footnotes",
+    "text": "Footnotes\nYou can have footnotes in notebooks, however the syntax is different compared to markdown documents. This guide provides more detail about this syntax, which looks like this:\n{% raw %}For example, here is a footnote {% fn 1 %}.\nAnd another {% fn 2 %}\n{{ 'This is the footnote.' | fndetail: 1 }}\n{{ 'This is the other footnote. You can even have a [link](www.github.com)!' | fndetail: 2 }}{% endraw %}\nFor example, here is a footnote {% fn 1 %}.\nAnd another {% fn 2 %}\n{{ ‘This is the footnote.’ | fndetail: 1 }} {{ ‘This is the other footnote. You can even have a link!’ | fndetail: 2 }}"
+  },
+  {
+    "objectID": "posts/2020-07-27-hello-world.html",
+    "href": "posts/2020-07-27-hello-world.html",
+    "title": "Quartotest",
+    "section": "",
+    "text": "print(\"Hello Nice\")"
+  },
+  {
+    "objectID": "posts/2022-08-22-toolcheck.html",
+    "href": "posts/2022-08-22-toolcheck.html",
+    "title": "Bash toolcheck",
+    "section": "",
+    "text": "code --version\n\n1.70.24l\ne4503b30fc78200f846c62cf8091b76ff5547662\nx64\n\n\n: 1\n\n\nCheck for conda\n\nconda --version\n\nconda 4.13.0\n\n\n: 1\n\n\n\nconda --list \n\nusage: conda [-h] [-V] command ...\nconda: error: the following arguments are required: command\n\nNote: you may need to restart the kernel to use updated packages.\n\n\n\njupyter kernelspec list\n\nAvailable kernels:\n  bash          /home/moonpie/.local/share/jupyter/kernels/bash\n  javascript    /home/moonpie/.local/share/jupyter/kernels/javascript\n  python3       /home/moonpie/.local/share/jupyter/kernels/python3\n\n\n: 1\n\n\n\npython --version # python 3 version\n\nPython 3.10.6\n\n\n: 1\n\n\n\npython2 --version # python 2 version\n\nPython 2.7.18\n\n\n: 1"
+  },
+  {
+    "objectID": "posts/2022-08-26-pythonquiz.html",
+    "href": "posts/2022-08-26-pythonquiz.html",
+    "title": "Football Quiz",
+    "section": "",
+    "text": "Explanation\nMy code is much simpler than the example given. By using what is called a for loop, I can repeat the same actions or lines of code (with different inputs) allowing me to have to not type as much. The other thing I am taking advantage of is a list. In python, a list is basically a way to store multiple values.\nThe syntax of a for loop is for i in j\ni is a variable, one which starts at 0 and gets added to until it reaches j. The program runs what is in the for function once, then adds to i, and then repeats until i reaches j. For loops exist in lots of programming languages.\nHowever, I did something special. I created a list called questions, which can store as many questions as I want. I also created a list called answers, which stores anwsers. The for q in questions doesn’t just behave like a normal for loop, the q is not a variable, but rather an item in the list. The function goes through the list with different items.\nIn addition to that, I set a variable called a. a is used to call on a specific item in the list answers, one that matches the question. By adding 1 to a at the end of the for loop, I can make sure the item called from questions matches with that of answers.\nBecause of my genius intelligence, I was able to create quiz, that is infinitely extendable. You simply add more items to the list of questions and answers, and more questions and answers will be added. No programming necessary. In addition to that, it also gives a fraction score.\n\nquestions = [[\"Is Jeffrey the Smartest person alive\", \"yes\"], [\"How many players are there on a football team?\", \"11\"]]\ngrade = 0\nfor q in questions:\n    a = input(q[0])\n    if a == q[1]:\n        print(\"Correct\")\n        grade +=1\n    else:\n        print(\"Incorrect\")\n\nprint(\"%\",(grade / len(questions) * 100))\n\nCorrect\nCorrect\n% 100.0"
+  },
+  {
+    "objectID": "posts/2022-9-01-dictionaries.html",
+    "href": "posts/2022-9-01-dictionaries.html",
+    "title": "Fun with dictionaries",
+    "section": "",
+    "text": "players = []\nplayers.append({\n    \"name\": \"Khalid Farah\",\n    \"weight\": 195, #Weight is in pounds\n    \"positions\": [\"linebacker\"]\n})\n\nplayers.append({\n    \"name\": \"Jeffrey Fonseca\",\n    \"weight\": 200,\n    \"positions\": [\"Offensive lineman\", \"Defensive Lineman\"]\n})\n\nfor p in players:\n    print(p[\"name\"], \"\\n\")\n\n# technically, this is all I need to complete the assignment. However, I may do more.\n\nKhalid Farah \n\nJeffrey Fonseca \n\n\n\n\na = input(\"Which player's stats do you want?\")\nfor p in players:\n    if p[\"name\"] == a:\n        print(\"weight = \",p[\"weight\"],\"pounds \\n\")\n        print(\"Positions played:\", p[\"positions\"])\n\nweight =  195 pounds \n\nPositions played: ['linebacker']\n\n\n\ndict = {}\ndict.update({\"test\":\"value\"})\nprint(dict)\n\n# finally got this working. Why was this so difficult to figure out.\n\n{'test': 'value'}\n\n\n\npindex = {}\n\nfor p in players:\n    pindex.update({p[\"name\"]: p})\n\nprint(pindex)\n\n# This program creates an index for the list,to make searching faster. \n\n{'Khalid Farah': {'name': 'Khalid Farah', 'weight': 195, 'positions': ['linebacker']}, 'Jeffrey Fonseca': {'name': 'Jeffrey Fonseca', 'weight': 200, 'positions': ['Offensive lineman', 'Defensive Lineman']}}\n\n\n\n# I can recreate the above program  (playerinfo) without the for loop,just call on the index. \n# Right now there is no speed difference, but when working with bigger stores of info, for loops through are tedious\n\na = input(\"player name?\")\n\nprint(\"weight=\",pindex[a][\"weight\"],\"pounds\\n\")\nprint(\"positions=\",pindex[a][\"positions\"])\n\n# maybe creating dictionary of dictionaries would have been easier...\n\nweight= 200 pounds\n\npositions= ['Offensive lineman', 'Defensive Lineman']"
+  },
+  {
+    "objectID": "posts/2022-09-28-javascript tutorial.html",
+    "href": "posts/2022-09-28-javascript tutorial.html",
+    "title": "Quartotest",
+    "section": "",
+    "text": "Javascipt is another programming language. Just like python, it has variables, functions, iterations, just sometimes in different forms.\n\n// Javascript works with arrays rather than lists. They are basically the same thing, besides the name. \nvar students = [ \n    new Person(\"Anthony\", \"tonyhieu\", 2022),\n    new Person(\"Bria\", \"B-G101\", 2023),\n    new Person(\"Allie\", \"xiaoa0\", 2023),\n    new Person(\"Tigran\", \"Tigran7\", 2023),\n    new Person(\"Rebecca\", \"Rebecca-123\", 2023),\n    new Person(\"Vidhi\", \"unknown\", 2024)\n\n\n// json is a file format used to transport data from one program to another, even if those programs are in different languages. \n\n// define a classroom and build Classroom objects and json\nfunction Classroom(teacher, students){ // 1 teacher, many student\n    // start Classroom with Teacher\n    teacher.setRole(\"Teacher\");\n    this.teacher = teacher;\n    this.classroom = [teacher];\n    // add each Student to Classroom\n    this.students = students;\n    this.students.forEach(student => { student.setRole(\"Student\"); this.classroom.push(student); });\n    // build json/string format of Classroom\n    this.json = [];\n    this.classroom.forEach(person => this.json.push(person.toJSON()));\n}\n\n// make a CompSci classroom from formerly defined teacher and students\ncompsci = new Classroom(teacher, students);\n\n// output of Objects and JSON in CompSci classroom\nlogItType(compsci.classroom);  // constructed classroom object\nlogItType(compsci.classroom[0].name);  // abstract 1st objects name\nlogItType(compsci.json[0]);  // show json conversion of 1st object to string\nlogItType(JSON.parse(compsci.json[0]));  // show JSON.parse inverse of JSON.stringify"
+  },
+  {
+    "objectID": "posts/2022-10-03-ap-error_testing.html",
+    "href": "posts/2022-10-03-ap-error_testing.html",
+    "title": "Big Idea 1 ‘Identifying and Correcting Errors’",
+    "section": "",
+    "text": "College Board Big Idea 1"
+  },
+  {
+    "objectID": "posts/2022-10-03-ap-error_testing.html#identifying-and-correcting-errors-unit-1.4",
+    "href": "posts/2022-10-03-ap-error_testing.html#identifying-and-correcting-errors-unit-1.4",
+    "title": "Big Idea 1 ‘Identifying and Correcting Errors’",
+    "section": "Identifying and Correcting Errors (Unit 1.4)",
+    "text": "Identifying and Correcting Errors (Unit 1.4)\n\nBecome familiar with types of errors and strategies to fixing them - Lightly Review Videos and take notes on topics with Blog - Complete assigned MCQ questions"
+  },
+  {
+    "objectID": "posts/2022-10-03-ap-error_testing.html#hacks",
+    "href": "posts/2022-10-03-ap-error_testing.html#hacks",
+    "title": "Big Idea 1 ‘Identifying and Correcting Errors’",
+    "section": "Hacks",
+    "text": "Hacks\n\nNow is a good time to think about Testing of your teams final project… - What errors may arise in your project? - What are some test cases that can be used? - Make sure to document any bugs you encounter and how you solved the problem. - What are “single” tests that you will perform on your project? Or, your part of the project? * As Hack Design and Test plan action … Divide these “single” tests into Issues for Scrum Board prior to coding. FYI, related tests could be in same Issue by using markdown checkboxes to separate tests."
+  },
+  {
+    "objectID": "posts/2022-10-03-pbl-python_rapidapi.html",
+    "href": "posts/2022-10-03-pbl-python_rapidapi.html",
+    "title": "Python RapidAPI",
+    "section": "",
+    "text": "APIs and tooling like Jupyter docs allows many opportunities in fields like Data Science. As more and more developers use APIs, they build standards in how you setup a client, send requests and receive information…"
+  },
+  {
+    "objectID": "posts/2022-10-03-pbl-python_rapidapi.html#hacks",
+    "href": "posts/2022-10-03-pbl-python_rapidapi.html#hacks",
+    "title": "Python RapidAPI",
+    "section": "Hacks",
+    "text": "Hacks\n\nFind and use an API as part of your project. An API and a little coding logic will be a big step toward getting meaningful data for a project. There are many API providers, find one that might work for your project to complete this hack. When picking an API you are looking for something that will work with either JavaScript Fetch or Python Request. Here are some samples, these are not qualified in any way.\n- RapidAPI - GitHub Project - No Key APIs Article - Twitter Developer - Google Developer - Reddit Developer\n\n\nShow API and format results in either Web Page or Jupyter Notebook. Ultimately, I will expect that we do APIs in backend (Python/Flask). However, for this Hack you can pick your preference. We will discuss pros and cons in next API tech talk."
+  },
+  {
+    "objectID": "posts/2022-10-09-stocks api fun.html",
+    "href": "posts/2022-10-09-stocks api fun.html",
+    "title": "Quartotest",
+    "section": "",
+    "text": "Becuase of our unorthodox choice of api, before running, you must install the required library:\npip install polygon-api-client\n\n# libraries\n\nfrom polygon import RESTClient\nfrom typing import cast\nfrom urllib3 import HTTPResponse\n\n# API key for the stocks\n\nclient = RESTClient(\"4smt0M_ePY6rylHRcP5t3v3pa7WS_pB9\") # api key in quotes \n\n\n\nstr = input(\"What stock would you like?\")\ndate = input(\"Date? (Please formate it in as YYYY-MM-DD\")\nprint(date)\ndata = client.get_daily_open_close_agg(str, date)\n\n\nprint(data)\n\nprint(data.symbol)\n\nprint(data.open)\n\n2022-10-10\nDailyOpenCloseAgg(after_hours=140.92, close=140.42, from_='2022-10-10', high=141.89, low=138.5729, open=140.42, pre_market=139.95, status='OK', symbol='AAPL', volume=74899002.0, otc=None)\nAAPL\n140.42\n\n\n\nfrom polygon import RESTClient\n\naggs = client.get_aggs(\"AAPL\", 1, \"day\", \"2022-10-12\", \"2022-04-04\")\nprint(aggs)\n\n[Agg(open=174.57, high=178.49, low=174.44, close=178.44, volume=76545983.0, vwap=177.4855, timestamp=1649044800000, transactions=630374, otc=None)]"
+  },
+  {
+    "objectID": "posts/2022-09-30-cockpitsetup.html",
+    "href": "posts/2022-09-30-cockpitsetup.html",
+    "title": "Setting up cockpit",
+    "section": "",
+    "text": "The installation process\nThe installation process is simple:\nsudo apt install cockpit\nTo start the server, run:\nsudo systemctl enable --now cockpit\nThis sets the cockpit server to start on boot, and it starts it now.\nHowever, the firewall must open ports to allow the cockpit server through. This opens the default ports for the cockpit server. It should be noted that not every version fo linux uses ufw as a firewall, some use other firewalls with different management commands.\nsudo ufw allow 9090\nAnother important thing is to set the password for the default “ubuntu” user account so that you can login to cockpit.\nsudo passwd ubuntu\nIt will ask for the new password twice, not showing what you are typing.\nReboot the computer for the server to start properly, however, this won’t work as the virtual private cloud must have its ports open. I had to do this when I set up cockpit on my Oracle server, so I knew the gist of the steps.\n\n\nOpening EC2’s VPC ports (Also necessary if you want to host servers on ports other than 22, 80, or 443)\nFirst, go to your EC2 vps, where you would normally click connect from, and click on the link under vpc:\n\nThis should bring you up to a screen like this:\n\nClick the security tab, bringing you to a screen like this:\n\nAnd then click on security groups, bringing you to a screen like this:\n\nAnd then click on the “edit inbound rules”\nFinally, you should get something like this:\n\nAdd an item that matches what I have in the third row. That opens the port to allow cockpits server to escape. You may also need to use this page to open other ports if you are hosting servers on nonstandard ports."
+  },
+  {
+    "objectID": "posts/2022-11-2-Night at the meseum.html",
+    "href": "posts/2022-11-2-Night at the meseum.html",
+    "title": "Night at the Meseum!",
+    "section": "",
+    "text": "server {\n        listen 80 default_server;\n        listen [::]:80 default_server;\n        server_name your.domain.com; # replace with your actual domain\n\n        location / { \n                # Upgrade WebSockets\n                proxy_set_header Upgrade $http_upgrade;\n                proxy_set_header Connection 'Upgrade';\n                # Increase header buffer\n                proxy_connect_timeout 10; \n                proxy_send_timeout 90; \n                proxy_read_timeout 90; \n                proxy_buffer_size 128k;\n                proxy_buffers 4 256k;\n                proxy_busy_buffers_size 256k;\n                proxy_temp_file_write_size 256k;\n                proxy_pass http://127.0.0.1:8080; # change port\n            }\n        }\nThis is what I used. It’s similar to the config provided by Mr. Mortenssen, except with stuff added to make websockets work. It works with certbot as well, so I had websockets and ssl on my website.\nOther than that, I saw a lot of cool projects."
+  },
+  {
+    "objectID": "posts/2022-11-10-finalcorrections.html",
+    "href": "posts/2022-11-10-finalcorrections.html",
+    "title": "Final Exam corrections",
+    "section": "",
+    "text": "Things I had to google:\nI actually did have to google something, only one thing. On one of the internet questions, I had to google whether or not packets could be in order, which is not the case. Packets can be an any order, even TCP packets (I had incorrectly thought TCP packets had to be in order)."
   }
 ]
