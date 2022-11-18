@@ -10,5 +10,41 @@
   },
   "about.qmd": {
     "about.html": "49e71589"
+  },
+  "posts/2020-02-20-test.ipynb": {
+    "2020-02-20-test.html": "4694f077"
+  },
+  "posts/2020-07-27-hello-world.ipynb": {
+    "2020-07-27-hello-world.html": "1a0cb227"
+  },
+  "posts/2022-08-22-toolcheck.ipynb": {
+    "2022-08-22-toolcheck.html": "05df6f86"
+  },
+  "posts/2022-08-26-pythonquiz.ipynb": {
+    "2022-08-26-pythonquiz.html": "87d3a20d"
+  },
+  "posts/2022-9-01-Dictionaries.ipynb": {
+    "2022-9-01-dictionaries.html": "b0e326a7"
+  },
+  "posts/2022-09-28-Javascript tutorial.ipynb": {
+    "2022-09-28-javascript tutorial.html": "4635235b"
+  },
+  "posts/2022-10-03-AP-error_testing.ipynb": {
+    "2022-10-03-ap-error_testing.html": "7df1f764"
+  },
+  "posts/2022-10-03-PBL-python_rapidapi.ipynb": {
+    "2022-10-03-pbl-python_rapidapi.html": "30f3ae2e"
+  },
+  "posts/2022-10-09-Stocks API fun.ipynb": {
+    "2022-10-09-stocks api fun.html": "c2ccc261"
+  },
+  "posts/2022-09-30-cockpitsetup.md": {
+    "2022-09-30-cockpitsetup.html": "5a90d959"
+  },
+  "posts/2022-11-2-Night at the meseum.md": {
+    "2022-11-2-Night at the meseum.html": "4ab4ad5e"
+  },
+  "posts/2022-11-10-finalcorrections.md": {
+    "2022-11-10-finalcorrections.html": "b9f66a29"
   }
 }

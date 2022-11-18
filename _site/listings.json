@@ -2,8 +2,20 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2022-9-01-dictionaries.html",
+      "/posts/2022-11-2-Night at the meseum.html",
       "/posts/post-with-code/index.html",
-      "/posts/welcome/index.html"
+      "/posts/welcome/index.html",
+      "/posts/2022-11-10-finalcorrections.html",
+      "/posts/2022-10-09-stocks api fun.html",
+      "/posts/2022-10-03-ap-error_testing.html",
+      "/posts/2022-10-03-pbl-python_rapidapi.html",
+      "/posts/2022-09-30-cockpitsetup.html",
+      "/posts/2022-09-28-javascript tutorial.html",
+      "/posts/2022-08-26-pythonquiz.html",
+      "/posts/2022-08-22-toolcheck.html",
+      "/posts/2020-07-27-hello-world.html",
+      "/posts/2020-02-20-test.html"
     ]
   }
 ]

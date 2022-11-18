@@ -1,9 +1,37 @@
 [
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Quartotest",
     "section": "",
-    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "nginx\n\n\nlinux\n\n\n\n\nJust a collection of my thoughts.\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncollegeboard\n\n\n\n\nI only got one wrong.\n\n\n\n\n\n\nNov 10, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n1.B\n\n\n4.C\n\n\n\n\nPractice with identifying and correcting code blocks\n\n\n\n\n\n\nOct 3, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n1.A\n\n\n5.B\n\n\n5.D\n\n\n\n\nAPIs can be found all over the internet. A great consolidator of many APIs is RapidAPI. In this blog we will use a site to consolidates API stats. Learning a few lines of code and you can start extracting lots of data from the internet via APIs.\n\n\n\n\n\n\nOct 3, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\naws\n\n\nec2\n\n\ndocker\n\n\nlinux\n\n\n\n\ncockpit is a gui to manage linux servers.\n\n\n\n\n\n\nSep 30, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 28, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncollegeboard\n\n\n\n\n\n\n\n\n\n\n\nAug 26, 2022\n\n\nmoonpie\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncollegeboard\n\n\n\n\nA set of bash scripts that demonstrate that I have all my tools installed\n\n\n\n\n\n\nAug 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJul 27, 2020\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\njupyter\n\n\n\n\nA tutorial of fastpages for Jupyter notebooks.\n\n\n\n\n\n\nFeb 20, 2020\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/2022-9-01-dictionaries.html",
+    "href": "posts/2022-9-01-dictionaries.html",
+    "title": "Fun with dictionaries",
+    "section": "",
+    "text": "players = []\nplayers.append({\n    \"name\": \"Khalid Farah\",\n    \"weight\": 195, #Weight is in pounds\n    \"positions\": [\"linebacker\"]\n})\n\nplayers.append({\n    \"name\": \"Jeffrey Fonseca\",\n    \"weight\": 200,\n    \"positions\": [\"Offensive lineman\", \"Defensive Lineman\"]\n})\n\nfor p in players:\n    print(p[\"name\"], \"\\n\")\n\n# technically, this is all I need to complete the assignment. However, I may do more.\n\nKhalid Farah \n\nJeffrey Fonseca \n\n\n\n\na = input(\"Which player's stats do you want?\")\nfor p in players:\n    if p[\"name\"] == a:\n        print(\"weight = \",p[\"weight\"],\"pounds \\n\")\n        print(\"Positions played:\", p[\"positions\"])\n\nweight =  195 pounds \n\nPositions played: ['linebacker']\n\n\n\ndict = {}\ndict.update({\"test\":\"value\"})\nprint(dict)\n\n# finally got this working. Why was this so difficult to figure out.\n\n{'test': 'value'}\n\n\n\npindex = {}\n\nfor p in players:\n    pindex.update({p[\"name\"]: p})\n\nprint(pindex)\n\n# This program creates an index for the list,to make searching faster. \n\n{'Khalid Farah': {'name': 'Khalid Farah', 'weight': 195, 'positions': ['linebacker']}, 'Jeffrey Fonseca': {'name': 'Jeffrey Fonseca', 'weight': 200, 'positions': ['Offensive lineman', 'Defensive Lineman']}}\n\n\n\n# I can recreate the above program  (playerinfo) without the for loop,just call on the index. \n# Right now there is no speed difference, but when working with bigger stores of info, for loops through are tedious\n\na = input(\"player name?\")\n\nprint(\"weight=\",pindex[a][\"weight\"],\"pounds\\n\")\nprint(\"positions=\",pindex[a][\"positions\"])\n\n# maybe creating dictionary of dictionaries would have been easier...\n\nweight= 200 pounds\n\npositions= ['Offensive lineman', 'Defensive Lineman']"
   }
 ]
