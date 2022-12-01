@@ -1,10 +1,13 @@
 ---
-categories: &id001
+categories:
 - nginx
 - linux
 description: Just a collection of my thoughts.
 layout: post
-tags: [AWS, nginx, Linux]
+tags:
+- AWS
+- nginx
+- Linux
 title: Night at the Meseum!
 toc: true
 

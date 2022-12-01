@@ -1,12 +1,14 @@
 ---
 aliases:
 - /collegeboard/2022/11/10/finalcorrections
-categories: &id001
+categories:
 - collegeboard
 date: '2022-11-10'
 description: I only got one wrong.
 layout: post
-tags: [Collegeboard, Python]
+tags:
+- Collegeboard
+- Python
 title: Final Exam corrections
 toc: true
 

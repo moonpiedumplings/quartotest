@@ -1,7 +1,7 @@
 ---
 aliases:
 - /aws/docker/ec2/linux/2022/09/30/cockpitsetup
-categories: &id001
+categories:
 - aws
 - ec2
 - docker
@@ -9,7 +9,9 @@ categories: &id001
 date: '2022-09-30'
 description: cockpit is a gui to manage linux servers.
 layout: post
-tags: [AWS, Linux]
+tags:
+- AWS
+- Linux
 title: Setting up cockpit
 toc: true
 
