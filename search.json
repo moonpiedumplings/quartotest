@@ -275,49 +275,49 @@
   {
     "objectID": "posts/2022-11-30-teaching-time.html",
     "href": "posts/2022-11-30-teaching-time.html",
-    "title": "Teaching Plan - Booleans and Conditionals",
+    "title": "5-7 Lesson and HW",
     "section": "",
     "text": "Here we will focus on:\n\nbasics of Booleans\nits relationship with binary\nrelational operators\nLogical Operators\n\n\n\n\n\nA data type with two possible values: true or false\n\n\n\n\nSo similar yet so different. - Boolean math and binary notation both use the same two ciphers: 1 and 0. - However, please note that Boolean quantities are restricted to a singlular bit (can only be either 1, or 0) - On the otherhand, binary numbers may be composed of many bits adding up in place-weighted form to any finite value, or size\n\n\n\n\nA Boolean value is either TRUE or FALSE\nThe AP Exam will provide you with a reference sheet with the operators below.\n\n\n\nA few ways these operators could be used…\n\n\n\n\n\n\nHow could you use operators to determine if the average of 5 grades is greater than 80?\nWith the grades below, use a boolean expression to determine if the average grade is above an 80 and print the result (True or False)\nTry it in as few steps as possible!\nBe creative! There are obviously TONS of different practical solutions\n\n\ngrade1 = 90\ngrade2 = 65\ngrade3 = 60\ngrade4 = 75\ngrade5 = 95\n\navg = (grade1 + grade2 + grade3 + grade4 + grade5) / 5\n\nif avg > 80:\n    print(\"true\")\nelse:\n    print(\"less than 80\")\n\nless than 90\n\n\n\n\n\n\nprint(\"100 == 100:\",100==100)\nprint(\"Hello == Adios:\",\"greeting\"==\"farewell\")\nprint(\"Hello != Adios:\",\"greeting\"!=\"farewell\")\nprint(\"Hello == Hola:\",\"greeting\"==\"greeting\")\nprint(\"5>=4:\", 5>=4)\nprint ('')\n\n# Notice that relational operators can even work on lists!\n# For lists, the relational operator compares each respective component until an answer is derived\n\nprint(\"['a','b','c'] > ['x','y','z']:\", ['a','b','c'] > ['x','y','z'])\nprint(\"[1,2,3,5] > [1,2,3,4]:\", [1,2,3,5] > [1,2,3,4])\nprint(\"[1,2,3,5] < [1,2,3,4]:\", [1,2,3,5] < [1,2,3,4])\nprint(\"[1,2,3,5] == [1,2,3,4]:\", [1,2,3,5] == [1,2,3,4])\n\n100 == 100: True\nHello == Adios: False\nHello != Adios: True\nHello == Hola: True\n5>=4: True\n\n['a','b','c'] > ['x','y','z']: False\n[1,2,3,5] > [1,2,3,4]: True\n[1,2,3,5] < [1,2,3,4]: False\n[1,2,3,5] == [1,2,3,4]: False\n\n\n\n\n\nThese types of operators don’t necessarily deal with equivalent/non-equivalent values, but they rather work on operands to produce a singular boolean result - AND : returns TRUE if the operands around it are TRUE - OR : returns TRUE if at least one operand is TRUE - NOT : returns TRUE if the following boolean is FALSE\n\n\n\n# Output TRUE  using OR\nprint(\"1 > 2 or 5 < 12:\",)\n# Output TRUE  using OR ^\n\nif 1 < 2 or 5 < 12:\n    print(\"True\")\n\n# Output FALSE using NOT\nprint(\"24 > 8:\",)\nif not 24 > 25:\n    print(\"stuff\")\n\n# Output FALSE using AND\nprint(\"10 > 20:\",)\n# how do this?\n\n1 > 2 or 5 < 12:\nTrue\n24 > 8:\nstuff\n10 > 20:"
   },
   {
     "objectID": "posts/2022-11-30-teaching-time.html#focusing-on-selection",
     "href": "posts/2022-11-30-teaching-time.html#focusing-on-selection",
-    "title": "Teaching Plan - Booleans and Conditionals",
+    "title": "5-7 Lesson and HW",
     "section": "Focusing on Selection",
     "text": "Focusing on Selection\nSelection: uses a condition that evaluates to true or false\nSelection determines which part of an algorithm are executed based on a condition being true or false\nAlgorithm is a finite set of instructions that accomplish a specific task"
   },
   {
     "objectID": "posts/2022-11-30-teaching-time.html#conditional-statements",
     "href": "posts/2022-11-30-teaching-time.html#conditional-statements",
-    "title": "Teaching Plan - Booleans and Conditionals",
+    "title": "5-7 Lesson and HW",
     "section": "Conditional Statements",
     "text": "Conditional Statements\nAlso known as “if statements”\nCan be seen as if statements or if blocks\n\nCan also be seen as if else statements or if else-blocks \n\nx = 20\ny = 10\nif x > y:\n    print(\"x is greater than y\")\n\nx is greater than y\n\n\n\nx = 20\ny = 10\nif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x is not greater than y\")\n\nx is greater than y"
   },
   {
     "objectID": "posts/2022-11-30-teaching-time.html#participation",
     "href": "posts/2022-11-30-teaching-time.html#participation",
-    "title": "Teaching Plan - Booleans and Conditionals",
+    "title": "5-7 Lesson and HW",
     "section": "Participation",
     "text": "Participation\n-Calculate the total sum of two numbers, if it is equal to 200, print 200, if otherwise, print the sum.\n\nnum1 =\nnum2 =\nsum = num1 + num2"
   },
   {
     "objectID": "posts/2022-11-30-teaching-time.html#lesson-overview---3.7-nested-conditionals",
     "href": "posts/2022-11-30-teaching-time.html#lesson-overview---3.7-nested-conditionals",
-    "title": "Teaching Plan - Booleans and Conditionals",
+    "title": "5-7 Lesson and HW",
     "section": "Lesson Overview - 3.7 Nested Conditionals",
     "text": "Lesson Overview - 3.7 Nested Conditionals\n\nNested conditional statements consist of conditional statements within other conditional statements\nUtilizes “if else” statements within “if else” statements\nBasics of a nested conditional: \nBlock Coding Visual of Nested Conditionals: \nExample Psuedocode of Nested Conditional Statements"
   },
   {
     "objectID": "posts/2022-11-30-teaching-time.html#writing-nested-code-activity",
     "href": "posts/2022-11-30-teaching-time.html#writing-nested-code-activity",
-    "title": "Teaching Plan - Booleans and Conditionals",
+    "title": "5-7 Lesson and HW",
     "section": "Writing Nested Code Activity",
     "text": "Writing Nested Code Activity\n\nWrite a program that fits these conditions using nested conditionals:\n\nIf a person has at least 8 hours, they are experienced\nIf a person is experienced their salary is 90k, if they have ten hours or above their salary 150k\nIf a person is inexperienced their salary is always 50k\nprint the salary of the person at the end and whether they are experienced or not"
   },
   {
     "objectID": "posts/2022-11-30-teaching-time.html#hacks-assignments",
     "href": "posts/2022-11-30-teaching-time.html#hacks-assignments",
-    "title": "Teaching Plan - Booleans and Conditionals",
+    "title": "5-7 Lesson and HW",
     "section": "Hacks Assignments:",
     "text": "Hacks Assignments:\nConditionals:\n\nWrite a program that fits these conditions using nested conditionals:\n\nIf the product is expired, print “this product is no good”\nIf the cost is above 50 dollars, and the product isn’t expired, print “this product is too expensive”\nIf the cost is 25 dollars but under 50, and the product isn’t expired, print “this is a regular product”\nIf the cost is under 25 dollars, print “this is a cheap product”\n\n\n\n# Feel free to use JS or Python - we won't discriminate whilst grading you!\n# Here is a python template for you to use.\n\nproduct = {\n    \"expired\":\"no\",\n    \"cost\": 29,\n}\n\nexpired = \"no\"\ncost = 300\n\nif expired == \"no\":\n    if cost > 50:\n        print(\"this product is too expensive\")\n        exit\n    if cost > 25:\n        print(\"this is a regular product\")\n        exit\nelse:\n    print(\"this product is no good\")\nif cost < 25:\n    print(\"this is a cheap product\")\n\nthis product is too expensive\nthis is a regular product\n\n\nBoolean/Conditionals: - Create a multiple choice quiz that … - uses Boolean expressions - uses Logical operators - uses Conditional statements - prompts quiz-taker with multiple options (only one can be right) - has at least 3 questions - Points will be awarded for creativity, intricacy, and how well Boolean/Binary concepts have been intertwined\n\nqa = [\n    [\"Question1\", [\"correctanwser\", \"answer2\", \"answer3\"]],\n    [\"Who is the best teacher\", [\"Jeffrey Fonseca\", \"correctMr. Mort\", \"someone else\"]]\n]\n\ncorrect = 0\n\nfor q in qa:\n    print(q[0], \"\\n\")\n    count = 0\n    for a in q[1]:\n        if q[1][count][0:7] == \"correct\":\n            print(count +1, \":\",q[1][count][7:])\n            right = count\n        else:\n            print(count +1, \":\",q[1][count])\n        count += 1\n    answer = int(input(\"select the answer\"))\n    if answer - 1 == right:\n        correct +=1\n    print(\"\\n\")\n\n\nprint(\"You got\",correct,\"questions right!\")\n\nQuestion1 \n\n1 : anwser\n2 : answer2\n3 : answer3\n\n\nWho is the best teacher \n\n1 : Jeffrey Fonseca\n2 : Mr. Mort\n3 : someone else\n\n\nYou got 1 questions right!"
   }
