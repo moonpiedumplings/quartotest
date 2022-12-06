@@ -481,14 +481,16 @@ stuff
 <span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"this product is no good"</span>)</span>
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> cost <span class="op">&lt;</span> <span class="dv">25</span>:</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"this is a cheap product"</span>) <span class="co">#I am following the instructions exactly, it says to print this regardless of the expired status</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"this is a cheap product"</span>) <span class="co">#I am following the instructions exactly, it says to print this regardless of the expired status</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>this product is too expensive
 this is a regular product</code></pre>
 </div>
 </div>
 <p><strong>Boolean/Conditionals</strong>: - Create a multiple choice quiz that … - uses Boolean expressions - uses Logical operators - uses Conditional statements - prompts quiz-taker with multiple options (only one can be right) - has at least 3 questions - Points will be awarded for creativity, intricacy, and how well Boolean/Binary concepts have been intertwined</p>
-<div class="cell" data-execution_count="50">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>qa <span class="op">=</span> [</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Question1"</span>, [<span class="st">"correctanwser"</span>, <span class="st">"answer2"</span>, <span class="st">"answer3"</span>]],</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Who is the best teacher"</span>, [<span class="st">"Jeffrey Fonseca"</span>, <span class="st">"correctMr. Mort"</span>, <span class="st">"someone else"</span>]]</span>
@@ -498,21 +500,19 @@ this is a regular product</code></pre>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> q <span class="kw">in</span> qa:</span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(q[<span class="dv">0</span>], <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> a <span class="kw">in</span> q[<span class="dv">1</span>]:</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> q[<span class="dv">1</span>][count][<span class="dv">0</span>:<span class="dv">7</span>] <span class="op">==</span> <span class="st">"correct"</span>:</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(count <span class="op">+</span><span class="dv">1</span>, <span class="st">":"</span>,q[<span class="dv">1</span>][count][<span class="dv">7</span>:])</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>            right <span class="op">=</span> count</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(count <span class="op">+</span><span class="dv">1</span>, <span class="st">":"</span>,q[<span class="dv">1</span>][count])</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    answer <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"select the answer"</span>))</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> answer <span class="op">-</span> <span class="dv">1</span> <span class="op">==</span> right:</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        correct <span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"You got"</span>,correct,<span class="st">"questions right!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> itr,a <span class="kw">in</span> <span class="bu">enumerate</span>(q[<span class="dv">1</span>]):</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> q[<span class="dv">1</span>][itr][<span class="dv">0</span>:<span class="dv">7</span>] <span class="op">==</span> <span class="st">"correct"</span>:</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(itr <span class="op">+</span><span class="dv">1</span>, <span class="st">":"</span>,q[<span class="dv">1</span>][itr][<span class="dv">7</span>:])</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>            right <span class="op">=</span> itr</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(itr <span class="op">+</span><span class="dv">1</span>, <span class="st">":"</span>,q[<span class="dv">1</span>][itr])</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    answer <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"select the answer"</span>))</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> answer <span class="op">-</span> <span class="dv">1</span> <span class="op">==</span> right:</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>        correct <span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"You got"</span>,correct,<span class="st">"questions right!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Question1 
 
@@ -528,7 +528,7 @@ Who is the best teacher
 3 : someone else
 
 
-You got 1 questions right!</code></pre>
+You got 2 questions right!</code></pre>
 </div>
 </div>
 

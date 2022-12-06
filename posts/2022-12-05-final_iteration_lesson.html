@@ -493,18 +493,45 @@ zulu</code></pre>
 <li>When passed through the function iter() it returns an iterator</li>
 <li>Strings, lists, dictionaries, sets and tuples are all examples of iterable objects.</li>
 </ul>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using an example of iter()</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="st">'alpha'</span>, <span class="st">'bravo'</span>, <span class="st">'charlie'</span>]</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>itr <span class="op">=</span> <span class="bu">iter</span>(a)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(itr))</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">iter</span>(a))</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(itr))</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(itr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">iter</span>(a))</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(itr))</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(itr))</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>itr2 <span class="op">=</span> <span class="bu">iter</span>(a)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(itr2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>alpha
+<pre><code>&lt;list_iterator object at 0x7f39a10accd0&gt;
+alpha
+&lt;list_iterator object at 0x7f39a10accd0&gt;
 bravo
-charlie</code></pre>
+charlie
+&lt;list_iterator object at 0x7f39a10ac8e0&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, i <span class="kw">in</span> <span class="bu">enumerate</span>(a):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, idx)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">enumerate</span>(a))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, i <span class="kw">in</span> a:</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, idx)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>alpha 0
+bravo 1
+charlie 2
+&lt;enumerate object at 0x7f39a19cc600&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>ValueError: too many values to unpack (expected 2)</code></pre>
 </div>
 </div>
 </section>
@@ -515,41 +542,41 @@ charlie</code></pre>
 <li>Loops take essentially what we did above and automates it, here are some examples.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a for loop </span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span> <span class="op">=</span> [<span class="st">"Alpha"</span>, <span class="st">"Bravo"</span>, <span class="st">"Charlie"</span>, <span class="st">"Delta"</span>, <span class="st">"Echo"</span>, <span class="st">"Foxtrot"</span>, <span class="st">"Golf"</span>, <span class="st">"Hotel"</span>, <span class="st">"India"</span>, <span class="st">"Juliett"</span>, <span class="st">"Kilo"</span>, <span class="st">"Lima"</span>, <span class="st">"Mike"</span>, <span class="st">"November"</span>, <span class="st">"Oscar"</span>, <span class="st">"Papa"</span>, <span class="st">"Quebec"</span>, <span class="st">"Romeo"</span>, <span class="st">"Sierra"</span>, <span class="st">"Tango"</span>, <span class="st">"Uniform"</span>, <span class="st">"Victor"</span>, <span class="st">"Whiskey"</span>, <span class="st">"X-ray"</span>, <span class="st">"Yankee"</span>, <span class="st">"Zulu"</span>]</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># using a for loop </span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">list</span>:</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#for item in the list, print the item </span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a for loop </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span> <span class="op">=</span> [<span class="st">"Alpha"</span>, <span class="st">"Bravo"</span>, <span class="st">"Charlie"</span>, <span class="st">"Delta"</span>, <span class="st">"Echo"</span>, <span class="st">"Foxtrot"</span>, <span class="st">"Golf"</span>, <span class="st">"Hotel"</span>, <span class="st">"India"</span>, <span class="st">"Juliett"</span>, <span class="st">"Kilo"</span>, <span class="st">"Lima"</span>, <span class="st">"Mike"</span>, <span class="st">"November"</span>, <span class="st">"Oscar"</span>, <span class="st">"Papa"</span>, <span class="st">"Quebec"</span>, <span class="st">"Romeo"</span>, <span class="st">"Sierra"</span>, <span class="st">"Tango"</span>, <span class="st">"Uniform"</span>, <span class="st">"Victor"</span>, <span class="st">"Whiskey"</span>, <span class="st">"X-ray"</span>, <span class="st">"Yankee"</span>, <span class="st">"Zulu"</span>]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># using a for loop </span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">list</span>:</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#for item in the list, print the item </span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a for loop and range()</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span> <span class="op">=</span> [<span class="st">"Alpha"</span>, <span class="st">"Bravo"</span>, <span class="st">"Charlie"</span>, <span class="st">"Delta"</span>, <span class="st">"Echo"</span>, <span class="st">"Foxtrot"</span>, <span class="st">"Golf"</span>, <span class="st">"Hotel"</span>, <span class="st">"India"</span>, <span class="st">"Juliett"</span>, <span class="st">"Kilo"</span>, <span class="st">"Lima"</span>, <span class="st">"Mike"</span>, <span class="st">"November"</span>, <span class="st">"Oscar"</span>, <span class="st">"Papa"</span>, <span class="st">"Quebec"</span>, <span class="st">"Romeo"</span>, <span class="st">"Sierra"</span>, <span class="st">"Tango"</span>, <span class="st">"Uniform"</span>, <span class="st">"Victor"</span>, <span class="st">"Whiskey"</span>, <span class="st">"X-ray"</span>, <span class="st">"Yankee"</span>, <span class="st">"Zulu"</span>]</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Taking the length of the list </span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>lengthList <span class="op">=</span> <span class="bu">len</span>(<span class="bu">list</span>) </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Iteration using the amount of items in the list</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(lengthList):</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">list</span>[i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a for loop and range()</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span> <span class="op">=</span> [<span class="st">"Alpha"</span>, <span class="st">"Bravo"</span>, <span class="st">"Charlie"</span>, <span class="st">"Delta"</span>, <span class="st">"Echo"</span>, <span class="st">"Foxtrot"</span>, <span class="st">"Golf"</span>, <span class="st">"Hotel"</span>, <span class="st">"India"</span>, <span class="st">"Juliett"</span>, <span class="st">"Kilo"</span>, <span class="st">"Lima"</span>, <span class="st">"Mike"</span>, <span class="st">"November"</span>, <span class="st">"Oscar"</span>, <span class="st">"Papa"</span>, <span class="st">"Quebec"</span>, <span class="st">"Romeo"</span>, <span class="st">"Sierra"</span>, <span class="st">"Tango"</span>, <span class="st">"Uniform"</span>, <span class="st">"Victor"</span>, <span class="st">"Whiskey"</span>, <span class="st">"X-ray"</span>, <span class="st">"Yankee"</span>, <span class="st">"Zulu"</span>]</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Taking the length of the list </span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>lengthList <span class="op">=</span> <span class="bu">len</span>(<span class="bu">list</span>) </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Iteration using the amount of items in the list</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(lengthList):</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">list</span>[i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iteration using the while loop</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span> <span class="op">=</span> [<span class="st">"Alpha"</span>, <span class="st">"Bravo"</span>, <span class="st">"Charlie"</span>, <span class="st">"Delta"</span>, <span class="st">"Echo"</span>, <span class="st">"Foxtrot"</span>, <span class="st">"Golf"</span>, <span class="st">"Hotel"</span>, <span class="st">"India"</span>, <span class="st">"Juliett"</span>, <span class="st">"Kilo"</span>, <span class="st">"Lima"</span>, <span class="st">"Mike"</span>, <span class="st">"November"</span>, <span class="st">"Oscar"</span>, <span class="st">"Papa"</span>, <span class="st">"Quebec"</span>, <span class="st">"Romeo"</span>, <span class="st">"Sierra"</span>, <span class="st">"Tango"</span>, <span class="st">"Uniform"</span>, <span class="st">"Victor"</span>, <span class="st">"Whiskey"</span>, <span class="st">"X-ray"</span>, <span class="st">"Yankee"</span>, <span class="st">"Zulu"</span>]</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Once again, taking the length of the list</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>lengthList <span class="op">=</span> <span class="bu">len</span>(<span class="bu">list</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the variable we are going to use as 0</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="dv">0</span> </span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Iteration using the while loop </span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Argument saying WHILE a certain variable is a certain condition, the code should run</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;</span> lengthList:</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">list</span>[i])</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    i <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iteration using the while loop</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span> <span class="op">=</span> [<span class="st">"Alpha"</span>, <span class="st">"Bravo"</span>, <span class="st">"Charlie"</span>, <span class="st">"Delta"</span>, <span class="st">"Echo"</span>, <span class="st">"Foxtrot"</span>, <span class="st">"Golf"</span>, <span class="st">"Hotel"</span>, <span class="st">"India"</span>, <span class="st">"Juliett"</span>, <span class="st">"Kilo"</span>, <span class="st">"Lima"</span>, <span class="st">"Mike"</span>, <span class="st">"November"</span>, <span class="st">"Oscar"</span>, <span class="st">"Papa"</span>, <span class="st">"Quebec"</span>, <span class="st">"Romeo"</span>, <span class="st">"Sierra"</span>, <span class="st">"Tango"</span>, <span class="st">"Uniform"</span>, <span class="st">"Victor"</span>, <span class="st">"Whiskey"</span>, <span class="st">"X-ray"</span>, <span class="st">"Yankee"</span>, <span class="st">"Zulu"</span>]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Once again, taking the length of the list</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>lengthList <span class="op">=</span> <span class="bu">len</span>(<span class="bu">list</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the variable we are going to use as 0</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="dv">0</span> </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Iteration using the while loop </span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Argument saying WHILE a certain variable is a certain condition, the code should run</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;</span> lengthList:</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">list</span>[i])</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    i <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="using-the-range-function" class="level3">
@@ -558,11 +585,11 @@ charlie</code></pre>
 <p>But wait, there’s more - Need to save even more time? The above is useful for many occasions, but can get tedious fast, in this case, use range()</p>
 </blockquote>
 <div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An example of a range() function, note that any given list or set starts with assigned value 0</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">range</span>(<span class="dv">5</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> x:</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An example of a range() function, note that any given list or set starts with assigned value 0</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">range</span>(<span class="dv">5</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> x:</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0
 1
@@ -585,17 +612,26 @@ charlie</code></pre>
 <p>Ex:</p>
 <p>list -&gt;</p>
 <p>lima india sierra tango</p>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> [<span class="st">"alfa"</span>, <span class="st">"bravo"</span>, <span class="st">"charlie"</span>, <span class="st">"delta"</span>, <span class="st">"echo"</span>, <span class="st">"foxtrot"</span>, <span class="st">"golf"</span>, <span class="st">"hotel"</span>, <span class="st">"india"</span>, <span class="st">"juliett"</span>, <span class="st">"kilo"</span>,</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="st">"lima"</span>, <span class="st">"mike"</span>, <span class="st">"november"</span>, <span class="st">"oscar"</span>, <span class="st">"papa"</span>, <span class="st">"quebec"</span>, <span class="st">"romeo"</span>, <span class="st">"sierra"</span>, <span class="st">"tango"</span>, <span class="st">"uniform"</span>, <span class="st">"victor"</span>, <span class="st">"whiskey"</span>, <span class="st">"xray"</span>, <span class="st">"yankee"</span>, <span class="st">"zulu"</span>]</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>inp <span class="op">=</span> <span class="bu">input</span>().lower()</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> words:</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i[:<span class="dv">1</span>] <span class="op">==</span> inp[:<span class="dv">1</span>]:</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> [<span class="st">"alfa"</span>, <span class="st">"bravo"</span>, <span class="st">"charlie"</span>, <span class="st">"delta"</span>, <span class="st">"echo"</span>, <span class="st">"foxtrot"</span>, <span class="st">"golf"</span>, <span class="st">"hotel"</span>, <span class="st">"india"</span>, <span class="st">"juliett"</span>, <span class="st">"kilo"</span>,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="st">"lima"</span>, <span class="st">"mike"</span>, <span class="st">"november"</span>, <span class="st">"oscar"</span>, <span class="st">"papa"</span>, <span class="st">"quebec"</span>, <span class="st">"romeo"</span>, <span class="st">"sierra"</span>, <span class="st">"tango"</span>, <span class="st">"uniform"</span>, <span class="st">"victor"</span>, <span class="st">"whiskey"</span>, <span class="st">"xray"</span>, <span class="st">"yankee"</span>, <span class="st">"zulu"</span>]</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>inp <span class="op">=</span> <span class="bu">input</span>().lower()</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> inp:</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> words:</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i[:<span class="dv">1</span>] <span class="op">==</span> k:</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>hotel</code></pre>
+<pre><code>india
+lima
+oscar
+victor
+echo
+tango
+hotel
+india
+sierra</code></pre>
 </div>
 </div>
 </section>
@@ -606,55 +642,51 @@ charlie</code></pre>
 <h2 class="anchored" data-anchor-id="d-arrays">2D Arrays</h2>
 <p>A 2D array is simply just a list of lists. The example below is technically correct but…</p>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example matrix</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>keypad <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="st">" "</span>, <span class="dv">0</span>, <span class="st">" "</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example matrix</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>keypad <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="st">" "</span>, <span class="dv">0</span>, <span class="st">" "</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Conventially 2D arrays are written like below. This is because 2D arrays are meant to be read in 2 dimensions (hence the name). Writing them like below makes them easier to visualize and understand.</p>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Better example matrix</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>keypad <span class="op">=</span>   [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>],</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>            [<span class="st">" "</span>, <span class="dv">0</span>, <span class="st">" "</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Better example matrix</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>keypad <span class="op">=</span>   [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>],</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>            [<span class="st">" "</span>, <span class="dv">0</span>, <span class="st">" "</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="printing-a-2d-array" class="level2">
 <h2 class="anchored" data-anchor-id="printing-a-2d-array">Printing a 2D Array</h2>
 <p>We already know that we can’t just print the matrix by calling it. We need to iterate through it to print it.</p>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nested loops using ij indexes</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_matrix1(matrix): </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(matrix)):  <span class="co"># outer for loop. This runs on i which represents the row. range(len(matrix)) is in order to iterate through the length of the matrix</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(matrix[i])):  <span class="co"># inner for loop. This runs on the length of the i'th row in the matrix (j changes for each row with a different length)</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(matrix[i][j], end<span class="op">=</span><span class="st">" "</span>)  <span class="co"># [i][j] is the 2D location of that value in the matrix, kinda like a coordinate pair. [i] iterates to the specific row and [j] iterates to the specific value in the row. end=" " changes the end value to space, not a new line.</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>() <span class="co"># prints extra line. this is in the outer loop, not the inner loop, because it only wants to print a new line for each row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nested loops using ij indexes</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_matrix1(matrix): </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(matrix)):  <span class="co"># outer for loop. This runs on i which represents the row. range(len(matrix)) is in order to iterate through the length of the matrix</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(matrix[i])):  <span class="co"># inner for loop. This runs on the length of the i'th row in the matrix (j changes for each row with a different length)</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(matrix[i][j], end<span class="op">=</span><span class="st">" "</span>)  <span class="co"># [i][j] is the 2D location of that value in the matrix, kinda like a coordinate pair. [i] iterates to the specific row and [j] iterates to the specific value in the row. end=" " changes the end value to space, not a new line.</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>() <span class="co"># prints extra line. this is in the outer loop, not the inner loop, because it only wants to print a new line for each row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Raw matrix (list of lists): "</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(keypad)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matrix printed using nested for loop iteration:"</span>)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>print_matrix1(keypad)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Raw matrix (list of lists): "</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(keypad)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matrix printed using nested for loop iteration:"</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>print_matrix1(keypad)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Raw matrix (list of lists): 
-[[1, 2, 3], [4, 5, 6], [7, 8, 9], [' ', 0, ' ']]
-Matrix printed using nested for loop iteration
-1 2 3 
-4 5 6 
-7 8 9 
-  0   
-</code></pre>
+<pre><code>Raw matrix (list of lists): </code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'keypad' is not defined</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_matrix2(matrix):</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> matrix:  <span class="co"># Iterates through each "row" of matrix. Row is a dummy variable, it could technically be anything. It iterates through each value of matrix and each value is it's own list. in this syntax the list is stored in "row".</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> col <span class="kw">in</span> row:  <span class="co"># Iterates through each value in row. Again col, column, is a dummy variable. Each value in row is stored in col.</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(col, end<span class="op">=</span><span class="st">" "</span>) <span class="co"># Same as 1</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>() <span class="co"># Same as 1</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>print_matrix2(keypad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_matrix2(matrix):</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> matrix:  <span class="co"># Iterates through each "row" of matrix. Row is a dummy variable, it could technically be anything. It iterates through each value of matrix and each value is it's own list. in this syntax the list is stored in "row".</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> col <span class="kw">in</span> row:  <span class="co"># Iterates through each value in row. Again col, column, is a dummy variable. Each value in row is stored in col.</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(col, end<span class="op">=</span><span class="st">" "</span>) <span class="co"># Same as 1</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>() <span class="co"># Same as 1</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>print_matrix2(keypad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1 2 3 
 4 5 6 
@@ -665,32 +697,46 @@ Matrix printed using nested for loop iteration
 <section id="more-functions" class="level3">
 <h3 class="anchored" data-anchor-id="more-functions">More Functions</h3>
 <p>Try to find another way to print the matrix. Only complete one of the two (unless you’d like to do both). Below is a hint</p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="op">=</span> [<span class="st">"apples"</span>, <span class="st">"bananas"</span>, <span class="st">"grapes"</span>]</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fruit)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="op">*</span>fruit) <span class="co"># Multiplies one list several times, found out on the wikibooks page for python programming</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span><span class="op">*</span>fruit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="op">=</span> [<span class="st">"apples"</span>, <span class="st">"bananas"</span>, <span class="st">"grapes"</span>]</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fruit)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="op">*</span>fruit) <span class="co"># Multiplies one list several times, found out on the wikibooks page for python programming</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span><span class="op">*</span>fruit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['apples', 'bananas', 'grapes']
+apples bananas grapes
 ['apples', 'bananas', 'grapes', 'apples', 'bananas', 'grapes', 'apples', 'bananas', 'grapes']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_matrix3(matrix):</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    code <span class="op">=</span> <span class="st">"your code goes here"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_matrix3(matrix):</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    arr <span class="op">=</span> np.array(matrix)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">' '</span>.join(arr))</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>print_matrix3(keypad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: sequence item 0: expected str instance, numpy.ndarray found</code></pre>
+</div>
 </div>
 <p>Alternatively, find a way to print the matrix using the iter() function you already learned. Or use both!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_matrix4(matrix):</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    code <span class="op">=</span> <span class="st">"your code goes here"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_matrix4(matrix):</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    code <span class="op">=</span> <span class="st">"your code goes here"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>keyboard <span class="op">=</span> [[<span class="st">"`"</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">0</span>, <span class="st">"-"</span>, <span class="st">"="</span>],</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"Q"</span>, <span class="st">"W"</span>, <span class="st">"E"</span>, <span class="st">"R"</span>, <span class="st">"T"</span>, <span class="st">"Y"</span>, <span class="st">"U"</span>, <span class="st">"I"</span>, <span class="st">"O"</span>, <span class="st">"P"</span>, <span class="st">"["</span>, <span class="st">"]"</span>],</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"A"</span>, <span class="st">"S"</span>, <span class="st">"D"</span>, <span class="st">"F"</span>, <span class="st">"G"</span>, <span class="st">"H"</span>, <span class="st">"J"</span>, <span class="st">"K"</span>, <span class="st">"L"</span>, <span class="st">";"</span>, <span class="st">"'"</span>],</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"Z"</span>, <span class="st">"X"</span>, <span class="st">"C"</span>, <span class="st">"V"</span>, <span class="st">"B"</span>, <span class="st">"N"</span>, <span class="st">"M"</span>, <span class="st">","</span>, <span class="st">"."</span>, <span class="st">"/"</span>]]</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>print_matrix2(keypad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>keyboard <span class="op">=</span> [[<span class="st">"`"</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">0</span>, <span class="st">"-"</span>, <span class="st">"="</span>],</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"Q"</span>, <span class="st">"W"</span>, <span class="st">"E"</span>, <span class="st">"R"</span>, <span class="st">"T"</span>, <span class="st">"Y"</span>, <span class="st">"U"</span>, <span class="st">"I"</span>, <span class="st">"O"</span>, <span class="st">"P"</span>, <span class="st">"["</span>, <span class="st">"]"</span>],</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"A"</span>, <span class="st">"S"</span>, <span class="st">"D"</span>, <span class="st">"F"</span>, <span class="st">"G"</span>, <span class="st">"H"</span>, <span class="st">"J"</span>, <span class="st">"K"</span>, <span class="st">"L"</span>, <span class="st">";"</span>, <span class="st">"'"</span>],</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"Z"</span>, <span class="st">"X"</span>, <span class="st">"C"</span>, <span class="st">"V"</span>, <span class="st">"B"</span>, <span class="st">"N"</span>, <span class="st">"M"</span>, <span class="st">","</span>, <span class="st">"."</span>, <span class="st">"/"</span>]]</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>print_matrix2(keyboard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>` 1 2 3 4 5 6 7 8 9 0 - = 
+Q W E R T Y U I O P [ ] 
+A S D F G H J K L ; ' 
+Z X C V B N M , . / </code></pre>
+</div>
 </div>
 <p>Print what month you were born and how old you are by iterating through the keyboard (don’t just write a string).</p>
 </section>
@@ -700,7 +746,7 @@ Matrix printed using nested for loop iteration
 <p>Alternative Challenge: If you would prefer, animate it using some form of delay so it flashes one of your letters at a time on the board in order and repeats. (this one may be slightly more intuitive)</p>
 <p>DO NOT HARD CODE THIS. Don’t make it harder on yourself, iterate through, make it abstract so it can be used dynamically. You should be able to input any string and your code should work.</p>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Your end result should look like this if you're confused</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Your end result should look like this if you're confused</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  1         6             
       R                
