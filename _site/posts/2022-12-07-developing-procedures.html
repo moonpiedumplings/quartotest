@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="moonpie">
-<meta name="dcterms.date" content="2022-08-26">
+<meta name="dcterms.date" content="2022-12-07">
+<meta name="description" content="Developing and Writing Procedures Lesson">
 
-<title>Quartotest - Football Quiz</title>
+<title>Quartotest - Unit 3 Sections 12-13</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -165,9 +165,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Football Quiz</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">collegeboard</div>
+      <h1 class="title">Unit 3 Sections 12-13</h1>
+                  <div>
+        <div class="description">
+          Developing and Writing Procedures Lesson
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">lessons</div>
               </div>
                   </div>
   </div>
@@ -175,17 +180,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   <div class="quarto-title-meta">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>moonpie </p>
-            </div>
-    </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 26, 2022</p>
+        <p class="date">December 7, 2022</p>
       </div>
     </div>
       
@@ -200,8 +199,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#code" id="toc-code" class="nav-link active" data-scroll-target="#code">Code</a></li>
-  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation">Explanation</a></li>
+  <li><a href="#calling-procedures" id="toc-calling-procedures" class="nav-link active" data-scroll-target="#calling-procedures">Calling Procedures</a></li>
+  <li><a href="#developing-procedures" id="toc-developing-procedures" class="nav-link" data-scroll-target="#developing-procedures">Developing Procedures</a></li>
+  <li><a href="#procedural-abstraction" id="toc-procedural-abstraction" class="nav-link" data-scroll-target="#procedural-abstraction">Procedural Abstraction</a></li>
+  <li><a href="#complexity-example" id="toc-complexity-example" class="nav-link" data-scroll-target="#complexity-example">Complexity Example</a></li>
+  <li><a href="#hacks" id="toc-hacks" class="nav-link" data-scroll-target="#hacks">Hacks</a></li>
   </ul>
 </nav>
     </div>
@@ -211,53 +213,102 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="code" class="level1">
-<h1>Code</h1>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>questions <span class="op">=</span> [<span class="st">"Is Jeffrey the smartest person alive"</span>]</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>answers <span class="op">=</span> [<span class="st">"yes"</span>]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>grade <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> q <span class="kw">in</span> questions:</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    answer <span class="op">=</span> <span class="bu">input</span>(q)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> answer <span class="op">==</span> answers[a]:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"you are very smart"</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        grade <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"you are dumb"</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    a <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(grade,<span class="st">"/"</span>, <span class="bu">len</span>(questions))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>you are very smart
-1 / 1</code></pre>
-</div>
+<section id="calling-procedures" class="level2">
+<h2 class="anchored" data-anchor-id="calling-procedures">Calling Procedures</h2>
+<p>Slide 1: - A _______ is a named group of programming instructions that may have parameters and return values. - Procedures are referred to by different names, such as _______ or _______, depending on the programing language. - Parameters are input values of a procedure. _______ specify the values of the parameters when procedure is called. - A procedure call interrupts the _______ execution of statements causing the program to execute the statements within the procedure before continuing. One the last statement in the procedure (or a return statement) has executed, flow or control is returned to the point immediately following where the procedure was _______.</p>
+<p>Slide 2: - When calling procedures, it’s important to take notice to whether it returns data, or a block of _______. - If the procedure just returns a block of statements, you call the procedure by referring to the procedure name, and _______ the arguments. - If the procedure returns some sort of data like a ______ or _______, then you will assign that value to a variable</p>
+<p>Slide 3:</p>
+<ul>
+<li>Assume the Temperature outside is Fahrenheit.</li>
+<li>The procedure convertFahrenheit is intended to convert from Fahrenheit to Celsius.</li>
+<li>Convert the following psuedocode to python</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convertFahrenheit():</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># code goes here</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> celsius</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>convertFahrenheit(outsideTemp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="explanation" class="level1">
-<h1>Explanation</h1>
-<p>My code is much simpler than the example given. By using what is called a for loop, I can repeat the same actions or lines of code (with different inputs) allowing me to have to not type as much. The other thing I am taking advantage of is a list. In python, a list is basically a way to store multiple values.</p>
-<p>The syntax of a for loop is <code>for i in j</code></p>
-<p><code>i</code> is a variable, one which starts at 0 and gets added to until it reaches j. The program runs what is in the for function once, then adds to <code>i</code>, and then repeats until <code>i</code> reaches j. For loops exist in lots of programming languages.</p>
-<p>However, I did something special. I created a list called <code>questions</code>, which can store as many questions as I want. I also created a list called <code>answers</code>, which stores anwsers. The <code>for q in questions</code> doesn’t just behave like a normal for loop, the q is not a variable, but rather an item in the list. The function goes through the list with different items.</p>
-<p>In addition to that, I set a variable called <code>a</code>. <code>a</code> is used to call on a specific item in the list <code>answers</code>, one that matches the question. By adding 1 to <code>a</code> at the end of the for loop, I can make sure the item called from questions matches with that of answers.</p>
-<p>Because of my <em>genius</em> intelligence, I was able to create quiz, that is infinitely extendable. You simply add more items to the list of questions and answers, and more questions and answers will be added. No programming necessary. In addition to that, it also gives a fraction score.</p>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>questions <span class="op">=</span> [[<span class="st">"Is Jeffrey the Smartest person alive"</span>, <span class="st">"yes"</span>], [<span class="st">"How many players are there on a football team?"</span>, <span class="st">"11"</span>]]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>grade <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> q <span class="kw">in</span> questions:</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="bu">input</span>(q[<span class="dv">0</span>])</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> a <span class="op">==</span> q[<span class="dv">1</span>]:</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Correct"</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        grade <span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Incorrect"</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"%"</span>,(grade <span class="op">/</span> <span class="bu">len</span>(questions) <span class="op">*</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Correct
-Correct
-% 100.0</code></pre>
+<section id="developing-procedures" class="level2">
+<h2 class="anchored" data-anchor-id="developing-procedures">Developing Procedures</h2>
+<p>Slide 8:</p>
+<p>Picking a _______ name is important in case you revisit the code later on (separate words with capitals) There are 2 different types of procedures- ones that return a value and those that simply execute a block of statements Steps of developing procedure: picking a useful name, thinking of parameters (what data does the procedure need to know), making a flowchart or writing procedure in pseudocode, and actually developing the procedure.</p>
+<p>Slide 9:</p>
+<p>In this example, a teacher is writing a program that will replace the grade on a previous quiz if the new grade is better than the previous.</p>
+<ul>
+<li>What would be a good name for this procedure?</li>
+<li>What parameters do we need for this procedure?</li>
+<li>Try writing this procedure out in python based on the given pseudocode</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># procedure goes here</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>currentGrade <span class="op">&lt;-</span> currentPoints <span class="op">/</span> <span class="dv">40</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>currentGrade <span class="op">&lt;-</span> current Grade <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> currentGrade <span class="op">&gt;</span> quizGrade</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    quizGrade <span class="op">&lt;-</span> currentGrade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="procedural-abstraction" class="level2">
+<h2 class="anchored" data-anchor-id="procedural-abstraction">Procedural Abstraction</h2>
+<ul>
+<li>One type of abstraction is ________ abstraction which provides a name for a process and allows a procedure to be used only knowing what it does and not how it does it</li>
+<li>This is very helpful in managing ______ in a program</li>
+<li>Subdivision of a program into separate subprograms is called ________</li>
+<li>A procedural abstraction may ________ shared features to generalize functionality instead of duplicating code. This allows for program reuse, which helps manage complexity</li>
+<li>When a pre-written procedure is called, you don’t necessarily need to know the details of this, just what it does and how to call it</li>
+<li>Simply, procedural abstraction is naming and calling a ________ procedure</li>
+<li>Making sure to include the right arguments so the ________ can do what its supposed to do is crucial</li>
+</ul>
+</section>
+<section id="complexity-example" class="level2">
+<h2 class="anchored" data-anchor-id="complexity-example">Complexity Example</h2>
+<p>One of the biggest advantages of procedural abstraction is managing complexity.</p>
+<p>Think about the process of simplifying the code? What do you think the advantage of the code segment on the left is?</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Code Segment 1</th>
+<th>Code Segment 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ROTATE_LEFT()</td>
+<td>detourLeft()</td>
+</tr>
+<tr class="even">
+<td>MOVE_FORWARD()</td>
+<td>turnCorner()</td>
+</tr>
+<tr class="odd">
+<td>ROTATE_RIGHT</td>
+<td>MOVE_FORWARD()</td>
+</tr>
+<tr class="even">
+<td>MOVE_FORWARD()</td>
+<td>MOVE_FORWARD()</td>
+</tr>
+</tbody>
+</table>
+<p>MOVE_FORWARD() ROTATE_RIGHT() MOVE_FORWARD() ROTATE_LEFT() MOVE_FORWARD() ROTATE_LEFT() MOVE_FORWARD() MOVE_FORWARD MOVE_FORWARD()</p>
+</section>
+<section id="hacks" class="level2">
+<h2 class="anchored" data-anchor-id="hacks">Hacks</h2>
+<ul>
+<li>Write a python procedure about something which can help you in school, for example the teacher’s function we spoke about earlier.</li>
+<li>Points will be awarded based on creativity and functionality</li>
+<li>0.1 points will be deducted for late submissions</li>
+<li>Submit the notes with all blanks filled in (scored out of 0.5 points) and the python procedure (scored out of 0.5 points) by Monday 12/12 at 11:59 PM.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> procedure()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># code goes here</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># code goes here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
