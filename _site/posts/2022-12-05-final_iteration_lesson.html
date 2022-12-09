@@ -660,7 +660,7 @@ oscar</code></pre>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(matrix[i][j], end<span class="op">=</span><span class="st">" "</span>)  <span class="co"># [i][j] is the 2D location of that value in the matrix, kinda like a coordinate pair. [i] iterates to the specific row and [j] iterates to the specific value in the row. end=" " changes the end value to space, not a new line.</span></span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>() <span class="co"># prints extra line. this is in the outer loop, not the inner loop, because it only wants to print a new line for each row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Raw matrix (list of lists): "</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(keypad)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matrix printed using nested for loop iteration:"</span>)</span>
@@ -720,78 +720,90 @@ apples bananas grapes
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_matrix4(matrix):</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    code <span class="op">=</span> <span class="st">"your code goes here"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>keyboard <span class="op">=</span> [[<span class="st">"`"</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">0</span>, <span class="st">"-"</span>, <span class="st">"="</span>],</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"Q"</span>, <span class="st">"W"</span>, <span class="st">"E"</span>, <span class="st">"R"</span>, <span class="st">"T"</span>, <span class="st">"Y"</span>, <span class="st">"U"</span>, <span class="st">"I"</span>, <span class="st">"O"</span>, <span class="st">"P"</span>, <span class="st">"["</span>, <span class="st">"]"</span>],</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"A"</span>, <span class="st">"S"</span>, <span class="st">"D"</span>, <span class="st">"F"</span>, <span class="st">"G"</span>, <span class="st">"H"</span>, <span class="st">"J"</span>, <span class="st">"K"</span>, <span class="st">"L"</span>, <span class="st">";"</span>, <span class="st">"'"</span>],</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"Z"</span>, <span class="st">"X"</span>, <span class="st">"C"</span>, <span class="st">"V"</span>, <span class="st">"B"</span>, <span class="st">"N"</span>, <span class="st">"M"</span>, <span class="st">","</span>, <span class="st">"."</span>, <span class="st">"/"</span>]]</span>
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> keyboard:</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> i:</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(j,<span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(keyboard)):  </span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(keyboard[i])):</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(keyboard[i][j], end<span class="op">=</span><span class="st">" "</span>)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>`  
-1  
-2  
-3  
-4  
-5  
-6  
-7  
-8  
-9  
-0  
--  
-=  
-Q  
-W  
-E  
-R  
-T  
-Y  
-U  
-I  
-O  
-P  
-[  
-]  
-A  
-S  
-D  
-F  
-G  
-H  
-J  
-K  
-L  
-;  
-'  
-Z  
-X  
-C  
-V  
-B  
-N  
-M  
-,  
-.  
-/  </code></pre>
+<pre><code>` 1 2 3 4 5 6 7 8 9 0 - = 
+Q W E R T Y U I O P [ ] 
+A S D F G H J K L ; ' 
+Z X C V B N M , . / </code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;built-in method upper of str object at 0x7ff7b034b170&gt;</code></pre>
 </div>
 </div>
 <p>Print what month you were born and how old you are by iterating through the keyboard (don’t just write a string).</p>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>keyboard <span class="op">=</span> [[<span class="st">"`"</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">0</span>, <span class="st">"-"</span>, <span class="st">"="</span>],</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"Q"</span>, <span class="st">"W"</span>, <span class="st">"E"</span>, <span class="st">"R"</span>, <span class="st">"T"</span>, <span class="st">"Y"</span>, <span class="st">"U"</span>, <span class="st">"I"</span>, <span class="st">"O"</span>, <span class="st">"P"</span>, <span class="st">"["</span>, <span class="st">"]"</span>],</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"A"</span>, <span class="st">"S"</span>, <span class="st">"D"</span>, <span class="st">"F"</span>, <span class="st">"G"</span>, <span class="st">"H"</span>, <span class="st">"J"</span>, <span class="st">"K"</span>, <span class="st">"L"</span>, <span class="st">";"</span>, <span class="st">"'"</span>],</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"Z"</span>, <span class="st">"X"</span>, <span class="st">"C"</span>, <span class="st">"V"</span>, <span class="st">"B"</span>, <span class="st">"N"</span>, <span class="st">"M"</span>, <span class="st">","</span>, <span class="st">"."</span>, <span class="st">"/"</span>]]</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>date <span class="op">=</span> <span class="st">"05/08/2005"</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>datelist <span class="op">=</span> []</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> date:</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    datelist.append(i)</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(keyboard)):  </span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(keyboard[i])):</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(keyboard[i][j], end<span class="op">=</span><span class="st">" "</span>)</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>()</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>string <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> keyboard:</span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key <span class="kw">in</span> row:</span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> key <span class="kw">in</span> datelist:</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>            string <span class="op">+=</span> key</span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, string)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>` 1 2 3 4 5 6 7 8 9 0 - = 
+Q W E R T Y U I O P [ ] 
+A S D F G H J K L ; ' 
+Z X C V B N M , . / 
+
+ /</code></pre>
+</div>
+</div>
 </section>
 <section id="challenge" class="level3">
 <h3 class="anchored" data-anchor-id="challenge">Challenge</h3>
 <p>Change all of the letters that you DIDN’T print above to spaces, ” “, and then print the full keyboard. (the things you did print should remain in the same spot)</p>
 <p>Alternative Challenge: If you would prefer, animate it using some form of delay so it flashes one of your letters at a time on the board in order and repeats. (this one may be slightly more intuitive)</p>
 <p>DO NOT HARD CODE THIS. Don’t make it harder on yourself, iterate through, make it abstract so it can be used dynamically. You should be able to input any string and your code should work.</p>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Your end result should look like this if you're confused</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>keyboard <span class="op">=</span> [[<span class="st">"`"</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">0</span>, <span class="st">"-"</span>, <span class="st">"="</span>],</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"Q"</span>, <span class="st">"W"</span>, <span class="st">"E"</span>, <span class="st">"R"</span>, <span class="st">"T"</span>, <span class="st">"Y"</span>, <span class="st">"U"</span>, <span class="st">"I"</span>, <span class="st">"O"</span>, <span class="st">"P"</span>, <span class="st">"["</span>, <span class="st">"]"</span>],</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"A"</span>, <span class="st">"S"</span>, <span class="st">"D"</span>, <span class="st">"F"</span>, <span class="st">"G"</span>, <span class="st">"H"</span>, <span class="st">"J"</span>, <span class="st">"K"</span>, <span class="st">"L"</span>, <span class="st">";"</span>, <span class="st">"'"</span>],</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"Z"</span>, <span class="st">"X"</span>, <span class="st">"C"</span>, <span class="st">"V"</span>, <span class="st">"B"</span>, <span class="st">"N"</span>, <span class="st">"M"</span>, <span class="st">","</span>, <span class="st">"."</span>, <span class="st">"/"</span>]]</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>namelist <span class="op">=</span> []</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="bu">input</span>(<span class="st">"What is your name?"</span>)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> name.upper()</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> name:</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    namelist.append(i)</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(keyboard)):  </span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(keyboard[i])):</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> keyboard[i][j] <span class="kw">in</span> namelist:</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(keyboard[i][j], end<span class="op">=</span><span class="st">" "</span>)</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">" "</span>, end<span class="op">=</span><span class="st">" "</span>) </span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  1         6             
-      R                
-A         H           
-    C       M       </code></pre>
+<pre><code>                          
+  W                     
+A S D                 
+                    </code></pre>
 </div>
 </div>
 <p>If you get stuck you can just make a picture with an array and print it (I will grade based on how good it looks)</p>

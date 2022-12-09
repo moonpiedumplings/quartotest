@@ -1,0 +1,11 @@
+{
+  "hash": "c2b97fcb76fdc8458a68adc0acc086ed",
+  "result": {
+    "markdown": "---\ntitle: Grades\nformat:\n  html:\n    code-fold: true\n---\n\nFor a demonstration of a line plot on a polar axis, see @fig-polar.\n\n\n| Event      | Grade |\n| ----------- | ----------- |\n| 1-2      | never got grades |\n| 3-4   | Text        |\n| 5-7 | 0.95 |\n| 8 - 10 | grade |\n\n",
+    "supporting": [
+      "grades_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
