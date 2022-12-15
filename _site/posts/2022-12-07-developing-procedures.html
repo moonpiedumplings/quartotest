@@ -215,26 +215,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="calling-procedures" class="level2">
 <h2 class="anchored" data-anchor-id="calling-procedures">Calling Procedures</h2>
-<p>Slide 1: - A _______ is a named group of programming instructions that may have parameters and return values. - Procedures are referred to by different names, such as _______ or _______, depending on the programing language. - Parameters are input values of a procedure. _______ specify the values of the parameters when procedure is called. - A procedure call interrupts the _______ execution of statements causing the program to execute the statements within the procedure before continuing. One the last statement in the procedure (or a return statement) has executed, flow or control is returned to the point immediately following where the procedure was _______.</p>
-<p>Slide 2: - When calling procedures, it’s important to take notice to whether it returns data, or a block of _______. - If the procedure just returns a block of statements, you call the procedure by referring to the procedure name, and _______ the arguments. - If the procedure returns some sort of data like a ______ or _______, then you will assign that value to a variable</p>
+<p>Slide 1: - A procedure is a named group of programming instructions that may have parameters and return values. - Procedures are referred to by different names, such as functions or methods, depending on the programing language. - Parameters are input values of a procedure. Arguments specify the values of the parameters when procedure is called. - A procedure call interrupts the sequential execution of statements causing the program to execute the statements within the procedure before continuing. One the last statement in the procedure (or a return statement) has executed, flow or control is returned to the point immediately following where the procedure was called.</p>
+<p>Slide 2: - When calling procedures, it’s important to take notice to whether it returns data, or a block of statements. - If the procedure just returns a block of statements, you call the procedure by referring to the procedure name, and inputting the arguments. - If the procedure returns some sort of data like a boolean or value, then you will assign that value to a variable</p>
 <p>Slide 3:</p>
 <ul>
 <li>Assume the Temperature outside is Fahrenheit.</li>
 <li>The procedure convertFahrenheit is intended to convert from Fahrenheit to Celsius.</li>
 <li>Convert the following psuedocode to python</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convertFahrenheit():</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># code goes here</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> celsius</span>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convertFahrenheit(F):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    C <span class="op">=</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">9</span>) <span class="op">*</span> (F <span class="op">-</span> <span class="dv">32</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> C</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>convertFahrenheit(outsideTemp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"What is the temperature outside in Farenheit"</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>convertFahrenheit(temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>15.555555555555557</code></pre>
+</div>
 </div>
 </section>
 <section id="developing-procedures" class="level2">
 <h2 class="anchored" data-anchor-id="developing-procedures">Developing Procedures</h2>
 <p>Slide 8:</p>
-<p>Picking a _______ name is important in case you revisit the code later on (separate words with capitals) There are 2 different types of procedures- ones that return a value and those that simply execute a block of statements Steps of developing procedure: picking a useful name, thinking of parameters (what data does the procedure need to know), making a flowchart or writing procedure in pseudocode, and actually developing the procedure.</p>
+<p>Picking a descripitive name is important in case you revisit the code later on (separate words with capitals) There are 2 different types of procedures- ones that return a value and those that simply execute a block of statements Steps of developing procedure: picking a useful name, thinking of parameters (what data does the procedure need to know), making a flowchart or writing procedure in pseudocode, and actually developing the procedure.</p>
 <p>Slide 9:</p>
 <p>In this example, a teacher is writing a program that will replace the grade on a previous quiz if the new grade is better than the previous.</p>
 <ul>
@@ -243,24 +247,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Try writing this procedure out in python based on the given pseudocode</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># procedure goes here</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>currentGrade <span class="op">&lt;-</span> currentPoints <span class="op">/</span> <span class="dv">40</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>currentGrade <span class="op">&lt;-</span> current Grade <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> currentGrade <span class="op">&gt;</span> quizGrade</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    quizGrade <span class="op">&lt;-</span> currentGrade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># procedure goes here</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>currentGrade <span class="op">&lt;-</span> currentPoints <span class="op">/</span> <span class="dv">40</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>currentGrade <span class="op">&lt;-</span> current Grade <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> currentGrade <span class="op">&gt;</span> quizGrade</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    quizGrade <span class="op">&lt;-</span> currentGrade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="procedural-abstraction" class="level2">
 <h2 class="anchored" data-anchor-id="procedural-abstraction">Procedural Abstraction</h2>
 <ul>
-<li>One type of abstraction is ________ abstraction which provides a name for a process and allows a procedure to be used only knowing what it does and not how it does it</li>
-<li>This is very helpful in managing ______ in a program</li>
-<li>Subdivision of a program into separate subprograms is called ________</li>
-<li>A procedural abstraction may ________ shared features to generalize functionality instead of duplicating code. This allows for program reuse, which helps manage complexity</li>
+<li>One type of abstraction is procedural abstraction which provides a name for a process and allows a procedure to be used only knowing what it does and not how it does it</li>
+<li>This is very helpful in managing complexity in a program</li>
+<li>Subdivision of a program into separate subprograms is called modularity</li>
+<li>A procedural abstraction may extract shared features to generalize functionality instead of duplicating code. This allows for program reuse, which helps manage complexity</li>
 <li>When a pre-written procedure is called, you don’t necessarily need to know the details of this, just what it does and how to call it</li>
-<li>Simply, procedural abstraction is naming and calling a ________ procedure</li>
-<li>Making sure to include the right arguments so the ________ can do what its supposed to do is crucial</li>
+<li>Simply, procedural abstraction is naming and calling a prewritten procedure</li>
+<li>Making sure to include the right arguments so the procedure can do what its supposed to do is crucial</li>
 </ul>
 </section>
 <section id="complexity-example" class="level2">
@@ -303,12 +307,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>0.1 points will be deducted for late submissions</li>
 <li>Submit the notes with all blanks filled in (scored out of 0.5 points) and the python procedure (scored out of 0.5 points) by Monday 12/12 at 11:59 PM.</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> procedure()</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># code goes here</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># code goes here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>init_printing(use_unicode<span class="op">=</span><span class="va">False</span>, wrap_line<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Symbol(<span class="st">'x'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inte():</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    indef <span class="op">=</span> <span class="bu">input</span>((<span class="st">"Definite integral? y/n"</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> indef <span class="op">==</span> <span class="st">"y"</span>:</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Integrate from?"</span>))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        end <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Ending at?"</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(integrate(func, (x, start, end)))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(sympify(integrate(func)))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> solv():</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    value <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"What value would you like to solve for?"</span>))</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(solve(func, x, value))</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>func <span class="op">=</span> sympify(<span class="bu">input</span>(<span class="st">"What is the expression you are working with? One variable, x"</span>))</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(func)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>inte()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x**2
+x**3/3</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>init_printing(use_unicode<span class="op">=</span><span class="va">False</span>, wrap_line<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Symbol(<span class="st">'x'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>func <span class="op">=</span> sympify(<span class="bu">input</span>(<span class="st">"fucntion"</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>value <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"value"</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(solve(func, x, value))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[(0, 2.00000000000000)]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>init_printing(use_unicode<span class="op">=</span><span class="va">False</span>, wrap_line<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Symbol(<span class="st">'x'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sympify(<span class="st">"x^2"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x**2</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Symbol(<span class="st">'x'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sympify(<span class="st">"x^2"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sympify(x<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x**2</code></pre>
+</div>
 </div>
 
 

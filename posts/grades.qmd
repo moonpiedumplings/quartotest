@@ -1,5 +1,5 @@
 ---
-title: "Grades"
+title: "Grades and Vocab"
 format:
   html:
     code-fold: true
@@ -11,7 +11,11 @@ For a demonstration of a line plot on a polar axis, see @fig-polar.
 
 | Event      | Grade |
 | ----------- | ----------- |
-| 1-2      | never got grades |
-| 3-4   | Text        |
+| 1-2      |  |
+| 3-4   |    |
 | 5-7 | 0.95 |
-| 8 - 10 | grade |
+| 9-11 | 0.8 |
+| 8 - 10 | 1 |
+
+
+

@@ -79,5 +79,11 @@
   },
   "posts/grades.qmd": {
     "grades.html": "fabd3ee3"
+  },
+  "posts/2022-11-30-randomvalues.ipynb": {
+    "2022-11-30-randomvalues.html": "4a71987b"
+  },
+  "posts/2022-12-dd-lesson.ipynb": {
+    "2022-12-dd-lesson.html": "620dc301"
   }
 }
