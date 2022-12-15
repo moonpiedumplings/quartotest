@@ -16,7 +16,9 @@ For a demonstration of a line plot on a polar axis, see @fig-polar.
 | 5-7 | 0.95 |
 | 9-11 | 0.8 |
 | 8 - 10 | 1 |
-| 
+| 12 - 13 | 0.8 |
+| 14 - 15 | 0.85 |
+
 
 
 
