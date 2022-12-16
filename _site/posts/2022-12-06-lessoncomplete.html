@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-99.9.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-12-06">
+<meta name="description" content="Interactive lesson covering content from Collegeboard 3.9 and 3.11 made by students for students">
+
+<title>Quartotest - 3.9 and 3.11 Lesson</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Quartotest</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">3.9 and 3.11 Lesson</h1>
+                  <div>
+        <div class="description">
+          Interactive lesson covering content from Collegeboard 3.9 and 3.11 made by students for students
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">lesson</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 6, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#first-things-first-wget" id="toc-first-things-first-wget" class="nav-link active" data-scroll-target="#first-things-first-wget">First Things First: WGET</a>
+  <ul class="collapse">
+  <li><a href="#heres-a-quick-how-to" id="toc-heres-a-quick-how-to" class="nav-link" data-scroll-target="#heres-a-quick-how-to">Here’s a quick how-to</a></li>
+  </ul></li>
+  <li><a href="#part-1" id="toc-part-1" class="nav-link" data-scroll-target="#part-1">3.9 Part 1</a>
+  <ul class="collapse">
+  <li><a href="#lesson-1-defining-algorithms" id="toc-lesson-1-defining-algorithms" class="nav-link" data-scroll-target="#lesson-1-defining-algorithms">Lesson 1 | Defining Algorithms</a></li>
+  <li><a href="#example-1-what-happens-if-we-test-the-algorithm-with-different-outputs" id="toc-example-1-what-happens-if-we-test-the-algorithm-with-different-outputs" class="nav-link" data-scroll-target="#example-1-what-happens-if-we-test-the-algorithm-with-different-outputs">Example 1 | What happens if we test the algorithm with different outputs?</a></li>
+  <li><a href="#now-record-with-another-output" id="toc-now-record-with-another-output" class="nav-link" data-scroll-target="#now-record-with-another-output">NOW RECORD with another output</a></li>
+  <li><a href="#conditionals-vs.-booleans" id="toc-conditionals-vs.-booleans" class="nav-link" data-scroll-target="#conditionals-vs.-booleans">Conditionals vs.&nbsp;Booleans</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
+  <li><a href="#logically-thinking-about-conditionals-and-booleans" id="toc-logically-thinking-about-conditionals-and-booleans" class="nav-link" data-scroll-target="#logically-thinking-about-conditionals-and-booleans">Logically thinking about conditionals and booleans</a></li>
+  <li><a href="#example-3-conditionals-vs-booleans" id="toc-example-3-conditionals-vs-booleans" class="nav-link" data-scroll-target="#example-3-conditionals-vs-booleans">Example 3 | Conditionals vs Booleans</a></li>
+  <li><a href="#first-block" id="toc-first-block" class="nav-link" data-scroll-target="#first-block">First block</a></li>
+  <li><a href="#second-block" id="toc-second-block" class="nav-link" data-scroll-target="#second-block">Second block</a></li>
+  </ul></li>
+  <li><a href="#part-2" id="toc-part-2" class="nav-link" data-scroll-target="#part-2">3.9 Part 2</a>
+  <ul class="collapse">
+  <li><a href="#flowcharts" id="toc-flowcharts" class="nav-link" data-scroll-target="#flowcharts">Flowcharts</a>
+  <ul class="collapse">
+  <li><a href="#how-to-set-up-a-flowchart" id="toc-how-to-set-up-a-flowchart" class="nav-link" data-scroll-target="#how-to-set-up-a-flowchart">How To Set Up A Flowchart</a></li>
+  </ul></li>
+  <li><a href="#selection-vs.-iteration" id="toc-selection-vs.-iteration" class="nav-link" data-scroll-target="#selection-vs.-iteration">Selection vs.&nbsp;Iteration</a></li>
+  <li><a href="#example-a" id="toc-example-a" class="nav-link" data-scroll-target="#example-a">Example A</a></li>
+  <li><a href="#example-a-possible-solution-using-selection" id="toc-example-a-possible-solution-using-selection" class="nav-link" data-scroll-target="#example-a-possible-solution-using-selection">Example A Possible Solution (using Selection)</a></li>
+  </ul></li>
+  <li><a href="#part-3" id="toc-part-3" class="nav-link" data-scroll-target="#part-3">3.9 Part 3</a>
+  <ul class="collapse">
+  <li><a href="#example-in-class" id="toc-example-in-class" class="nav-link" data-scroll-target="#example-in-class">Example in Class</a></li>
+  <li><a href="#rules" id="toc-rules" class="nav-link" data-scroll-target="#rules">Rules</a></li>
+  <li><a href="#algorithm-to-start-determining-whether-a-number-is-even-or-odd" id="toc-algorithm-to-start-determining-whether-a-number-is-even-or-odd" class="nav-link" data-scroll-target="#algorithm-to-start-determining-whether-a-number-is-even-or-odd">Algorithm to Start (Determining Whether a Number is Even or Odd)</a></li>
+  <li><a href="#how-can-we-modify-this-code-to-match-our-goal" id="toc-how-can-we-modify-this-code-to-match-our-goal" class="nav-link" data-scroll-target="#how-can-we-modify-this-code-to-match-our-goal">How can we modify this code to match our goal</a>
+  <ul class="collapse">
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  </ul></li>
+  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
+  <li><a href="#hacks" id="toc-hacks" class="nav-link" data-scroll-target="#hacks">Hacks</a></li>
+  </ul></li>
+  <li><a href="#binary-search" id="toc-binary-search" class="nav-link" data-scroll-target="#binary-search">3.11 Binary Search</a>
+  <ul class="collapse">
+  <li><a href="#binary-search-hacks" id="toc-binary-search-hacks" class="nav-link" data-scroll-target="#binary-search-hacks">Binary Search Hacks</a></li>
+  </ul></li>
+  <li><a href="#homework-assignment-due-friday-1209-by-500-pm" id="toc-homework-assignment-due-friday-1209-by-500-pm" class="nav-link" data-scroll-target="#homework-assignment-due-friday-1209-by-500-pm">Homework Assignment (DUE FRIDAY 12/09 BY 5:00 PM)</a>
+  <ul class="collapse">
+  <li><a href="#your-task" id="toc-your-task" class="nav-link" data-scroll-target="#your-task">Your TASK:</a></li>
+  <li><a href="#how-to-submit" id="toc-how-to-submit" class="nav-link" data-scroll-target="#how-to-submit">How to submit:</a></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="first-things-first-wget" class="level1">
+<h1>First Things First: WGET</h1>
+<ul>
+<li>wget allows you to essentially clone someone elses file on Github into a directory of your choosing
+<ul>
+<li>You are able to edit your own copy of the file without affecting the original</li>
+</ul></li>
+</ul>
+<section id="heres-a-quick-how-to" class="level2">
+<h2 class="anchored" data-anchor-id="heres-a-quick-how-to">Here’s a quick how-to</h2>
+<ol type="1">
+<li><p>Open your VSCode terminal (<code>Terminal &gt; New Terminal</code>)</p></li>
+<li><p>Navigate to your Fastpages Blog using <code>cd</code></p></li>
+<li><p>Navigate to the <code>_notebooks</code> directory in your Fastpages</p></li>
+<li><p>Copy and paste this into the terminal: **wget https://raw.githubusercontent.com/Azeem-Khan1/TripleAJ/master/_notebooks/2022-12-06-lessonComplete.ipynb**</p></li>
+<li><p>You’re all set! you can use this copy of our notebook to help you take notes and participate during the lesson</p>
+<ul>
+<li>Please raise your hand if you are having trouble with wget and we will come around and help you</li>
+</ul></li>
+</ol>
+<ul>
+<li>Note: if you have a separate notebook that you take notes on and you also want to do your practice in that notebook, you can copy and paste cells from this notebook by left clicking next to any markdown or code cell (indicating that it is selected), do ctl+c or cmd+c, and go to the desired notebook and do ctl+v or cmd+v (if that doesn’t work, try just c and v with no ctl or cmd)</li>
+</ul>
+</section>
+</section>
+<section id="part-1" class="level1">
+<h1>3.9 Part 1</h1>
+<p>The lesson will start off with introducing what algorithms are and what they do, moreover, what their significance is.</p>
+<p>3.9 Lesson 1 has the objective to teach the student of the outcome of similar algorithmic concepts and similar algorithms. In this lesson, you will see different ways on how algorithms are developed.</p>
+<section id="lesson-1-defining-algorithms" class="level2">
+<h2 class="anchored" data-anchor-id="lesson-1-defining-algorithms">Lesson 1 | Defining Algorithms</h2>
+<p>What is an algorithm? An algorithm is a process or set of rules to be followed through CODE. There are set limitations, this is what makes algorithms fun, you can your imagination and create whatever you wan with your own instructions!</p>
+<ul>
+<li><p>Algorithms can be written in different ways and still accomplish the same tasks</p></li>
+<li><p>Algorithms that appear similar can yield different side effects or results.</p></li>
+<li><p>Some conditional statements can be written as the same as Boolean expressions (VICE VERSA)</p></li>
+<li><p>Different algorithms can be developed or use to solve the same problem.</p></li>
+</ul>
+</section>
+<section id="example-1-what-happens-if-we-test-the-algorithm-with-different-outputs" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-what-happens-if-we-test-the-algorithm-with-different-outputs">Example 1 | What happens if we test the algorithm with different outputs?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/lesson1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">f</figcaption><p></p>
+</figure>
+</div>
+<p>The pseudocode above is translated to python for you.</p>
+<p>Record what your outputs are when you enter 95 degrees F, does the algorithm yield the same result?</p>
+<p>The conditional below is nested</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Select a temperature from 0 to 99 degrees F"</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (temp <span class="op">&gt;=</span> <span class="dv">90</span>):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"It's too hot outside!"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (temp <span class="op">&gt;=</span> <span class="dv">65</span>):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Sure I will play outside!"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"It is too cold outside!"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Input 54 and then 95, what do you notice?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Select a temperature from 0 to 99 degrees F"</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (temp <span class="op">&gt;=</span> <span class="dv">90</span>):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"It's too hot outside!"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (temp <span class="op">&gt;=</span> <span class="dv">65</span>):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Sure I will play outside!"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (temp <span class="op">&lt;</span> <span class="dv">65</span>):</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"It is too cold outside!"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Input 54 and then Input 95, what do you notice?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="now-record-with-another-output" class="level2">
+<h2 class="anchored" data-anchor-id="now-record-with-another-output">NOW RECORD with another output</h2>
+<p>Record what your outputs are when you enter 54, does the algorithm yield the same result this time?</p>
+<p>*Now use 95 as an input for the two code blocks above.</p>
+<p>Even though an algorithm’s code can look the same, you have to be careful, they can always yield different results. When constructing algorithms you want to make sure that your code corresponds with what you want as your output. You set the limit of your code and you decide what the code’s output is.</p>
+</section>
+<section id="conditionals-vs.-booleans" class="level2">
+<h2 class="anchored" data-anchor-id="conditionals-vs.-booleans">Conditionals vs.&nbsp;Booleans</h2>
+<p>The condition and instructions are what differ, that’s where the magic happens. The condition is a boolean expression when an expression outputs either true or false. Boolean values are another type of data type in programming languages, and they can only ever hold true or false.</p>
+</section>
+<section id="exercise" class="level2">
+<h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
+<p>Learning how to utilize conditionals and booleans are important for developing algorithms. Use this exercise to help you.</p>
+<p>Can either Boolean expression on the right replace the conditional on the left? Assume isWeekday and isHoliday are Boolean variables.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/lesson13.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">f</figcaption><p></p>
+</figure>
+</div>
+<p>*NOTE = you can edit the variables to check the conditions needed!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>IsHoliday <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>IsWeekday <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> IsHoliday:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    driveWork <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> IsWeekday: </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        driveWork <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        driveWork <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(driveWork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="logically-thinking-about-conditionals-and-booleans" class="level2">
+<h2 class="anchored" data-anchor-id="logically-thinking-about-conditionals-and-booleans">Logically thinking about conditionals and booleans</h2>
+<p>Now the problem may seem confusing, but the best way to develop an algorithm is to think about all the possible results that can be potentially be outputted.</p>
+<p>So if IsHoliday is set to true, then driveWork is automatically equal to false and it does not matter what value of isWeekday is. This must mean that one of the conditionals must be NOT IsHoliday.</p>
+<p>In the case that lets say IsHoliday is set to false, then the variable for weekday needs to be checked. If it’s true then driveWork is true, if it’s false then driveWork is false. This must mean that the other conditional isWeekday.</p>
+<p>Combining both conditionals, you get option 2, which is not IsHoliday and IsWeekday. This is why option 2 is right!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/lesson14.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">f</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="example-3-conditionals-vs-booleans" class="level2">
+<h2 class="anchored" data-anchor-id="example-3-conditionals-vs-booleans">Example 3 | Conditionals vs Booleans</h2>
+<p>The following algorithms are intended to sum the odd numbers from 1-9. Which algorithms work as intended?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/lesson9.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">f</figcaption><p></p>
+</figure>
+</div>
+<p>Below, I have translated the block code into python, import this to your jupyter notebook and record the result. What do you notice?</p>
+</section>
+<section id="first-block" class="level2">
+<h2 class="anchored" data-anchor-id="first-block">First block</h2>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#iteration</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>var <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (var <span class="op">&lt;</span> <span class="dv">4</span>): <span class="co">#while the var is &lt;= 4, it executes those commands, once it exceeds it hits the else command</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">sum</span> <span class="op">=</span> <span class="bu">sum</span> <span class="op">+</span> counter</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> counter <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    var <span class="op">=</span> var <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># now go through the whole thing 4 times, this is an iteration, a vital part of algorithms.</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">sum</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>25</code></pre>
+</div>
+</div>
+</section>
+<section id="second-block" class="level2">
+<h2 class="anchored" data-anchor-id="second-block">Second block</h2>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> <span class="dv">9</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#iteration</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (counter <span class="op">&gt;=</span> <span class="dv">1</span>): </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">sum</span> <span class="op">=</span> <span class="bu">sum</span> <span class="op">+</span> counter</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> counter <span class="op">-</span> <span class="dv">2</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sum</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>25</code></pre>
+</div>
+</div>
+<p>When we start our initializing left sum as 1 counter as 3 we had no iterations yet. Remember we’re going to have to repeat this four times because the block code prompts us to repeat 4 times, so we iterate. So as we go through and follow what the block gives us.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/lesson10.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">f</figcaption><p></p>
+</figure>
+</div>
+<p>So you see that the sum does work, it does sum up the odd numbers from 1-9</p>
+<p>Now lets look at the right block.</p>
+<p>Sum is set to 0 Counter is set to 9 We must repeat until the counter &lt; 1 is true.</p>
+<p>So we keep adding until -1, that is when the counter &lt; 1 is true, so we stop</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/lesson12.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">f</figcaption><p></p>
+</figure>
+</div>
+<p>So why is it important to understand that algorithms can be written in different ways and still accomplish the same task?</p>
+<p>An algorithm is beautiful that way, just because you think of solving a problem differently, doesn’t mean your wrong,</p>
+</section>
+</section>
+<section id="part-2" class="level1">
+<h1>3.9 Part 2</h1>
+<section id="flowcharts" class="level2">
+<h2 class="anchored" data-anchor-id="flowcharts">Flowcharts</h2>
+<ul>
+<li><p>Flowcharts can help you visualize the functionality of an algorithm</p></li>
+<li><p>They are a good way to double check whether or not your algorithm is achieving its purpose</p></li>
+</ul>
+<section id="how-to-set-up-a-flowchart" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-set-up-a-flowchart">How To Set Up A Flowchart</h3>
+<ol type="1">
+<li><p>label the start point</p></li>
+<li><p>Define any and all variables you may need</p></li>
+<li><p>Consider the first question you want the algorithm to ask</p></li>
+<li><p>Write what you want the algorithm to do if the answer to that question is yes (or true)</p></li>
+<li><p>Write what you want the algorithm to do if the answer to that question is no (or false)</p>
+<ul>
+<li>Steps 3-5 are the steps to creating code that uses a process called selection (you can convert the question from step 3 to a conditional if-statement in code) <br> <br></li>
+</ul></li>
+<li><p>Write out all necessary steps for the algorithm to function properly</p></li>
+<li><p>You may want your algorithm to iterate some steps until a condition is met</p>
+<ul>
+<li>You can write the steps that need to be repeated, then draw an arrow from the last step to a step above that contains a conditional statement <br> <br></li>
+</ul></li>
+<li><p>determine a way to reach the end goal</p></li>
+</ol>
+</section>
+</section>
+<section id="selection-vs.-iteration" class="level2">
+<h2 class="anchored" data-anchor-id="selection-vs.-iteration">Selection vs.&nbsp;Iteration</h2>
+<ul>
+<li><p>Selection:</p>
+<ul>
+<li><p>A process used in algorithms where a conditional if-statement leads to one of two outcomes</p>
+<ul>
+<li><p>Outcome 1: if the conditional statement is true, something will happen</p></li>
+<li><p>Outcome 2: if the conditional statement is false, something else will happen</p></li>
+<li><p>Ex: see <a href="https://azeem-khan1.github.io/TripleAJ/Lesson#Example-A">Example A</a></p></li>
+</ul></li>
+</ul></li>
+<li><p>Iteration</p>
+<ul>
+<li><p>A process used in algorithms that allows certain things to happen until a condition is satisfied</p>
+<ul>
+<li><p>Once the condition is satisfied, then an outcome is produced</p></li>
+<li><p>This can take the form of a for-loop, while-loop, and/or if-statement</p></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="example-a" class="level2">
+<h2 class="anchored" data-anchor-id="example-a">Example A</h2>
+<ul>
+<li><p>Consider this situation:</p>
+<ul>
+<li><p>You are shopping for your favorite food at your favorite supermarket</p></li>
+<li><p>You see that there is a sale on wheat products for 35% off</p></li>
+<li><p>There is another sale on produce for 20% off</p></li>
+<li><p>These sales are mutually exclusive</p></li>
+<li><p>Tax on all items is 8%</p></li>
+</ul></li>
+<li><p>Your TASK:</p>
+<ul>
+<li>Create a flowchart for an algorithm that can be used to calculate the cost of your favorite item</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-a-possible-solution-using-selection" class="level2">
+<h2 class="anchored" data-anchor-id="example-a-possible-solution-using-selection">Example A Possible Solution (using Selection)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/3-9Lesson2ExampleAFlowchart.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Flowchart for Example A</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="part-3" class="level1">
+<h1>3.9 Part 3</h1>
+<ul>
+<li>For Algorithms
+<ul>
+<li>How to combine and/or modify an existing algorithm.</li>
+</ul></li>
+<li>Benefits of combining algorithms
+<ul>
+<li>can reduce development time, testing time, and simplify the identification of errors.</li>
+</ul></li>
+</ul>
+<section id="example-in-class" class="level2">
+<h2 class="anchored" data-anchor-id="example-in-class">Example in Class</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/CollatzConjecture.jpeg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Collatz Conjecture</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="rules" class="level2">
+<h2 class="anchored" data-anchor-id="rules">Rules</h2>
+<ul>
+<li>step/rule 1: start with any positive integer</li>
+<li>step/rule 2: if the preceding term is even; divide by 2</li>
+<li>step/rule 3: if the preceding term is odd; multiply by 3 and add 1</li>
+<li>step/rule 4: repeat steps until you arrive at 1</li>
+<li>fact: the sequence should ALWAYS end up at 1 if repeated.</li>
+</ul>
+</section>
+<section id="algorithm-to-start-determining-whether-a-number-is-even-or-odd" class="level2">
+<h2 class="anchored" data-anchor-id="algorithm-to-start-determining-whether-a-number-is-even-or-odd">Algorithm to Start (Determining Whether a Number is Even or Odd)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"choose value for x"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>varx<span class="op">=</span><span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter any positive Integer"</span>))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (varx <span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>):</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"the number is even"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"the number is odd"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this cell to see how it works</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="how-can-we-modify-this-code-to-match-our-goal" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-modify-this-code-to-match-our-goal">How can we modify this code to match our goal</h2>
+<ul>
+<li>Hint: uses arithmetic operations</li>
+<li>Hint: look at the steps of the equation and try and modify it to fit them</li>
+<li>Must display all numbers used in it</li>
+</ul>
+<section id="solution" class="level3">
+<h3 class="anchored" data-anchor-id="solution">Solution</h3>
+<section id="step-1" class="level4">
+<h4 class="anchored" data-anchor-id="step-1">Step 1</h4>
+<ul>
+<li>steps/rules 2 &amp; 3.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"choose value for x"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>varx<span class="op">=</span><span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter any positive Integer"</span>))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (varx <span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>):</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>     varx <span class="op">==</span> varx<span class="op">/</span><span class="dv">2</span>       <span class="co"># Change print to the function</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    varx <span class="op">==</span> varx <span class="op">*</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">1</span>      <span class="co"># Change print to the function</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(varx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-2" class="level4">
+<h4 class="anchored" data-anchor-id="step-2">Step 2</h4>
+<ul>
+<li>step/rule 4; here we add the loop</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"choose value for x"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>varx<span class="op">=</span><span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter any positive Integer"</span>))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> varx <span class="op">!=</span> <span class="dv">1</span>:</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (varx <span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>):</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        varx <span class="op">=</span> varx<span class="op">/</span><span class="dv">2</span>       <span class="co"># Change print to the function</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        varx <span class="op">=</span> varx <span class="op">*</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">1</span>      <span class="co"># Change print to the function</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(varx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-3" class="level4">
+<h4 class="anchored" data-anchor-id="step-3">Step 3</h4>
+<ul>
+<li>Display all values throughout the algorithm</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"choose value for x"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>varx<span class="op">=</span><span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter any positive Integer"</span>))</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(varx)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> varx <span class="op">!=</span> <span class="dv">1</span>:</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (varx <span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>):</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        varx <span class="op">=</span> varx<span class="op">/</span><span class="dv">2</span>       </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(varx)               <span class="co"># add Display</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        varx <span class="op">=</span> varx <span class="op">*</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">1</span>      </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(varx)               <span class="co"># add Display</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(varx)                       <span class="co"># Final # Should be 1 every time</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
+<ul>
+<li>You can use code you’ve previously wrote in order to make a project easier.</li>
+<li>Breaking algorithms down into steps can make things easier and more simple.</li>
+</ul>
+</section>
+<section id="hacks" class="level2">
+<h2 class="anchored" data-anchor-id="hacks">Hacks</h2>
+<ul>
+<li>create another algorithm using a famous mathematical algorithm such as the “collatz conjecture.” and explain your steps in a post on a blog.</li>
+</ul>
+</section>
+</section>
+<section id="binary-search" class="level1">
+<h1>3.11 Binary Search</h1>
+<p>Goals/Objectives: - detirmine number of iterations required to find vlue in data set. - explain requirements for binary search</p>
+<p>What is Binary Search? - Binary search is a search algorithm that finds the position of a target value within a sorted array. Binary search compares the target value to the middle element of the array. - An algorithm for iterating to find a value inside a data set</p>
+<p>About Binary Search: - Binary Search Algorithm starts in the middle of a data set of numbers and eliminates half the data. This process reapeats until the desired value is found or until all elements have been eliminated. - In order to use binary search effectivly and properly, data must be stored in order - COLLEGE BOARD INDEX STARTS AT 1 NOT 0</p>
+<p>Think about how you would you would try to find a certain number in this set.</p>
+<p><img src="../images/NUMBERS.png" class="img-fluid"></p>
+<p>One way would be to line up the numbers and count them individually untill you find the desired value.</p>
+<p>When working with large data sets with lots of numbers, methods like these wont work - Instead, a Binary Search would be more effective.</p>
+<p><img src="../images/BinarySearchOrder.png" class="img-fluid"></p>
+<p>Here we can see the numbers are set in an increasing order. Setting numbers in an increasing or decreasing is needed for a binary search - Binary search is started with the middle number first - Middle number is found by taking the higest index number plus the lowest and divided by two - Binary Search can be represented using a tree as shown below</p>
+<p><img src="../images/BinarySearchTree.png" class="img-fluid"> <br> <br></p>
+<p>Heres an easy way to put it: - binary search fidns the desired element by continuously chopping the search area in half - say the element you are looking for is ‘f’</p>
+<p>[a b c d e f g h]</p>
+<ul>
+<li>We would start in the middle at element ‘d’</li>
+<li>becuase our target is greater than d we will eliminate everything left of ‘d’ including ‘d’ (chopping it in half)</li>
+</ul>
+<p>[e f g h] is what now remains - again we would ‘chop in half’ - say we iterate through ‘g’ and ‘h’, our desired element is still not found so we would eliminate ‘g; and ’h’ and continue the process</p>
+<p>[e f] - now we are down to 2 elements - ‘chopping in half’ will give us our desired element</p>
+<p>[f]</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Binary Search in python</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> BinarySearch(array, x, low, high):</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Repeat until the pointers low and high meet each other </span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> low <span class="op">&lt;=</span> high:</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        mid <span class="op">=</span> low <span class="op">+</span> (high <span class="op">-</span> low)<span class="op">//</span><span class="dv">2</span> <span class="co"># find the middle (taking the higest index number plus the lowest and divided by two)</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> array[mid] <span class="op">==</span> x: <span class="co"># if desired number is the middle is found return desired number (middle number) </span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> mid</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> array[mid] <span class="op">&lt;</span> x: </span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>            low <span class="op">=</span> mid <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>            high <span class="op">=</span> mid <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>array <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> BinarySearch(array, x, <span class="dv">0</span>, <span class="bu">len</span>(array)<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> result <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Element is present at index "</span> <span class="op">+</span> <span class="bu">str</span>(result))</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Not found"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Element is present at index 1</code></pre>
+</div>
+</div>
+<ul>
+<li><p>We have created a function called binary_search() function which takes two arguments - a list to be sorted and a number to be searched.</p></li>
+<li><p>We have declared two variables to store the lowest and highest values in the list. The lowest is assigned initial value to 0, the highest to len(list1) 1 and mid as 0.</p></li>
+<li><p>Next, we have declared the while loop with the condition that the lowest is equal and smaller than the highest. The while loop will iterate if the number has not been found yet.</p></li>
+<li><p>In the while loop, we find the mid value and compare the index value to the number we are searching for.</p></li>
+<li><p>If the value of the mid-index is smaller than n, we increase the mid value by 1 and assign it to the low. The search moves to the left side.</p></li>
+<li><p>Otherwise, if the value of mid index is larger than n, we decrease the mid value by 1 and assign it to the high. The search moves to the right side.</p></li>
+<li><p>If the n is equal to the mid value then return mid.</p></li>
+<li><p>This will happen until the low is equal and smaller than the high.</p></li>
+<li><p>If we reach at the end of the function, then the element is not present in the list. We return -1 to the calling function.</p></li>
+</ul>
+<p><br> <br></p>
+<section id="binary-search-hacks" class="level2">
+<h2 class="anchored" data-anchor-id="binary-search-hacks">Binary Search Hacks</h2>
+<p>Using my example above and steps below, create your own iteration using binary search</p>
+<p>Steps</p>
+<ul>
+<li>Compare x with the middle element.</li>
+<li>If x matches with the middle element, we return the mid index.</li>
+<li>Else if x is greater than the mid element, then x can only lie in the right (greater) half subarray after the mid element. Then we apply the algorithm again for the right half.</li>
+<li>Else if x is smaller, the target x must lie in the left (lower) half. So we apply the algorithm for the left half.</li>
+</ul>
+</section>
+</section>
+<section id="homework-assignment-due-friday-1209-by-500-pm" class="level1">
+<h1>Homework Assignment (DUE FRIDAY 12/09 BY 5:00 PM)</h1>
+<ul>
+<li><p>Consider this situation:</p>
+<ul>
+<li><p>You’re playing a short game using a random number generator from 1 to 20</p>
+<ul>
+<li><p>On each turn, a player will generate 3 random numbers</p></li>
+<li><p>They get to keep the highest number that they generate as their score</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<section id="your-task" class="level3">
+<h3 class="anchored" data-anchor-id="your-task">Your TASK:</h3>
+<ol type="1">
+<li><p>Create a flowchart that can be used to write an algorithm that calculates a player’s score after a turn</p>
+<ul>
+<li><p>NOTE: Don’t forget the <a href="https://wcs.smartdraw.com/flowchart/img/basic-symbols-table.jpg?bn=15100111857">syntax for Flowcharts</a>! (each shape represents an action)</p></li>
+<li><p>Try to implement selection and/or iteration in your algorithm</p></li>
+<li><p>Please do this using Google Drawing. It can be found in your Google Drive if you click <code>New &gt; More &gt; Google Drawings</code></p></li>
+</ul></li>
+<li><p>Write the working algorithm in Python</p>
+<ul>
+<li><p>Make sure to initialize / define any variables you may need</p></li>
+<li><p>Add comments to your code!</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="how-to-submit" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-submit">How to submit:</h3>
+<ol type="1">
+<li><p>Make a shareable link to your Flowchart with commenting access through Google Drive’s “Share” feature</p></li>
+<li><p>Make a comment with the link at the top of the code block that holds your algorithm (use <code>#</code> for comments in Python)</p></li>
+<li><p>Submit a link to your algorithm (with the commented link to Flowchart) in the comment/issue found on the schedule</p></li>
+</ol>
+</section>
+<section id="grading" class="level3">
+<h3 class="anchored" data-anchor-id="grading">Grading</h3>
+<ul>
+<li><p>DUE FRIDAY 12/09 BY 5:00 PM</p></li>
+<li><p>LATE PENALTY: -0.1</p></li>
+<li><p>You will be graded based on:</p>
+<ul>
+<li><p>how functional your algorithm is</p></li>
+<li><p>how well your Flowchart is organized</p></li>
+</ul></li>
+</ul>
+<p>If something comes up, feel free to DM us on Slack</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
