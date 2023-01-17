@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.2.313">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,10 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -82,17 +82,18 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html">About</a>
+    <a class="nav-link" href="../about.html">
+ <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -129,6 +130,7 @@ ul.task-list li input[type="checkbox"] {
         <p class="date">November 14, 2022</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -208,19 +210,19 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="logic-of-shift">Logic of Shift</h3>
 <blockquote class="blockquote">
 <p>Explore right and left shifts with binary numbers.<br>
-- In an arithmetic shift, the bits that are shifted out of either end are discarded. - In a left arithmetic shift, zeros are shifted in on the right. <img src="%7B%7Bsite.baseurl%7D%7D/images/logic_of_shift.png" class="img-fluid"></p>
+- In an arithmetic shift, the bits that are shifted out of either end are discarded. - In a left arithmetic shift, zeros are shifted in on the right. <img src="{{site.baseurl}}/images/logic_of_shift.png" class="img-fluid"></p>
 </blockquote>
 </section>
 <section id="understand-binary-numbers-by-elaboration-of-shift-20-21-22" class="level3">
 <h3 class="anchored" data-anchor-id="understand-binary-numbers-by-elaboration-of-shift-20-21-22">Understand binary Numbers by elaboration of Shift (2^^0, 2^^1, 2^^2)</h3>
 <blockquote class="blockquote">
-<p>How does the Power of 2 work? What is a binary number? What is Base2, Base10, Base16. - This example uses an 8-bit register. Math can be represented in much in many more bits, 32 bits or 2 bytes is common for integer in modern computer languages. - Most Significant Bit (MSB), least (LSB) - This example shows negative and positive numbers, using technique called Twos Complement. - In the first case, the leftmost digit was shifted past the end of the register, and a new 0 was shifted into the rightmost position. Positive Multiply. - In the second case, the rightmost 1 was shifted out, and a new 1 was copied into the leftmost position, preserving the sign of the number. Negative Divide, this example obviously needs more study. <img src="%7B%7Bsite.baseurl%7D%7D/images/elaboration_of_shift.png" class="img-fluid"></p>
+<p>How does the Power of 2 work? What is a binary number? What is Base2, Base10, Base16. - This example uses an 8-bit register. Math can be represented in much in many more bits, 32 bits or 2 bytes is common for integer in modern computer languages. - Most Significant Bit (MSB), least (LSB) - This example shows negative and positive numbers, using technique called Twos Complement. - In the first case, the leftmost digit was shifted past the end of the register, and a new 0 was shifted into the rightmost position. Positive Multiply. - In the second case, the rightmost 1 was shifted out, and a new 1 was copied into the leftmost position, preserving the sign of the number. Negative Divide, this example obviously needs more study. <img src="{{site.baseurl}}/images/elaboration_of_shift.png" class="img-fluid"></p>
 </blockquote>
 </section>
 <section id="ui-conceptdesign" class="level3">
 <h3 class="anchored" data-anchor-id="ui-conceptdesign">UI Concept/Design</h3>
 <blockquote class="blockquote">
-<p>Conceptualize on a UI that will illustrate binary and decimal. In learning these concepts, it is best to code and example to illustrate what is happening. - <em>n Right Shifts (divides by 2^n); n Left Shifts (multiplies by 2^n)</em> - Add buttons for “&lt;&lt;” and ” &gt;&gt;” <img src="%7B%7Bsite.baseurl%7D%7D/images/binary_shift.png" class="img-fluid"></p>
+<p>Conceptualize on a UI that will illustrate binary and decimal. In learning these concepts, it is best to code and example to illustrate what is happening. - <em>n Right Shifts (divides by 2^n); n Left Shifts (multiplies by 2^n)</em> - Add buttons for “&lt;&lt;” and ” &gt;&gt;” <img src="{{site.baseurl}}/images/binary_shift.png" class="img-fluid"></p>
 </blockquote>
 </section>
 </section>
@@ -233,13 +235,13 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="character-data-abstraction">Character Data Abstraction</h3>
 <blockquote class="blockquote">
 <p>How are characters stored? How many bits do they take?<br>
-- ASCII is 8 bits, it generally represent keys on keyboard. Look up ASCII Table. - Unicode can be UTF-8, 16 or 32, each representing bits. ASCII is preserved in Unicode. - ASCII - 7 bits, extended to 8 bits with Unicode - UTF-8 - UTF-16 - UTF-32 <img src="%7B%7Bsite.baseurl%7D%7D/images/sample_unicode.png" class="img-fluid"> <em>Sample of Unicode characters.</em></p>
+- ASCII is 8 bits, it generally represent keys on keyboard. Look up ASCII Table. - Unicode can be UTF-8, 16 or 32, each representing bits. ASCII is preserved in Unicode. - ASCII - 7 bits, extended to 8 bits with Unicode - UTF-8 - UTF-16 - UTF-32 <img src="{{site.baseurl}}/images/sample_unicode.png" class="img-fluid"> <em>Sample of Unicode characters.</em></p>
 </blockquote>
 </section>
 <section id="ui-conceptdesign-1" class="level3">
 <h3 class="anchored" data-anchor-id="ui-conceptdesign-1">UI Concept/Design</h3>
 <blockquote class="blockquote">
-<p>The ASCII value in picture should be change based off of the bits in evaluation you are doing. Bits displayed, label, and evaluation would be specific to evaluation type: <img src="%7B%7Bsite.baseurl%7D%7D/images/ascii_label.png" class="img-fluid"> <em>Original ASCII</em></p>
+<p>The ASCII value in picture should be change based off of the bits in evaluation you are doing. Bits displayed, label, and evaluation would be specific to evaluation type: <img src="{{site.baseurl}}/images/ascii_label.png" class="img-fluid"> <em>Original ASCII</em></p>
 </blockquote>
 </section>
 </section>
@@ -260,12 +262,12 @@ ul.task-list li input[type="checkbox"] {
 <p>There are 8 bits for Red, 8 bits for Blue, and 8 bits for Green.</p>
 </blockquote>
 <p>|Name|Hex Code|RGB Code| |Black|#000000|rgb(0, 0, 0)| |Red|#FF0000|rgb(255, 0, 0)| |Maroon|#800000|rgb(128, 0, 0)| |Yellow|#FFFF00|rgb(255, 255, 0)|</p>
-<p><img src="%7B%7Bsite.baseurl%7D%7D/images/color_code.png" class="img-fluid"> <em>255 </em> 255 * 255 combinations of R, G, B*</p>
+<p><img src="{{site.baseurl}}/images/color_code.png" class="img-fluid"> <em>255 </em> 255 * 255 combinations of R, G, B*</p>
 </section>
 <section id="ui-design" class="level3">
 <h3 class="anchored" data-anchor-id="ui-design">UI Design</h3>
 <blockquote class="blockquote">
-<p>Here is a sample program a student used to visualize color by turning buttons on and off. <img src="%7B%7Bsite.baseurl%7D%7D/images/color_block.png" class="img-fluid"> <em>by Anthony Vo</em> 3 rows representing R, G, B Resulting color displayed in block</p>
+<p>Here is a sample program a student used to visualize color by turning buttons on and off. <img src="{{site.baseurl}}/images/color_block.png" class="img-fluid"> <em>by Anthony Vo</em> 3 rows representing R, G, B Resulting color displayed in block</p>
 </blockquote>
 </section>
 </section>
@@ -281,13 +283,13 @@ ul.task-list li input[type="checkbox"] {
 <section id="ui-concept" class="level3">
 <h3 class="anchored" data-anchor-id="ui-concept">UI Concept</h3>
 <blockquote class="blockquote">
-<p>Visual concept of logic gates - Establish check boxes for A / B on and off - Show result of Boolean Expression using Gate visual <img src="%7B%7Bsite.baseurl%7D%7D/images/logic_gates.png" class="img-fluid"> <em>Logic Gates</em></p>
+<p>Visual concept of logic gates - Establish check boxes for A / B on and off - Show result of Boolean Expression using Gate visual <img src="{{site.baseurl}}/images/logic_gates.png" class="img-fluid"> <em>Logic Gates</em></p>
 </blockquote>
 </section>
 <section id="ui-design-1" class="level3">
 <h3 class="anchored" data-anchor-id="ui-design-1">UI Design</h3>
 <blockquote class="blockquote">
-<p>Logic gate lab in JavaScript <img src="%7B%7Bsite.baseurl%7D%7D/images/logic_gate_lab.png" class="img-fluid"> <em>by Kylie Scharf</em> AB checkboxes with Submit button Table with Symbol, Description, and Result</p>
+<p>Logic gate lab in JavaScript <img src="{{site.baseurl}}/images/logic_gate_lab.png" class="img-fluid"> <em>by Kylie Scharf</em> AB checkboxes with Submit button Table with Symbol, Description, and Result</p>
 </blockquote>
 </section>
 <section id="logic-of-logic-gates" class="level3">
@@ -299,7 +301,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="practical-application" class="level3">
 <h3 class="anchored" data-anchor-id="practical-application">Practical Application</h3>
 <blockquote class="blockquote">
-<p>Logic gates are used everywhere <img src="%7B%7Bsite.baseurl%7D%7D/images/logic_gate_application.png" class="img-fluid"></p>
+<p>Logic gates are used everywhere <img src="{{site.baseurl}}/images/logic_gate_application.png" class="img-fluid"></p>
 </blockquote>
 </section>
 </section>
@@ -308,11 +310,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Here we are requesting 3 rows of bits to simulate Math. This could be done with 4, 8, or 16 bits.</p>
 <section id="initial-ui-implementation" class="level3">
 <h3 class="anchored" data-anchor-id="initial-ui-implementation">Initial UI Implementation</h3>
-<p><img src="%7B%7Bsite.baseurl%7D%7D/images/binary_math_conversion.png" class="img-fluid"> Action buttons for +1 and -1 Additional actions for Turn On and Turn Off</p>
+<p><img src="{{site.baseurl}}/images/binary_math_conversion.png" class="img-fluid"> Action buttons for +1 and -1 Additional actions for Turn On and Turn Off</p>
 </section>
 <section id="unsigned-addition-1" class="level3">
 <h3 class="anchored" data-anchor-id="unsigned-addition-1">Unsigned Addition</h3>
-<p><img src="%7B%7Bsite.baseurl%7D%7D/images/unsigned_addition.png" class="img-fluid"></p>
+<p><img src="{{site.baseurl}}/images/unsigned_addition.png" class="img-fluid"></p>
 </section>
 </section>
 <section id="signed-addition" class="level2">
@@ -320,15 +322,15 @@ ul.task-list li input[type="checkbox"] {
 <p>Integers in most languages are int8, int16, int32, or int64. They typically reserve left most bit for sign.</p>
 <section id="common-concept-for-integer-math" class="level3">
 <h3 class="anchored" data-anchor-id="common-concept-for-integer-math">Common concept for Integer Math</h3>
-<p><img src="%7B%7Bsite.baseurl%7D%7D/images/integer_math_pos.png" class="img-fluid"> <em>Positive number</em></p>
+<p><img src="{{site.baseurl}}/images/integer_math_pos.png" class="img-fluid"> <em>Positive number</em></p>
 </section>
 <section id="basic-concept-but-not-typically-used" class="level3">
 <h3 class="anchored" data-anchor-id="basic-concept-but-not-typically-used">Basic concept, but not typically used</h3>
-<p><img src="%7B%7Bsite.baseurl%7D%7D/images/integer_math_neg.png" class="img-fluid"> <em>Negative number</em></p>
+<p><img src="{{site.baseurl}}/images/integer_math_neg.png" class="img-fluid"> <em>Negative number</em></p>
 </section>
 <section id="inverting-numbers-twos-complement" class="level3">
 <h3 class="anchored" data-anchor-id="inverting-numbers-twos-complement">Inverting numbers, twos complement</h3>
-<p><img src="%7B%7Bsite.baseurl%7D%7D/images/twos_complement.png" class="img-fluid"> <em>Two’s complement allows adding for signed and unsigned numbers</em></p>
+<p><img src="{{site.baseurl}}/images/twos_complement.png" class="img-fluid"> <em>Two’s complement allows adding for signed and unsigned numbers</em></p>
 <p>Basic concept is to invert/negate bits to produce negative. This allows numbers to be added together for expected results. &gt;&gt; and &gt;&gt;&gt; have been adapted to handle signed and zero filled shifting.</p>
 </section>
 </section>
@@ -339,7 +341,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="algorithm-in-jinja2-to-limit-bits-per-row" class="level3">
 <h3 class="anchored" data-anchor-id="algorithm-in-jinja2-to-limit-bits-per-row">Algorithm in Jinja2 to limit Bits per row</h3>
-<img src="%7B%7Bsite.baseurl%7D%7D/images/binary_math_conversion_example.png" class="img-fluid"> <em>8 images per row by Kylie Scharf</em> Modulo 8 algorithm add
+<img src="{{site.baseurl}}/images/binary_math_conversion_example.png" class="img-fluid"> <em>8 images per row by Kylie Scharf</em> Modulo 8 algorithm add
 
 <p>for every eight bits (code).</p>
 </section>
@@ -399,7 +401,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -435,24 +454,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

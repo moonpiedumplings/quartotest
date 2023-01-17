@@ -35,7 +35,7 @@ Look for shift on [w3schools](https://www.w3schools.com/js/js_bitwise.asp)
 > Explore right and left shifts with binary numbers.  
 - In an arithmetic shift, the bits that are shifted out of either end are discarded. 
 - In a left arithmetic shift, zeros are shifted in on the right.
-![]({{site.baseurl}}/images/logic_of_shift.png)
+
 
 ### Understand binary Numbers by elaboration of Shift (2^^0, 2^^1, 2^^2)
 > How does the Power of 2 work?  What is a binary number?  What is Base2, Base10, Base16.
@@ -44,13 +44,11 @@ Look for shift on [w3schools](https://www.w3schools.com/js/js_bitwise.asp)
 - This example shows negative and positive numbers, using technique called Twos Complement.
 - In the first case, the leftmost digit was shifted past the end of the register, and a new 0 was shifted into the rightmost position. Positive Multiply.
 - In the second case, the rightmost 1 was shifted out, and a new 1 was copied into the leftmost position, preserving the sign of the number. Negative Divide, this example obviously needs more study.
-![]({{site.baseurl}}/images/elaboration_of_shift.png)
 
 ### UI Concept/Design
 > Conceptualize on a UI that will illustrate binary and decimal.  In learning these concepts, it is best to code and example to illustrate what is happening.
 - *n Right Shifts (divides by 2^n); n Left Shifts (multiplies by 2^n)*
 - Add buttons for  "<<"   and  " >>"
-![]({{site.baseurl}}/images/binary_shift.png)
 
 
 ##  ASCII and Unicode
@@ -64,12 +62,10 @@ Look for shift on [w3schools](https://www.w3schools.com/js/js_bitwise.asp)
 - UTF-8
 - UTF-16
 - UTF-32
-![]({{site.baseurl}}/images/sample_unicode.png)
 *Sample of Unicode characters.*
 
 ### UI Concept/Design
 > The ASCII value in picture should be change based off of the bits in evaluation you are doing.  Bits displayed, label, and evaluation would be specific to evaluation type:
-![]({{site.baseurl}}/images/ascii_label.png)
 *Original ASCII*
 
 
@@ -106,12 +102,10 @@ Look for shift on [w3schools](https://www.w3schools.com/js/js_bitwise.asp)
 |Maroon|#800000|rgb(128, 0, 0)|
 |Yellow|#FFFF00|rgb(255, 255, 0)|
 
-![]({{site.baseurl}}/images/color_code.png)
 *255 * 255 * 255 combinations of R, G, B*
 
 ### UI Design
 > Here is a sample program a student used to visualize color by turning buttons on and off.
-![]({{site.baseurl}}/images/color_block.png)
 *by Anthony Vo*
 3 rows representing R, G, B 
 Resulting color displayed in block
@@ -127,13 +121,11 @@ Look for bitwise operators on [w3schools](https://www.w3schools.com/js/js_bitwis
 > Visual concept of logic gates
 - Establish check boxes for A / B on and off
 - Show result of Boolean Expression using Gate visual
-![]({{site.baseurl}}/images/logic_gates.png)
 *Logic Gates*
 
 
 ### UI Design
 > Logic gate lab in JavaScript
-![]({{site.baseurl}}/images/logic_gate_lab.png)
 *by Kylie Scharf*
 AB checkboxes with Submit button
 Table with Symbol, Description, and Result
@@ -152,32 +144,26 @@ Table with Symbol, Description, and Result
 
 ### Practical Application
 > Logic gates are used everywhere
-![]({{site.baseurl}}/images/logic_gate_application.png)
 
 ## Unsigned Addition
 Here we are requesting 3 rows of bits to simulate Math. This could be done with 4, 8, or 16 bits.
 
 ### Initial UI Implementation
-![]({{site.baseurl}}/images/binary_math_conversion.png)
 Action buttons for +1 and -1
 Additional actions for Turn On and Turn Off
 
 ### Unsigned Addition
-![]({{site.baseurl}}/images/unsigned_addition.png)
 
 ## Signed Addition
 Integers in most languages are int8, int16, int32, or int64. They typically reserve left most bit for sign.
 
 ### Common concept for Integer Math
-![]({{site.baseurl}}/images/integer_math_pos.png)
 *Positive number*
 
 ### Basic concept, but not typically used
-![]({{site.baseurl}}/images/integer_math_neg.png)
 *Negative number*
 
 ### Inverting numbers, twos complement
-![]({{site.baseurl}}/images/twos_complement.png)
 *Two's complement allows adding for signed and unsigned numbers*
 
 Basic concept is to invert/negate bits to produce negative. This allows numbers to be added together for expected results. >> and >>> have been adapted to handle signed and zero filled shifting.
@@ -187,7 +173,6 @@ Basic concept is to invert/negate bits to produce negative. This allows numbers 
 ### [Harvard CS50](https://cs50.harvard.edu/x/2022/weeks/0/) minute 0 to minute 50 to provide background on some of the information below.
 
 ### Algorithm in Jinja2 to limit Bits per row
-![]({{site.baseurl}}/images/binary_math_conversion_example.png)
 *8 images per row by Kylie Scharf*
 Modulo 8 algorithm add <tr> for every eight bits (code).
 
