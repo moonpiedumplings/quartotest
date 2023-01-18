@@ -1,7 +1,6 @@
 ---
 title: Fixing jekyll on windows and macos devices.
-format:
-    html:
+layout: post
 tags:
 - nix
 - ruby
