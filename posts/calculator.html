@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-07-07">
-<meta name="description" content="A Binary Math illustrative application using HTML, Liquid, and JavaScript.">
+<meta name="description" content="A common way to become familiar with a language is to build a calculator. This calculator shows off button with actions.">
 
-<title>Quartotest - Binary Math</title>
+<title>Quartotest - Calculator Starters</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,16 +104,15 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Binary Math</h1>
+      <h1 class="title">Calculator Starters</h1>
                   <div>
         <div class="description">
-          A Binary Math illustrative application using HTML, Liquid, and JavaScript.
+          A common way to become familiar with a language is to build a calculator. This calculator shows off button with actions.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">3.B</div>
-                <div class="quarto-category">3.C</div>
-                <div class="quarto-category">C4.4</div>
+                <div class="quarto-category">2.C</div>
+                <div class="quarto-category">C7.0</div>
               </div>
                   </div>
   </div>
@@ -123,12 +121,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="quarto-title-meta">
 
       
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">July 7, 2022</p>
-      </div>
-    </div>
     
       
     </div>
@@ -145,152 +137,188 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<!-- Hack 1: add a character display to text when 8 bits, determine if printable or not printable -->
-<!-- Hack 2: change to 24 bits and add a color code and display color when 24 bits, think about display on this one -->
-<!-- Hack 3: do your own thing -->
-
 {% include nav_frontend.html %}
-{% assign BITS = 8 %}
+<!-- Hack 1: Test conditions on small and big numbers, report on findings -->
+<!-- Hack 2: Add a common math operation that is missing from calculator -->
+<!-- Hack 3: Implement 1 number operation (ie SQRT) -->
 
-<div class="container bg-primary">
-    <header class="pb-3 mb-4 border-bottom border-primary text-dark">
-        <span class="fs-4">Binary Math with Conversions</span>
-    </header>
-    <div class="row justify-content-md-center">
-        <div class="col-8">
-            <table class="table">
-            <tbody><tr id="table">
-                <th>Plus</th>
-                <th>Binary</th>
-                <th>Octal</th>
-                <th>Hexadecimal</th>
-                <th>Decimal</th>
-                <th>Minus</th>
-            </tr>
-            <tr>
-                <td><button type="button" id="add1" onclick="add(1)">+1</button></td>
-                <td id="binary">00000000</td>
-                <td id="octal">0</td>
-                <td id="hexadecimal">0</td>
-                <td id="decimal">0</td>
-                <td><button type="button" id="sub1" onclick="add(-1)">-1</button></td>
-            </tr>
-            </tbody></table>
-        </div>
-        <div class="col-12">
-            {% comment %}Liquid for loop includes last number, thus the Minus{% endcomment %}
-            {% assign bits = BITS | minus: 1 %} 
-            
-                {% comment %}Build many bits{% endcomment %}
-                {% for i in (0..bits) %}
-                
-                {% endfor %}
-            
-                {% comment %}Value of bit{% endcomment %}
-                {% for i in (0..bits) %}
-                
-                {% endfor %}
-            <table class="table">
-            <tbody><tr><td><img class="img-responsive py-3" id="bulb{{ i }}" src="{{site.baseurl}}/images/bulb_off.png" alt="" width="40" height="Auto">
-                    <button type="button" id="butt{{ i }}" onclick="javascript:toggleBit({{ i }})">Turn on</button>
-                </td></tr>
-            <tr><td><input type="text" id="digit{{ i }}" value="0" size="1" readonly=""></td></tr>
-            </tbody></table>
-        </div>
-    </div>
+<!-- Style (CSS) implementation of the calculator. -->
+<style>
+/* class to create the calculator's container; uses CSS grid dsiplay to partition off buttons */
+.calculator-container { 
+    width: 90vw; /* this width and height is specified for mobile devices by default */
+    height: 80vh;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* fr is a special unit; learn more here: https://css-tricks.com/introduction-fr-css-unit/  */
+    grid-template-rows: 0.5fr repeat(4, 1fr);
+    gap: 10px 10px;
+}
+
+/* 
+    CSS allows programmers to use media queries to change the size of classes based on the size of the device.
+    This allows us to make it so that our website looks good on both mobile and desktop. If the width of the
+    device is big enough, then the calculator will take up more of the screen.
+*/
+@media (min-width: 600px) { 
+    .calculator-container {
+        width: 40vw;
+        height: 80vh;
+    }
+}
+
+/* styling for the calculator buttons themselves */
+.calculator-button {
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    background-color: #665B45;
+    border: 3px solid black;
+    font-size: 1.5em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* grid display allows programmer to specify how much of the grid an element should take up; these buttons will take up 1 row and 1 column */
+    grid-column: span 1;
+    grid-row: span 1;
+
+    /* allows for smooth transition of properties and the "animation" effect to appear on hover */
+    transition: all 0.5s; 
+}
+
+/* darkens the background color on hover to create a selecting effect */
+.calculator-button:hover {
+    background-color: #373737;
+}
+
+/* styling for the top bar which shows the results of the calculator */
+.calculator-output {
+    /* note how the output instead takes up 4 columns and 1 row; essentially takes up the entirety of the first row */
+    grid-column: span 4;
+    grid-row: span 1;
+
+    border-radius: 10px;
+    padding: 1em;
+    font-size: auto;
+    border: 5px solid black;
+
+    display: flex;
+    align-items: center;
+}
+</style>
+
+
+<!-- HTML implementation of the calculator. 
+    CSS sets 4 buttons (calculator-button) to a row
+    All buttons have onclick JavaScript action
+    All actions result in calculator-output.innerHTML change
+-->
+<div class="calculator-container">
+    <!--result-->
+    <div class="calculator-output" id="output">0</div>
+    <!--row 1-->
+    <div class="calculator-button" onclick="number('1')">1</div>
+    <div class="calculator-button" onclick="number('2')">2</div>
+    <div class="calculator-button" onclick="number('3')">3</div>
+    <div class="calculator-button" onclick="operation('+')">+</div>
+    <!--row 2-->
+    <div class="calculator-button" onclick="number('4')">4</div>
+    <div class="calculator-button" onclick="number('5')">5</div>
+    <div class="calculator-button" onclick="number('6')">6</div>
+    <div class="calculator-button" onclick="operation('-')">-</div>
+    <!--row 3-->
+    <div class="calculator-button" onclick="number('7')">7</div>
+    <div class="calculator-button" onclick="number('8')">8</div>
+    <div class="calculator-button" onclick="number('9')">9</div>
+    <div class="calculator-button" onclick="operation('*')">*</div>
+    <!--row 4-->
+    <div class="calculator-button" onclick="clearCalc()">A/C</div>
+    <div class="calculator-button" onclick="number('0')">0</div>
+    <div class="calculator-button" onclick="number('.')">.</div>
+    <div class="calculator-button" onclick="equals()">=</div>
 </div>
 
+
+<!-- JavaScript (JS) implementation of the calculator. -->
 <script>
-    const BITS = {{ BITS }};
-    const MAX = 2 ** BITS - 1;
-    const MSG_ON = "Turn on";
-    const IMAGE_ON = "{{site.baseurl}}/images/bulb_on.gif";
-    const MSG_OFF = "Turn off";
-    const IMAGE_OFF = "{{site.baseurl}}/images/bulb_off.png"
+// initialize important variables
+let output = document.getElementById("output");
+let operator = null;
+let firstNumber = null;
+let nextReady = true;
 
-    // return string with current value of each bit
-    function getBits() {
-        let bits = "";
-        for(let i = 0; i < BITS; i++) {
-        bits = bits + document.getElementById('digit' + i).value;
+// Number action
+function number (value) { // function to input numbers into the calculator
+    if (value != ".") {
+        if (nextReady == true) { // nextReady is used to tell the computer when the user is going to input a completely new number
+            output.innerHTML = value;
+            if (value != "0") { // if statement to ensure that there are no multiple leading zeroes
+                nextReady = false;
+            }
+        } else {
+            output.innerHTML = output.innerHTML + value; // concatenation is used to add the numbers to the end of the input
         }
-        return bits;
-    }
-    // setter for DOM values
-    function setConversions(binary) {
-        document.getElementById('binary').innerHTML = binary;
-        // Octal conversion
-        document.getElementById('octal').innerHTML = parseInt(binary, 2).toString(8);
-        // Hexadecimal conversion
-        document.getElementById('hexadecimal').innerHTML = parseInt(binary, 2).toString(16);
-        // Decimal conversion
-        document.getElementById('decimal').innerHTML = parseInt(binary, 2).toString();
-    }
-    //
-    function decimal_2_base(decimal, base) {
-        let conversion = "";
-        // loop to convert to base
-        do {
-        let digit = decimal % base;
-        conversion = "" + digit + conversion; // what does this do?
-        decimal = ~~(decimal / base);         // what does this do?
-        } while (decimal > 0);                  // why while at the end? what is ~~?
-        // loop to pad with zeros
-        if (base === 2) {                        // only pad for binary conversions
-        for (let i = 0; conversion.length < BITS; i++) {
-            conversion = "0" + conversion;
+    } else { // special case for adding a decimal; can't have two decimals
+        if (output.innerHTML.indexOf(".") == -1) {
+            output.innerHTML = output.innerHTML + value;
+            nextReady = false;
         }
-        }
-        return conversion;
     }
+}
 
-    // toggle selected bit and recalculate
-    function toggleBit(i) {
-        //alert("Digit action: " + i );
-        const dig = document.getElementById('digit' + i);
-        const image = document.getElementById('bulb' + i);
-        const butt = document.getElementById('butt' + i);
-        // Change digit and visual
-        if (image.src.match(IMAGE_ON)) {
-        dig.value = 0;
-        image.src = IMAGE_OFF;
-        butt.innerHTML = MSG_ON;
-        } else {
-        dig.value = 1;
-        image.src = IMAGE_ON;
-        butt.innerHTML = MSG_OFF;
-        }
-        // Binary numbers
-        const binary = getBits();
-        setConversions(binary);
+// Operator action
+function operation (choice) { // function to input operations into the calculator
+    if (firstNumber == null) { // once the operation is chosen, the displayed number is stored into the variable firstNumber
+        firstNumber = parseInt(output.innerHTML);
+        nextReady = true;
+        operator = choice;
+        return; // exits function
     }
-    // add is positive integer, subtract is negative integer
-    function add(n) {
-        let binary = getBits();
-        // convert to decimal and do math
-        let decimal = parseInt(binary, 2);
-        if (n > 0) {  // PLUS
-        decimal = MAX === decimal ? 0 : decimal += n; // OVERFLOW or PLUS
-        } else  {     // MINUS
-        decimal = 0 === decimal ? MAX : decimal += n; // OVERFLOW or MINUS
-        }
-        // convert the result back to binary
-        binary = decimal_2_base(decimal, 2);
-        // update conversions
-        setConversions(binary);
-        // update bits
-        for (let i = 0; i < binary.length; i++) {
-        let digit = binary.substr(i, 1);
-        document.getElementById('digit' + i).value = digit;
-        if (digit === "1") {
-            document.getElementById('bulb' + i).src = IMAGE_ON;
-            document.getElementById('butt' + i).innerHTML = MSG_OFF;
-        } else {
-            document.getElementById('bulb' + i).src = IMAGE_OFF;
-            document.getElementById('butt' + i).innerHTML = MSG_ON;
-        }
-        }
+    // occurs if there is already a number stored in the calculator
+    firstNumber = calculate(firstNumber, parseFloat(output.innerHTML)); 
+    operator = choice;
+    output.innerHTML = firstNumber.toString();
+    nextReady = true;
+}
+
+// Calculator
+function calculate (first, second) { // function to calculate the result of the equation
+    let result = 0;
+    switch (operator) {
+        case "+":
+            result = first + second;
+            break;
+        case "-":
+            result = first - second;
+            break;
+        case "*":
+            result = first * second;
+            break;
+        case "/":
+            result = first / second;
+            break;
+        default: 
+            break;
     }
+    return result;
+}
+
+// Equal action
+function equals () { // function used when the equals button is clicked; calculates equation and displays it
+    firstNumber = calculate(firstNumber, parseFloat(output.innerHTML));
+    output.innerHTML = firstNumber.toString();
+    nextReady = true;
+}
+
+// A/C action
+function clearCalc () { // clears calculator
+    firstNumber = null;
+    output.innerHTML = "0";
+    nextReady = true;
+}
 </script>
 
 
