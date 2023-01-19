@@ -95,5 +95,18 @@
   },
   "posts/2023-1-17-Jekyll on Windows and Mac.qmd": {
     "2023-1-17-Jekyll on Windows and Mac.html": "f2408244"
+  },
+  "posts/2023-1-18-Observable JS in Quarto.qmd": {
+    "2023-1-18-Observable JS in Quarto.html": "553a4511",
+    "2023-1-18-Observable JS in Quarto.md": "250538b2"
+  },
+  "posts/2022-07-07-PBL-binary.qmd": {
+    "2022-07-07-PBL-binary.html": "77d00946"
+  },
+  "posts/calculator.md": {
+    "calculator.html": "13b81106"
+  },
+  "posts/2023-1-19-calculator.qmd": {
+    "2023-1-19-calculator.html": "9683500f"
   }
 }

@@ -7,7 +7,6 @@ categories:
 - C4.4
 date: '2022-07-07'
 description: A Binary Math illustrative application using HTML, Liquid, and JavaScript.
-image: /images/binary.png
 layout: default
 permalink: /frontend/binary
 tags:
@@ -17,9 +16,11 @@ tags:
 title: Binary Math
 type: pbl
 week: 13
+format: html
 
 ---
 
+```{=html}
 <!-- Hack 1: add a character display to text when 8 bits, determine if printable or not printable -->
 <!-- Hack 2: change to 24 bits and add a color code and display color when 24 bits, think about display on this one -->
 <!-- Hack 3: do your own thing -->
@@ -167,3 +168,5 @@ week: 13
         }
     }
 </script>
+
+```

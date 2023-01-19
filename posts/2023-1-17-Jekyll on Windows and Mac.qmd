@@ -5,12 +5,13 @@ tags:
 - nix
 - ruby
 - jekyll
+toc: true
+
 ---
 
 
-
-
-```sh <(curl -L https://nixos.org/nix/install) # After this, reload your shell, that is to 
+```
+sh <(curl -L https://nixos.org/nix/install) # After this, reload your shell, that is to 
 
 nix-shell -p rubyPackages.ffi bundler
 
@@ -20,4 +21,5 @@ bundle install
 
 bundle exec jekyll serve --force_polling --livereload # if on windows
 
-bundle exec jekyll serve # if using macos or linux```
+bundle exec jekyll serve # if using macos or linux
+```

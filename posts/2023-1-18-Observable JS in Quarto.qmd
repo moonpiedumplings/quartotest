@@ -1,0 +1,14 @@
+---
+title: Observable Javascript in Quarto
+description: experiments with observable javascript
+layout: post
+toc: true
+tags:
+- javascript
+- quarto
+
+---
+
+
+Do I need to add content or something for it to show up?
+
