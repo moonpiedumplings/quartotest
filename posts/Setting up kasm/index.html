@@ -185,6 +185,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>Half a gig of ram saved on a normal desktop. Expect to see much more when multiple almost identical docker containers are launched.</p>
 <p>Does cost a miniscule amount of cpu power, but we have more cpu power and less ram on our servers.</p>
+<p>To install uksmd, you need to switch kernels.</p>
 </section>
 <section id="memory-overcommital" class="level1">
 <h1>Memory overcommital</h1>
@@ -204,7 +205,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="zswapzram" class="level1">
 <h1>Zswap/zram</h1>
 <p><img src="zswap.png" class="img-fluid"></p>
-<p>zswap is disabled by default on my ubuntu virtual machine</p>
+<p>zswap is disabled by default on my ubuntu virtual machine.</p>
+<p>To install zram (zram better), <code>sudo apt install systemd-zram-generator</code></p>
+<p>Then, you can configure zram by editing /etc/systemd/zram-generator.conf</p>
 </section>
 <section id="customized-kasm-images" class="level1">
 <h1>Customized kasm images</h1>
