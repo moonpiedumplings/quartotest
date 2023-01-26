@@ -2,134 +2,138 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/about.html</loc>
-    <lastmod>2023-01-19T11:33:47.971Z</lastmod>
+    <lastmod>2023-01-26T13:49:40.733Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/index.html</loc>
-    <lastmod>2023-01-19T11:33:48.534Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/post-with-code/index.html</loc>
-    <lastmod>2023-01-19T11:33:49.188Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/welcome/index.html</loc>
-    <lastmod>2023-01-19T11:33:49.442Z</lastmod>
+    <lastmod>2023-01-26T13:49:41.329Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/posts/2020-02-20-test.html</loc>
-    <lastmod>2023-01-19T11:33:50.093Z</lastmod>
+    <lastmod>2023-01-26T13:49:42.007Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/posts/2020-07-27-hello-world.html</loc>
-    <lastmod>2023-01-19T11:33:50.342Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-08-22-toolcheck.html</loc>
-    <lastmod>2023-01-19T11:33:50.591Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-08-26-pythonquiz.html</loc>
-    <lastmod>2023-01-19T11:33:50.856Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-9-01-dictionaries.html</loc>
-    <lastmod>2023-01-19T11:33:51.155Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-09-28-javascript tutorial.html</loc>
-    <lastmod>2023-01-19T11:33:51.403Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-10-03-ap-error_testing.html</loc>
-    <lastmod>2023-01-19T11:33:51.701Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-10-03-pbl-python_rapidapi.html</loc>
-    <lastmod>2023-01-19T11:33:52.037Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-10-09-stocks api fun.html</loc>
-    <lastmod>2023-01-19T11:33:52.295Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-09-30-cockpitsetup.html</loc>
-    <lastmod>2023-01-19T11:33:52.557Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-2-Night at the meseum.html</loc>
-    <lastmod>2023-01-19T11:33:52.990Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-10-finalcorrections.html</loc>
-    <lastmod>2023-01-19T11:33:53.234Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-14-AP-binary_logic.html</loc>
-    <lastmod>2023-01-19T11:33:53.539Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-28-1-2 lesson homework copy.html</loc>
-    <lastmod>2023-01-19T11:33:53.806Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-29-3-4 lessson hw copy.html</loc>
-    <lastmod>2023-01-19T11:33:54.101Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-29-3-4 lessson hw.html</loc>
-    <lastmod>2023-01-19T11:33:54.387Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-30-teaching-time.html</loc>
-    <lastmod>2023-01-19T11:33:54.713Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-12-2-Simulations Fun.html</loc>
-    <lastmod>2023-01-19T11:33:55.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-12-05-final_iteration_lesson.html</loc>
-    <lastmod>2023-01-19T11:33:55.404Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-12-07-developing-procedures.html</loc>
-    <lastmod>2023-01-19T11:33:55.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/grades.html</loc>
-    <lastmod>2023-01-19T11:33:56.086Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-30-randomvalues.html</loc>
-    <lastmod>2023-01-19T11:33:56.377Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-12-dd-lesson.html</loc>
-    <lastmod>2023-01-19T11:33:56.708Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-12-06-lessoncomplete.html</loc>
-    <lastmod>2023-01-19T11:33:57.161Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2023-01-10-pbl-model.html</loc>
-    <lastmod>2023-01-19T11:33:57.449Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2023-1-17-Jekyll on Windows and Mac.html</loc>
-    <lastmod>2023-01-19T11:33:57.686Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/moonpiedumplings/quartotest/posts/2023-1-18-Observable JS in Quarto.html</loc>
-    <lastmod>2023-01-19T11:33:57.920Z</lastmod>
+    <lastmod>2023-01-26T13:49:42.263Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-07-07-PBL-binary.html</loc>
-    <lastmod>2023-01-19T11:33:58.159Z</lastmod>
+    <lastmod>2023-01-26T13:49:42.505Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-08-22-toolcheck.html</loc>
+    <lastmod>2023-01-26T13:49:42.755Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-08-26-pythonquiz.html</loc>
+    <lastmod>2023-01-26T13:49:43.035Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-09-28-javascript tutorial.html</loc>
+    <lastmod>2023-01-26T13:49:43.329Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-09-30-cockpitsetup.html</loc>
+    <lastmod>2023-01-26T13:49:43.627Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-10-03-ap-error_testing.html</loc>
+    <lastmod>2023-01-26T13:49:43.935Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-10-03-pbl-python_rapidapi.html</loc>
+    <lastmod>2023-01-26T13:49:44.309Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-10-09-stocks api fun.html</loc>
+    <lastmod>2023-01-26T13:49:44.583Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-10-finalcorrections.html</loc>
+    <lastmod>2023-01-26T13:49:44.853Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-14-AP-binary_logic.html</loc>
+    <lastmod>2023-01-26T13:49:45.169Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-2-Night at the meseum.html</loc>
+    <lastmod>2023-01-26T13:49:45.585Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-28-1-2 lesson homework copy.html</loc>
+    <lastmod>2023-01-26T13:49:45.861Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-29-3-4 lessson hw copy.html</loc>
+    <lastmod>2023-01-26T13:49:46.155Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-29-3-4 lessson hw.html</loc>
+    <lastmod>2023-01-26T13:49:46.449Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-30-randomvalues.html</loc>
+    <lastmod>2023-01-26T13:49:46.765Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-11-30-teaching-time.html</loc>
+    <lastmod>2023-01-26T13:49:47.101Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-12-05-final_iteration_lesson.html</loc>
+    <lastmod>2023-01-26T13:49:47.487Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-12-06-lessoncomplete.html</loc>
+    <lastmod>2023-01-26T13:49:47.977Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-12-07-developing-procedures.html</loc>
+    <lastmod>2023-01-26T13:49:48.291Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-12-2-Simulations Fun.html</loc>
+    <lastmod>2023-01-26T13:49:48.571Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-12-dd-lesson.html</loc>
+    <lastmod>2023-01-26T13:49:48.937Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2022-9-01-dictionaries.html</loc>
+    <lastmod>2023-01-26T13:49:49.203Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2023-01-10-pbl-model.html</loc>
+    <lastmod>2023-01-26T13:49:49.533Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2023-1-17-Jekyll on Windows and Mac.html</loc>
+    <lastmod>2023-01-26T13:49:49.793Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/2023-1-18-Observable JS in Quarto.html</loc>
+    <lastmod>2023-01-26T13:49:50.049Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/posts/2023-1-19-calculator.html</loc>
-    <lastmod>2023-01-19T11:33:58.393Z</lastmod>
+    <lastmod>2023-01-26T13:49:50.315Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/grades.html</loc>
+    <lastmod>2023-01-26T13:49:50.949Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/post-with-code/index.html</loc>
+    <lastmod>2023-01-26T13:49:51.361Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/welcome/index.html</loc>
+    <lastmod>2023-01-26T13:49:51.623Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/Setting up kasm/index.html</loc>
+    <lastmod>2023-01-26T13:49:51.917Z</lastmod>
   </url>
 </urlset>
