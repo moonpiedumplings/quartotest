@@ -1,16 +1,16 @@
 ---
 title: "Kasmweb setup"
 date: "2023-1-26"
-categories: [nix, linux, devops, ubuntu, vnc]
+categories: [nix, linux, devops, ubuntu, kasm]
 ---
 
-Kasm is a remote desktop sof
+Kasm is a remote desktop software.
 
 
-Roadblocks: 
+Roadblocks/steps: 
 
-* Install Kasm on Ubuntu [x]
-* Ensure remote server can be accessed [x]
+* Install Kasm on Ubuntu
+* Ensure remote server can be accessed
 * Get persistent user profiles for remote server 
 * Allow user to use nix to install software
     * Create a shared nix cache for users
@@ -20,10 +20,12 @@ Roadblocks:
 * Optimize memory usage
     * Use kernel same page merging (ksm) to deduplicate ram
     * Use zram to optimize create  compressed swap device in ram, and use that instead of zswap, because it does not touch the disk at all, enabling a performance boost
-    * 
+    * Use VM overcommit or something else to make kasm launch when it currently thinks it doesn't have enough ram. 
 
 
-# Step 1: Install and run kasm: COMPLETE
+# Step 1: Install and run kasm:
+
+status: complete
 
 Tested on Ubuntu 22. Working.
 
@@ -31,13 +33,48 @@ From [the kasm documenation](https://www.kasmweb.com/docs/latest/install/single_
 
 Ignore the system requirements step. We are going to be sidestepping that with optimization.
 
-# Create a custom dockerfile: RESEARCHING
+Default passwords are randomly generated, and output exactly once when your run the installation script. Save them to a text file or something, just don't lose them. 
+
+# Create a custom dockerfile
+status: researching
 
 https://www.kasmweb.com/docs/latest/guide/custom_images.html#custom-docker-images
 
-# Using kernel same page merging: IMPLEMENTED ON OTHER SYSTEMS
+# Using kernel same page merging with docker
+status: implemented on other systems, but without docker yet
 
-Use a kernel that has the pmadv_ksm() syscall. It is available in the pf-kernel, the creators of uksmd, or linux-zen, or linux-cachyos as far as I am aware. Default may or may not have it, untested. Probably not.
+Previously, I tried instructions from here: https://wiki.openvz.org/KSM_(kernel_same-page_merging). However, I noticed only a minimal space saved using the LD_PRELOAD steps. Not useful. 
+
+I then tried cachyos fork of uksmd: https://github.com/CachyOS/uksmd, a daemon to go through userspace tasks and dedupe them.
+
+Use a kernel that has the pmadv_ksm() syscall. It is available in the pf-kernel, the creators of uksmd, or linux-zen, or linux-cachyos as far as I am aware. Default kernel does not have this feature. To check if a kernel has this feature, go to /sys/kernel/debug/tracing/events/syscalls, and check if there is sys_enter_pmadv_ksm
+and sys_exit_pmadv_ksm exist. If they don't, you need to change kernels for uksmd to work. 
+
+Very useful. It saves a lot of ram. However, there might be a better way for docker. 
+
+![uksmstats](uksmdstatsdesktop.png)
+
+Half a gig of ram saved on a normal desktop. Expect to see much more when multiple almost identical docker containers are launched. 
+
+Does cost a miniscule amount of cpu power, but we have more cpu power and less ram on our servers. 
+
+# Memory overcommital
+status: researching
+
+From a reddit comment: [kernel.org docs on allocating more memory than your system thinks it has](https://www.kernel.org/doc/Documentation/vm/overcommit-accounting)
+
+Default vm overcommit on containers is set to 0, no overcommit:
+
+![](defaultvmovercommit.png)
+
+From my ubuntu 22 virtual machine.
+
+# Customized kasm images
+status: researching
+
+[Building](https://www.kasmweb.com/docs/latest/how_to/building_images.html) and [maintaining](https://www.kasmweb.com/docs/latest/how_to/building_images.html) custom docker images
+
+
 
 
 
