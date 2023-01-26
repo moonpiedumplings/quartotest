@@ -53,6 +53,8 @@ Half a gig of ram saved on a normal desktop. Expect to see much more when multip
 
 Does cost a miniscule amount of cpu power, but we have more cpu power and less ram on our servers. 
 
+To install uksmd, you need to switch kernels. 
+
 # Memory overcommital
 status: working
 
@@ -72,7 +74,12 @@ However, it still did not work. In addition to that, you have to edit the kasm a
 
 ![](zswap.png)
 
-zswap is disabled by default on my ubuntu virtual machine
+zswap is disabled by default on my ubuntu virtual machine.
+
+
+To install zram (zram better), `sudo apt install systemd-zram-generator`
+
+Then, you can configure zram by editing /etc/systemd/zram-generator.conf
 
 
 # Customized kasm images
