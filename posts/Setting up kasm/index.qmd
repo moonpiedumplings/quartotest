@@ -54,7 +54,7 @@ Half a gig of ram saved on a normal desktop. Expect to see much more when multip
 Does cost a miniscule amount of cpu power, but we have more cpu power and less ram on our servers. 
 
 # Memory overcommital
-status: researching
+status: working
 
 From a reddit comment: [kernel.org docs on allocating more memory than your system thinks it has](https://www.kernel.org/doc/Documentation/vm/overcommit-accounting)
 
@@ -62,7 +62,18 @@ Default vm overcommit on containers is set to 0, no overcommit:
 
 ![](defaultvmovercommit.png)
 
-From my ubuntu 22 virtual machine.
+From my ubuntu 22 virtual machine. I changed this setting.
+
+However, it still did not work. In addition to that, you have to edit the kasm agent settings. In the kasm admin panel, you have to go to compute > docker agents > scroll to the right and edit the single agent. Then, change the memory override to however many gigabytes you want in **bytes**. 
+
+![kasmagentsettings](agentsettings.png)
+
+# Zswap/zram
+
+![](zswap.png)
+
+zswap is disabled by default on my ubuntu virtual machine
+
 
 # Customized kasm images
 status: researching
