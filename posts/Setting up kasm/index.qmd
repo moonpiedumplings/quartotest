@@ -35,11 +35,6 @@ Ignore the system requirements step. We are going to be sidestepping that with o
 
 Default passwords are randomly generated, and output exactly once when your run the installation script. Save them to a text file or something, just don't lose them. 
 
-# Create a custom dockerfile
-status: researching
-
-https://www.kasmweb.com/docs/latest/guide/custom_images.html#custom-docker-images
-
 # Using kernel same page merging with docker
 status: implemented on other systems, but without docker yet
 
