@@ -1,0 +1,43 @@
+---
+title: "Kasmweb setup"
+date: "2023-1-26"
+categories: [nix, linux, devops, ubuntu, vnc]
+---
+
+Kasm is a remote desktop sof
+
+
+Roadblocks: 
+
+* Install Kasm on Ubuntu [x]
+* Ensure remote server can be accessed [x]
+* Get persistent user profiles for remote server 
+* Allow user to use nix to install software
+    * Create a shared nix cache for users
+* Create a custom dockerfile with: 
+    * Nix preinstalled
+    * Perhaps a different desktop type
+* Optimize memory usage
+    * Use kernel same page merging (ksm) to deduplicate ram
+    * Use zram to optimize create  compressed swap device in ram, and use that instead of zswap, because it does not touch the disk at all, enabling a performance boost
+    * 
+
+
+# Step 1: Install and run kasm: COMPLETE
+
+Tested on Ubuntu 22. Working.
+
+From [the kasm documenation](https://www.kasmweb.com/docs/latest/install/single_server_install.html)
+
+Ignore the system requirements step. We are going to be sidestepping that with optimization.
+
+# Create a custom dockerfile: RESEARCHING
+
+https://www.kasmweb.com/docs/latest/guide/custom_images.html#custom-docker-images
+
+# Using kernel same page merging: IMPLEMENTED ON OTHER SYSTEMS
+
+Use a kernel that has the pmadv_ksm() syscall. It is available in the pf-kernel, the creators of uksmd, or linux-zen, or linux-cachyos as far as I am aware. Default may or may not have it, untested. Probably not.
+
+
+
