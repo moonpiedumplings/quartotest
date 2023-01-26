@@ -62,7 +62,7 @@ Default vm overcommit on containers is set to 0, no overcommit:
 
 ![](defaultvmovercommit.png)
 
-From my ubuntu 22 virtual machine. I changed this setting.
+From my ubuntu 22 virtual machine. I changed this setting to 1, enabling overcommit.
 
 However, it still did not work. In addition to that, you have to edit the kasm agent settings. In the kasm admin panel, you have to go to compute > docker agents > scroll to the right and edit the single agent. Then, change the memory override to however many gigabytes you want in **bytes**. 
 
