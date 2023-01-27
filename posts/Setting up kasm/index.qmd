@@ -66,7 +66,25 @@ status: complete
 
 I checked if liqourix has the necessary features, and yes it does. 
 
-# Memory overcommital
+## Weaker alternative: ksm_preload
+
+`git clone https://github.com/binfess/ksm_preload`
+
+`cmake .`
+
+`make`
+
+`sudo make install`
+
+I added `LD_PRELOAD=/usr/local/share/ksm_preload/libksm_preload.so` to the file `/etc/environment`
+
+I haven't tested the above, but I saw very minimal space saved, only about 0.11 **megabytes* saved, on my desktop. Tests on my sample server are similarly discouraging:
+
+![](ksmpreloadubuntu.png)
+
+The above was with 2 kasm sessions open. Nearly useless. 
+
+# Memory Overcommiting
 status: complete
 
 From a reddit comment: [kernel.org docs on allocating more memory than your system thinks it has](https://www.kernel.org/doc/Documentation/vm/overcommit-accounting)
