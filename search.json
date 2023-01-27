@@ -637,6 +637,13 @@
     "text": "Switching Kernels\nstatus: complete\ncurl 'https://liquorix.net/install-liquorix.sh' | sudo bash from the liqourix kernel website\nI checked if liqourix has the necessary features, and yes it does."
   },
   {
+    "objectID": "posts/Setting up kasm/index.html#weaker-alternative-ksm_preload",
+    "href": "posts/Setting up kasm/index.html#weaker-alternative-ksm_preload",
+    "title": "Kasmweb setup",
+    "section": "Weaker alternative: ksm_preload",
+    "text": "Weaker alternative: ksm_preload\ngit clone https://github.com/binfess/ksm_preload\ncmake .\nmake\nsudo make install\nI added LD_PRELOAD=/usr/local/share/ksm_preload/libksm_preload.so to the file /etc/environment\nI haven’t tested the above, but I saw very minimal space saved, only about 0.11 **megabytes* saved, on my desktop. Tests on my sample server are similarly discouraging:\n\nThe above was with 2 kasm sessions open. Nearly useless."
+  },
+  {
     "objectID": "posts/grades.html",
     "href": "posts/grades.html",
     "title": "Grades and Vocab",

@@ -196,9 +196,20 @@ ul.task-list li input[type="checkbox"] {
 <p><code>curl 'https://liquorix.net/install-liquorix.sh' | sudo bash</code> from the <a href="https://liquorix.net/">liqourix kernel website</a></p>
 <p>I checked if liqourix has the necessary features, and yes it does.</p>
 </section>
+<section id="weaker-alternative-ksm_preload" class="level2">
+<h2 class="anchored" data-anchor-id="weaker-alternative-ksm_preload">Weaker alternative: ksm_preload</h2>
+<p><code>git clone https://github.com/binfess/ksm_preload</code></p>
+<p><code>cmake .</code></p>
+<p><code>make</code></p>
+<p><code>sudo make install</code></p>
+<p>I added <code>LD_PRELOAD=/usr/local/share/ksm_preload/libksm_preload.so</code> to the file <code>/etc/environment</code></p>
+<p>I haven’t tested the above, but I saw very minimal space saved, only about 0.11 **megabytes* saved, on my desktop. Tests on my sample server are similarly discouraging:</p>
+<p><img src="ksmpreloadubuntu.png" class="img-fluid"></p>
+<p>The above was with 2 kasm sessions open. Nearly useless.</p>
 </section>
-<section id="memory-overcommital" class="level1">
-<h1>Memory overcommital</h1>
+</section>
+<section id="memory-overcommiting" class="level1">
+<h1>Memory Overcommiting</h1>
 <p>status: complete</p>
 <p>From a reddit comment: <a href="https://www.kernel.org/doc/Documentation/vm/overcommit-accounting">kernel.org docs on allocating more memory than your system thinks it has</a></p>
 <p>Default vm overcommit on containers is set to 0, no overcommit:</p>
