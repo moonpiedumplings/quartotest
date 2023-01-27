@@ -102,7 +102,9 @@ status: researching
 
 # Nix remote store
 
+[Nixos wiki](https://nixos.wiki/wiki/Binary_Cache)
 
+[Nix manual](https://nixos.org/manual/nix/stable/package-management/binary-cache-substituter.html)
 
 
 
