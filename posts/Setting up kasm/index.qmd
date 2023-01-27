@@ -42,21 +42,31 @@ Previously, I tried instructions from here: https://wiki.openvz.org/KSM_(kernel_
 
 I then tried cachyos fork of uksmd: https://github.com/CachyOS/uksmd, a daemon to go through userspace tasks and dedupe them.
 
-Use a kernel that has the pmadv_ksm() syscall. It is available in the pf-kernel, the creators of uksmd, or linux-zen, or linux-cachyos as far as I am aware. Default kernel does not have this feature. To check if a kernel has this feature, go to /sys/kernel/debug/tracing/events/syscalls, and check if there is sys_enter_pmadv_ksm
-and sys_exit_pmadv_ksm exist. If they don't, you need to change kernels for uksmd to work. 
+Only works with a kernel that has the pmadv_ksm() syscall. Exists in most kernels optimized for desktop usage, like linux-zen, linux-liqourix, or pf-kernel (the original creators of uksmd)
 
-Very useful. It saves a lot of ram. However, there might be a better way for docker. 
+To check if your currently running kernel has the feature:
+* on Archlinux, check if the files `sys_enter_pmadv_ksm` and `sys_exit_pmadv_ksm` exist in `/sys/kernel/debug/tracing/events/syscalls` (default does not have this feature, but linux-zen does)
+* on Ubuntu check if lines containing pmadv exist in the file `/proc/kallsyms` 
+
 
 ![uksmstats](uksmdstatsdesktop.png)
 
-Half a gig of ram saved on a normal desktop. Expect to see much more when multiple almost identical docker containers are launched. 
+Half a gig of ram saved on a normal desktop. Expect to see much more when multiple almost identical docker containers are launched. Very useful. It saves a lot of ram. However, there might be a better way for docker, without jumping through hoops. 
 
 Does cost a miniscule amount of cpu power, but we have more cpu power and less ram on our servers. 
 
-To install uksmd, you need to switch kernels. 
+To install uksmd on ubuntu, you need to switch kernels. 
+
+## Switching Kernels
+
+status: complete
+
+`curl 'https://liquorix.net/install-liquorix.sh' | sudo bash` from the [liqourix kernel website](https://liquorix.net/)
+
+I checked if liqourix has the necessary features, and yes it does. 
 
 # Memory overcommital
-status: working
+status: complete
 
 From a reddit comment: [kernel.org docs on allocating more memory than your system thinks it has](https://www.kernel.org/doc/Documentation/vm/overcommit-accounting)
 
@@ -72,6 +82,8 @@ However, it still did not work. In addition to that, you have to edit the kasm a
 
 # Zswap/zram
 
+status: immplemented on my personal systems, but not on the ubuntu vm yet.
+
 ![](zswap.png)
 
 zswap is disabled by default on my ubuntu virtual machine.
@@ -86,6 +98,11 @@ Then, you can configure zram by editing /etc/systemd/zram-generator.conf
 status: researching
 
 [Building](https://www.kasmweb.com/docs/latest/how_to/building_images.html) and [maintaining](https://www.kasmweb.com/docs/latest/how_to/building_images.html) custom docker images
+
+
+# Nix remote store
+
+
 
 
 
