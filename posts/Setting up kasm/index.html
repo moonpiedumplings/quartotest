@@ -175,21 +175,27 @@ ul.task-list li input[type="checkbox"] {
 <p>status: implemented on other systems, but without docker yet</p>
 <p>Previously, I tried instructions from here: https://wiki.openvz.org/KSM_(kernel_same-page_merging). However, I noticed only a minimal space saved using the LD_PRELOAD steps. Not useful.</p>
 <p>I then tried cachyos fork of uksmd: https://github.com/CachyOS/uksmd, a daemon to go through userspace tasks and dedupe them.</p>
-<p>Use a kernel that has the pmadv_ksm() syscall. It is available in the pf-kernel, the creators of uksmd, or linux-zen, or linux-cachyos as far as I am aware. Default kernel does not have this feature. To check if a kernel has this feature, go to /sys/kernel/debug/tracing/events/syscalls, and check if there is sys_enter_pmadv_ksm and sys_exit_pmadv_ksm exist. If they don’t, you need to change kernels for uksmd to work.</p>
-<p>Very useful. It saves a lot of ram. However, there might be a better way for docker.</p>
+<p>Only works with a kernel that has the pmadv_ksm() syscall. Exists in most kernels optimized for desktop usage, like linux-zen, linux-liqourix, or pf-kernel (the original creators of uksmd)</p>
+<p>To check if your currently running kernel has the feature: * on Archlinux, check if the files <code>sys_enter_pmadv_ksm</code> and <code>sys_exit_pmadv_ksm</code> exist in <code>/sys/kernel/debug/tracing/events/syscalls</code> (default does not have this feature, but linux-zen does) * on Ubuntu check if lines containing pmadv exist in the file <code>/proc/kallsyms</code></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="uksmdstatsdesktop.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">uksmstats</figcaption><p></p>
 </figure>
 </div>
-<p>Half a gig of ram saved on a normal desktop. Expect to see much more when multiple almost identical docker containers are launched.</p>
+<p>Half a gig of ram saved on a normal desktop. Expect to see much more when multiple almost identical docker containers are launched. Very useful. It saves a lot of ram. However, there might be a better way for docker, without jumping through hoops.</p>
 <p>Does cost a miniscule amount of cpu power, but we have more cpu power and less ram on our servers.</p>
-<p>To install uksmd, you need to switch kernels.</p>
+<p>To install uksmd on ubuntu, you need to switch kernels.</p>
+<section id="switching-kernels" class="level2">
+<h2 class="anchored" data-anchor-id="switching-kernels">Switching Kernels</h2>
+<p>status: complete</p>
+<p><code>curl 'https://liquorix.net/install-liquorix.sh' | sudo bash</code> from the <a href="https://liquorix.net/">liqourix kernel website</a></p>
+<p>I checked if liqourix has the necessary features, and yes it does.</p>
+</section>
 </section>
 <section id="memory-overcommital" class="level1">
 <h1>Memory overcommital</h1>
-<p>status: working</p>
+<p>status: complete</p>
 <p>From a reddit comment: <a href="https://www.kernel.org/doc/Documentation/vm/overcommit-accounting">kernel.org docs on allocating more memory than your system thinks it has</a></p>
 <p>Default vm overcommit on containers is set to 0, no overcommit:</p>
 <p><img src="defaultvmovercommit.png" class="img-fluid"></p>
@@ -204,6 +210,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="zswapzram" class="level1">
 <h1>Zswap/zram</h1>
+<p>status: immplemented on my personal systems, but not on the ubuntu vm yet.</p>
 <p><img src="zswap.png" class="img-fluid"></p>
 <p>zswap is disabled by default on my ubuntu virtual machine.</p>
 <p>To install zram (zram better), <code>sudo apt install systemd-zram-generator</code></p>
@@ -213,6 +220,9 @@ ul.task-list li input[type="checkbox"] {
 <h1>Customized kasm images</h1>
 <p>status: researching</p>
 <p><a href="https://www.kasmweb.com/docs/latest/how_to/building_images.html">Building</a> and <a href="https://www.kasmweb.com/docs/latest/how_to/building_images.html">maintaining</a> custom docker images</p>
+</section>
+<section id="nix-remote-store" class="level1">
+<h1>Nix remote store</h1>
 
 
 </section>
