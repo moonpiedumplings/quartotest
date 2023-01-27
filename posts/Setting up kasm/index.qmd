@@ -4,8 +4,17 @@ date: "2023-1-26"
 categories: [nix, linux, devops, ubuntu, kasm]
 ---
 
-Kasm is a remote desktop software.
+School chromebooks cannot be used for computer science. Due to a content blocking setup that is more restrictive than the Great Firewall of China, school chromebooks cannot install the necessary digital tools for software development. 
 
+Currently, you **must** have your own device to be able to participate in computer science classes. Students who are unable to obtain their own device for whatever reason are denied participation. 
+
+Although getting the chromebooks unlocked to be able to install software is a complex, potentially legal problem, there are alternatives. 
+
+Kasm is a remote desktop software. It runs a computer on a remote server, that can be accessed through a browser, or a chromebook. Because there are no restrictions on what can be installed when using Kasm, it makes it possible to use development tools on a chromebook.
+
+Below are my notes and documenation on setting kasm up on a server, taking steps to optimize it for memory usage, allowing people to run more code on less servers, saving money. Currently, Kasm enterprise charges 10 USD per person per month. With the modified steps that I am creating, I anticipate it possible to receive kasm at 5-8 USD per month per 5 people. For example, webdock.io charges 6.29 USD per month for a VPS with 5 GB of ram, which I believe 1 GB of ram more than what I could fit the maximum users of a single community kasm instance on, 5.
+
+With such a price differential, kasm will be much, much more affordable to lower income communities and schools. Combined with programs to put chromebooks in the hands of students, computer science will be made more accessible to all.
 
 Roadblocks/steps: 
 
