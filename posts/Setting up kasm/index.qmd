@@ -45,6 +45,7 @@ I then tried cachyos fork of uksmd: https://github.com/CachyOS/uksmd, a daemon t
 Only works with a kernel that has the pmadv_ksm() syscall. Exists in most kernels optimized for desktop usage, like linux-zen, linux-liqourix, or pf-kernel (the original creators of uksmd)
 
 To check if your currently running kernel has the feature:
+
 * on Archlinux, check if the files `sys_enter_pmadv_ksm` and `sys_exit_pmadv_ksm` exist in `/sys/kernel/debug/tracing/events/syscalls` (default does not have this feature, but linux-zen does)
 * on Ubuntu check if lines containing pmadv exist in the file `/proc/kallsyms` 
 
