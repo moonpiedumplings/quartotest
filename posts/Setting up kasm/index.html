@@ -176,7 +176,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Previously, I tried instructions from here: https://wiki.openvz.org/KSM_(kernel_same-page_merging). However, I noticed only a minimal space saved using the LD_PRELOAD steps. Not useful.</p>
 <p>I then tried cachyos fork of uksmd: https://github.com/CachyOS/uksmd, a daemon to go through userspace tasks and dedupe them.</p>
 <p>Only works with a kernel that has the pmadv_ksm() syscall. Exists in most kernels optimized for desktop usage, like linux-zen, linux-liqourix, or pf-kernel (the original creators of uksmd)</p>
-<p>To check if your currently running kernel has the feature: * on Archlinux, check if the files <code>sys_enter_pmadv_ksm</code> and <code>sys_exit_pmadv_ksm</code> exist in <code>/sys/kernel/debug/tracing/events/syscalls</code> (default does not have this feature, but linux-zen does) * on Ubuntu check if lines containing pmadv exist in the file <code>/proc/kallsyms</code></p>
+<p>To check if your currently running kernel has the feature:</p>
+<ul>
+<li>on Archlinux, check if the files <code>sys_enter_pmadv_ksm</code> and <code>sys_exit_pmadv_ksm</code> exist in <code>/sys/kernel/debug/tracing/events/syscalls</code> (default does not have this feature, but linux-zen does)</li>
+<li>on Ubuntu check if lines containing pmadv exist in the file <code>/proc/kallsyms</code></li>
+</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="uksmdstatsdesktop.png" class="img-fluid figure-img"></p>
