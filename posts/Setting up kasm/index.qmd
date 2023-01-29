@@ -67,6 +67,34 @@ Does cost a miniscule amount of cpu power, but we have more cpu power and less r
 
 To install uksmd on ubuntu, you need to switch kernels. 
 
+## Compiling UKSMD
+
+Steps to do so on Ubuntu 22 (you must have switched kernels):
+
+`sudo apt-get install debhelper build-essential dh-make meson pkg-conf libprocps-dev libcap-ng-dev`
+
+`git clone https://github.com/insilications/uksmd-clr`
+
+Rename the directory to be something compatible with below steps, like uksmd-1 before you cd into it. 
+
+Follow steps from [here](https://blog.devgenius.io/how-to-build-debian-packages-from-meson-ninja-d1c28b60e709)
+
+
+
+`dh_make --createorig`
+
+`dh_auto_configure --buildsystem=meson`
+
+`dpkg-buildpackage -rfakeroot -us -uc -b`
+
+The debian package will be build in the directory above the source directory.
+
+Install your debian package!
+
+If you want the `uksmdstats` command for monitoring purposes, you can only get it from the cachyos github (or make your own, it's just a shell script).
+
+`sudo curl https://raw.githubusercontent.com/CachyOS/uksmd/master/uksmdstats -o /usr/bin/uksmdstats`
+
 ## Switching Kernels
 
 status: complete
@@ -91,7 +119,7 @@ I haven't tested the above, but I saw very minimal space saved, only about 0.11 
 
 ![](ksmpreloadubuntu.png)
 
-The above was with 2 kasm sessions open. Nearly useless. 
+The above was with 2 kasm sessions open. Nearly useless. Still, every little bit counts, so this will be installed as well. I might package this eventually.
 
 # Memory Overcommiting
 status: complete
@@ -108,7 +136,9 @@ However, it still did not work. In addition to that, you have to edit the kasm a
 
 ![kasmagentsettings](agentsettings.png)
 
-# Zswap/zram
+# Zswap/Zram
+
+## Zram
 
 status: immplemented on my personal systems, but not on the ubuntu vm yet.
 
@@ -120,6 +150,19 @@ zswap is disabled by default on my ubuntu virtual machine.
 To install zram (zram better), `sudo apt install systemd-zram-generator`
 
 Then, you can configure zram by editing /etc/systemd/zram-generator.conf
+
+This works, but apparently, things in a swap file aren't deduplicated by uksmd. So this is less useful than zswap. 
+
+## Zswap
+Status: Not fully written out yet.
+
+Not enabled by default either, oddly. 
+
+Parameters for zswap can be found in `/sys/module/zswap/parameters/`
+
+To set parameters at boot, use kernel boot paremeters, like `zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=20 zswap.zpool=z3fold` 
+
+I will need to tinker to see what is the most optimized zswap setup
 
 
 # Customized kasm images

@@ -11,7 +11,7 @@ toc: true
 
 
 ```
-sh <(curl -L https://nixos.org/nix/install) # After this, reload your shell, that is to 
+sh <(curl -L https://nixos.org/nix/install) # After this, close and reopen your terminal. That is to reload your shell.
 
 nix-shell -p rubyPackages.ffi bundler
 

@@ -53,26 +53,26 @@ Reboot the computer for the server to start properly, however, this won't work a
 
 First, go to your EC2 vps, where you would normally click connect from, and click on the link under vpc:
 
-![]({{ site.baseurl }}/images/ourinstanceannotation.png "tux, the linux penguin")
+![](ourinstanceannotation.png)
 
 
 This should bring you up to a screen like this:
 
-![]({{ site.baseurl }}/images/vpstosecuritytab.png "tux, the linux penguin")
+![](vpstosecuritytab.png)
 
 Click the security tab, bringing you to a screen like this:
 
-![]({{ site.baseurl }}/images/vpcpagesecurityannotate.png "tux, the linux penguin")
+![](vpcpagesecurityannotate.png)
 
 And then click on security groups, bringing you to a screen like this:
 
-![]({{ site.baseurl }}/images/toeditinboundrules.png "tux, the linux penguin")
+![](toeditinboundrules.png)
 
 And then click on the "edit inbound rules"
 
 Finally, you should get something like this:
 
-![]({{ site.baseurl }}/images/editinginboundrules.png "tux, the linux penguin")
+![](editinginboundrules.png )
 
 Add an item that matches what I have in the third row. That opens the port to allow cockpits server to escape. You may also need to use this page to open other ports if you are hosting servers on nonstandard ports. 
 
