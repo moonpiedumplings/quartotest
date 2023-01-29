@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2022-09-30">
+<meta name="description" content="cockpit is a gui to manage linux servers.">
 
-<title>Quartotest - Fixing jekyll on windows and macos devices.</title>
+<title>Quartotest - Setting up cockpit</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -60,7 +62,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -70,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Quartotest</span>
     </a>
   </div>
@@ -80,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html">
+    <a class="nav-link" href="../../about.html">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -103,14 +105,31 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Fixing jekyll on windows and macos devices.</h1>
-                      </div>
+      <h1 class="title">Setting up cockpit</h1>
+                  <div>
+        <div class="description">
+          cockpit is a gui to manage linux servers.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">aws</div>
+                <div class="quarto-category">ec2</div>
+                <div class="quarto-category">docker</div>
+                <div class="quarto-category">linux</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 30, 2022</p>
+      </div>
+    </div>
     
       
     </div>
@@ -120,7 +139,15 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-cockpit-and-similar-softwares" id="toc-what-is-cockpit-and-similar-softwares" class="nav-link active" data-scroll-target="#what-is-cockpit-and-similar-softwares">What is cockpit (and similar softwares)</a></li>
+  <li><a href="#the-installation-process" id="toc-the-installation-process" class="nav-link" data-scroll-target="#the-installation-process">The installation process</a></li>
+  <li><a href="#opening-ec2s-vpc-ports-also-necessary-if-you-want-to-host-servers-on-ports-other-than-22-80-or-443" id="toc-opening-ec2s-vpc-ports-also-necessary-if-you-want-to-host-servers-on-ports-other-than-22-80-or-443" class="nav-link" data-scroll-target="#opening-ec2s-vpc-ports-also-necessary-if-you-want-to-host-servers-on-ports-other-than-22-80-or-443">Opening EC2’s VPC ports (Also necessary if you want to host servers on ports other than 22, 80, or 443)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -128,19 +155,42 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<pre><code>sh &lt;(curl -L https://nixos.org/nix/install) # After this, close and reopen your terminal. That is to reload your shell.
+<section id="what-is-cockpit-and-similar-softwares" class="level1">
+<h1>What is cockpit (and similar softwares)</h1>
+<p>Amazon lets us have free servers via EC2. The typical way to manage servers is either by sshing in, or using the cloud shell that Amazon (and Oracle) give. However, there are alternative ways to manage servers. One extremely popular example is pteradactyl, a webpage based gui to manage game (usually minecraft). It lets you download game servers as docker containers, run them, stop them, and maybe manage some basic settings, All the things a casual who just wants video games may need. But when I created a free Oracle server, I wanted something more. By this point, I was an experienced linux user, and I wanted more advanced features. So I searched for a more advanced server management tool, like people use on real servers, and I found cockpit.</p>
+<p>Cockpit comes with many benefits. The two things I really like however, are that it’s terminal is not laggy at all, unlike the amazon ec2 cloud terminal, and it also offers a gui to manage docker containers.</p>
+</section>
+<section id="the-installation-process" class="level1">
+<h1>The installation process</h1>
+<p>The installation process is simple:</p>
+<p><code>sudo apt install cockpit</code></p>
+<p>To start the server, run:</p>
+<p><code>sudo systemctl enable --now cockpit</code></p>
+<p>This sets the cockpit server to start on boot, and it starts it now.</p>
+<p>However, the firewall must open ports to allow the cockpit server through. This opens the default ports for the cockpit server. It should be noted that not every version fo linux uses ufw as a firewall, some use other firewalls with different management commands.</p>
+<p><code>sudo ufw allow 9090</code></p>
+<p>Another important thing is to set the password for the default “ubuntu” user account so that you can login to cockpit.</p>
+<p><code>sudo passwd ubuntu</code></p>
+<p>It will ask for the new password twice, not showing what you are typing.</p>
+<p>Reboot the computer for the server to start properly, however, this won’t work as the virtual private cloud must have its ports open. I had to do this when I set up cockpit on my Oracle server, so I knew the gist of the steps.</p>
+</section>
+<section id="opening-ec2s-vpc-ports-also-necessary-if-you-want-to-host-servers-on-ports-other-than-22-80-or-443" class="level1">
+<h1>Opening EC2’s VPC ports (Also necessary if you want to host servers on ports other than 22, 80, or 443)</h1>
+<p>First, go to your EC2 vps, where you would normally click connect from, and click on the link under vpc:</p>
+<p><img src="ourinstanceannotation.png" class="img-fluid"></p>
+<p>This should bring you up to a screen like this:</p>
+<p><img src="vpstosecuritytab.png" class="img-fluid"></p>
+<p>Click the security tab, bringing you to a screen like this:</p>
+<p><img src="vpcpagesecurityannotate.png" class="img-fluid"></p>
+<p>And then click on security groups, bringing you to a screen like this:</p>
+<p><img src="toeditinboundrules.png" class="img-fluid"></p>
+<p>And then click on the “edit inbound rules”</p>
+<p>Finally, you should get something like this:</p>
+<p><img src="editinginboundrules.png" class="img-fluid"></p>
+<p>Add an item that matches what I have in the third row. That opens the port to allow cockpits server to escape. You may also need to use this page to open other ports if you are hosting servers on nonstandard ports.</p>
 
-nix-shell -p rubyPackages.ffi bundler
 
-bundle add execjs webrick wdm
-
-bundle install
-
-bundle exec jekyll serve --force_polling --livereload # if on windows
-
-bundle exec jekyll serve # if using macos or linux</code></pre>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

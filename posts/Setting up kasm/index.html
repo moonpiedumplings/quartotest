@@ -195,6 +195,21 @@ ul.task-list li input[type="checkbox"] {
 <p>Half a gig of ram saved on a normal desktop. Expect to see much more when multiple almost identical docker containers are launched. Very useful. It saves a lot of ram. However, there might be a better way for docker, without jumping through hoops.</p>
 <p>Does cost a miniscule amount of cpu power, but we have more cpu power and less ram on our servers.</p>
 <p>To install uksmd on ubuntu, you need to switch kernels.</p>
+<section id="compiling-uksmd" class="level2">
+<h2 class="anchored" data-anchor-id="compiling-uksmd">Compiling UKSMD</h2>
+<p>Steps to do so on Ubuntu 22 (you must have switched kernels):</p>
+<p><code>sudo apt-get install debhelper build-essential dh-make meson pkg-conf libprocps-dev libcap-ng-dev</code></p>
+<p><code>git clone https://github.com/insilications/uksmd-clr</code></p>
+<p>Rename the directory to be something compatible with below steps, like uksmd-1 before you cd into it.</p>
+<p>Follow steps from <a href="https://blog.devgenius.io/how-to-build-debian-packages-from-meson-ninja-d1c28b60e709">here</a></p>
+<p><code>dh_make --createorig</code></p>
+<p><code>dh_auto_configure --buildsystem=meson</code></p>
+<p><code>dpkg-buildpackage -rfakeroot -us -uc -b</code></p>
+<p>The debian package will be build in the directory above the source directory.</p>
+<p>Install your debian package!</p>
+<p>If you want the <code>uksmdstats</code> command for monitoring purposes, you can only get it from the cachyos github (or make your own, it’s just a shell script).</p>
+<p><code>sudo curl https://raw.githubusercontent.com/CachyOS/uksmd/master/uksmdstats -o /usr/bin/uksmdstats</code></p>
+</section>
 <section id="switching-kernels" class="level2">
 <h2 class="anchored" data-anchor-id="switching-kernels">Switching Kernels</h2>
 <p>status: complete</p>
@@ -210,7 +225,7 @@ ul.task-list li input[type="checkbox"] {
 <p>I added <code>LD_PRELOAD=/usr/local/share/ksm_preload/libksm_preload.so</code> to the file <code>/etc/environment</code></p>
 <p>I haven’t tested the above, but I saw very minimal space saved, only about 0.11 **megabytes* saved, on my desktop. Tests on my sample server are similarly discouraging:</p>
 <p><img src="ksmpreloadubuntu.png" class="img-fluid"></p>
-<p>The above was with 2 kasm sessions open. Nearly useless.</p>
+<p>The above was with 2 kasm sessions open. Nearly useless. Still, every little bit counts, so this will be installed as well. I might package this eventually.</p>
 </section>
 </section>
 <section id="memory-overcommiting" class="level1">
@@ -229,12 +244,24 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 <section id="zswapzram" class="level1">
-<h1>Zswap/zram</h1>
+<h1>Zswap/Zram</h1>
+<section id="zram" class="level2">
+<h2 class="anchored" data-anchor-id="zram">Zram</h2>
 <p>status: immplemented on my personal systems, but not on the ubuntu vm yet.</p>
 <p><img src="zswap.png" class="img-fluid"></p>
 <p>zswap is disabled by default on my ubuntu virtual machine.</p>
 <p>To install zram (zram better), <code>sudo apt install systemd-zram-generator</code></p>
 <p>Then, you can configure zram by editing /etc/systemd/zram-generator.conf</p>
+<p>This works, but apparently, things in a swap file aren’t deduplicated by uksmd. So this is less useful than zswap.</p>
+</section>
+<section id="zswap" class="level2">
+<h2 class="anchored" data-anchor-id="zswap">Zswap</h2>
+<p>Status: Not fully written out yet.</p>
+<p>Not enabled by default either, oddly.</p>
+<p>Parameters for zswap can be found in <code>/sys/module/zswap/parameters/</code></p>
+<p>To set parameters at boot, use kernel boot paremeters, like <code>zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=20 zswap.zpool=z3fold</code></p>
+<p>I will need to tinker to see what is the most optimized zswap setup</p>
+</section>
 </section>
 <section id="customized-kasm-images" class="level1">
 <h1>Customized kasm images</h1>
