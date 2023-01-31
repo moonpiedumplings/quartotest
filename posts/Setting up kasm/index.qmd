@@ -44,8 +44,24 @@ Ignore the system requirements step. We are going to be sidestepping that with o
 
 Default passwords are randomly generated, and output exactly once when your run the installation script. Save them to a text file or something, just don't lose them. 
 
-# Using kernel same page merging with docker
+# Using memory deduplication with docker
 status: implemented on other systems, but without docker yet
+
+## Turns out, memory deduplication is on by default for docker containers
+
+[Github issue where someone asked about this](https://github.com/moby/moby/issues/7950#issuecomment-179131803). The documents linked were very unclear, so I'll break it down.
+
+If you are using overlayfs or aufs, you have memory deduplication. If you are using other storage drivers, you sacrifice memory for more i/o (write/read) performance.
+
+From [here](https://docs.docker.com/storage/storagedriver/select-storage-driver/):
+
+![](currentstoragedriver.png)
+
+On my ubuntu virtual machine, and the AWS ubuntu machine we are working on, Overlay2 is the storage driver:
+
+![](ubuntustoragedriver.png)
+
+## Kernel Same page merging
 
 Previously, I tried instructions from here: https://wiki.openvz.org/KSM_(kernel_same-page_merging). However, I noticed only a minimal space saved using the LD_PRELOAD steps. Not useful. 
 
@@ -67,7 +83,7 @@ Does cost a miniscule amount of cpu power, but we have more cpu power and less r
 
 To install uksmd on ubuntu, you need to switch kernels. 
 
-## Compiling UKSMD
+### Compiling UKSMD
 
 Steps to do so on Ubuntu 22 (you must have switched kernels):
 
@@ -95,7 +111,7 @@ If you want the `uksmdstats` command for monitoring purposes, you can only get i
 
 `sudo curl https://raw.githubusercontent.com/CachyOS/uksmd/master/uksmdstats -o /usr/bin/uksmdstats`
 
-## Switching Kernels
+### Switching Kernels
 
 status: complete
 
@@ -103,7 +119,7 @@ status: complete
 
 I checked if liqourix has the necessary features, and yes it does. 
 
-## Weaker alternative: ksm_preload
+### Weaker alternative: ksm_preload
 
 `git clone https://github.com/binfess/ksm_preload`
 
@@ -134,11 +150,11 @@ From my ubuntu 22 virtual machine. I changed this setting to 1, enabling overcom
 
 However, it still did not work. In addition to that, you have to edit the kasm agent settings. In the kasm admin panel, you have to go to compute > docker agents > scroll to the right and edit the single agent. Then, change the memory override to however many gigabytes you want in **bytes**. 
 
-![kasmagentsettings](agentsettings.png)
+![](agentsettings.png)
 
-# Zswap/Zram
+# Other memory optimizations, zram and zswap
 
-## Zram
+## zram
 
 status: immplemented on my personal systems, but not on the ubuntu vm yet.
 
@@ -153,7 +169,7 @@ Then, you can configure zram by editing /etc/systemd/zram-generator.conf
 
 This works, but apparently, things in a swap file aren't deduplicated by uksmd. So this is less useful than zswap. 
 
-## Zswap
+## zswap
 Status: Not fully written out yet.
 
 Not enabled by default either, oddly. 
