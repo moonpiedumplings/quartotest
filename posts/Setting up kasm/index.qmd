@@ -137,10 +137,12 @@ I haven't tested the above, but I saw very minimal space saved, only about 0.11 
 
 The above was with 2 kasm sessions open. Nearly useless. Still, every little bit counts, so this will be installed as well. I might package this eventually.
 
-# Memory Overcommiting
+# Memory Overcommital
 status: complete
 
-From a reddit comment: [kernel.org docs on allocating more memory than your system thinks it has](https://www.kernel.org/doc/Documentation/vm/overcommit-accounting)
+Answers were received when I [asked](https://www.reddit.com/r/kasmweb/comments/10l90wn/ram_deduplication_and_zramzswap_with_kasm/) on reddit.
+
+[The kernel has options to allow allocation of more memory than the system can give](https://www.kernel.org/doc/Documentation/vm/overcommit-accounting)
 
 Default vm overcommit on containers is set to 0, no overcommit:
 
@@ -193,6 +195,7 @@ status: researching
 
 [Nix manual](https://nixos.org/manual/nix/stable/package-management/binary-cache-substituter.html)
 
+I've created a [reddit post](https://www.reddit.com/r/NixOS/comments/10q9db1/shared_nix_store_between_docker_containers/) relating to this topic. I've received several replies, but I am still struggling to understand how to get my ideal setup working. 
 
 
 
