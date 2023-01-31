@@ -175,9 +175,20 @@ ul.task-list li input[type="checkbox"] {
 <p>Ignore the system requirements step. We are going to be sidestepping that with optimization.</p>
 <p>Default passwords are randomly generated, and output exactly once when your run the installation script. Save them to a text file or something, just don’t lose them.</p>
 </section>
-<section id="using-kernel-same-page-merging-with-docker" class="level1">
-<h1>Using kernel same page merging with docker</h1>
+<section id="using-memory-deduplication-with-docker" class="level1">
+<h1>Using memory deduplication with docker</h1>
 <p>status: implemented on other systems, but without docker yet</p>
+<section id="turns-out-memory-deduplication-is-on-by-default-for-docker-containers" class="level2">
+<h2 class="anchored" data-anchor-id="turns-out-memory-deduplication-is-on-by-default-for-docker-containers">Turns out, memory deduplication is on by default for docker containers</h2>
+<p><a href="https://github.com/moby/moby/issues/7950#issuecomment-179131803">Github issue where someone asked about this</a>. The documents linked were very unclear, so I’ll break it down.</p>
+<p>If you are using overlayfs or aufs, you have memory deduplication. If you are using other storage drivers, you sacrifice memory for more i/o (write/read) performance.</p>
+<p>From <a href="https://docs.docker.com/storage/storagedriver/select-storage-driver/">here</a>:</p>
+<p><img src="currentstoragedriver.png" class="img-fluid"></p>
+<p>On my ubuntu virtual machine, and the AWS ubuntu machine we are working on, Overlay2 is the storage driver:</p>
+<p><img src="ubuntustoragedriver.png" class="img-fluid"></p>
+</section>
+<section id="kernel-same-page-merging" class="level2">
+<h2 class="anchored" data-anchor-id="kernel-same-page-merging">Kernel Same page merging</h2>
 <p>Previously, I tried instructions from here: https://wiki.openvz.org/KSM_(kernel_same-page_merging). However, I noticed only a minimal space saved using the LD_PRELOAD steps. Not useful.</p>
 <p>I then tried cachyos fork of uksmd: https://github.com/CachyOS/uksmd, a daemon to go through userspace tasks and dedupe them.</p>
 <p>Only works with a kernel that has the pmadv_ksm() syscall. Exists in most kernels optimized for desktop usage, like linux-zen, linux-liqourix, or pf-kernel (the original creators of uksmd)</p>
@@ -195,8 +206,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Half a gig of ram saved on a normal desktop. Expect to see much more when multiple almost identical docker containers are launched. Very useful. It saves a lot of ram. However, there might be a better way for docker, without jumping through hoops.</p>
 <p>Does cost a miniscule amount of cpu power, but we have more cpu power and less ram on our servers.</p>
 <p>To install uksmd on ubuntu, you need to switch kernels.</p>
-<section id="compiling-uksmd" class="level2">
-<h2 class="anchored" data-anchor-id="compiling-uksmd">Compiling UKSMD</h2>
+<section id="compiling-uksmd" class="level3">
+<h3 class="anchored" data-anchor-id="compiling-uksmd">Compiling UKSMD</h3>
 <p>Steps to do so on Ubuntu 22 (you must have switched kernels):</p>
 <p><code>sudo apt-get install debhelper build-essential dh-make meson pkg-conf libprocps-dev libcap-ng-dev</code></p>
 <p><code>git clone https://github.com/insilications/uksmd-clr</code></p>
@@ -210,14 +221,14 @@ ul.task-list li input[type="checkbox"] {
 <p>If you want the <code>uksmdstats</code> command for monitoring purposes, you can only get it from the cachyos github (or make your own, it’s just a shell script).</p>
 <p><code>sudo curl https://raw.githubusercontent.com/CachyOS/uksmd/master/uksmdstats -o /usr/bin/uksmdstats</code></p>
 </section>
-<section id="switching-kernels" class="level2">
-<h2 class="anchored" data-anchor-id="switching-kernels">Switching Kernels</h2>
+<section id="switching-kernels" class="level3">
+<h3 class="anchored" data-anchor-id="switching-kernels">Switching Kernels</h3>
 <p>status: complete</p>
 <p><code>curl 'https://liquorix.net/install-liquorix.sh' | sudo bash</code> from the <a href="https://liquorix.net/">liqourix kernel website</a></p>
 <p>I checked if liqourix has the necessary features, and yes it does.</p>
 </section>
-<section id="weaker-alternative-ksm_preload" class="level2">
-<h2 class="anchored" data-anchor-id="weaker-alternative-ksm_preload">Weaker alternative: ksm_preload</h2>
+<section id="weaker-alternative-ksm_preload" class="level3">
+<h3 class="anchored" data-anchor-id="weaker-alternative-ksm_preload">Weaker alternative: ksm_preload</h3>
 <p><code>git clone https://github.com/binfess/ksm_preload</code></p>
 <p><code>cmake .</code></p>
 <p><code>make</code></p>
@@ -228,6 +239,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The above was with 2 kasm sessions open. Nearly useless. Still, every little bit counts, so this will be installed as well. I might package this eventually.</p>
 </section>
 </section>
+</section>
 <section id="memory-overcommiting" class="level1">
 <h1>Memory Overcommiting</h1>
 <p>status: complete</p>
@@ -236,17 +248,12 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="defaultvmovercommit.png" class="img-fluid"></p>
 <p>From my ubuntu 22 virtual machine. I changed this setting to 1, enabling overcommit.</p>
 <p>However, it still did not work. In addition to that, you have to edit the kasm agent settings. In the kasm admin panel, you have to go to compute &gt; docker agents &gt; scroll to the right and edit the single agent. Then, change the memory override to however many gigabytes you want in <strong>bytes</strong>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="agentsettings.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">kasmagentsettings</figcaption><p></p>
-</figure>
-</div>
+<p><img src="agentsettings.png" class="img-fluid"></p>
 </section>
-<section id="zswapzram" class="level1">
-<h1>Zswap/Zram</h1>
+<section id="other-memory-optimizations-zram-and-zswap" class="level1">
+<h1>Other memory optimizations, zram and zswap</h1>
 <section id="zram" class="level2">
-<h2 class="anchored" data-anchor-id="zram">Zram</h2>
+<h2 class="anchored" data-anchor-id="zram">zram</h2>
 <p>status: immplemented on my personal systems, but not on the ubuntu vm yet.</p>
 <p><img src="zswap.png" class="img-fluid"></p>
 <p>zswap is disabled by default on my ubuntu virtual machine.</p>
@@ -255,7 +262,7 @@ ul.task-list li input[type="checkbox"] {
 <p>This works, but apparently, things in a swap file aren’t deduplicated by uksmd. So this is less useful than zswap.</p>
 </section>
 <section id="zswap" class="level2">
-<h2 class="anchored" data-anchor-id="zswap">Zswap</h2>
+<h2 class="anchored" data-anchor-id="zswap">zswap</h2>
 <p>Status: Not fully written out yet.</p>
 <p>Not enabled by default either, oddly.</p>
 <p>Parameters for zswap can be found in <code>/sys/module/zswap/parameters/</code></p>

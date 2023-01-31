@@ -588,39 +588,32 @@
     "text": "School chromebooks cannot be used for computer science. Due to a content blocking setup that is more restrictive than the Great Firewall of China, school chromebooks cannot install the necessary digital tools for software development.\nCurrently, you must have your own device to be able to participate in computer science classes. Students who are unable to obtain their own device for whatever reason are denied participation.\nAlthough getting the chromebooks unlocked to be able to install software is a complex, potentially legal problem, there are alternatives.\nKasm is a remote desktop software. It runs a computer on a remote server, that can be accessed through a browser, or a chromebook. Because there are no restrictions on what can be installed when using Kasm, it makes it possible to use development tools on a chromebook.\nBelow are my notes and documenation on setting kasm up on a server, taking steps to optimize it for memory usage, allowing people to run more code on less servers, saving money. Currently, Kasm enterprise charges 10 USD per person per month. With the modified steps that I am creating, I anticipate it possible to receive kasm at 5-8 USD per month per 5 people. For example, webdock.io charges 6.29 USD per month for a VPS with 5 GB of ram, which I believe 1 GB of ram more than what I could fit the maximum users of a single community kasm instance on, 5.\nWith such a price differential, kasm will be much, much more affordable to lower income communities and schools. Combined with programs to put chromebooks in the hands of students, computer science will be made more accessible to all.\nRoadblocks/steps:"
   },
   {
-    "objectID": "posts/Setting up kasm/index.html#compiling-uksmd",
-    "href": "posts/Setting up kasm/index.html#compiling-uksmd",
+    "objectID": "posts/Setting up kasm/index.html#turns-out-memory-deduplication-is-on-by-default-for-docker-containers",
+    "href": "posts/Setting up kasm/index.html#turns-out-memory-deduplication-is-on-by-default-for-docker-containers",
     "title": "Kasmweb setup",
-    "section": "Compiling UKSMD",
-    "text": "Compiling UKSMD\nSteps to do so on Ubuntu 22 (you must have switched kernels):\nsudo apt-get install debhelper build-essential dh-make meson pkg-conf libprocps-dev libcap-ng-dev\ngit clone https://github.com/insilications/uksmd-clr\nRename the directory to be something compatible with below steps, like uksmd-1 before you cd into it.\nFollow steps from here\ndh_make --createorig\ndh_auto_configure --buildsystem=meson\ndpkg-buildpackage -rfakeroot -us -uc -b\nThe debian package will be build in the directory above the source directory.\nInstall your debian package!\nIf you want the uksmdstats command for monitoring purposes, you can only get it from the cachyos github (or make your own, it’s just a shell script).\nsudo curl https://raw.githubusercontent.com/CachyOS/uksmd/master/uksmdstats -o /usr/bin/uksmdstats"
+    "section": "Turns out, memory deduplication is on by default for docker containers",
+    "text": "Turns out, memory deduplication is on by default for docker containers\nGithub issue where someone asked about this. The documents linked were very unclear, so I’ll break it down.\nIf you are using overlayfs or aufs, you have memory deduplication. If you are using other storage drivers, you sacrifice memory for more i/o (write/read) performance.\nFrom here:\n\nOn my ubuntu virtual machine, and the AWS ubuntu machine we are working on, Overlay2 is the storage driver:"
   },
   {
-    "objectID": "posts/Setting up kasm/index.html#switching-kernels",
-    "href": "posts/Setting up kasm/index.html#switching-kernels",
+    "objectID": "posts/Setting up kasm/index.html#kernel-same-page-merging",
+    "href": "posts/Setting up kasm/index.html#kernel-same-page-merging",
     "title": "Kasmweb setup",
-    "section": "Switching Kernels",
-    "text": "Switching Kernels\nstatus: complete\ncurl 'https://liquorix.net/install-liquorix.sh' | sudo bash from the liqourix kernel website\nI checked if liqourix has the necessary features, and yes it does."
-  },
-  {
-    "objectID": "posts/Setting up kasm/index.html#weaker-alternative-ksm_preload",
-    "href": "posts/Setting up kasm/index.html#weaker-alternative-ksm_preload",
-    "title": "Kasmweb setup",
-    "section": "Weaker alternative: ksm_preload",
-    "text": "Weaker alternative: ksm_preload\ngit clone https://github.com/binfess/ksm_preload\ncmake .\nmake\nsudo make install\nI added LD_PRELOAD=/usr/local/share/ksm_preload/libksm_preload.so to the file /etc/environment\nI haven’t tested the above, but I saw very minimal space saved, only about 0.11 **megabytes* saved, on my desktop. Tests on my sample server are similarly discouraging:\n\nThe above was with 2 kasm sessions open. Nearly useless. Still, every little bit counts, so this will be installed as well. I might package this eventually."
+    "section": "Kernel Same page merging",
+    "text": "Kernel Same page merging\nPreviously, I tried instructions from here: https://wiki.openvz.org/KSM_(kernel_same-page_merging). However, I noticed only a minimal space saved using the LD_PRELOAD steps. Not useful.\nI then tried cachyos fork of uksmd: https://github.com/CachyOS/uksmd, a daemon to go through userspace tasks and dedupe them.\nOnly works with a kernel that has the pmadv_ksm() syscall. Exists in most kernels optimized for desktop usage, like linux-zen, linux-liqourix, or pf-kernel (the original creators of uksmd)\nTo check if your currently running kernel has the feature:\n\non Archlinux, check if the files sys_enter_pmadv_ksm and sys_exit_pmadv_ksm exist in /sys/kernel/debug/tracing/events/syscalls (default does not have this feature, but linux-zen does)\non Ubuntu check if lines containing pmadv exist in the file /proc/kallsyms\n\n\n\n\nuksmstats\n\n\nHalf a gig of ram saved on a normal desktop. Expect to see much more when multiple almost identical docker containers are launched. Very useful. It saves a lot of ram. However, there might be a better way for docker, without jumping through hoops.\nDoes cost a miniscule amount of cpu power, but we have more cpu power and less ram on our servers.\nTo install uksmd on ubuntu, you need to switch kernels.\n\nCompiling UKSMD\nSteps to do so on Ubuntu 22 (you must have switched kernels):\nsudo apt-get install debhelper build-essential dh-make meson pkg-conf libprocps-dev libcap-ng-dev\ngit clone https://github.com/insilications/uksmd-clr\nRename the directory to be something compatible with below steps, like uksmd-1 before you cd into it.\nFollow steps from here\ndh_make --createorig\ndh_auto_configure --buildsystem=meson\ndpkg-buildpackage -rfakeroot -us -uc -b\nThe debian package will be build in the directory above the source directory.\nInstall your debian package!\nIf you want the uksmdstats command for monitoring purposes, you can only get it from the cachyos github (or make your own, it’s just a shell script).\nsudo curl https://raw.githubusercontent.com/CachyOS/uksmd/master/uksmdstats -o /usr/bin/uksmdstats\n\n\nSwitching Kernels\nstatus: complete\ncurl 'https://liquorix.net/install-liquorix.sh' | sudo bash from the liqourix kernel website\nI checked if liqourix has the necessary features, and yes it does.\n\n\nWeaker alternative: ksm_preload\ngit clone https://github.com/binfess/ksm_preload\ncmake .\nmake\nsudo make install\nI added LD_PRELOAD=/usr/local/share/ksm_preload/libksm_preload.so to the file /etc/environment\nI haven’t tested the above, but I saw very minimal space saved, only about 0.11 **megabytes* saved, on my desktop. Tests on my sample server are similarly discouraging:\n\nThe above was with 2 kasm sessions open. Nearly useless. Still, every little bit counts, so this will be installed as well. I might package this eventually."
   },
   {
     "objectID": "posts/Setting up kasm/index.html#zram",
     "href": "posts/Setting up kasm/index.html#zram",
     "title": "Kasmweb setup",
-    "section": "Zram",
-    "text": "Zram\nstatus: immplemented on my personal systems, but not on the ubuntu vm yet.\n\nzswap is disabled by default on my ubuntu virtual machine.\nTo install zram (zram better), sudo apt install systemd-zram-generator\nThen, you can configure zram by editing /etc/systemd/zram-generator.conf\nThis works, but apparently, things in a swap file aren’t deduplicated by uksmd. So this is less useful than zswap."
+    "section": "zram",
+    "text": "zram\nstatus: immplemented on my personal systems, but not on the ubuntu vm yet.\n\nzswap is disabled by default on my ubuntu virtual machine.\nTo install zram (zram better), sudo apt install systemd-zram-generator\nThen, you can configure zram by editing /etc/systemd/zram-generator.conf\nThis works, but apparently, things in a swap file aren’t deduplicated by uksmd. So this is less useful than zswap."
   },
   {
     "objectID": "posts/Setting up kasm/index.html#zswap",
     "href": "posts/Setting up kasm/index.html#zswap",
     "title": "Kasmweb setup",
-    "section": "Zswap",
-    "text": "Zswap\nStatus: Not fully written out yet.\nNot enabled by default either, oddly.\nParameters for zswap can be found in /sys/module/zswap/parameters/\nTo set parameters at boot, use kernel boot paremeters, like zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=20 zswap.zpool=z3fold\nI will need to tinker to see what is the most optimized zswap setup"
+    "section": "zswap",
+    "text": "zswap\nStatus: Not fully written out yet.\nNot enabled by default either, oddly.\nParameters for zswap can be found in /sys/module/zswap/parameters/\nTo set parameters at boot, use kernel boot paremeters, like zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=20 zswap.zpool=z3fold\nI will need to tinker to see what is the most optimized zswap setup"
   },
   {
     "objectID": "posts/grades.html",
