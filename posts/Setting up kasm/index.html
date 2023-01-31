@@ -240,10 +240,11 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 </section>
-<section id="memory-overcommiting" class="level1">
-<h1>Memory Overcommiting</h1>
+<section id="memory-overcommital" class="level1">
+<h1>Memory Overcommital</h1>
 <p>status: complete</p>
-<p>From a reddit comment: <a href="https://www.kernel.org/doc/Documentation/vm/overcommit-accounting">kernel.org docs on allocating more memory than your system thinks it has</a></p>
+<p>Answers were received when I <a href="https://www.reddit.com/r/kasmweb/comments/10l90wn/ram_deduplication_and_zramzswap_with_kasm/">asked</a> on reddit.</p>
+<p><a href="https://www.kernel.org/doc/Documentation/vm/overcommit-accounting">The kernel has options to allow allocation of more memory than the system can give</a></p>
 <p>Default vm overcommit on containers is set to 0, no overcommit:</p>
 <p><img src="defaultvmovercommit.png" class="img-fluid"></p>
 <p>From my ubuntu 22 virtual machine. I changed this setting to 1, enabling overcommit.</p>
@@ -279,6 +280,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Nix remote store</h1>
 <p><a href="https://nixos.wiki/wiki/Binary_Cache">Nixos wiki</a></p>
 <p><a href="https://nixos.org/manual/nix/stable/package-management/binary-cache-substituter.html">Nix manual</a></p>
+<p>I’ve created a <a href="https://www.reddit.com/r/NixOS/comments/10q9db1/shared_nix_store_between_docker_containers/">reddit post</a> relating to this topic. I’ve received several replies, but I am still struggling to understand how to get my ideal setup working.</p>
 
 
 </section>
