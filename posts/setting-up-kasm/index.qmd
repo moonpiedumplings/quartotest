@@ -160,27 +160,29 @@ However, it still did not work. In addition to that, you have to edit the kasm a
 
 status: immplemented on my personal systems, but not on the ubuntu vm yet.
 
-![](zswap.png)
 
-zswap is disabled by default on my ubuntu virtual machine.
-
-
-To install zram (zram better), `sudo apt install systemd-zram-generator`
+To install zram (an alternative), `sudo apt install systemd-zram-generator`
 
 Then, you can configure zram by editing /etc/systemd/zram-generator.conf
 
-This works, but apparently, things in a swap file aren't deduplicated by uksmd. So this is less useful than zswap. 
+This works, but apparently, things in a swap file aren't deduplicated by uksmd. Rather, zram handles it's own deduplication, with the compression algorithms. Becuase it must hash pages, this can potentially lead to more cpu usage. 
 
 ## zswap
 Status: Not fully written out yet.
 
-Not enabled by default either, oddly. 
+![](zswap.png)
+
+zswap is disabled by default on my ubuntu virtual machine. Odd that both are disabled by default.
 
 Parameters for zswap can be found in `/sys/module/zswap/parameters/`
 
 To set parameters at boot, use kernel boot paremeters, like `zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=20 zswap.zpool=z3fold` 
 
 I will need to tinker to see what is the most optimized zswap setup
+
+zswap has it's own memory deduplication feature, which is enabled by default (on my vm, I haven't checked on the server yet):
+
+![](zswapmemdedupe.png)
 
 
 # Customized kasm images
