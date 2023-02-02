@@ -207,7 +207,7 @@ Then stop the container, and restart it with a correctly mounted nix store:
 
 And finally, you need to ensure the nix in docker is always using the daemon.
 
-`NIX_REMOTE=daemon` needs to be set inside the container.
+The environment variable`NIX_REMOTE=daemon` needs to be set inside the container.
 
 `
 
