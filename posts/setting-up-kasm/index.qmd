@@ -186,10 +186,19 @@ zswap has it's own memory deduplication feature, which is enabled by default on 
 
 
 # Customized kasm images
-status: researching
+status: experimenting
 
 [Building](https://www.kasmweb.com/docs/latest/how_to/building_images.html) and [maintaining](https://www.kasmweb.com/docs/latest/how_to/building_images.html) custom docker images
 
+I have forked the Dockerfile github repo that kasm uses to build their images.
+
+[https://github.com/moonpiedumplings/nighthawk-workspaces](https://github.com/moonpiedumplings/nighthawk-workspaces)
+
+Clone that, cd into it, and then run:
+
+`docker build . -f dockerfile-kasm-ubuntu-jammy-nighthawkcoders` which should build an image. However, I need to get nix and ubuntu to be completely scripted, and noninteractive. 
+
+The current image I am experimenting with is in that repo, dockerfile-kasm-ubuntu-jammy-nighthawkcoders.
 
 # Nix remote store
 
