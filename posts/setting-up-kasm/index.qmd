@@ -180,7 +180,7 @@ To set parameters at boot, use kernel boot paremeters, like `zswap.enabled=1 zsw
 
 I will need to tinker to see what is the most optimized zswap setup
 
-zswap has it's own memory deduplication feature, which is enabled by default (on my vm, I haven't checked on the server yet):
+zswap has it's own memory deduplication feature, which is enabled by default on both my ubuntu vm and the aws ubuntu server:
 
 ![](zswapmemdedupe.png)
 
@@ -193,11 +193,23 @@ status: researching
 
 # Nix remote store
 
-[Nixos wiki](https://nixos.wiki/wiki/Binary_Cache)
+Status: complete, but needs to be built into the customized kasm images.
 
-[Nix manual](https://nixos.org/manual/nix/stable/package-management/binary-cache-substituter.html)
+I've created a [reddit post](https://www.reddit.com/r/NixOS/comments/10q9db1/shared_nix_store_between_docker_containers/) relating to this topic. I've received several replies, but I still struggled, so I ended up asking on discord (ugh) for help, where I instantly received the answer to my problem. I've updated my reddit post, editing it with the solution.
 
-I've created a [reddit post](https://www.reddit.com/r/NixOS/comments/10q9db1/shared_nix_store_between_docker_containers/) relating to this topic. I've received several replies, but I am still struggling to understand how to get my ideal setup working. 
+To get this working, install nix using a multi user installation on the host, and on the docker container:
+
+`sh <(curl -L https://nixos.org/nix/install) --daemon`
+
+Then stop the container, and restart it with a correctly mounted nix store:
+
+`/nix:/nix:ro` as a docker bind mount.
+
+And finally, you need to ensure the nix in docker is always using the daemon.
+
+`NIX_REMOTE=daemon` needs to be set inside the container.
+
+`
 
 
 
