@@ -268,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Parameters for zswap can be found in <code>/sys/module/zswap/parameters/</code></p>
 <p>To set parameters at boot, use kernel boot paremeters, like <code>zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=20 zswap.zpool=z3fold</code></p>
 <p>I will need to tinker to see what is the most optimized zswap setup</p>
-<p>zswap has it’s own memory deduplication feature, which is enabled by default (on my vm, I haven’t checked on the server yet):</p>
+<p>zswap has it’s own memory deduplication feature, which is enabled by default on both my ubuntu vm and the aws ubuntu server:</p>
 <p><img src="zswapmemdedupe.png" class="img-fluid"></p>
 </section>
 </section>
@@ -279,9 +279,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="nix-remote-store" class="level1">
 <h1>Nix remote store</h1>
-<p><a href="https://nixos.wiki/wiki/Binary_Cache">Nixos wiki</a></p>
-<p><a href="https://nixos.org/manual/nix/stable/package-management/binary-cache-substituter.html">Nix manual</a></p>
-<p>I’ve created a <a href="https://www.reddit.com/r/NixOS/comments/10q9db1/shared_nix_store_between_docker_containers/">reddit post</a> relating to this topic. I’ve received several replies, but I am still struggling to understand how to get my ideal setup working.</p>
+<p>Status: complete, but needs to be built into the customized kasm images.</p>
+<p>I’ve created a <a href="https://www.reddit.com/r/NixOS/comments/10q9db1/shared_nix_store_between_docker_containers/">reddit post</a> relating to this topic. I’ve received several replies, but I still struggled, so I ended up asking on discord (ugh) for help, where I instantly received the answer to my problem. I’ve updated my reddit post, editing it with the solution.</p>
+<p>To get this working, install nix using a multi user installation on the host, and on the docker container:</p>
+<p><code>sh &lt;(curl -L https://nixos.org/nix/install) --daemon</code></p>
+<p>Then stop the container, and restart it with a correctly mounted nix store:</p>
+<p><code>/nix:/nix:ro</code> as a docker bind mount.</p>
+<p>And finally, you need to ensure the nix in docker is always using the daemon.</p>
+<p><code>NIX_REMOTE=daemon</code> needs to be set inside the container.</p>
+<p>`</p>
 
 
 </section>
