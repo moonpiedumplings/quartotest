@@ -171,6 +171,8 @@ Then, you can configure zram by editing /etc/systemd/zram-generator.conf
 
 This works, but apparently, things in a swap file aren't deduplicated by uksmd. Rather, zram handles it's own deduplication, with the compression algorithms. Becuase it must hash pages, this can potentially lead to more cpu usage. 
 
+Because I don't know about this, I made yet another [reddit post](https://www.reddit.com/r/linuxquestions/comments/10sqvuj/zram_or_zswap_for_use_with_ksm/) asking about this topic.
+
 ## zswap
 Status: Not fully written out yet.
 
