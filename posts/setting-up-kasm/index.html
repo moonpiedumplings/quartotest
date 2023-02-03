@@ -253,10 +253,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="other-memory-optimizations-zram-and-zswap" class="level1">
 <h1>Other memory optimizations, zram and zswap</h1>
+<p>Pick one, using both is detrimental to performance.</p>
+<p>I don’t know if zswap’s deduplication feature integrates with ksm, simply compressing already deduped pages, or it dedupes them, recomputes hashes, and then does deduping seperately, like swap-on-zram would do. If zswap has integration with ksm, then it is better, but if it doesn’t then zram is probably better because swap-on-zram minimizes swapping to disk, usually granting greater speeds.</p>
 <section id="zram" class="level2">
 <h2 class="anchored" data-anchor-id="zram">zram</h2>
 <p>status: immplemented on my personal systems, but not on the ubuntu vm yet.</p>
-<p>To install zram (an alternative), <code>sudo apt install systemd-zram-generator</code></p>
+<p>To install zram, <code>sudo apt install systemd-zram-generator</code></p>
 <p>Then, you can configure zram by editing /etc/systemd/zram-generator.conf</p>
 <p>This works, but apparently, things in a swap file aren’t deduplicated by uksmd. Rather, zram handles it’s own deduplication, with the compression algorithms. Becuase it must hash pages, this can potentially lead to more cpu usage.</p>
 </section>
@@ -274,8 +276,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="customized-kasm-images" class="level1">
 <h1>Customized kasm images</h1>
-<p>status: researching</p>
+<p>status: experimenting</p>
 <p><a href="https://www.kasmweb.com/docs/latest/how_to/building_images.html">Building</a> and <a href="https://www.kasmweb.com/docs/latest/how_to/building_images.html">maintaining</a> custom docker images</p>
+<p>I have forked the Dockerfile github repo that kasm uses to build their images.</p>
+<p><a href="https://github.com/moonpiedumplings/nighthawk-workspaces">https://github.com/moonpiedumplings/nighthawk-workspaces</a></p>
+<p>Clone that, cd into it, and then run:</p>
+<p><code>docker build . -f dockerfile-kasm-ubuntu-jammy-nighthawkcoders</code> which should build an image. However, I need to get nix and ubuntu to be completely scripted, and noninteractive.</p>
+<p>The current image I am experimenting with is in that repo, dockerfile-kasm-ubuntu-jammy-nighthawkcoders.</p>
 </section>
 <section id="nix-remote-store" class="level1">
 <h1>Nix remote store</h1>
@@ -287,7 +294,6 @@ ul.task-list li input[type="checkbox"] {
 <p><code>/nix:/nix:ro</code> as a docker bind mount.</p>
 <p>And finally, you need to ensure the nix in docker is always using the daemon.</p>
 <p>The environment variable<code>NIX_REMOTE=daemon</code> needs to be set inside the container.</p>
-<p>`</p>
 
 
 </section>
