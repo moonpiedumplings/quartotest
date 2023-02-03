@@ -156,6 +156,10 @@ However, it still did not work. In addition to that, you have to edit the kasm a
 
 # Other memory optimizations, zram and zswap
 
+Pick one, using both is detrimental to performance.
+
+I don't know if zswap's deduplication feature integrates with ksm, simply compressing already deduped pages, or it dedupes them, recomputes hashes, and then does deduping seperately, like swap-on-zram would do. If zswap has integration with ksm, then it is better, but if it doesn't then zram is probably better because swap-on-zram minimizes swapping to disk, usually granting greater speeds. 
+
 ## zram
 
 status: immplemented on my personal systems, but not on the ubuntu vm yet.
