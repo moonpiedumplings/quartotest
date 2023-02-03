@@ -261,6 +261,7 @@ ul.task-list li input[type="checkbox"] {
 <p>To install zram, <code>sudo apt install systemd-zram-generator</code></p>
 <p>Then, you can configure zram by editing /etc/systemd/zram-generator.conf</p>
 <p>This works, but apparently, things in a swap file aren’t deduplicated by uksmd. Rather, zram handles it’s own deduplication, with the compression algorithms. Becuase it must hash pages, this can potentially lead to more cpu usage.</p>
+<p>Because I don’t know about this, I made yet another <a href="https://www.reddit.com/r/linuxquestions/comments/10sqvuj/zram_or_zswap_for_use_with_ksm/">reddit post</a> asking about this topic.</p>
 </section>
 <section id="zswap" class="level2">
 <h2 class="anchored" data-anchor-id="zswap">zswap</h2>

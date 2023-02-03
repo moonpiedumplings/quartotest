@@ -634,7 +634,7 @@
     "href": "posts/setting-up-kasm/index.html#zram",
     "title": "Kasmweb setup",
     "section": "zram",
-    "text": "zram\nstatus: immplemented on my personal systems, but not on the ubuntu vm yet.\nTo install zram, sudo apt install systemd-zram-generator\nThen, you can configure zram by editing /etc/systemd/zram-generator.conf\nThis works, but apparently, things in a swap file aren’t deduplicated by uksmd. Rather, zram handles it’s own deduplication, with the compression algorithms. Becuase it must hash pages, this can potentially lead to more cpu usage."
+    "text": "zram\nstatus: immplemented on my personal systems, but not on the ubuntu vm yet.\nTo install zram, sudo apt install systemd-zram-generator\nThen, you can configure zram by editing /etc/systemd/zram-generator.conf\nThis works, but apparently, things in a swap file aren’t deduplicated by uksmd. Rather, zram handles it’s own deduplication, with the compression algorithms. Becuase it must hash pages, this can potentially lead to more cpu usage.\nBecause I don’t know about this, I made yet another reddit post asking about this topic."
   },
   {
     "objectID": "posts/setting-up-kasm/index.html#zswap",
