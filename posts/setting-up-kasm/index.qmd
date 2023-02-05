@@ -160,6 +160,8 @@ Pick one, using both is detrimental to performance.
 
 I don't know if zswap's deduplication feature integrates with ksm, simply compressing already deduped pages, or it dedupes them, recomputes hashes, and then does deduping seperately, like swap-on-zram would do. If zswap has integration with ksm, then it is better, but if it doesn't then zram is probably better because swap-on-zram minimizes swapping to disk, usually granting greater speeds. 
 
+I've [asked on reddit](https://www.reddit.com/r/linuxquestions/comments/10sqvuj/zram_or_zswap_for_use_with_ksm/) for help with this, and apparently, zswap does not have true deduplication. The same pages filled feature simply collapses pages that are filled entirely with 0's or entirely with one's. With this tidbit of knowledge, I can decisively choose zram, as it is capable of deduplicating pages with the compression process. 
+
 ## zram
 
 status: immplemented on my personal systems, but not on the ubuntu vm yet.
@@ -186,7 +188,9 @@ To set parameters at boot, use kernel boot paremeters, like `zswap.enabled=1 zsw
 
 I will need to tinker to see what is the most optimized zswap setup
 
-zswap has it's own memory deduplication feature, which is enabled by default on both my ubuntu vm and the aws ubuntu server:
+~~zswap has it's own memory deduplication feature, which is enabled by default on both my ubuntu vm and the aws ubuntu server:~~
+
+See above, my comments about zswap's memory deduplication feature.
 
 ![](zswapmemdedupe.png)
 
@@ -223,6 +227,19 @@ Then stop the container, and restart it with a correctly mounted nix store:
 And finally, you need to ensure the nix in docker is always using the daemon.
 
 The environment variable`NIX_REMOTE=daemon` needs to be set inside the container.
+
+## Nix installation in the dockerfile 
+
+```
+RUN apt update -y && apt install -y curl xz-utils \
+  && curl -L https://nixos.org/nix/install -o nix-install.sh \
+  && chmod +x nix-install.sh \
+  && ./nix-install.sh --daemon --yes \
+  && rm nix-install.sh \
+  && apt autoremove -y && apt clean -y
+```
+
+Put this somewhere in the dockerfile. I will likely have it at the beginning of the dockerfile for the core image generation.
 
 
 
