@@ -255,6 +255,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Other memory optimizations, zram and zswap</h1>
 <p>Pick one, using both is detrimental to performance.</p>
 <p>I don’t know if zswap’s deduplication feature integrates with ksm, simply compressing already deduped pages, or it dedupes them, recomputes hashes, and then does deduping seperately, like swap-on-zram would do. If zswap has integration with ksm, then it is better, but if it doesn’t then zram is probably better because swap-on-zram minimizes swapping to disk, usually granting greater speeds.</p>
+<p>I’ve <a href="https://www.reddit.com/r/linuxquestions/comments/10sqvuj/zram_or_zswap_for_use_with_ksm/">asked on reddit</a> for help with this, and apparently, zswap does not have true deduplication. The same pages filled feature simply collapses pages that are filled entirely with 0’s or entirely with one’s. With this tidbit of knowledge, I can decisively choose zram, as it is capable of deduplicating pages with the compression process.</p>
 <section id="zram" class="level2">
 <h2 class="anchored" data-anchor-id="zram">zram</h2>
 <p>status: immplemented on my personal systems, but not on the ubuntu vm yet.</p>
@@ -271,7 +272,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Parameters for zswap can be found in <code>/sys/module/zswap/parameters/</code></p>
 <p>To set parameters at boot, use kernel boot paremeters, like <code>zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=20 zswap.zpool=z3fold</code></p>
 <p>I will need to tinker to see what is the most optimized zswap setup</p>
-<p>zswap has it’s own memory deduplication feature, which is enabled by default on both my ubuntu vm and the aws ubuntu server:</p>
+<p><del>zswap has it’s own memory deduplication feature, which is enabled by default on both my ubuntu vm and the aws ubuntu server:</del></p>
+<p>See above, my comments about zswap’s memory deduplication feature.</p>
 <p><img src="zswapmemdedupe.png" class="img-fluid"></p>
 </section>
 </section>
@@ -295,8 +297,18 @@ ul.task-list li input[type="checkbox"] {
 <p><code>/nix:/nix:ro</code> as a docker bind mount.</p>
 <p>And finally, you need to ensure the nix in docker is always using the daemon.</p>
 <p>The environment variable<code>NIX_REMOTE=daemon</code> needs to be set inside the container.</p>
+<section id="nix-installation-in-the-dockerfile" class="level2">
+<h2 class="anchored" data-anchor-id="nix-installation-in-the-dockerfile">Nix installation in the dockerfile</h2>
+<pre><code>RUN apt update -y &amp;&amp; apt install -y curl xz-utils \
+  &amp;&amp; curl -L https://nixos.org/nix/install -o nix-install.sh \
+  &amp;&amp; chmod +x nix-install.sh \
+  &amp;&amp; ./nix-install.sh --daemon --yes \
+  &amp;&amp; rm nix-install.sh \
+  &amp;&amp; apt autoremove -y &amp;&amp; apt clean -y</code></pre>
+<p>Put this somewhere in the dockerfile. I will likely have it at the beginning of the dockerfile for the core image generation.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
