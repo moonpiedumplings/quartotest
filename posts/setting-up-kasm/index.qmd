@@ -176,7 +176,7 @@ This works, but apparently, things in a swap file aren't deduplicated by uksmd. 
 Because I don't know about this, I made yet another [reddit post](https://www.reddit.com/r/linuxquestions/comments/10sqvuj/zram_or_zswap_for_use_with_ksm/) asking about this topic.
 
 ## zswap
-Status: Not fully written out yet.
+Status: Partially done, but dropped in favor of zswap
 
 ![](zswap.png)
 
@@ -200,15 +200,33 @@ status: experimenting
 
 [Building](https://www.kasmweb.com/docs/latest/how_to/building_images.html) and [maintaining](https://www.kasmweb.com/docs/latest/how_to/building_images.html) custom docker images
 
-I have forked the Dockerfile github repo that kasm uses to build their images.
+I have forked the Dockerfile github repos that kasm uses to build their images.
+
+
+[https://github.com/moonpiedumplings/nighthawk-workspaces-core-images](https://github.com/moonpiedumplings/nighthawk-workspaces-core-images)
+
 
 [https://github.com/moonpiedumplings/nighthawk-workspaces](https://github.com/moonpiedumplings/nighthawk-workspaces)
 
+
 Clone that, cd into it, and then run:
 
-`docker build . -f dockerfile-kasm-ubuntu-jammy-nighthawkcoders` which should build an image. However, I need to get nix and ubuntu to be completely scripted, and noninteractive. 
+`docker build . -f [The dockerfile you want]` which should build an image. However, I need to get nix and ubuntu to be completely scripted, and noninteractive. 
 
-The current image I am experimenting with is in that repo, dockerfile-kasm-ubuntu-jammy-nighthawkcoders.
+The current image I am experimenting with is in with both repos are the images with nighthawkcoders in the name.
+
+I will add the below somewhere to the beginning of the core images.
+
+```{sh}
+RUN apt update -y && apt install -y curl xz-utils \
+  && curl -L https://nixos.org/nix/install -o nix-install.sh \
+  && chmod +x nix-install.sh \
+  && ./nix-install.sh --daemon --yes \
+  && rm nix-install.sh \
+  && apt autoremove -y && apt clean -y
+```
+
+As of right now, I still need to find out how to chain dockerfiles together, to make builds speedy. Or, I could also upload the core image to the registry.
 
 # Nix remote store
 
