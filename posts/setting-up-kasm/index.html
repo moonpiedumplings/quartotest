@@ -266,7 +266,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="zswap" class="level2">
 <h2 class="anchored" data-anchor-id="zswap">zswap</h2>
-<p>Status: Not fully written out yet.</p>
+<p>Status: Partially done, but dropped in favor of zswap</p>
 <p><img src="zswap.png" class="img-fluid"></p>
 <p>zswap is disabled by default on my ubuntu virtual machine. Odd that both are disabled by default.</p>
 <p>Parameters for zswap can be found in <code>/sys/module/zswap/parameters/</code></p>
@@ -281,11 +281,20 @@ ul.task-list li input[type="checkbox"] {
 <h1>Customized kasm images</h1>
 <p>status: experimenting</p>
 <p><a href="https://www.kasmweb.com/docs/latest/how_to/building_images.html">Building</a> and <a href="https://www.kasmweb.com/docs/latest/how_to/building_images.html">maintaining</a> custom docker images</p>
-<p>I have forked the Dockerfile github repo that kasm uses to build their images.</p>
+<p>I have forked the Dockerfile github repos that kasm uses to build their images.</p>
+<p><a href="https://github.com/moonpiedumplings/nighthawk-workspaces-core-images">https://github.com/moonpiedumplings/nighthawk-workspaces-core-images</a></p>
 <p><a href="https://github.com/moonpiedumplings/nighthawk-workspaces">https://github.com/moonpiedumplings/nighthawk-workspaces</a></p>
 <p>Clone that, cd into it, and then run:</p>
-<p><code>docker build . -f dockerfile-kasm-ubuntu-jammy-nighthawkcoders</code> which should build an image. However, I need to get nix and ubuntu to be completely scripted, and noninteractive.</p>
-<p>The current image I am experimenting with is in that repo, dockerfile-kasm-ubuntu-jammy-nighthawkcoders.</p>
+<p><code>docker build . -f [The dockerfile you want]</code> which should build an image. However, I need to get nix and ubuntu to be completely scripted, and noninteractive.</p>
+<p>The current image I am experimenting with is in with both repos are the images with nighthawkcoders in the name.</p>
+<p>I will add the below somewhere to the beginning of the core images.</p>
+<pre class="{sh}"><code>RUN apt update -y &amp;&amp; apt install -y curl xz-utils \
+  &amp;&amp; curl -L https://nixos.org/nix/install -o nix-install.sh \
+  &amp;&amp; chmod +x nix-install.sh \
+  &amp;&amp; ./nix-install.sh --daemon --yes \
+  &amp;&amp; rm nix-install.sh \
+  &amp;&amp; apt autoremove -y &amp;&amp; apt clean -y</code></pre>
+<p>As of right now, I still need to find out how to chain dockerfiles together, to make builds speedy. Or, I could also upload the core image to the registry.</p>
 </section>
 <section id="nix-remote-store" class="level1">
 <h1>Nix remote store</h1>
