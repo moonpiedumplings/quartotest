@@ -165,6 +165,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Use kernel same page merging (ksm) to deduplicate ram</li>
 <li>Use zram to optimize create compressed swap device in ram, and use that instead of zswap, because it does not touch the disk at all, enabling a performance boost</li>
 <li>Use VM overcommit or something else to make kasm launch when it currently thinks it doesn’t have enough ram.</li>
+<li>Set sysctl parameters for the features I want on boot</li>
 </ul></li>
 </ul>
 <section id="step-1-install-and-run-kasm" class="level1">
@@ -209,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="compiling-uksmd" class="level3">
 <h3 class="anchored" data-anchor-id="compiling-uksmd">Compiling UKSMD</h3>
 <p>Steps to do so on Ubuntu 22 (you must have switched kernels):</p>
-<p><code>sudo apt-get install debhelper build-essential dh-make meson pkg-conf libprocps-dev libcap-ng-dev</code></p>
+<p><code>sudo apt-get install debhelper build-essential dh-make meson pkg-config libprocps-dev libcap-ng-dev</code> # I think it can either be pkg-conf or pkg-config</p>
 <p><code>git clone https://github.com/insilications/uksmd-clr</code></p>
 <p>Rename the directory to be something compatible with below steps, like uksmd-1 before you cd into it.</p>
 <p>Follow steps from <a href="https://blog.devgenius.io/how-to-build-debian-packages-from-meson-ninja-d1c28b60e709">here</a></p>
@@ -226,6 +227,14 @@ ul.task-list li input[type="checkbox"] {
 <p>status: complete</p>
 <p><code>curl 'https://liquorix.net/install-liquorix.sh' | sudo bash</code> from the <a href="https://liquorix.net/">liqourix kernel website</a></p>
 <p>I checked if liqourix has the necessary features, and yes it does.</p>
+<section id="setting-the-default-kernel" class="level5">
+<h5 class="anchored" data-anchor-id="setting-the-default-kernel">Setting the Default Kernel</h5>
+<p><a href="https://www.reddit.com/r/linuxquestions/comments/110a2xh/how_can_i_set_the_default_kernel_for_grub_in_a/">Reddit post where I ask how to set default kernel in grub</a></p>
+<p>On that reddit post, I talk about some flawed solutions I have found. Mainly they don’t seem to be truly persistent, not surviving kernel updates, updates of grub, or installation of new kernels. This endeavor is pretty risky, because a broken grub means we will have no choice but to delete our aws and start over. I need a 100% solution.</p>
+<p>After grilling chatgpt through 3 wrong answers, which chatgpt presented with the absolute confidence that an AI has, it finally presented me a solution that seems like it doesn’t have a risk of breaking the AWS system we are working on.</p>
+<p><img src="defaultgrub.png" class="img-fluid"></p>
+<p>I need to make some adjustments, but I should be able to select for the term “liqourix” while removing the term “recovery” to select the correct kernel (but not the recovery kernel) with complete consistency even through kernel updates, grub updates, or installation of new kernels.</p>
+</section>
 </section>
 <section id="weaker-alternative-ksm_preload" class="level3">
 <h3 class="anchored" data-anchor-id="weaker-alternative-ksm_preload">Weaker alternative: ksm_preload</h3>
@@ -236,7 +245,7 @@ ul.task-list li input[type="checkbox"] {
 <p>I added <code>LD_PRELOAD=/usr/local/share/ksm_preload/libksm_preload.so</code> to the file <code>/etc/environment</code></p>
 <p>I haven’t tested the above, but I saw very minimal space saved, only about 0.11 **megabytes* saved, on my desktop. Tests on my sample server are similarly discouraging:</p>
 <p><img src="ksmpreloadubuntu.png" class="img-fluid"></p>
-<p>The above was with 2 kasm sessions open. Nearly useless. Still, every little bit counts, so this will be installed as well. I might package this eventually.</p>
+<p>The above was with 2 kasm sessions open. Nearly useless. In addition to that, uksmd seems to make this completely obsolete.</p>
 </section>
 </section>
 </section>
@@ -276,6 +285,11 @@ ul.task-list li input[type="checkbox"] {
 <p>See above, my comments about zswap’s memory deduplication feature.</p>
 <p><img src="zswapmemdedupe.png" class="img-fluid"></p>
 </section>
+</section>
+<section id="setting-kernelsysctl-parameters-on-boot" class="level1">
+<h1>Setting Kernel/Sysctl Parameters on boot</h1>
+<p>Status: researching</p>
+<p><a href="https://wiki.archlinux.org/title/Sysctl#Configuration">Archwiki article</a></p>
 </section>
 <section id="customized-kasm-images" class="level1">
 <h1>Customized kasm images</h1>
