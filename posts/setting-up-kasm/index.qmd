@@ -30,6 +30,7 @@ Roadblocks/steps:
     * Use kernel same page merging (ksm) to deduplicate ram
     * Use zram to optimize create  compressed swap device in ram, and use that instead of zswap, because it does not touch the disk at all, enabling a performance boost
     * Use VM overcommit or something else to make kasm launch when it currently thinks it doesn't have enough ram. 
+    * Set sysctl parameters for the features I want on boot
 
 
 # Step 1: Install and run kasm:
@@ -87,7 +88,7 @@ To install uksmd on ubuntu, you need to switch kernels.
 
 Steps to do so on Ubuntu 22 (you must have switched kernels):
 
-`sudo apt-get install debhelper build-essential dh-make meson pkg-conf libprocps-dev libcap-ng-dev`
+`sudo apt-get install debhelper build-essential dh-make meson pkg-config libprocps-dev libcap-ng-dev` # I think it can either be pkg-conf or pkg-config
 
 `git clone https://github.com/insilications/uksmd-clr`
 
@@ -119,6 +120,18 @@ status: complete
 
 I checked if liqourix has the necessary features, and yes it does. 
 
+##### Setting the Default Kernel
+
+[Reddit post where I ask how to set default kernel in grub](https://www.reddit.com/r/linuxquestions/comments/110a2xh/how_can_i_set_the_default_kernel_for_grub_in_a/)
+
+On that reddit post, I talk about some flawed solutions I have found. Mainly they don't seem to be truly persistent, not surviving kernel updates, updates of grub, or installation of new kernels. This endeavor is pretty risky, because a broken grub means we will have no choice but to delete our aws and start over. I need a 100% solution.
+
+After grilling chatgpt through 3 wrong answers, which chatgpt presented with the absolute confidence that an AI has, it finally presented me a solution that seems like it doesn't have a risk of breaking the AWS system we are working on. 
+
+![](defaultgrub.png)
+
+I need to make some adjustments, but I should be able to select for the term "liqourix" while removing the term "recovery" to select the correct kernel (but not the recovery kernel) with complete consistency even through kernel updates, grub updates, or installation of new kernels.
+
 ### Weaker alternative: ksm_preload
 
 `git clone https://github.com/binfess/ksm_preload`
@@ -135,7 +148,7 @@ I haven't tested the above, but I saw very minimal space saved, only about 0.11 
 
 ![](ksmpreloadubuntu.png)
 
-The above was with 2 kasm sessions open. Nearly useless. Still, every little bit counts, so this will be installed as well. I might package this eventually.
+The above was with 2 kasm sessions open. Nearly useless. In addition to that, uksmd seems to make this completely obsolete.
 
 # Memory Overcommital
 status: complete
@@ -193,6 +206,11 @@ I will need to tinker to see what is the most optimized zswap setup
 See above, my comments about zswap's memory deduplication feature.
 
 ![](zswapmemdedupe.png)
+
+# Setting Kernel/Sysctl Parameters on boot
+Status: researching
+
+[Archwiki article](https://wiki.archlinux.org/title/Sysctl#Configuration)
 
 
 # Customized kasm images
