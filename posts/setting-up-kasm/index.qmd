@@ -136,7 +136,15 @@ I searched around for how to do this, but I eventually gave up and asked chatgpt
 
 ![](chatgptgrubhelp2.png)
 
-This should work, I will test on a virtual machine soon. 
+My 20_linux_xen is not the same as what chatgpt wants, so I asked again, and it gave me this code to put in /etc/default/grub:
+
+```
+# Set the default menu entry based on the title of the menu entry
+# that contains the word "liqourix" while ignoring the term "recovery"
+GRUB_DEFAULT="$(grep -E -o '^menuentry.*liqourix.*' /boot/grub/grub.cfg | grep -v 'recovery' | head -1 | awk -F\' '{print $2}')"
+```
+
+I will test this in a virtual machine.
 
 ### Weaker alternative: ksm_preload
 
