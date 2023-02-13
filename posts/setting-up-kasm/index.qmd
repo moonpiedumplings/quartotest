@@ -132,6 +132,12 @@ After grilling chatgpt through 3 wrong answers, which chatgpt presented with the
 
 I need to make some adjustments, but I should be able to select for the term "liqourix" while removing the term "recovery" to select the correct kernel (but not the recovery kernel) with complete consistency even through kernel updates, grub updates, or installation of new kernels.
 
+I searched around for how to do this, but I eventually gave up and asked chatgpt again, getting this:
+
+![](chatgptgrubhelp2.png)
+
+This should work, I will test on a virtual machine soon. 
+
 ### Weaker alternative: ksm_preload
 
 `git clone https://github.com/binfess/ksm_preload`
