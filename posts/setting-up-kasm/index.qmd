@@ -144,6 +144,8 @@ My 20_linux_xen is not the same as what chatgpt wants, so I asked again, and it 
 GRUB_DEFAULT="$(grep -E -o '^menuentry.*liqourix.*' /boot/grub/grub.cfg | grep -v 'recovery' | head -1 | awk -F\' '{print $2}')"
 ```
 
+`grep -E -o '^menuentry.*liqourix.*' /boot/grub/grub.cfg | grep -v 'recovery' | head -1 | awk -F\' '{print $2}'`
+
 I will test this in a virtual machine.
 
 ### Weaker alternative: ksm_preload
