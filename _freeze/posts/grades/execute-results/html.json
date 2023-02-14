@@ -1,9 +1,9 @@
 {
-  "hash": "073602009b39cd66aeb58823e5aefd38",
+  "hash": "6a905ecc1ea7bf852dc0d6794fed17d7",
   "result": {
-    "markdown": "---\ntitle: Grades and Vocab\nformat:\n  html:\n    code-fold: true\n---\n\n| Event      | Grade | Link | \n| ----------- | ----------- |\n| 1-2      | never got grades, I would probably say 0.8 |\n| 3-4   | never got grades , I would probably say 0.8|\n| 5-7 | 0.95 | [This is probably not the right one](https://samitpoojary.github.io/FASTPAGES/collegeboard/project/grades/2022/12/02/grading-students.html) |\n| 9-11 | 0.8 | [Not in](https://docs.google.com/document/d/1VKmNS6Z7pJaQaBFlXKcEhB9D5B4ttGKWZOPT8B0f1W4/edit) |\n| 8 - 10 | 1 |  [fixed](https://docs.google.com/document/d/1d9sziRVrooF21O15upa3sisveOPGUUIW6yE7x0l64no/edit) |\n| 12 - 13 | 0.8 | [Actually me](https://docs.google.com/document/d/1rWL0BExAP5NnV5BXUukjnGqLv2DPwv6N65WtDg2DoDc/edit) |\n| 14 - 15 | 0.85 | [Actually me](https://docs.google.com/document/d/1VKmNS6Z7pJaQaBFlXKcEhB9D5B4ttGKWZOPT8B0f1W4/edit) |\n\n",
+    "markdown": "---\ntitle: Grades and Vocab\nformat:\n  html:\n    code-fold: true\nexecute:\n  freeze: auto\n---\n\n| Event      | Grade | Link | \n| ----------- | ----------- |\n| 1-2      | never got grades, I would probably say 0.8 |\n| 3-4   | never got grades , I would probably say 0.8|\n| 5-7 | 0.95 | [This is probably not the right one](https://samitpoojary.github.io/FASTPAGES/collegeboard/project/grades/2022/12/02/grading-students.html) |\n| 9-11 | 0.8 | [Not in](https://docs.google.com/document/d/1VKmNS6Z7pJaQaBFlXKcEhB9D5B4ttGKWZOPT8B0f1W4/edit) |\n| 8 - 10 | 1 |  [fixed](https://docs.google.com/document/d/1d9sziRVrooF21O15upa3sisveOPGUUIW6yE7x0l64no/edit) |\n| 12 - 13 | 0.8 | [Actually me](https://docs.google.com/document/d/1rWL0BExAP5NnV5BXUukjnGqLv2DPwv6N65WtDg2DoDc/edit) |\n| 14 - 15 | 0.85 | [Actually me](https://docs.google.com/document/d/1VKmNS6Z7pJaQaBFlXKcEhB9D5B4ttGKWZOPT8B0f1W4/edit) |\n\n",
     "supporting": [
-      "grades_files"
+      "grades_files/figure-html"
     ],
     "filters": [],
     "includes": {}

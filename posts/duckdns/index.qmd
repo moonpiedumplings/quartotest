@@ -10,7 +10,7 @@ execute:
 
 People can't register for freenom consistently, and it can take time to get a domain from the one's we have as a class. Duckdns allows people to create their own free domain, extremely easily, and nearly instantly.
 
-# Registration and Setupng
+# Registration and Setup
 ![](register.png)
 
 This is the registration page. I really like duckdns because you only need a github account to login, which we already have.
