@@ -2,6 +2,8 @@
 title: "Kasmweb setup"
 date: "2023-1-26"
 categories: [nix, linux, devops, ubuntu, kasm]
+execute:
+  freeze: auto
 ---
 
 School chromebooks cannot be used for computer science. Due to a content blocking setup that is more restrictive than the Great Firewall of China, school chromebooks cannot install the necessary digital tools for software development. 

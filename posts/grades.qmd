@@ -4,6 +4,8 @@ format:
   html:
     code-fold: true
 jupyter: python3
+execute:
+  freeze: auto
 ---
 
 | Event      | Grade | Link | 

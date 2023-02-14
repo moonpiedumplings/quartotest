@@ -2,6 +2,8 @@
 title: "How to get a subdomain from duckdns"
 date: "2023-2-14"
 categories: [linux, devops]
+execute:
+  freeze: auto
 ---
 
 # Why?
