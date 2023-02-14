@@ -240,6 +240,7 @@ ul.task-list li input[type="checkbox"] {
 <pre><code># Set the default menu entry based on the title of the menu entry
 # that contains the word "liqourix" while ignoring the term "recovery"
 GRUB_DEFAULT="$(grep -E -o '^menuentry.*liqourix.*' /boot/grub/grub.cfg | grep -v 'recovery' | head -1 | awk -F\' '{print $2}')"</code></pre>
+<p><code>grep -E -o '^menuentry.*liqourix.*' /boot/grub/grub.cfg | grep -v 'recovery' | head -1 | awk -F\' '{print $2}'</code></p>
 <p>I will test this in a virtual machine.</p>
 </section>
 </section>
