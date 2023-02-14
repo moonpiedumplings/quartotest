@@ -236,6 +236,11 @@ ul.task-list li input[type="checkbox"] {
 <p>I need to make some adjustments, but I should be able to select for the term “liqourix” while removing the term “recovery” to select the correct kernel (but not the recovery kernel) with complete consistency even through kernel updates, grub updates, or installation of new kernels.</p>
 <p>I searched around for how to do this, but I eventually gave up and asked chatgpt again, getting this:</p>
 <p><img src="chatgptgrubhelp2.png" class="img-fluid"></p>
+<p>My 20_linux_xen is not the same as what chatgpt wants, so I asked again, and it gave me this code to put in /etc/default/grub:</p>
+<pre><code># Set the default menu entry based on the title of the menu entry
+# that contains the word "liqourix" while ignoring the term "recovery"
+GRUB_DEFAULT="$(grep -E -o '^menuentry.*liqourix.*' /boot/grub/grub.cfg | grep -v 'recovery' | head -1 | awk -F\' '{print $2}')"</code></pre>
+<p>I will test this in a virtual machine.</p>
 </section>
 </section>
 <section id="weaker-alternative-ksm_preload" class="level3">
