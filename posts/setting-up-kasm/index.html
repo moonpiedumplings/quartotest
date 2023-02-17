@@ -301,7 +301,7 @@ GRUB_DEFAULT="$(grep -E -o '^menuentry.*liqourix.*' /boot/grub/grub.cfg | grep -
 </section>
 <section id="customized-kasm-images" class="level1">
 <h1>Customized kasm images</h1>
-<p>status: experimenting</p>
+<p>status: Partially complete, needs testing</p>
 <p><a href="https://www.kasmweb.com/docs/latest/how_to/building_images.html">Building</a> and <a href="https://www.kasmweb.com/docs/latest/how_to/building_images.html">maintaining</a> custom docker images</p>
 <p>I have forked the Dockerfile github repos that kasm uses to build their images.</p>
 <p><a href="https://github.com/moonpiedumplings/nighthawk-workspaces-core-images">https://github.com/moonpiedumplings/nighthawk-workspaces-core-images</a></p>
@@ -317,6 +317,8 @@ GRUB_DEFAULT="$(grep -E -o '^menuentry.*liqourix.*' /boot/grub/grub.cfg | grep -
   &amp;&amp; rm nix-install.sh \
   &amp;&amp; apt autoremove -y &amp;&amp; apt clean -y</code></pre>
 <p>As of right now, I still need to find out how to chain dockerfiles together, to make builds speedy. Or, I could also upload the core image to the registry.</p>
+<p>I did upload the core image to the registry: https://hub.docker.com/repository/docker/moonpiedumplings/core-ubuntu-jammy-nighthawkcoders/general</p>
+<p>This will be the nighthawkcoders docker core image. I still need to build and push the desktop images.</p>
 </section>
 <section id="nix-remote-store" class="level1">
 <h1>Nix remote store</h1>
