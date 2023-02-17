@@ -232,7 +232,7 @@ Status: researching
 
 
 # Customized kasm images
-status: experimenting
+status: Partially complete, needs testing
 
 [Building](https://www.kasmweb.com/docs/latest/how_to/building_images.html) and [maintaining](https://www.kasmweb.com/docs/latest/how_to/building_images.html) custom docker images
 
@@ -263,6 +263,10 @@ RUN apt update -y && apt install -y curl xz-utils \
 ```
 
 As of right now, I still need to find out how to chain dockerfiles together, to make builds speedy. Or, I could also upload the core image to the registry.
+
+I did upload the core image to the registry: https://hub.docker.com/repository/docker/moonpiedumplings/core-ubuntu-jammy-nighthawkcoders/general
+
+This will be the nighthawkcoders docker core image. I still need to build and push the desktop images. 
 
 # Nix remote store
 
