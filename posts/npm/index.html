@@ -171,7 +171,7 @@ networks:
 <p><code>docker-compose up -d</code> and you’re good to go. It should be noted that you need to have ports 443 and 80 unused by anything else, like Nginx proper. So if you are running nginx, stop it first before you up NPM.</p>
 <p>NPM does need to have port 81 accessible.</p>
 <p>You can either use a reverse proxy, or open up the port to be accessible from the internet.</p>
-<p>If you the port to be accessible from the internet, you might have a firewall of some kind, so just open that. And if you are using one of the big cloud providers (aws, azure, oracle), then you also might have to configure security control groups, as that acts as an extra firewall for those server types. See my cockpit guide on how to do this with AWS.</p>
+<p>If you want the port to be accessible from the internet, you might have a firewall of some kind, so just open that. And if you are using one of the big cloud providers (aws, azure, oracle), then you also might have to configure security control groups, as that acts as an extra firewall for those server types. See my cockpit guide on how to do this with AWS.</p>
 <p>If you want to do a reverse proxy, just use npm to do it: Use proxy post to connect http://npm_app_1:81 to a domain name.</p>
 <p>Now, to configure npm, just access the web interface at https://[domainname/ip]:81</p>
 </section>
