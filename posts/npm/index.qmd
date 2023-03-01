@@ -50,7 +50,7 @@ NPM does need to have port 81 accessible.
 
 You can either use a reverse proxy, or open up the port to be accessible from the internet.
 
-If want you the port to be accessible from the internet, you might have a firewall of some kind, so just open that. And if you are using one of the big cloud providers (aws, azure, oracle), then you also might have to configure security control groups, as that acts as an extra firewall for those server types. See my cockpit guide on how to do this with AWS. 
+If you want the port to be accessible from the internet, you might have a firewall of some kind, so just open that. And if you are using one of the big cloud providers (aws, azure, oracle), then you also might have to configure security control groups, as that acts as an extra firewall for those server types. See my cockpit guide on how to do this with AWS. 
 
 If you want to do a reverse proxy, just use npm to do it: Use proxy post to connect http://npm_app_1:81 to a domain name.
 
