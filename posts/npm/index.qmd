@@ -44,6 +44,8 @@ networks:
 
 ```
 
+`docker-compose up -d` and you're good to go. It should be noted that you need to have ports 443 and 80 unused by anything else, like Nginx proper. So if you are running nginx, stop it first before you up NPM.
+
 NPM does need to have port 81 accessible. 
 
 You can either use a reverse proxy, or open up the port to be accessible from the internet.
