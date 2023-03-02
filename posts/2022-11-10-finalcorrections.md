@@ -11,6 +11,8 @@ tags:
 - Python
 title: Final Exam corrections
 toc: true
+execute:
+  freeze: auto
 
 ---
 

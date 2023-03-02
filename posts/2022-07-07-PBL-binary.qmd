@@ -17,6 +17,8 @@ title: Binary Math
 type: pbl
 week: 13
 format: html
+execute:
+  freeze: auto
 
 ---
 

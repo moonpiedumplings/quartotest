@@ -6,7 +6,8 @@ toc: true
 tags:
 - javascript
 - quarto
-
+execute:
+  freeze: auto
 ---
 
 

@@ -10,6 +10,8 @@ tags:
 - Linux
 title: Night at the Meseum!
 toc: true
+execute:
+  freeze: auto
 
 ---
 

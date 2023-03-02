@@ -6,6 +6,8 @@ permalink: /frontend/calculator
 image: /images/calculator.png
 categories: [2.C, C7.0]
 tags: [javascript, css. dom, getElementID]
+execute:
+  freeze: auto
 ---
 
 

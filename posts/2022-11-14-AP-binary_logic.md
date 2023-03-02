@@ -16,6 +16,8 @@ title: Binary Logic and Abstraction
 toc: true
 type: ap
 week: 13
+execute:
+  freeze: auto
 
 ---
 

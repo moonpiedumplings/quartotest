@@ -6,6 +6,8 @@ tags:
 - ruby
 - jekyll
 toc: true
+execute:
+  freeze: auto
 
 ---
 
