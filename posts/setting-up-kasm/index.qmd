@@ -232,7 +232,7 @@ Status: researching
 
 
 # Customized kasm images
-status: Partially complete, needs testing
+status: Complete
 
 [Building](https://www.kasmweb.com/docs/latest/how_to/building_images.html) and [maintaining](https://www.kasmweb.com/docs/latest/how_to/building_images.html) custom docker images
 
@@ -247,26 +247,39 @@ I have forked the Dockerfile github repos that kasm uses to build their images.
 
 Clone that, cd into it, and then run:
 
-`docker build . -f [The dockerfile you want]` which should build an image. However, I need to get nix and ubuntu to be completely scripted, and noninteractive. 
+`docker build . -f [The dockerfile you want]` which should build an image.  
 
 The current image I am experimenting with is in with both repos are the images with nighthawkcoders in the name.
 
-I will add the below somewhere to the beginning of the core images.
+What worked was:
 
-```{sh}
-RUN apt update -y && apt install -y curl xz-utils \
-  && curl -L https://nixos.org/nix/install -o nix-install.sh \
-  && chmod +x nix-install.sh \
-  && ./nix-install.sh --daemon --yes \
-  && rm nix-install.sh \
-  && apt autoremove -y && apt clean -y
-```
+`RUN apt update && apt install nix-bin`
 
-As of right now, I still need to find out how to chain dockerfiles together, to make builds speedy. Or, I could also upload the core image to the registry.
+You can add that to any of the ubuntu images.
 
-I did upload the core image to the registry: https://hub.docker.com/repository/docker/moonpiedumplings/core-ubuntu-jammy-nighthawkcoders/general
+This command does not automatically create the nix store, but it can be made accessible through a docker volume mount.
 
-This will be the nighthawkcoders docker core image. I still need to build and push the desktop images. 
+The current working docker image can be found on docker at moonpiedumplings/kasm-ubuntu-jammy-nighthawkcoders:0.2. To use this, I recommend just cloning the existing ubuntu jammy image, and replacing the docker image with out nighthawkcoders one. 
+
+![](dockerimage.png)
+
+Then, you have to do the changes below to get nix working.
+
+
+# Persistent profiles: 
+
+Status: complete
+
+Guides on Kasm docs:
+
+[In depth guide + youtube video](https://www.kasmweb.com/docs/latest/guide/persistent_data/persistent_profiles.html)
+
+[Shorter quick how-to](https://www.kasmweb.com/docs/latest/how_to/persistent_profiles.html)
+
+In the  workspace configuration, set persistent profile path to `/mnt/kasm/nighthawkcoders/{username}`
+
+![](persistentprofile.png)
+
 
 # Nix remote store
 
@@ -282,23 +295,42 @@ Then stop the container, and restart it with a correctly mounted nix store:
 
 `/nix:/nix:ro` as a docker bind mount.
 
+To use this docker mount with kasm, you need to use volume mapping workspace setting:
+
+```{json}
+{
+  "/nix": {
+    "bind": "/nix",
+    "mode": "ro",
+    "uid": 1000,
+    "gid": 1000,
+    "required": true,
+    "skip_check": false
+  }
+}
+```
+
+![](volumemappings.png)
+
 And finally, you need to ensure the nix in docker is always using the daemon.
 
 The environment variable`NIX_REMOTE=daemon` needs to be set inside the container.
 
-## Nix installation in the dockerfile 
+In addition to this, two other environment variables must be set, LD_LIBRARY_PATH (default breaks nix), and LC_ALL must be unset to suppress a warning that doesn't interfere with the usage of nix but is really annoying.
 
+You can set the necessary environment variables using kasm docker run config override workspace setting:
+
+```{json}
+{
+  "environment": {
+    "NIX_REMOTE": "daemon",
+    "LD_LIBRARY_PATH": "/opt/libjpeg-turbo:usr/local/nvidia/lib:usr/local/nvidia/lib64",
+    "LC_ALL": ""
+  }
+}
 ```
-RUN apt update -y && apt install -y curl xz-utils \
-  && curl -L https://nixos.org/nix/install -o nix-install.sh \
-  && chmod +x nix-install.sh \
-  && ./nix-install.sh --daemon --yes \
-  && rm nix-install.sh \
-  && apt autoremove -y && apt clean -y
-```
 
-Put this somewhere in the dockerfile. I will likely have it at the beginning of the dockerfile for the core image generation.
-
+![](envvars.png)
 
 
 
