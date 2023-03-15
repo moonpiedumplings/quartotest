@@ -311,11 +311,10 @@ GRUB_DEFAULT="$(grep -E -o '^menuentry.*liqourix.*' /boot/grub/grub.cfg | grep -
 <p>The current image I am experimenting with is in with both repos are the images with nighthawkcoders in the name.</p>
 <p>What worked was:</p>
 <p><code>RUN apt update &amp;&amp; apt install nix-bin</code></p>
-<p>You can add that to any of the ubuntu images.</p>
-<p>This command does not automatically create the nix store, but it can be made accessible through a docker volume mount.</p>
-<p>The current working docker image can be found on docker at moonpiedumplings/kasm-ubuntu-jammy-nighthawkcoders:0.5. To use this, I recommend just cloning the existing ubuntu jammy image, and replacing the docker image with out nighthawkcoders one.</p>
+<p>You can add that to any of the ubuntu images, but the image I am using is in my nighthawk-workspaces repo, called dockerfile-kasm-ubuntu-jammy-nighthawkcoders.</p>
+<p>I pushed it to the docker hub, and it can be found on docker at moonpiedumplings/kasm-ubuntu-jammy-nighthawkcoders:0.5. To use this, I recommend just cloning the existing ubuntu jammy image, and replacing the docker image with our nighthawkcoders one.</p>
 <p><img src="dockerimage.png" class="img-fluid"></p>
-<p>Then, you have to adjust the kasm workspaces settings, as described below, to get nix working properly.</p>
+<p>Then, you have to adjust the kasm workspaces settings, as described below, to get nix working properly, like mounting the nix store. The command listed does not create the nix store.</p>
 </section>
 <section id="nix-remote-store" class="level1">
 <h1>Nix remote store</h1>
