@@ -255,15 +255,13 @@ What worked was:
 
 `RUN apt update && apt install nix-bin`
 
-You can add that to any of the ubuntu images.
+You can add that to any of the ubuntu images, but the image I am using is in my nighthawk-workspaces repo, called dockerfile-kasm-ubuntu-jammy-nighthawkcoders.
 
-This command does not automatically create the nix store, but it can be made accessible through a docker volume mount.
-
-The current working docker image can be found on docker at moonpiedumplings/kasm-ubuntu-jammy-nighthawkcoders:0.5. To use this, I recommend just cloning the existing ubuntu jammy image, and replacing the docker image with out nighthawkcoders one. 
+I pushed it to the docker hub, and it can be found on docker at moonpiedumplings/kasm-ubuntu-jammy-nighthawkcoders:0.5. To use this, I recommend just cloning the existing ubuntu jammy image, and replacing the docker image with our nighthawkcoders one. 
 
 ![](dockerimage.png)
 
-Then, you have to adjust the kasm workspaces settings, as described below, to get nix working properly.
+Then, you have to adjust the kasm workspaces settings, as described below, to get nix working properly, like mounting the nix store. The command listed does not create the nix store.
 
 
 # Nix remote store
