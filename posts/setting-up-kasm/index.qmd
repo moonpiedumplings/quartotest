@@ -1,4 +1,5 @@
 ---
+
 title: "Kasmweb setup"
 date: "2023-1-26"
 categories: [nix, linux, devops, ubuntu, kasm]
@@ -124,6 +125,8 @@ I checked if liqourix has the necessary features, and yes it does.
 
 ##### Setting the Default Kernel
 
+status: researching
+
 [Reddit post where I ask how to set default kernel in grub](https://www.reddit.com/r/linuxquestions/comments/110a2xh/how_can_i_set_the_default_kernel_for_grub_in_a/)
 
 On that reddit post, I talk about some flawed solutions I have found. Mainly they don't seem to be truly persistent, not surviving kernel updates, updates of grub, or installation of new kernels. This endeavor is pretty risky, because a broken grub means we will have no choice but to delete our aws and start over. I need a 100% solution.
@@ -151,6 +154,8 @@ GRUB_DEFAULT="$(grep -E -o '^menuentry.*liqourix.*' /boot/grub/grub.cfg | grep -
 I will test this in a virtual machine.
 
 ### Weaker alternative: ksm_preload
+
+status: won't be used
 
 `git clone https://github.com/binfess/ksm_preload`
 
