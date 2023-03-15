@@ -13,11 +13,7 @@ Currently, you **must** have your own device to be able to participate in comput
 
 Although getting the chromebooks unlocked to be able to install software is a complex, potentially legal problem, there are alternatives. 
 
-Kasm is a remote desktop software. It runs a computer on a remote server, that can be accessed through a browser, or a chromebook. Because there are no restrictions on what can be installed when using Kasm, it makes it possible to use development tools on a chromebook.
-
-Below are my notes and documenation on setting kasm up on a server, taking steps to optimize it for memory usage, allowing people to run more code on less servers, saving money. Currently, Kasm enterprise charges 10 USD per person per month. With the modified steps that I am creating, I anticipate it possible to receive kasm at 5-8 USD per month per 5 people. For example, webdock.io charges 6.29 USD per month for a VPS with 5 GB of ram, which I believe 1 GB of ram more than what I could fit the maximum users of a single community kasm instance on, 5.
-
-With such a price differential, kasm will be much, much more affordable to lower income communities and schools. Combined with programs to put chromebooks in the hands of students, computer science will be made more accessible to all.
+Kasm is a remote desktop software. It runs a computer on a remote server, that can be accessed through a browser, or a chromebook. Because there are no restrictions on what can be installed when using Kasm, it makes it possible to use development tools on a chromebook. This blog post is me optimizing kasm so that it is more resource efficient, and also enabling software development tools to be easily installed on it.
 
 Roadblocks/steps: 
 
@@ -264,35 +260,20 @@ You can add that to any of the ubuntu images.
 
 This command does not automatically create the nix store, but it can be made accessible through a docker volume mount.
 
-The current working docker image can be found on docker at moonpiedumplings/kasm-ubuntu-jammy-nighthawkcoders:0.2. To use this, I recommend just cloning the existing ubuntu jammy image, and replacing the docker image with out nighthawkcoders one. 
+The current working docker image can be found on docker at moonpiedumplings/kasm-ubuntu-jammy-nighthawkcoders:0.5. To use this, I recommend just cloning the existing ubuntu jammy image, and replacing the docker image with out nighthawkcoders one. 
 
 ![](dockerimage.png)
 
-Then, you have to do the changes below to get nix working.
-
-
-# Persistent profiles: 
-
-Status: complete
-
-Guides on Kasm docs:
-
-[In depth guide + youtube video](https://www.kasmweb.com/docs/latest/guide/persistent_data/persistent_profiles.html)
-
-[Shorter quick how-to](https://www.kasmweb.com/docs/latest/how_to/persistent_profiles.html)
-
-In the  workspace configuration, set persistent profile path to `/mnt/kasm/nighthawkcoders/{username}`
-
-![](persistentprofile.png)
+Then, you have to adjust the kasm workspaces settings, as described below, to get nix working properly.
 
 
 # Nix remote store
 
-Status: complete, but needs to be built into the customized kasm images.
+Status: complete, all the way
 
 I've created a [reddit post](https://www.reddit.com/r/NixOS/comments/10q9db1/shared_nix_store_between_docker_containers/) relating to this topic. I've received several replies, but I still struggled, so I ended up asking on discord (ugh) for help, where I instantly received the answer to my problem. I've updated my reddit post, editing it with the solution.
 
-To get this working, install nix using a multi user installation on the host, and on the docker container:
+To get this working, install nix using a multi user installation on the host:
 
 `sh <(curl -L https://nixos.org/nix/install) --daemon`
 
@@ -337,6 +318,20 @@ You can set the necessary environment variables using kasm docker run config ove
 
 ![](envvars.png)
 
+
+# Persistent profiles: 
+
+Status: complete
+
+Guides on Kasm docs:
+
+[In depth guide + youtube video](https://www.kasmweb.com/docs/latest/guide/persistent_data/persistent_profiles.html)
+
+[Shorter quick how-to](https://www.kasmweb.com/docs/latest/how_to/persistent_profiles.html)
+
+In the  workspace configuration, set persistent profile path to `/mnt/kasm/nighthawkcoders/{username}`
+
+![](persistentprofile.png)
 
 
 
