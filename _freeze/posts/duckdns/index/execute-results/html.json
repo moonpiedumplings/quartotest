@@ -1,0 +1,11 @@
+{
+  "hash": "706cf135887ec13fea95e961c5e8ce1c",
+  "result": {
+    "markdown": "---\ntitle: \"How to get a subdomain from duckdns\"\ndate: \"2023-2-14\"\ncategories: [linux, devops]\nexecute:\n  freeze: auto\n---\n\n# Why?\n\nPeople can't register for freenom consistently, and it can take time to get a domain from the one's we have as a class. Duckdns allows people to create their own free domain, extremely easily, and nearly instantly.\n\n# Registration and Setup\n![](register.png)\n\nThis is the registration page. I really like duckdns because you only need a github account to login, which we already have.\n\n![](login.png)\n\nAfter you login, you will see this. You can get your own subdomain, and then set your ip address manually.\n\nTo find the ip address of your server, run this command on your AWS server:\n\n`curl ifconfig.me`\n\nIf the command curl is not found, install it using apt.\n\nThen, you can manually input your server's ip address into the duckdns website.\n\nIn your nginx confiuration file, make sure you set your nginx configuration file to be your domain name.\n\n\n```{t}\nserver {\n    listen 80;\n    listen [::]:80;\n    server_name [yoursubdomain].duckdns.org;\n\n    location / {\n        proxy_pass http://localhost:8087; # Make sure this matches the port your docker-compose.yml is set to\n        # Simple requests\n        if ($request_method ~* \"(GET|POST)\") {\n                add_header \"Access-Control-Allow-Origin\"  *;\n        }\n\n        # Preflight requests\n        if ($request_method = OPTIONS ) {\n                add_header \"Access-Control-Allow-Origin\"  *;\n                add_header \"Access-Control-Allow-Methods\" \"GET, POST, OPTIONS, HEAD\";\n                add_header \"Access-Control-Allow-Headers\" \"Authorization, Origin, X-Requested-With, Content-Type, Accept\";\n                return 200;\n        }\n    }\n}\n```\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
