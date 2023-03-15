@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-01-26">
 
-<title>Quartotest – index</title>
+<title>Quartotest - Kasmweb setup</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -100,7 +101,36 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Kasmweb setup</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">nix</div>
+                <div class="quarto-category">linux</div>
+                <div class="quarto-category">devops</div>
+                <div class="quarto-category">ubuntu</div>
+                <div class="quarto-category">kasm</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 26, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
@@ -109,14 +139,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<hr>
-<p>title: “Kasmweb setup” date: “2023-1-26” categories: [nix, linux, devops, ubuntu, kasm] execute: freeze: auto —</p>
+
 <p>School chromebooks cannot be used for computer science. Due to a content blocking setup that is more restrictive than the Great Firewall of China, school chromebooks cannot install the necessary digital tools for software development.</p>
 <p>Currently, you <strong>must</strong> have your own device to be able to participate in computer science classes. Students who are unable to obtain their own device for whatever reason are denied participation.</p>
 <p>Although getting the chromebooks unlocked to be able to install software is a complex, potentially legal problem, there are alternatives.</p>
-<p>Kasm is a remote desktop software. It runs a computer on a remote server, that can be accessed through a browser, or a chromebook. Because there are no restrictions on what can be installed when using Kasm, it makes it possible to use development tools on a chromebook.</p>
-<p>Below are my notes and documenation on setting kasm up on a server, taking steps to optimize it for memory usage, allowing people to run more code on less servers, saving money. Currently, Kasm enterprise charges 10 USD per person per month. With the modified steps that I am creating, I anticipate it possible to receive kasm at 5-8 USD per month per 5 people. For example, webdock.io charges 6.29 USD per month for a VPS with 5 GB of ram, which I believe 1 GB of ram more than what I could fit the maximum users of a single community kasm instance on, 5.</p>
-<p>With such a price differential, kasm will be much, much more affordable to lower income communities and schools. Combined with programs to put chromebooks in the hands of students, computer science will be made more accessible to all.</p>
+<p>Kasm is a remote desktop software. It runs a computer on a remote server, that can be accessed through a browser, or a chromebook. Because there are no restrictions on what can be installed when using Kasm, it makes it possible to use development tools on a chromebook. This blog post is me optimizing kasm so that it is more resource efficient, and also enabling software development tools to be easily installed on it.</p>
 <p>Roadblocks/steps:</p>
 <ul>
 <li>Install Kasm on Ubuntu</li>
@@ -286,24 +313,15 @@ GRUB_DEFAULT="$(grep -E -o '^menuentry.*liqourix.*' /boot/grub/grub.cfg | grep -
 <p><code>RUN apt update &amp;&amp; apt install nix-bin</code></p>
 <p>You can add that to any of the ubuntu images.</p>
 <p>This command does not automatically create the nix store, but it can be made accessible through a docker volume mount.</p>
-<p>The current working docker image can be found on docker at moonpiedumplings/kasm-ubuntu-jammy-nighthawkcoders:0.2. To use this, I recommend just cloning the existing ubuntu jammy image, and replacing the docker image with out nighthawkcoders one.</p>
+<p>The current working docker image can be found on docker at moonpiedumplings/kasm-ubuntu-jammy-nighthawkcoders:0.5. To use this, I recommend just cloning the existing ubuntu jammy image, and replacing the docker image with out nighthawkcoders one.</p>
 <p><img src="dockerimage.png" class="img-fluid"></p>
-<p>Then, you have to do the changes below to get nix working.</p>
-</section>
-<section id="persistent-profiles" class="level1">
-<h1>Persistent profiles:</h1>
-<p>Status: complete</p>
-<p>Guides on Kasm docs:</p>
-<p><a href="https://www.kasmweb.com/docs/latest/guide/persistent_data/persistent_profiles.html">In depth guide + youtube video</a></p>
-<p><a href="https://www.kasmweb.com/docs/latest/how_to/persistent_profiles.html">Shorter quick how-to</a></p>
-<p>In the workspace configuration, set persistent profile path to <code>/mnt/kasm/nighthawkcoders/{username}</code></p>
-<p><img src="persistentprofile.png" class="img-fluid"></p>
+<p>Then, you have to adjust the kasm workspaces settings, as described below, to get nix working properly.</p>
 </section>
 <section id="nix-remote-store" class="level1">
 <h1>Nix remote store</h1>
-<p>Status: complete, but needs to be built into the customized kasm images.</p>
+<p>Status: complete, all the way</p>
 <p>I’ve created a <a href="https://www.reddit.com/r/NixOS/comments/10q9db1/shared_nix_store_between_docker_containers/">reddit post</a> relating to this topic. I’ve received several replies, but I still struggled, so I ended up asking on discord (ugh) for help, where I instantly received the answer to my problem. I’ve updated my reddit post, editing it with the solution.</p>
-<p>To get this working, install nix using a multi user installation on the host, and on the docker container:</p>
+<p>To get this working, install nix using a multi user installation on the host:</p>
 <p><code>sh &lt;(curl -L https://nixos.org/nix/install) --daemon</code></p>
 <p>Then stop the container, and restart it with a correctly mounted nix store:</p>
 <p><code>/nix:/nix:ro</code> as a docker bind mount.</p>
@@ -331,6 +349,15 @@ GRUB_DEFAULT="$(grep -E -o '^menuentry.*liqourix.*' /boot/grub/grub.cfg | grep -
   }
 }</code></pre>
 <p><img src="envvars.png" class="img-fluid"></p>
+</section>
+<section id="persistent-profiles" class="level1">
+<h1>Persistent profiles:</h1>
+<p>Status: complete</p>
+<p>Guides on Kasm docs:</p>
+<p><a href="https://www.kasmweb.com/docs/latest/guide/persistent_data/persistent_profiles.html">In depth guide + youtube video</a></p>
+<p><a href="https://www.kasmweb.com/docs/latest/how_to/persistent_profiles.html">Shorter quick how-to</a></p>
+<p>In the workspace configuration, set persistent profile path to <code>/mnt/kasm/nighthawkcoders/{username}</code></p>
+<p><img src="persistentprofile.png" class="img-fluid"></p>
 
 
 </section>
