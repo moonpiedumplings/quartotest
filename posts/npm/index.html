@@ -148,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Installation and Setup</h1>
 <p>Installation is simpleish.</p>
 <p>First, create a docker network for usage with our docker containers (<a href="https://nginxproxymanager.com/advanced-config/#best-practice-use-a-docker-network">step from here</a>). Because these are our school projects, I will call that network <code>nighthawks</code></p>
-<p><code>docker create network nighthawks</code></p>
+<p><code>docker network create nighthawks</code></p>
 <p>Create a folder called npm, and put a docker-compose.yml in it (<a href="https://nginxproxymanager.com/guide/#quick-setup">basic compose file from here</a>):</p>
 <pre class="{yaml}"><code>version: '3'
 services:
