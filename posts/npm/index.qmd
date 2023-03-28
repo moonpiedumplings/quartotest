@@ -18,7 +18,7 @@ Installation is simpleish.
 
 First, create a docker network for usage with our docker containers ([step from here](https://nginxproxymanager.com/advanced-config/#best-practice-use-a-docker-network)). Because these are our school projects, I will call that network `nighthawks`
 
-`docker create network nighthawks`
+`docker network create nighthawks`
 
 
 Create a folder called npm, and put a docker-compose.yml in it ([basic compose file from here](https://nginxproxymanager.com/guide/#quick-setup)):
