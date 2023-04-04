@@ -2,17 +2,12 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/2022-11-2-Night at the meseum.html",
       "/posts/2023-1-17-Jekyll on Windows and Mac.html",
-      "/posts/2023-1-18-Observable JS in Quarto.html",
       "/posts/npm/index.html",
       "/posts/duckdns/index.html",
       "/posts/blocking/index.html",
       "/posts/setting-up-kasm/index.html",
-      "/posts/post-with-code/index.html",
-      "/posts/welcome/index.html",
-      "/posts/cockpit-setup/index.html",
-      "/posts/python-ruler/index.html"
+      "/posts/cockpit-setup/index.html"
     ]
   }
 ]
