@@ -1,5 +1,10 @@
 project:
   type: website
+  render:
+    - "*.qmd"
+    - "!post-with-code/"
+    - "!welcome/"
+    - "!2023-1-18-Observable JS in Quarto.qmd"
 
 website:
   title: "Quartotest"
