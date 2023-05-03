@@ -139,8 +139,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>This is a living document, for the time being.<br>
-</p>
+<p>This is a living document, for the time being. Rather than a complete blogpost, this is a tracker of my progress, as well as a quick reference I can come back to.</p>
 <section id="what-is-this" class="level1">
 <h1>What is this?</h1>
 <p>Kasmweb is a software to create remote desktops, that exist within docker containers, and allow users to access them, all from a browser based GUI.</p>
@@ -183,6 +182,14 @@ make</code></pre>
 Can't locate List/MoreUtils.pm in @INC (you may need to install the List::MoreUtils module) (@INC contains: /usr/lib/perl5/5.36/site_perl /usr/share/perl5/site_perl /usr/lib/perl5/5.36/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5/5.36/core_perl /usr/share/perl5/core_perl) at ./vncserver line 38.
 BEGIN failed--compilation aborted at ./vncserver line 38.
 </code></pre>
+<p>The above is probably because a perl library is missing. After attempting to install the missing library using <code>pacman -S perl-list-moreutils</code> I get a different error.</p>
+<pre class="{bash}"><code>
+~/vscode/tigervnc/KasmVNC/unix master ?1 ❯ ./vncserver 
+
+Can't locate KasmVNC/CliOption.pm in @INC (you may need to install the KasmVNC::CliOption module) (@INC contains: /usr/lib/perl5/5.36/site_perl /usr/share/perl5/site_perl /usr/lib/perl5/5.36/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5/5.36/core_perl /usr/share/perl5/core_perl) at ./vncserver line 42.
+BEGIN failed--compilation aborted at ./vncserver line 42.
+</code></pre>
+<p>Obviously, this won’t work. I must figure out why KasmVNC pacakges perl packages, where it puts them by default, and how to package them for Nix.</p>
 
 
 </section>
