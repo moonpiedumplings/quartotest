@@ -83,3 +83,21 @@ BEGIN failed--compilation aborted at ./vncserver line 42.
 ```
 
 Obviously, this won't work. I must figure out why KasmVNC pacakges perl packages, where it puts them by default, and how to package them for Nix. 
+
+Alright, the vncserver command appears to be in the git repo, and rather than being a binary, it is a wrapper script to start an xvnc server. from the script:
+
+```
+use KasmVNC::CliOption;
+use KasmVNC::ConfigKey;
+use KasmVNC::PatternValidator;
+use KasmVNC::EnumValidator;
+use KasmVNC::Config;
+use KasmVNC::Users;
+use KasmVNC::TextOption;
+use KasmVNC::TextUI;
+use KasmVNC::Utils;
+use KasmVNC::Logger;
+
+```
+
+So that is what is necessary for the vncserver script to run. But is this script really necessary? Based on the names of the perl libraries, this script might not be adding any core functionalities to kasmvnc, only things like additional command line options, or loggers. 
