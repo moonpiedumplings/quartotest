@@ -2,7 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/Compiling KasmVNC on Nix/index.html",
+      "/posts/compiling-kasmvnc-on-nixos/index.html",
       "/posts/npm/index.html",
       "/posts/duckdns/index.html",
       "/posts/blocking/index.html",
