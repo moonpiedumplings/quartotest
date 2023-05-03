@@ -156,6 +156,26 @@ ul.task-list li input[type="checkbox"] {
 <section id="kasmvncs-build-system" class="level1">
 <h1>KasmVNC’s Build System</h1>
 <p>Reverse engineering KasmVNC’s build system.</p>
+<p>The below is what I neeed for the compiliation commands to work. I don’t know where Kasm runs these commands, or similar equivalents, this is just what I’ve figured out.</p>
+<p>Perhaps I need to only run <code>make</code> in the KasmVNC/unix directory?</p>
+<pre class="{bash}"><code>
+git clone https://github.com/TigerVNC/tigervnc
+
+cd tigervnc
+
+git clone https://github.com/kasmtech/KasmVNC
+
+cd KasmVNC
+
+cp ..vncserver .vncserver # this sets up build environment. I will still need to check if every single one of these things are necessary, but this works for now</code></pre>
+<p>The build script can be found <a href="https://github.com/kasmtech/KasmVNC/blob/4d3a9b749adfcf89bde0b970c1c37481c92d585b/builder/build.sh#L63">here</a></p>
+<p>But from this build script, I don’t think all of it is necessary. Below, I will extract what commands are actually needed, from all the fluff, cruft, and hacks.</p>
+<pre class="{bash}"><code>
+cmake -D CMAKE_BUILD_TYPE=RelWithDebInfo . -DBUILD_VIEWER:BOOL=OFF \
+  -DENABLE_GNUTLS:BOOL=OFF
+
+make</code></pre>
+<p>Builds end up in <code>KasmVNC/unix/</code></p>
 
 
 </section>
