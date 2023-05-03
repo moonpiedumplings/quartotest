@@ -1,0 +1,29 @@
+---
+title: "Compiling KasmVNC on NixOS"
+date: "2023-5-2"
+categories: [linux, devops, nix, kasm]
+execute:
+  freeze: auto
+---
+
+This is a living document, for the time being. \
+
+# What is this?
+
+Kasmweb is a software to create remote desktops, that exist within docker containers, and allow users to access them, all from a browser based GUI. 
+
+Kasmvnc is the VNC server part of kasm web, a custom fork of previous existing features, enhanced with more performance, and most importantly, a web native setup. Incompatible with existing VNC protocols, the only way to access Kasmvnc is through the http/https serive it offers, the web based VNC ui. 
+
+KasmVNC is an amazing piece of software, but development for it is not truly, fully public. This is present in their build system. Their build system is a series of bash scripts, that call docker containers, which call more bash scripts, to finally compile the software, and package it, all in one. 
+
+As part of the scripts they have to compile kasm, lots of static linking happens. They do this because not all distros package the most updated, performant versions of the libraries that kasmvnc uses. 
+
+But Nixos, the distro I want to package KasmVNC for, does. In addition to that, it is completely incompatible with the hacked together build system that kasm uses. In order to package KasmVNC for Nixos, I must reverse engineer their build system, and bit by bit, port it to NixOS. 
+
+# Nixos Build System
+
+How the nixos build system works. I will do later, but here I will document, step by step, how nixos builds a package.
+
+# KasmVNC's Build System
+
+Reverse engineering KasmVNC's build system. 
