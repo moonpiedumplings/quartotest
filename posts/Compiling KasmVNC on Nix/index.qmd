@@ -27,3 +27,36 @@ How the nixos build system works. I will do later, but here I will document, ste
 # KasmVNC's Build System
 
 Reverse engineering KasmVNC's build system. 
+
+
+The below is what I neeed for the compiliation commands to work. I don't know where Kasm runs these commands, or similar equivalents, this is just what I've figured out. 
+
+Perhaps I need to only run `make` in the KasmVNC/unix directory?
+
+```{bash}
+
+git clone https://github.com/TigerVNC/tigervnc
+
+cd tigervnc
+
+git clone https://github.com/kasmtech/KasmVNC
+
+cd KasmVNC
+
+cp ..vncserver .vncserver # this sets up build environment. I will still need to check if every single one of these things are necessary, but this works for now
+```
+
+The build script can be found [here](https://github.com/kasmtech/KasmVNC/blob/4d3a9b749adfcf89bde0b970c1c37481c92d585b/builder/build.sh#L63)
+
+But from this build script, I don't think all of it is necessary. Below, I will extract what commands are actually needed, from all the fluff, cruft, and hacks. 
+
+```{bash}
+
+cmake -D CMAKE_BUILD_TYPE=RelWithDebInfo . -DBUILD_VIEWER:BOOL=OFF \
+  -DENABLE_GNUTLS:BOOL=OFF
+
+make
+```
+
+Builds end up in `KasmVNC/unix/`
+
