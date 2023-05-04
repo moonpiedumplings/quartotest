@@ -255,6 +255,21 @@ make[2]: *** [tests/CMakeFiles/fbperf.dir/build.make:118: tests/CMakeFiles/fbper
       |          ^~~~~~~~~</code></pre>
 <p>This is probably missing libraries.</p>
 <p>After installing fltk (<code>pacman -S fltk</code>), this error goes away, and I get a new, even harder to comprehend error.</p>
+<pre class="{bash}"><code>
+[ 97%] Building CXX object tests/CMakeFiles/decperf.dir/decperf.cxx.o
+/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx: In constructor ‘PlatformPixelBuffer::PlatformPixelBuffer(int, int)’:
+/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:64:29: error: ‘uint8_t’ was not declared in this scope
+   64 |   setBuffer(width, height, (uint8_t*)xim-&gt;data,
+      |                             ^~~~~~~
+/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:38:1: note: ‘uint8_t’ is defined in header ‘&lt;cstdint&gt;’; did you forget to ‘#include &lt;cstdint&gt;’?
+   37 | #include "PlatformPixelBuffer.h"
+  +++ |+#include &lt;cstdint&gt;
+   38 | 
+/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:64:37: error: expected primary-expression before ‘)’ token
+   64 |   setBuffer(width, height, (uint8_t*)xim-&gt;data,
+      |                                     ^
+</code></pre>
+<p>I suspect I have the wrong version of the tigervnc source code/libraries. I will need to investigate where Kasm’s build system downloads these vncviewer libraries from.</p>
 
 
 </section>
