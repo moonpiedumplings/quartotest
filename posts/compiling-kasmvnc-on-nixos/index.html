@@ -237,6 +237,24 @@ ld: cannot find -ljpeg-turbo: No such file or directory
 ~/vscode/tigervnc/KasmVNC master ?1 ❯ 
 </code></pre>
 <p>I suspect the make scripts have some hacks that change working directory, or otherwise hide my installation of libjpeg.</p>
+<p>When commenting out the part of the <code>KasmVNC/Cmakelists.txt</code> file that appears to be related to libjpeg, the error when I run <code>make</code> changes.</p>
+<pre class="{bash}"><code>[ 95%] Building CXX object unix/vncconfig/CMakeFiles/vncconfig.dir/vncconfig.cxx.o
+/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/Surface.cxx:23:10: fatal error: FL/Fl_RGB_Image.H: No such file or directory
+   23 | #include &lt;FL/Fl_RGB_Image.H&gt;
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[2]: *** [tests/CMakeFiles/fbperf.dir/build.make:104: tests/CMakeFiles/fbperf.dir/__/vncviewer/Surface.cxx.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/Surface_X11.cxx:26:10: fatal error: FL/Fl_RGB_Image.H: No such file or directory
+   26 | #include &lt;FL/Fl_RGB_Image.H&gt;
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[2]: *** [tests/CMakeFiles/fbperf.dir/build.make:118: tests/CMakeFiles/fbperf.dir/__/vncviewer/Surface_X11.cxx.o] Error 1
+/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:31:10: fatal error: FL/Fl.H: No such file or directory
+   31 | #include &lt;FL/Fl.H&gt;
+      |          ^~~~~~~~~</code></pre>
+<p>This is probably missing libraries.</p>
+<p>After installing fltk (<code>pacman -S fltk</code>), this error goes away, and I get a new, even harder to comprehend error.</p>
 
 
 </section>
