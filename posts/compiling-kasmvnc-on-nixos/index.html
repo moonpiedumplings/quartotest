@@ -202,7 +202,28 @@ use KasmVNC::TextUI;
 use KasmVNC::Utils;
 use KasmVNC::Logger;
 </code></pre>
+<p>These perl modules/libraries can be found in <code>KasmVNC/unix/KasmVNC</code></p>
 <p>So that is what is necessary for the vncserver script to run. But is this script really necessary? Based on the names of the perl libraries, this script might not be adding any core functionalities to kasmvnc, only things like additional command line options, or loggers.</p>
+<p>I need to find where this script runs kasmvnc, and also where the actual kasmvnc binary is.</p>
+<p>I think their fork of xvnc is located in <code>KasmVNC/unix/xserver/hw/vnc/xvnc.c</code>.</p>
+<p>But I get compilation errors:</p>
+<pre><code>
+[nix-shell:~/vscode/tigervnc/KasmVNC]$ make 
+[  3%] Built target os
+[ 13%] Built target rdr
+[ 30%] Built target network
+[ 31%] Built target Xregion
+[ 78%] Built target rfb
+[ 80%] Built target tx
+[ 81%] Built target unixcommon
+[ 81%] Linking CXX executable vncconfig
+/nix/store/178vvank67pg2ckr5ic5gmdkm3ri72f3-binutils-2.39/bin/ld: cannot find -lturbojpeg: No such file or directory
+collect2: error: ld returned 1 exit status
+make[2]: *** [unix/vncconfig/CMakeFiles/vncconfig.dir/build.make:157: unix/vncconfig/vncconfig] Error 1
+make[1]: *** [CMakeFiles/Makefile2:610: unix/vncconfig/CMakeFiles/vncconfig.dir/all] Error 2
+make: *** [Makefile:136: all] Error 2
+</code></pre>
+<p>I don’t know why this happens. Will find the command where this is run.</p>
 
 
 </section>
