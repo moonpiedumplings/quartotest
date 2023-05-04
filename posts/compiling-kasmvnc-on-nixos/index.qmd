@@ -148,3 +148,27 @@ ld: cannot find -ljpeg-turbo: No such file or directory
 ```
 
 I suspect the make scripts have some hacks that change working directory, or otherwise hide my installation of libjpeg. 
+
+When commenting out the part of the `KasmVNC/Cmakelists.txt` file that appears to be related to libjpeg, the error when I run `make` changes.
+
+```{bash}
+[ 95%] Building CXX object unix/vncconfig/CMakeFiles/vncconfig.dir/vncconfig.cxx.o
+/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/Surface.cxx:23:10: fatal error: FL/Fl_RGB_Image.H: No such file or directory
+   23 | #include <FL/Fl_RGB_Image.H>
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[2]: *** [tests/CMakeFiles/fbperf.dir/build.make:104: tests/CMakeFiles/fbperf.dir/__/vncviewer/Surface.cxx.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/Surface_X11.cxx:26:10: fatal error: FL/Fl_RGB_Image.H: No such file or directory
+   26 | #include <FL/Fl_RGB_Image.H>
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[2]: *** [tests/CMakeFiles/fbperf.dir/build.make:118: tests/CMakeFiles/fbperf.dir/__/vncviewer/Surface_X11.cxx.o] Error 1
+/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:31:10: fatal error: FL/Fl.H: No such file or directory
+   31 | #include <FL/Fl.H>
+      |          ^~~~~~~~~
+```
+
+This is probably missing libraries. 
+
+After installing fltk (`pacman -S fltk`), this error goes away, and I get a new, even harder to comprehend error. 

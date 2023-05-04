@@ -1,1 +1,1 @@
-nix-shell -p python311Full quarto jupyter deno pandoc
+nix-shell -p python311Full quarto jupyter deno pandoc mkpasswd
