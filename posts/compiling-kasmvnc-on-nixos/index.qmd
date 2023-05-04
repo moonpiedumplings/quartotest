@@ -129,6 +129,22 @@ make: *** [Makefile:136: all] Error 2
 
 ```
 
-I don't know why this happens. Will find the command where this is run.
+I don't know why this happens. For those who don't know, make pretty much calls a set of scripts, called Makefiles. I will need to find where in these scripts, the error commands are run. 
 
+Weirdly, I can't reproduce outside of the build script:
 
+```{bash}
+
+~/vscode/tigervnc/KasmVNC master ?1 ❯ ld -lsdsakdfj
+ld: cannot find -lsdsakdfj: No such file or directory
+~/vscode/tigervnc/KasmVNC master ?1 ❯ ld -lturbojpeg
+ld: warning: cannot find entry symbol _start; not setting start address
+~/vscode/tigervnc/KasmVNC master ?2 ❯ ld -ljpeg     
+ld: warning: cannot find entry symbol _start; not setting start address
+~/vscode/tigervnc/KasmVNC master ?2 ❯ ld -ljpeg-turbo
+ld: cannot find -ljpeg-turbo: No such file or directory
+~/vscode/tigervnc/KasmVNC master ?1 ❯ 
+
+```
+
+I suspect the make scripts have some hacks that change working directory, or otherwise hide my installation of libjpeg. 
