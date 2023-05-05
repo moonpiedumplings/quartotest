@@ -191,3 +191,29 @@ After installing fltk (`pacman -S fltk`), this error goes away, and I get a new,
 ```
 
 I suspect I have the wrong version of the tigervnc source code/libraries. I will need to investigate where Kasm's build system downloads these vncviewer libraries from.  
+
+
+After editing the errored file, to include the library:
+
+Within `KasmVNC/vncviewer/PlatformPixelBuffer.cxx`:
+
+```{C++}
+
+#include <cstdint>
+
+```
+
+I get a different error. 
+
+
+```{shell}
+
+[ 94%] Building CXX object tests/CMakeFiles/fbperf.dir/__/vncviewer/PlatformPixelBuffer.cxx.o
+/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx: In constructor ‘PlatformPixelBuffer::PlatformPixelBuffer(int, int)’:
+/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:66:3: error: ‘setBuffer’ was not declared in this scope; did you mean ‘setbuffer’?
+   66 |   setBuffer(width, height, (uint8_t*)xim->data,
+      |   ^~~~~~~~~
+      |   setbuffer
+```
+
+To be honest, I think I am going in the wrong direction. I think it's likely that I have the wrong version of tigervnc or something. I will try to see how Kasm's build scripts set this up.
