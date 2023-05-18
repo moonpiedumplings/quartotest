@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="experiments with observable javascript">
+
+<title>Observable Javascript in Quarto</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="2023-1-18-Observable JS in Quarto_files/libs/clipboard/clipboard.min.js"></script>
+<script src="2023-1-18-Observable JS in Quarto_files/libs/quarto-html/quarto.js"></script>
+<script src="2023-1-18-Observable JS in Quarto_files/libs/quarto-html/popper.min.js"></script>
+<script src="2023-1-18-Observable JS in Quarto_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="2023-1-18-Observable JS in Quarto_files/libs/quarto-html/anchor.min.js"></script>
+<link href="2023-1-18-Observable JS in Quarto_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="2023-1-18-Observable JS in Quarto_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="2023-1-18-Observable JS in Quarto_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="2023-1-18-Observable JS in Quarto_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="2023-1-18-Observable JS in Quarto_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Observable Javascript in Quarto</h1>
+</div>
+
+<div>
+  <div class="description">
+    experiments with observable javascript
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Do I need to add content or something for it to show up?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="672" height="480" viewbox="0.00 0.00 370.99 246.71" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 242.71)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-242.71 366.99,-242.71 366.99,4 -4,4"></polygon> <!-- run --> <g id="node1" class="node">
+<title>
+run
+</title>
+<ellipse fill="none" stroke="black" cx="105.22" cy="-110.03" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="105.22" y="-105.83" font-family="Times,serif" font-size="14.00">run</text> </g> <!-- intr --> <g id="node2" class="node">
+<title>
+intr
+</title>
+<ellipse fill="none" stroke="black" cx="48.11" cy="-59.71" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="48.11" y="-55.51" font-family="Times,serif" font-size="14.00">intr</text> </g> <!-- run&#45;&#45;intr --> <g id="edge1" class="edge">
+<title>
+run–intr
+</title>
+<path fill="none" stroke="black" d="M88.7,-95.48C81.19,-88.86 72.32,-81.04 64.79,-74.4"></path> </g> <!-- kernel --> <g id="node4" class="node">
+<title>
+kernel
+</title>
+<ellipse fill="none" stroke="black" cx="180.95" cy="-137.54" rx="35.33" ry="18"></ellipse> <text text-anchor="middle" x="180.95" y="-133.34" font-family="Times,serif" font-size="14.00">kernel</text> </g> <!-- run&#45;&#45;kernel --> <g id="edge4" class="edge">
+<title>
+run–kernel
+</title>
+<path fill="none" stroke="black" d="M129.18,-118.73C136.46,-121.38 144.54,-124.31 152.1,-127.06"></path> </g> <!-- runbl --> <g id="node3" class="node">
+<title>
+runbl
+</title>
+<ellipse fill="none" stroke="black" cx="31.42" cy="-126.16" rx="31.34" ry="18"></ellipse> <text text-anchor="middle" x="31.42" y="-121.96" font-family="Times,serif" font-size="14.00">runbl</text> </g> <!-- intr&#45;&#45;runbl --> <g id="edge2" class="edge">
+<title>
+intr–runbl
+</title>
+<path fill="none" stroke="black" d="M43.64,-77.51C41.25,-87.05 38.3,-98.76 35.91,-108.3"></path> </g> <!-- runbl&#45;&#45;run --> <g id="edge3" class="edge">
+<title>
+runbl–run
+</title>
+<path fill="none" stroke="black" d="M61.01,-119.7C67.11,-118.36 73.48,-116.97 79.43,-115.67"></path> </g> <!-- zombie --> <g id="node5" class="node">
+<title>
+zombie
+</title>
+<ellipse fill="none" stroke="black" cx="168.31" cy="-220.71" rx="39.42" ry="18"></ellipse> <text text-anchor="middle" x="168.31" y="-216.51" font-family="Times,serif" font-size="14.00">zombie</text> </g> <!-- kernel&#45;&#45;zombie --> <g id="edge5" class="edge">
+<title>
+kernel–zombie
+</title>
+<path fill="none" stroke="black" d="M178.21,-155.58C176.09,-169.54 173.17,-188.76 171.05,-202.7"></path> </g> <!-- sleep --> <g id="node6" class="node">
+<title>
+sleep
+</title>
+<ellipse fill="none" stroke="black" cx="253.25" cy="-154.97" rx="30.76" ry="18"></ellipse> <text text-anchor="middle" x="253.25" y="-150.77" font-family="Times,serif" font-size="14.00">sleep</text> </g> <!-- kernel&#45;&#45;sleep --> <g id="edge6" class="edge">
+<title>
+kernel–sleep
+</title>
+<path fill="none" stroke="black" d="M212.87,-145.23C216.81,-146.18 220.81,-147.15 224.69,-148.08"></path> </g> <!-- runmem --> <g id="node7" class="node">
+<title>
+runmem
+</title>
+<ellipse fill="none" stroke="black" cx="240.17" cy="-83.36" rx="43.44" ry="18"></ellipse> <text text-anchor="middle" x="240.17" y="-79.16" font-family="Times,serif" font-size="14.00">runmem</text> </g> <!-- kernel&#45;&#45;runmem --> <g id="edge7" class="edge">
+<title>
+kernel–runmem
+</title>
+<path fill="none" stroke="black" d="M198.4,-121.57C205.9,-114.71 214.67,-106.69 222.23,-99.77"></path> </g> <!-- sleep&#45;&#45;runmem --> <g id="edge13" class="edge">
+<title>
+sleep–runmem
+</title>
+<path fill="none" stroke="black" d="M249.95,-136.9C247.98,-126.13 245.49,-112.49 243.51,-101.67"></path> </g> <!-- swap --> <g id="node8" class="node">
+<title>
+swap
+</title>
+<ellipse fill="none" stroke="black" cx="330.95" cy="-148.25" rx="30.77" ry="18"></ellipse> <text text-anchor="middle" x="330.95" y="-144.05" font-family="Times,serif" font-size="14.00">swap</text> </g> <!-- sleep&#45;&#45;swap --> <g id="edge8" class="edge">
+<title>
+sleep–swap
+</title>
+<path fill="none" stroke="black" d="M283.96,-152.31C289.3,-151.85 294.86,-151.37 300.21,-150.91"></path> </g> <!-- runswap --> <g id="node9" class="node">
+<title>
+runswap
+</title>
+<ellipse fill="none" stroke="black" cx="319.23" cy="-73.46" rx="43.51" ry="18"></ellipse> <text text-anchor="middle" x="319.23" y="-69.26" font-family="Times,serif" font-size="14.00">runswap</text> </g> <!-- swap&#45;&#45;runswap --> <g id="edge9" class="edge">
+<title>
+swap–runswap
+</title>
+<path fill="none" stroke="black" d="M328.11,-130.15C326.28,-118.47 323.91,-103.35 322.08,-91.66"></path> </g> <!-- runswap&#45;&#45;runmem --> <g id="edge11" class="edge">
+<title>
+runswap–runmem
+</title>
+<path fill="none" stroke="black" d="M276.92,-78.76C276.78,-78.77 276.63,-78.79 276.48,-78.81"></path> </g> <!-- new --> <g id="node10" class="node">
+<title>
+new
+</title>
+<ellipse fill="none" stroke="black" cx="278.31" cy="-18" rx="27.25" ry="18"></ellipse> <text text-anchor="middle" x="278.31" y="-13.8" font-family="Times,serif" font-size="14.00">new</text> </g> <!-- runswap&#45;&#45;new --> <g id="edge10" class="edge">
+<title>
+runswap–new
+</title>
+<path fill="none" stroke="black" d="M306.51,-56.21C301.35,-49.22 295.42,-41.18 290.33,-34.29"></path> </g> <!-- new&#45;&#45;runmem --> <g id="edge12" class="edge">
+<title>
+new–runmem
+</title>
+<path fill="none" stroke="black" d="M268.49,-34.83C263.01,-44.21 256.2,-55.89 250.62,-65.44"></path> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="672" height="480" viewbox="0.00 0.00 122.26 383.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 379.4)"> <polygon fill="white" stroke="transparent" points="-4,4 -4,-379.4 118.26,-379.4 118.26,4 -4,4"></polygon> <!-- start --> <g id="node1" class="node">
+<title>
+start
+</title>
+<ellipse fill="none" stroke="black" cx="40" cy="-357.4" rx="27.83" ry="18"></ellipse> <text text-anchor="middle" x="40" y="-353.2" font-family="Times,serif" font-size="14.00">start</text> </g> <!-- input --> <g id="node3" class="node">
+<title>
+input
+</title>
+<ellipse fill="none" stroke="black" cx="40" cy="-268.6" rx="30.78" ry="18"></ellipse> <text text-anchor="middle" x="40" y="-264.4" font-family="Times,serif" font-size="14.00">input</text> </g> <!-- start&#45;&gt;input --> <g id="edge1" class="edge">
+<title>
+start-&gt;input
+</title>
+<path fill="none" stroke="black" d="M40,-339.25C40,-327.12 40,-310.62 40,-296.72"></path> <polygon fill="black" stroke="black" points="43.5,-296.71 40,-286.71 36.5,-296.71 43.5,-296.71"></polygon> <text text-anchor="middle" x="68.18" y="-308.8" font-family="Times,serif" font-size="14.00">read input</text> </g> <!-- end --> <g id="node2" class="node">
+<title>
+end
+</title>
+<ellipse fill="none" stroke="black" cx="40" cy="-18" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="40" y="-13.8" font-family="Times,serif" font-size="14.00">end</text> </g> <!-- process --> <g id="node4" class="node">
+<title>
+process
+</title>
+<ellipse fill="none" stroke="black" cx="40" cy="-179.8" rx="40" ry="18"></ellipse> <text text-anchor="middle" x="40" y="-175.6" font-family="Times,serif" font-size="14.00">process</text> </g> <!-- input&#45;&gt;process --> <g id="edge2" class="edge">
+<title>
+input-&gt;process
+</title>
+<path fill="none" stroke="black" d="M40,-250.45C40,-238.32 40,-221.82 40,-207.92"></path> <polygon fill="black" stroke="black" points="43.5,-207.91 40,-197.91 36.5,-207.91 43.5,-207.91"></polygon> <text text-anchor="middle" x="77.13" y="-220" font-family="Times,serif" font-size="14.00">process input</text> </g> <!-- output --> <g id="node5" class="node">
+<title>
+output
+</title>
+<ellipse fill="none" stroke="black" cx="40" cy="-91" rx="35.93" ry="18"></ellipse> <text text-anchor="middle" x="40" y="-86.8" font-family="Times,serif" font-size="14.00">output</text> </g> <!-- process&#45;&gt;output --> <g id="edge3" class="edge">
+<title>
+process-&gt;output
+</title>
+<path fill="none" stroke="black" d="M40,-161.65C40,-149.52 40,-133.02 40,-119.12"></path> <polygon fill="black" stroke="black" points="43.5,-119.11 40,-109.11 36.5,-119.11 43.5,-119.11"></polygon> <text text-anchor="middle" x="74.02" y="-131.2" font-family="Times,serif" font-size="14.00">write output</text> </g> <!-- output&#45;&gt;end --> <g id="edge4" class="edge">
+<title>
+output-&gt;end
+</title>
+<path fill="none" stroke="black" d="M40,-72.81C40,-64.79 40,-55.05 40,-46.07"></path> <polygon fill="black" stroke="black" points="43.5,-46.03 40,-36.03 36.5,-46.03 43.5,-46.03"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="672" height="480" viewbox="0.00 0.00 92.82 188.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)"> <polygon fill="white" stroke="transparent" points="-4,4 -4,-184 88.82,-184 88.82,4 -4,4"></polygon> <!-- Node1 --> <g id="node1" class="node">
+<title>
+Node1
+</title>
+<g id="a_node1"><a href="https://example.com" title="Node 1"> <polygon fill="none" stroke="black" points="84.74,-180 28.09,-180 28.09,-144 84.74,-144 84.74,-180"></polygon> <text text-anchor="middle" x="56.41" y="-157.8" font-family="Times,serif" font-size="14.00">Node 1</text> </a> </g> </g> <!-- Node2 --> <g id="node2" class="node">
+<title>
+Node2
+</title>
+<g id="a_node2"><a href="https://google.com" title="Node 2"> <polygon fill="none" stroke="black" points="56.74,-108 0.09,-108 0.09,-72 56.74,-72 56.74,-108"></polygon> <text text-anchor="middle" x="28.41" y="-85.8" font-family="Times,serif" font-size="14.00">Node 2</text> </a> </g> </g> <!-- Node1&#45;&gt;Node2 --> <g id="edge1" class="edge">
+<title>
+Node1-&gt;Node2
+</title>
+<path fill="none" stroke="black" d="M49.49,-143.7C46.34,-135.81 42.53,-126.3 39.03,-117.55"></path> <polygon fill="black" stroke="black" points="42.22,-116.09 35.25,-108.1 35.72,-118.69 42.22,-116.09"></polygon> </g> <!-- Node3 --> <g id="node3" class="node">
+<title>
+Node3
+</title>
+<g id="a_node3"><a href="https://github.com" title="Node 3"> <polygon fill="none" stroke="black" points="84.74,-36 28.09,-36 28.09,0 84.74,0 84.74,-36"></polygon> <text text-anchor="middle" x="56.41" y="-13.8" font-family="Times,serif" font-size="14.00">Node 3</text> </a> </g> </g> <!-- Node2&#45;&gt;Node3 --> <g id="edge2" class="edge">
+<title>
+Node2-&gt;Node3
+</title>
+<path fill="none" stroke="black" d="M35.33,-71.7C38.49,-63.81 42.29,-54.3 45.79,-45.55"></path> <polygon fill="black" stroke="black" points="49.11,-46.69 49.57,-36.1 42.61,-44.09 49.11,-46.69"></polygon> </g> <!-- Node3&#45;&gt;Node1 --> <g id="edge3" class="edge">
+<title>
+Node3-&gt;Node1
+</title>
+<path fill="none" stroke="black" d="M60.07,-36.09C62.09,-46.43 64.39,-59.91 65.41,-72 66.76,-87.94 66.76,-92.06 65.41,-108 64.7,-116.5 63.34,-125.69 61.9,-133.99"></path> <polygon fill="black" stroke="black" points="58.44,-133.44 60.07,-143.91 65.33,-134.71 58.44,-133.44"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+<p>Graphviz supports hyperlinks,</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="672" height="480" viewbox="0.00 0.00 165.66 278.80" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 274.8)">
+<title>
+if_else_statement
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-274.8 161.66,-274.8 161.66,4 -4,4"></polygon> <!-- start --> <g id="node1" class="node">
+<title>
+start
+</title>
+<ellipse fill="none" stroke="black" cx="74.13" cy="-252.8" rx="29.05" ry="18"></ellipse> <text text-anchor="middle" x="74.13" y="-248.6" font-family="Times,serif" font-size="14.00">Start</text> </g> <!-- condition --> <g id="node2" class="node">
+<title>
+condition
+</title>
+<polygon fill="none" stroke="black" points="74.13,-197.8 3.65,-179.8 74.13,-161.8 144.62,-179.8 74.13,-197.8"></polygon> <text text-anchor="middle" x="74.13" y="-175.6" font-family="Times,serif" font-size="14.00">Condition</text> </g> <!-- start&#45;&gt;condition --> <g id="edge1" class="edge">
+<title>
+start-&gt;condition
+</title>
+<path fill="none" stroke="black" d="M74.13,-234.61C74.13,-226.59 74.13,-216.85 74.13,-207.87"></path> <polygon fill="black" stroke="black" points="77.63,-207.83 74.13,-197.83 70.63,-207.83 77.63,-207.83"></polygon> </g> <!-- if_block --> <g id="node3" class="node">
+<title>
+if_block
+</title>
+<polygon fill="none" stroke="black" points="62.4,-109 -0.13,-109 -0.13,-73 62.4,-73 62.4,-109"></polygon> <text text-anchor="middle" x="31.13" y="-86.8" font-family="Times,serif" font-size="14.00">If Block</text> </g> <!-- condition&#45;&gt;if_block --> <g id="edge2" class="edge">
+<title>
+condition-&gt;if_block
+</title>
+<path fill="none" stroke="black" d="M66.64,-163.68C60.44,-151.17 51.5,-133.1 44.13,-118.24"></path> <polygon fill="black" stroke="black" points="47.14,-116.43 39.57,-109.03 40.87,-119.54 47.14,-116.43"></polygon> <text text-anchor="middle" x="70.35" y="-131.2" font-family="Times,serif" font-size="14.00">True</text> </g> <!-- else_block --> <g id="node4" class="node">
+<title>
+else_block
+</title>
+<polygon fill="none" stroke="black" points="157.68,-109 80.59,-109 80.59,-73 157.68,-73 157.68,-109"></polygon> <text text-anchor="middle" x="119.13" y="-86.8" font-family="Times,serif" font-size="14.00">Else Block</text> </g> <!-- condition&#45;&gt;else_block --> <g id="edge3" class="edge">
+<title>
+condition-&gt;else_block
+</title>
+<path fill="none" stroke="black" d="M81.97,-163.68C88.46,-151.17 97.82,-133.1 105.53,-118.24"></path> <polygon fill="black" stroke="black" points="108.81,-119.51 110.31,-109.03 102.6,-116.29 108.81,-119.51"></polygon> <text text-anchor="middle" x="114.91" y="-131.2" font-family="Times,serif" font-size="14.00">False</text> </g> <!-- end --> <g id="node5" class="node">
+<title>
+end
+</title>
+<ellipse fill="none" stroke="black" cx="74.13" cy="-18" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="74.13" y="-13.8" font-family="Times,serif" font-size="14.00">End</text> </g> <!-- if_block&#45;&gt;end --> <g id="edge4" class="edge">
+<title>
+if_block-&gt;end
+</title>
+<path fill="none" stroke="black" d="M41.54,-72.81C46.82,-64.1 53.32,-53.37 59.12,-43.79"></path> <polygon fill="black" stroke="black" points="62.22,-45.42 64.41,-35.06 56.23,-41.8 62.22,-45.42"></polygon> </g> <!-- else_block&#45;&gt;end --> <g id="edge5" class="edge">
+<title>
+else_block-&gt;end
+</title>
+<path fill="none" stroke="black" d="M108.24,-72.81C102.72,-64.1 95.92,-53.37 89.84,-43.79"></path> <polygon fill="black" stroke="black" points="92.62,-41.63 84.31,-35.06 86.71,-45.38 92.62,-41.63"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="672" height="480" viewbox="0.00 0.00 180.00 393.60" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 389.6)">
+<title>
+parallel_processes
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-389.6 176,-389.6 176,4 -4,4"></polygon> <g id="clust2" class="cluster">
+<title>
+cluster_process2
+</title>
+<polygon fill="none" stroke="black" points="90,-8 90,-300.8 164,-300.8 164,-8 90,-8"></polygon> <text text-anchor="middle" x="127" y="-284.2" font-family="Times,serif" font-size="14.00">Process 2</text> </g> <g id="clust1" class="cluster">
+<title>
+cluster_process1
+</title>
+<polygon fill="none" stroke="black" points="8,-80 8,-377.6 82,-377.6 82,-80 8,-80"></polygon> <text text-anchor="middle" x="45" y="-361" font-family="Times,serif" font-size="14.00">Process 1</text> </g> <!-- start1 --> <g id="node1" class="node">
+<title>
+start1
+</title>
+<ellipse fill="none" stroke="black" cx="45" cy="-326.8" rx="29.05" ry="18"></ellipse> <text text-anchor="middle" x="45" y="-322.6" font-family="Times,serif" font-size="14.00">Start</text> </g> <!-- task1 --> <g id="node2" class="node">
+<title>
+task1
+</title>
+<polygon fill="none" stroke="black" points="72,-268 18,-268 18,-232 72,-232 72,-268"></polygon> <text text-anchor="middle" x="45" y="-245.8" font-family="Times,serif" font-size="14.00">Task 1</text> </g> <!-- start1&#45;&gt;task1 --> <g id="edge1" class="edge">
+<title>
+start1-&gt;task1
+</title>
+<path fill="none" stroke="black" d="M45,-308.45C45,-299.58 45,-288.56 45,-278.56"></path> <polygon fill="black" stroke="black" points="48.5,-278.25 45,-268.25 41.5,-278.25 48.5,-278.25"></polygon> </g> <!-- start2 --> <g id="node5" class="node">
+<title>
+start2
+</title>
+<ellipse fill="none" stroke="black" cx="127" cy="-250" rx="29.05" ry="18"></ellipse> <text text-anchor="middle" x="127" y="-245.8" font-family="Times,serif" font-size="14.00">Start</text> </g> <!-- start1&#45;&gt;start2 --> <!-- task2 --> <g id="node3" class="node">
+<title>
+task2
+</title>
+<polygon fill="none" stroke="black" points="73,-196 19,-196 19,-160 73,-160 73,-196"></polygon> <text text-anchor="middle" x="46" y="-173.8" font-family="Times,serif" font-size="14.00">Task 2</text> </g> <!-- task1&#45;&gt;task2 --> <g id="edge2" class="edge">
+<title>
+task1-&gt;task2
+</title>
+<path fill="none" stroke="black" d="M45.25,-231.7C45.36,-223.98 45.49,-214.71 45.61,-206.11"></path> <polygon fill="black" stroke="black" points="49.11,-206.15 45.76,-196.1 42.11,-206.05 49.11,-206.15"></polygon> </g> <!-- end1 --> <g id="node4" class="node">
+<title>
+end1
+</title>
+<ellipse fill="none" stroke="black" cx="46" cy="-106" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="46" y="-101.8" font-family="Times,serif" font-size="14.00">End</text> </g> <!-- task2&#45;&gt;end1 --> <g id="edge3" class="edge">
+<title>
+task2-&gt;end1
+</title>
+<path fill="none" stroke="black" d="M46,-159.7C46,-151.98 46,-142.71 46,-134.11"></path> <polygon fill="black" stroke="black" points="49.5,-134.1 46,-124.1 42.5,-134.1 49.5,-134.1"></polygon> </g> <!-- end2 --> <g id="node8" class="node">
+<title>
+end2
+</title>
+<ellipse fill="none" stroke="black" cx="126" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="126" y="-29.8" font-family="Times,serif" font-size="14.00">End</text> </g> <!-- end1&#45;&gt;end2 --> <!-- task3 --> <g id="node6" class="node">
+<title>
+task3
+</title>
+<polygon fill="none" stroke="black" points="153,-196 99,-196 99,-160 153,-160 153,-196"></polygon> <text text-anchor="middle" x="126" y="-173.8" font-family="Times,serif" font-size="14.00">Task 3</text> </g> <!-- start2&#45;&gt;task3 --> <g id="edge4" class="edge">
+<title>
+start2-&gt;task3
+</title>
+<path fill="none" stroke="black" d="M126.75,-231.7C126.64,-223.98 126.51,-214.71 126.39,-206.11"></path> <polygon fill="black" stroke="black" points="129.89,-206.05 126.24,-196.1 122.89,-206.15 129.89,-206.05"></polygon> </g> <!-- task4 --> <g id="node7" class="node">
+<title>
+task4
+</title>
+<polygon fill="none" stroke="black" points="153,-124 99,-124 99,-88 153,-88 153,-124"></polygon> <text text-anchor="middle" x="126" y="-101.8" font-family="Times,serif" font-size="14.00">Task 4</text> </g> <!-- task3&#45;&gt;task4 --> <g id="edge5" class="edge">
+<title>
+task3-&gt;task4
+</title>
+<path fill="none" stroke="black" d="M126,-159.7C126,-151.98 126,-142.71 126,-134.11"></path> <polygon fill="black" stroke="black" points="129.5,-134.1 126,-124.1 122.5,-134.1 129.5,-134.1"></polygon> </g> <!-- task4&#45;&gt;end2 --> <g id="edge6" class="edge">
+<title>
+task4-&gt;end2
+</title>
+<path fill="none" stroke="black" d="M126,-87.7C126,-79.98 126,-70.71 126,-62.11"></path> <polygon fill="black" stroke="black" points="129.5,-62.1 126,-52.1 122.5,-62.1 129.5,-62.1"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="672" height="480" viewbox="0.00 0.00 180.00 465.60" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 461.6)">
+<title>
+parallel_processes
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-461.6 176,-461.6 176,4 -4,4"></polygon> <g id="clust1" class="cluster">
+<title>
+cluster_process1
+</title>
+<polygon fill="none" stroke="black" points="8,-152 8,-449.6 82,-449.6 82,-152 8,-152"></polygon> <text text-anchor="middle" x="45" y="-433" font-family="Times,serif" font-size="14.00">Process 1</text> </g> <g id="clust2" class="cluster">
+<title>
+cluster_process2
+</title>
+<polygon fill="none" stroke="black" points="90,-8 90,-300.8 164,-300.8 164,-8 90,-8"></polygon> <text text-anchor="middle" x="127" y="-284.2" font-family="Times,serif" font-size="14.00">Process 2</text> </g> <!-- start1 --> <g id="node1" class="node">
+<title>
+start1
+</title>
+<ellipse fill="none" stroke="black" cx="45" cy="-398.8" rx="29.05" ry="18"></ellipse> <text text-anchor="middle" x="45" y="-394.6" font-family="Times,serif" font-size="14.00">Start</text> </g> <!-- task1 --> <g id="node2" class="node">
+<title>
+task1
+</title>
+<polygon fill="none" stroke="black" points="74,-344.8 20,-344.8 20,-308.8 74,-308.8 74,-344.8"></polygon> <text text-anchor="middle" x="47" y="-322.6" font-family="Times,serif" font-size="14.00">Task 1</text> </g> <!-- start1&#45;&gt;task1 --> <g id="edge1" class="edge">
+<title>
+start1-&gt;task1
+</title>
+<path fill="none" stroke="black" d="M45.49,-380.5C45.71,-372.78 45.98,-363.51 46.23,-354.91"></path> <polygon fill="black" stroke="black" points="49.72,-355 46.51,-344.9 42.73,-354.8 49.72,-355"></polygon> </g> <!-- task2 --> <g id="node3" class="node">
+<title>
+task2
+</title>
+<polygon fill="none" stroke="black" points="74,-268 20,-268 20,-232 74,-232 74,-268"></polygon> <text text-anchor="middle" x="47" y="-245.8" font-family="Times,serif" font-size="14.00">Task 2</text> </g> <!-- task1&#45;&gt;task2 --> <g id="edge2" class="edge">
+<title>
+task1-&gt;task2
+</title>
+<path fill="none" stroke="black" d="M47,-308.45C47,-299.58 47,-288.56 47,-278.56"></path> <polygon fill="black" stroke="black" points="50.5,-278.25 47,-268.25 43.5,-278.25 50.5,-278.25"></polygon> </g> <!-- end1 --> <g id="node4" class="node">
+<title>
+end1
+</title>
+<ellipse fill="none" stroke="black" cx="47" cy="-178" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="47" y="-173.8" font-family="Times,serif" font-size="14.00">End</text> </g> <!-- task2&#45;&gt;end1 --> <g id="edge3" class="edge">
+<title>
+task2-&gt;end1
+</title>
+<path fill="none" stroke="black" d="M47,-231.7C47,-223.98 47,-214.71 47,-206.11"></path> <polygon fill="black" stroke="black" points="50.5,-206.1 47,-196.1 43.5,-206.1 50.5,-206.1"></polygon> </g> <!-- task3 --> <g id="node6" class="node">
+<title>
+task3
+</title>
+<polygon fill="none" stroke="black" points="154,-196 100,-196 100,-160 154,-160 154,-196"></polygon> <text text-anchor="middle" x="127" y="-173.8" font-family="Times,serif" font-size="14.00">Task 3</text> </g> <!-- task2&#45;&gt;task3 --> <g id="edge7" class="edge">
+<title>
+task2-&gt;task3
+</title>
+<path fill="none" stroke="black" d="M66.78,-231.7C76.75,-222.97 89.01,-212.24 99.86,-202.75"></path> <polygon fill="black" stroke="black" points="102.23,-205.32 107.45,-196.1 97.62,-200.06 102.23,-205.32"></polygon> </g> <!-- start2 --> <g id="node5" class="node">
+<title>
+start2
+</title>
+<ellipse fill="none" stroke="black" cx="127" cy="-250" rx="29.05" ry="18"></ellipse> <text text-anchor="middle" x="127" y="-245.8" font-family="Times,serif" font-size="14.00">Start</text> </g> <!-- start2&#45;&gt;task3 --> <g id="edge4" class="edge">
+<title>
+start2-&gt;task3
+</title>
+<path fill="none" stroke="black" d="M127,-231.7C127,-223.98 127,-214.71 127,-206.11"></path> <polygon fill="black" stroke="black" points="130.5,-206.1 127,-196.1 123.5,-206.1 130.5,-206.1"></polygon> </g> <!-- task4 --> <g id="node7" class="node">
+<title>
+task4
+</title>
+<polygon fill="none" stroke="black" points="155,-124 101,-124 101,-88 155,-88 155,-124"></polygon> <text text-anchor="middle" x="128" y="-101.8" font-family="Times,serif" font-size="14.00">Task 4</text> </g> <!-- task3&#45;&gt;task4 --> <g id="edge5" class="edge">
+<title>
+task3-&gt;task4
+</title>
+<path fill="none" stroke="black" d="M127.25,-159.7C127.36,-151.98 127.49,-142.71 127.61,-134.11"></path> <polygon fill="black" stroke="black" points="131.11,-134.15 127.76,-124.1 124.11,-134.05 131.11,-134.15"></polygon> </g> <!-- task4&#45;&gt;task1 --> <g id="edge8" class="edge">
+<title>
+task4-&gt;task1
+</title>
+<path fill="none" stroke="black" d="M145.59,-124.21C152.36,-132 159.34,-141.75 163,-152 164.64,-156.58 169.36,-295.42 165,-300.8 154.93,-313.22 114.87,-319.72 84.2,-322.94"></path> <polygon fill="black" stroke="black" points="83.82,-319.46 74.21,-323.91 84.5,-326.43 83.82,-319.46"></polygon> </g> <!-- end2 --> <g id="node8" class="node">
+<title>
+end2
+</title>
+<ellipse fill="none" stroke="black" cx="128" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="128" y="-29.8" font-family="Times,serif" font-size="14.00">End</text> </g> <!-- task4&#45;&gt;end2 --> <g id="edge6" class="edge">
+<title>
+task4-&gt;end2
+</title>
+<path fill="none" stroke="black" d="M128,-87.7C128,-79.98 128,-70.71 128,-62.11"></path> <polygon fill="black" stroke="black" points="131.5,-62.1 128,-52.1 124.5,-62.1 131.5,-62.1"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

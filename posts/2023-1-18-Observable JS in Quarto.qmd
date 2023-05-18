@@ -13,3 +13,129 @@ execute:
 
 Do I need to add content or something for it to show up?
 
+```{dot}
+graph G {
+  layout=neato
+  run -- intr;
+  intr -- runbl;
+  runbl -- run;
+  run -- kernel;
+  kernel -- zombie;
+  kernel -- sleep;
+  kernel -- runmem;
+  sleep -- swap;
+  swap -- runswap;
+  runswap -- new;
+  runswap -- runmem;
+  new -- runmem;
+  sleep -- runmem;
+}
+```
+
+```{dot}
+digraph {
+  start [shape=oval];
+  end [shape=oval];
+  start -> input [label="read input"];
+  input -> process [label="process input"];
+  process -> output [label="write output"];
+  output -> end;
+}
+```
+
+```{dot}
+digraph {
+  node [shape=box]
+
+  Node1 [label="Node 1", URL="https://example.com"]
+  Node2 [label="Node 2", URL="https://google.com"]
+  Node3 [label="Node 3", URL="https://github.com"]
+
+  Node1 -> Node2
+  Node2 -> Node3
+  Node3 -> Node1
+}
+
+```
+
+Graphviz supports hyperlinks, 
+
+```{dot}
+digraph if_else_statement {
+  start [shape=ellipse, label="Start"];
+  condition [shape=diamond, label="Condition"];
+  if_block [shape=rectangle, label="If Block"];
+  else_block [shape=rectangle, label="Else Block"];
+  end [shape=ellipse, label="End"];
+
+  start -> condition;
+  condition -> if_block [label="True"];
+  condition -> else_block [label="False"];
+  if_block -> end;
+  else_block -> end;
+}
+```
+
+```{dot}
+digraph parallel_processes {
+  subgraph cluster_process1 {
+    label = "Process 1";
+    start1 [shape=ellipse, label="Start"];
+    task1 [shape=rectangle, label="Task 1"];
+    task2 [shape=rectangle, label="Task 2"];
+    end1 [shape=ellipse, label="End"];
+    
+    start1 -> task1;
+    task1 -> task2;
+    task2 -> end1;
+  }
+  
+  subgraph cluster_process2 {
+    label = "Process 2";
+    start2 [shape=ellipse, label="Start"];
+    task3 [shape=rectangle, label="Task 3"];
+    task4 [shape=rectangle, label="Task 4"];
+    end2 [shape=ellipse, label="End"];
+    
+    start2 -> task3;
+    task3 -> task4;
+    task4 -> end2;
+  }
+  
+  start1 -> start2 [style=invis];
+  end1 -> end2 [style=invis];
+}
+```
+
+```{dot}
+digraph parallel_processes {
+  subgraph cluster_process1 {
+    label = "Process 1";
+    start1 [shape=ellipse, label="Start"];
+    task1 [shape=rectangle, label="Task 1"];
+    task2 [shape=rectangle, label="Task 2"];
+    end1 [shape=ellipse, label="End"];
+    
+    start1 -> task1;
+    task1 -> task2;
+    task2 -> end1;
+  }
+  
+  subgraph cluster_process2 {
+    label = "Process 2";
+    start2 [shape=ellipse, label="Start"];
+    task3 [shape=rectangle, label="Task 3"];
+    task4 [shape=rectangle, label="Task 4"];
+    end2 [shape=ellipse, label="End"];
+    
+    start2 -> task3;
+    task3 -> task4;
+    task4 -> end2;
+  }
+  
+  task2 -> task3;
+  task4 -> task1;
+}
+
+```
+

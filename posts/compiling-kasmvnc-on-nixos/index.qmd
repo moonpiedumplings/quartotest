@@ -217,3 +217,21 @@ I get a different error.
 ```
 
 To be honest, I think I am going in the wrong direction. I think it's likely that I have the wrong version of tigervnc or something. I will try to see how Kasm's build scripts set this up.
+
+
+Okay, I will attempt to create a visual graph, documenting each step of KasmVNC's build system, to build an ubuntu package. I will have hyperlinks to each of the scripts/dockerfiles, or other pieces of the github repo. 
+
+```{dot}
+digraph {
+   // Declare Nodes here
+   Entry [label="Entry.\n Starts out at KasmVNC/builder", URL="https://github.com/kasmtech/KasmVNC/tree/master/builder"];
+   BuildPackage [label="I will run the 'builder/build-package ubuntu bionic' command. \n This isn't the only command available, but for an example.", URL="https://github.com/kasmtech/KasmVNC/blob/master/builder/build-package"]
+   end [shape=oval];
+
+   // Declare edges (connections) here
+   Entry -> BuildPackage [label="read input", URL="https://example.com"];
+   input -> process [label="process input"];
+   process -> output [label="write output"];
+   output -> end;
+}
+```
