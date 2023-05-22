@@ -284,6 +284,86 @@ make[2]: *** [tests/CMakeFiles/fbperf.dir/build.make:118: tests/CMakeFiles/fbper
       |   ^~~~~~~~~
       |   setbuffer</code></pre>
 <p>To be honest, I think I am going in the wrong direction. I think it’s likely that I have the wrong version of tigervnc or something. I will try to see how Kasm’s build scripts set this up.</p>
+<p>Okay, I will attempt to create a visual graph, documenting each step of KasmVNC’s build system, to build an ubuntu package. I will have hyperlinks to each of the scripts/dockerfiles, or other pieces of the github repo. Currently still working on figuring out how to use Graphviz.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="672" height="480" viewbox="0.00 0.00 856.99 363.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 359)"> <polygon fill="white" stroke="transparent" points="-4,4 -4,-359 852.99,-359 852.99,4 -4,4"></polygon> <!-- Entry --> <g id="node1" class="node">
+<title>
+Entry
+</title>
+<g id="a_node1"><a href="https://github.com/kasmtech/KasmVNC/tree/master/builder" title="Entry.\n Starts out at KasmVNC/builder"> <polygon fill="none" stroke="black" points="280.99,-354.8 85.69,-354.8 85.69,-313.6 280.99,-313.6 280.99,-354.8"></polygon> <text text-anchor="middle" x="183.34" y="-338.4" font-family="Times,serif" font-size="14.00">Entry.</text> <text text-anchor="middle" x="183.34" y="-321.6" font-family="Times,serif" font-size="14.00"> Starts out at KasmVNC/builder</text> </a> </g> </g> <!-- BuildPackage --> <g id="node2" class="node">
+<title>
+BuildPackage
+</title>
+<g id="a_node2"><a href="https://github.com/kasmtech/KasmVNC/blob/master/builder/build-package" title="I will run the 'builder/build-package ubuntu bionic' command. \n This isn't the only command available, but for an example."> <polygon fill="none" stroke="black" points="366.53,-260.4 0.16,-260.4 0.16,-219.2 366.53,-219.2 366.53,-260.4"></polygon> <text text-anchor="middle" x="183.34" y="-244" font-family="Times,serif" font-size="14.00">I will run the ‘builder/build-package ubuntu bionic’ command. </text> <text text-anchor="middle" x="183.34" y="-227.2" font-family="Times,serif" font-size="14.00"> This isn’t the only command available, but for an example.</text> </a> </g> </g> <!-- Entry&#45;&gt;BuildPackage --> <g id="edge1" class="edge">
+<title>
+Entry-&gt;BuildPackage
+</title>
+<g id="a_edge1"><a href="https://example.com" title="test label"> <path fill="none" stroke="black" d="M183.34,-313.15C183.34,-300.72 183.34,-284.51 183.34,-270.59"></path> <polygon fill="black" stroke="black" points="186.84,-270.49 183.34,-260.49 179.84,-270.49 186.84,-270.49"></polygon> </a> </g> <g id="a_edge1-label"><a href="https://example.com" title="test label"> <text text-anchor="middle" x="208.42" y="-282.8" font-family="Times,serif" font-size="14.00">test label</text> </a> </g> </g> <!-- BuildTarball --> <g id="node3" class="node">
+<title>
+BuildTarball
+</title>
+<g id="a_node3"><a href="https://github.com/kasmtech/KasmVNC/blob/master/builder/build-tarball" title="build-tarball ubuntu bionic"> <polygon fill="none" stroke="black" points="266.42,-182 100.26,-182 100.26,-146 266.42,-146 266.42,-182"></polygon> <text text-anchor="middle" x="183.34" y="-159.8" font-family="Times,serif" font-size="14.00">build-tarball ubuntu bionic</text> </a> </g> </g> <!-- BuildPackage&#45;&gt;BuildTarball --> <g id="edge2" class="edge">
+<title>
+BuildPackage-&gt;BuildTarball
+</title>
+<path fill="none" stroke="black" d="M183.34,-219.02C183.34,-210.89 183.34,-201.33 183.34,-192.53"></path> <polygon fill="black" stroke="black" points="186.84,-192.32 183.34,-182.32 179.84,-192.32 186.84,-192.32"></polygon> </g> <!-- www --> <g id="node4" class="node">
+<title>
+www
+</title>
+<g id="a_node4"><a href="https://github.com/kasmtech/KasmVNC/blob/master/builder/dockerfile.www.build" title="if some condition, then \n build and run dockerfile.www.build"> <polygon fill="none" stroke="black" points="605.35,-260.4 385.33,-260.4 385.33,-219.2 605.35,-219.2 605.35,-260.4"></polygon> <text text-anchor="middle" x="495.34" y="-244" font-family="Times,serif" font-size="14.00">if some condition, then </text> <text text-anchor="middle" x="495.34" y="-227.2" font-family="Times,serif" font-size="14.00"> build and run dockerfile.www.build</text> </a> </g> </g> <!-- build&#45;tarball --> <g id="node5" class="node">
+<title>
+build-tarball
+</title>
+<polygon fill="none" stroke="black" points="538.04,-352.2 452.64,-352.2 452.64,-316.2 538.04,-316.2 538.04,-352.2"></polygon> <text text-anchor="middle" x="495.34" y="-330" font-family="Times,serif" font-size="14.00">build-tarball</text> </g> <!-- build&#45;tarball&#45;&gt;www --> <g id="edge3" class="edge">
+<title>
+build-tarball-&gt;www
+</title>
+<path fill="none" stroke="black" d="M495.34,-315.82C495.34,-303.2 495.34,-285.8 495.34,-270.94"></path> <polygon fill="black" stroke="black" points="498.84,-270.67 495.34,-260.67 491.84,-270.67 498.84,-270.67"></polygon> </g> <!-- buildwwwsh --> <g id="node6" class="node">
+<title>
+buildwwwsh
+</title>
+<g id="a_node6"><a href="https://github.com/kasmtech/KasmVNC/blob/master/builder/build_www.sh" title="ENTRYPOINT [ &quot;/src/build_www.sh&quot; ]"> <polygon fill="none" stroke="black" points="849.14,-36 607.54,-36 607.54,0 849.14,0 849.14,-36"></polygon> <text text-anchor="middle" x="728.34" y="-13.8" font-family="Times,serif" font-size="14.00">ENTRYPOINT [ “/src/build_www.sh” ]</text> </a> </g> </g> <!-- COPY kasmweb/ /src/www/ --> <g id="node7" class="node">
+<title>
+COPY kasmweb/ /src/www/
+</title>
+<polygon fill="none" stroke="black" points="816.28,-352.2 640.41,-352.2 640.41,-316.2 816.28,-316.2 816.28,-352.2"></polygon> <text text-anchor="middle" x="728.34" y="-330" font-family="Times,serif" font-size="14.00">COPY kasmweb/ /src/www/</text> </g> <!-- COPY builder/build_www.sh /src/ --> <g id="node8" class="node">
+<title>
+COPY builder/build_www.sh /src/
+</title>
+<polygon fill="none" stroke="black" points="833.39,-257.8 623.29,-257.8 623.29,-221.8 833.39,-221.8 833.39,-257.8"></polygon> <text text-anchor="middle" x="728.34" y="-235.6" font-family="Times,serif" font-size="14.00">COPY builder/build_www.sh /src/</text> </g> <!-- COPY kasmweb/ /src/www/&#45;&gt;COPY builder/build_www.sh /src/ --> <g id="edge4" class="edge">
+<title>
+COPY kasmweb/ /src/www/-&gt;COPY builder/build_www.sh /src/
+</title>
+<path fill="none" stroke="black" d="M728.34,-315.82C728.34,-302.4 728.34,-283.57 728.34,-268.14"></path> <polygon fill="black" stroke="black" points="731.84,-268.1 728.34,-258.1 724.84,-268.1 731.84,-268.1"></polygon> </g> <!-- WORKDIR /src/www --> <g id="node9" class="node">
+<title>
+WORKDIR /src/www
+</title>
+<polygon fill="none" stroke="black" points="798.66,-182 658.02,-182 658.02,-146 798.66,-146 798.66,-182"></polygon> <text text-anchor="middle" x="728.34" y="-159.8" font-family="Times,serif" font-size="14.00">WORKDIR /src/www</text> </g> <!-- COPY builder/build_www.sh /src/&#45;&gt;WORKDIR /src/www --> <g id="edge5" class="edge">
+<title>
+COPY builder/build_www.sh /src/-&gt;WORKDIR /src/www
+</title>
+<path fill="none" stroke="black" d="M728.34,-221.68C728.34,-212.93 728.34,-202.06 728.34,-192.19"></path> <polygon fill="black" stroke="black" points="731.84,-192.02 728.34,-182.02 724.84,-192.02 731.84,-192.02"></polygon> </g> <!-- RUN npm install --> <g id="node10" class="node">
+<title>
+RUN npm install
+</title>
+<polygon fill="none" stroke="black" points="784.01,-109 672.67,-109 672.67,-73 784.01,-73 784.01,-109"></polygon> <text text-anchor="middle" x="728.34" y="-86.8" font-family="Times,serif" font-size="14.00">RUN npm install</text> </g> <!-- WORKDIR /src/www&#45;&gt;RUN npm install --> <g id="edge6" class="edge">
+<title>
+WORKDIR /src/www-&gt;RUN npm install
+</title>
+<path fill="none" stroke="black" d="M728.34,-145.81C728.34,-137.79 728.34,-128.05 728.34,-119.07"></path> <polygon fill="black" stroke="black" points="731.84,-119.03 728.34,-109.03 724.84,-119.03 731.84,-119.03"></polygon> </g> <!-- RUN npm install&#45;&gt;buildwwwsh --> <g id="edge7" class="edge">
+<title>
+RUN npm install-&gt;buildwwwsh
+</title>
+<path fill="none" stroke="black" d="M728.34,-72.81C728.34,-64.79 728.34,-55.05 728.34,-46.07"></path> <polygon fill="black" stroke="black" points="731.84,-46.03 728.34,-36.03 724.84,-46.03 731.84,-46.03"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
 
 
 </section>
