@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Jeffrey Fonseca’s Blog",
     "section": "",
-    "text": "Compiling KasmVNC on NixOS\n\n\n\n\n\n\n\nlinux\n\n\ndevops\n\n\nnix\n\n\nkasm\n\n\n\n\n\n\n\n\n\n\n\nMay 2, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNginx proxy manager\n\n\n\n\n\n\n\nnix\n\n\nlinux\n\n\ndevops\n\n\nnginx\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHow to get a subdomain from duckdns\n\n\n\n\n\n\n\nlinux\n\n\ndevops\n\n\n\n\n\n\n\n\n\n\n\nFeb 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWhy schools should be less aggressive with content blocking\n\n\n\n\n\n\n\nenglish\n\n\n\n\n\n\n\n\n\n\n\nFeb 1, 2023\n\n\n\n\n\n\n  \n\n\n\n\nKasmweb setup\n\n\n\n\n\n\n\nnix\n\n\nlinux\n\n\ndevops\n\n\nubuntu\n\n\nkasm\n\n\n\n\n\n\n\n\n\n\n\nJan 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSetting up cockpit\n\n\n\n\n\n\n\naws\n\n\nec2\n\n\ndocker\n\n\nlinux\n\n\n\n\ncockpit is a gui to manage linux servers.\n\n\n\n\n\n\nSep 30, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "Interactive Python Tutorial\n\n\n\n\n\n\n\npython\n\n\n\n\n\n\n\n\n\n\n\nMay 22, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCompiling KasmVNC on NixOS\n\n\n\n\n\n\n\nlinux\n\n\ndevops\n\n\nnix\n\n\nkasm\n\n\n\n\n\n\n\n\n\n\n\nMay 2, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNginx proxy manager\n\n\n\n\n\n\n\nnix\n\n\nlinux\n\n\ndevops\n\n\nnginx\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHow to get a subdomain from duckdns\n\n\n\n\n\n\n\nlinux\n\n\ndevops\n\n\n\n\n\n\n\n\n\n\n\nFeb 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWhy schools should be less aggressive with content blocking\n\n\n\n\n\n\n\nenglish\n\n\n\n\n\n\n\n\n\n\n\nFeb 1, 2023\n\n\n\n\n\n\n  \n\n\n\n\nKasmweb setup\n\n\n\n\n\n\n\nnix\n\n\nlinux\n\n\ndevops\n\n\nubuntu\n\n\nkasm\n\n\n\n\n\n\n\n\n\n\n\nJan 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSetting up cockpit\n\n\n\n\n\n\n\naws\n\n\nec2\n\n\ndocker\n\n\nlinux\n\n\n\n\ncockpit is a gui to manage linux servers.\n\n\n\n\n\n\nSep 30, 2022\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/blocking/index.html",
@@ -40,6 +40,13 @@
     "title": "How to get a subdomain from duckdns",
     "section": "",
     "text": "Why?\nPeople can’t register for freenom consistently, and it can take time to get a domain from the one’s we have as a class. Duckdns allows people to create their own free domain, extremely easily, and nearly instantly.\n\n\nRegistration and Setup\n\nThis is the registration page. I really like duckdns because you only need a github account to login, which we already have.\n\nAfter you login, you will see this. You can get your own subdomain, and then set your ip address manually.\nTo find the ip address of your server, run this command on your AWS server:\ncurl ifconfig.me\nIf the command curl is not found, install it using apt.\nThen, you can manually input your server’s ip address into the duckdns website.\nIn your nginx confiuration file, make sure you set your nginx configuration file to be your domain name.\nserver {\n    listen 80;\n    listen [::]:80;\n    server_name [yoursubdomain].duckdns.org;\n\n    location / {\n        proxy_pass http://localhost:8087; # Make sure this matches the port your docker-compose.yml is set to\n        # Simple requests\n        if ($request_method ~* \"(GET|POST)\") {\n                add_header \"Access-Control-Allow-Origin\"  *;\n        }\n\n        # Preflight requests\n        if ($request_method = OPTIONS ) {\n                add_header \"Access-Control-Allow-Origin\"  *;\n                add_header \"Access-Control-Allow-Methods\" \"GET, POST, OPTIONS, HEAD\";\n                add_header \"Access-Control-Allow-Headers\" \"Authorization, Origin, X-Requested-With, Content-Type, Accept\";\n                return 200;\n        }\n    }\n}"
+  },
+  {
+    "objectID": "posts/interactive-python-tutorial/index.html",
+    "href": "posts/interactive-python-tutorial/index.html",
+    "title": "Interactive Python Tutorial",
+    "section": "",
+    "text": "There is going to be an interactive python tutorial here.\nCode is ran client side, so don’t try to crash any server or anything like that."
   },
   {
     "objectID": "posts/npm/index.html",
