@@ -1,4 +1,4 @@
 { pkgs ? import <nixpkgs> {} } :
     pkgs.mkShell {
-        packages = with pkgs; [ quarto jupyter pandoc deno mkpasswd ];
+        packages = with pkgs; [ python311Full quarto jupyter pandoc deno mkpasswd ];
     }

@@ -21,6 +21,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -478,6 +541,79 @@ task4-&gt;end2
 </svg>
 </p>
 </div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="672" height="480" viewbox="0.00 0.00 433.77 173.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 169)"> <polygon fill="white" stroke="transparent" points="-4,4 -4,-169 429.77,-169 429.77,4 -4,4"></polygon> <g id="clust1" class="cluster">
+<title>
+cluster_name
+</title>
+<polygon fill="lightgray" stroke="lightgray" points="105.86,-44 105.86,-157 417.77,-157 417.77,-44 105.86,-44"></polygon> <text text-anchor="middle" x="261.81" y="-140.4" font-family="Times,serif" font-size="14.00">Subgraph Title</text> </g> <!-- Node1 --> <g id="node1" class="node">
+<title>
+Node1
+</title>
+<ellipse fill="none" stroke="black" cx="150.64" cy="-106" rx="36.57" ry="18"></ellipse> <text text-anchor="middle" x="150.64" y="-101.8" font-family="Times,serif" font-size="14.00">Node1</text> </g> <!-- Node2 --> <g id="node2" class="node">
+<title>
+Node2
+</title>
+<ellipse fill="none" stroke="black" cx="261.81" cy="-79" rx="36.57" ry="18"></ellipse> <text text-anchor="middle" x="261.81" y="-74.8" font-family="Times,serif" font-size="14.00">Node2</text> </g> <!-- Node1&#45;&gt;Node2 --> <g id="edge1" class="edge">
+<title>
+Node1-&gt;Node2
+</title>
+<path fill="none" stroke="black" d="M183.8,-98.05C194.7,-95.35 207.04,-92.3 218.6,-89.44"></path> <polygon fill="black" stroke="black" points="219.63,-92.79 228.5,-86.99 217.95,-85.99 219.63,-92.79"></polygon> </g> <!-- Node3 --> <g id="node3" class="node">
+<title>
+Node3
+</title>
+<ellipse fill="none" stroke="black" cx="372.99" cy="-92" rx="36.57" ry="18"></ellipse> <text text-anchor="middle" x="372.99" y="-87.8" font-family="Times,serif" font-size="14.00">Node3</text> </g> <!-- Node2&#45;&gt;Node3 --> <g id="edge2" class="edge">
+<title>
+Node2-&gt;Node3
+</title>
+<path fill="none" stroke="black" d="M297.66,-83.15C307.01,-84.26 317.26,-85.48 327.08,-86.65"></path> <polygon fill="black" stroke="black" points="326.76,-90.14 337.1,-87.85 327.59,-83.19 326.76,-90.14"></polygon> </g> <!-- Node3&#45;&gt;Node1 --> <g id="edge3" class="edge">
+<title>
+Node3-&gt;Node1
+</title>
+<path fill="none" stroke="black" d="M339.67,-99.68C327.39,-102.23 313.23,-104.74 300.21,-106 266.02,-109.3 227.21,-109.17 197.83,-108.28"></path> <polygon fill="black" stroke="black" points="197.57,-104.77 187.45,-107.93 197.33,-111.77 197.57,-104.77"></polygon> </g> <!-- port_in --> <g id="node4" class="node">
+<title>
+port_in
+</title>
+<ellipse fill="black" stroke="black" cx="150.64" cy="-70" rx="0" ry="0"></ellipse> </g> <!-- port_out --> <g id="node5" class="node">
+<title>
+port_out
+</title>
+<ellipse fill="black" stroke="black" cx="150.64" cy="-52" rx="0" ry="0"></ellipse> </g> <!-- NodeB --> <g id="node7" class="node">
+<title>
+NodeB
+</title>
+<ellipse fill="none" stroke="black" cx="261.81" cy="-18" rx="38.29" ry="18"></ellipse> <text text-anchor="middle" x="261.81" y="-13.8" font-family="Times,serif" font-size="14.00">NodeB</text> </g> <!-- port_out&#45;&gt;NodeB --> <g id="edge5" class="edge">
+<title>
+port_out-&gt;NodeB
+</title>
+<path fill="none" stroke="black" d="M151.72,-51.98C153.83,-51.32 198.01,-37.56 229.49,-27.75"></path> </g> <!-- NodeA --> <g id="node6" class="node">
+<title>
+NodeA
+</title>
+<ellipse fill="none" stroke="black" cx="38.93" cy="-70" rx="38.86" ry="18"></ellipse> <text text-anchor="middle" x="38.93" y="-65.8" font-family="Times,serif" font-size="14.00">NodeA</text> </g> <!-- NodeA&#45;&gt;port_in --> <g id="edge4" class="edge">
+<title>
+NodeA-&gt;port_in
+</title>
+<path fill="none" stroke="black" d="M77.99,-70C108.69,-70 147.15,-70 149.52,-70"></path> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/gh/pysnippet/pysnippet@latest/snippet.js"></script>
+<script src="https://modularizer.github.io/pyprez/pyprez.min.js">
+    print("2^4=",2**4)
+</script>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"testing, 123"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>testing, 123</code></pre>
 </div>
 </div>
 

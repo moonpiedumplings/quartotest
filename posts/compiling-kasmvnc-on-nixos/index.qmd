@@ -219,19 +219,39 @@ I get a different error.
 To be honest, I think I am going in the wrong direction. I think it's likely that I have the wrong version of tigervnc or something. I will try to see how Kasm's build scripts set this up.
 
 
-Okay, I will attempt to create a visual graph, documenting each step of KasmVNC's build system, to build an ubuntu package. I will have hyperlinks to each of the scripts/dockerfiles, or other pieces of the github repo. 
+Okay, I will attempt to create a visual graph, documenting each step of KasmVNC's build system, to build an ubuntu package. I will have hyperlinks to each of the scripts/dockerfiles, or other pieces of the github repo. Currently still working on figuring out how to use Graphviz. 
 
 ```{dot}
 digraph {
    // Declare Nodes here
+   node [shape="rectangle"];
    Entry [label="Entry.\n Starts out at KasmVNC/builder", URL="https://github.com/kasmtech/KasmVNC/tree/master/builder"];
    BuildPackage [label="I will run the 'builder/build-package ubuntu bionic' command. \n This isn't the only command available, but for an example.", URL="https://github.com/kasmtech/KasmVNC/blob/master/builder/build-package"]
-   end [shape=oval];
+
+   BuildTarball [label="build-tarball ubuntu bionic", URL="https://github.com/kasmtech/KasmVNC/blob/master/builder/build-tarball"]
+
 
    // Declare edges (connections) here
-   Entry -> BuildPackage [label="read input", URL="https://example.com"];
-   input -> process [label="process input"];
-   process -> output [label="write output"];
-   output -> end;
+   Entry -> BuildPackage [label="test label", URL="https://example.com"];
+   BuildPackage -> BuildTarball
+
+   subgraph BuildTarball {
+      www [label="if some condition, then \n build and run dockerfile.www.build", URL="https://github.com/kasmtech/KasmVNC/blob/master/builder/dockerfile.www.build"]
+
+
+      "build-tarball" -> www
+   }
+
+   subgraph BuildWWW {
+      label = "dockerfile";
+
+      buildwwwsh [label="ENTRYPOINT [ \"/src/build_www.sh\" ]", URL="https://github.com/kasmtech/KasmVNC/blob/master/builder/build_www.sh"]
+
+      "COPY kasmweb/ /src/www/" -> "COPY builder/build_www.sh /src/"
+      "COPY builder/build_www.sh /src/" -> "WORKDIR /src/www"
+      "WORKDIR /src/www" -> "RUN npm install"
+      "RUN npm install" -> buildwwwsh
+
+   }
 }
 ```

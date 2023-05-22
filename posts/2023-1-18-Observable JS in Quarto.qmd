@@ -138,4 +138,45 @@ digraph parallel_processes {
 }
 
 ```
+```{dot}
+digraph {
+  graph [rankdir=LR];
+  
+  // Define the subgraph with the "cluster" attribute
+  subgraph cluster_name {
+    // Apply a style to the subgraph
+    style=filled;
+    color=lightgray;
+    label="Subgraph Title";
+    
+    // Add nodes within the subgraph
+    Node1 -> Node2;
+    Node2 -> Node3;
+    Node3 -> Node1;
+    
+    // Declare the cluster ports
+    label = "Subgraph Title";
+    port_in [shape=point, width=0];
+    port_out [shape=point, width=0];
+  }
+  
+  // Add additional nodes outside the subgraph
+  NodeA -> port_in [dir=none]; // Link to the input port of the subgraph
+  port_out -> NodeB [dir=none]; // Link from the output port of the subgraph
+}
+```
 
+
+```{=html}
+<script src="https://cdn.jsdelivr.net/gh/pysnippet/pysnippet@latest/snippet.js"></script>
+```
+
+```{=html}
+<script src="https://modularizer.github.io/pyprez/pyprez.min.js">
+    print("2^4=",2**4)
+</script>
+```
+
+```{python}
+print("testing, 123")
+```
