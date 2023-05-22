@@ -8,7 +8,7 @@ execute:
 header-includes:  <script src="https://lucademenego99.github.io/icp-bundle/base/full.iife.js"></script>
 ---
 
-There is going to be an interactive python tutorial here. 
+I might make an interactive python tutorial here.
 
 Code is ran client side, so don't try to crash any server or anything like that.
 
@@ -28,3 +28,6 @@ for n in range(len(elements)-1, 0, -1):
 print('\nSorted list is\n', elements)" />
                     </div>
 ```
+
+
+Awww, the input function doesn't seem to work. 
