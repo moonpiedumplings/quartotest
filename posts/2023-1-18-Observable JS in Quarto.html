@@ -97,6 +97,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="2023-1-18-Observable JS in Quarto_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="2023-1-18-Observable JS in Quarto_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="2023-1-18-Observable JS in Quarto_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://lucademenego99.github.io/icp-bundle/base/full.iife.js"></script>
 
 
 </head>
@@ -606,7 +607,20 @@ NodeA-&gt;port_in
 </div>
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/gh/pysnippet/pysnippet@latest/snippet.js"></script>
+
+<div class="col fragment" data-fragment-index="2" style="height: min(30vw, 60vh); margin: min(1vw, 2vh)">
+                        <python-editor contenteditable="true" theme="dark" code="elements = [39,12,18,85,72,10,2,18]
+
+print('Unsorted list is\n', elements)
+
+# Sort the list (with bubblesort)
+for n in range(len(elements)-1, 0, -1):
+  for i in range(n):
+    if elements[i] > elements[i+1]:
+      elements[i], elements[i+1] = elements[i+1], elements[i]
+
+print('\nSorted list is\n', elements)">
+                    </python-editor></div>
 <script src="https://modularizer.github.io/pyprez/pyprez.min.js">
     print("2^4=",2**4)
 </script>
