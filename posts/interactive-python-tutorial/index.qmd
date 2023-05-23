@@ -42,7 +42,7 @@ Shift + enter/return to evaluate code of the below.
 This kinda works, but also has issues. Input fucntion still doesn't work. 
 
 
-Shift + enter/return to evaluate below.
+Shift + enter/return to evaluate below.  Or double click.
 
 ```{=html}
 <pyprez-editor>

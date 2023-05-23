@@ -2,8 +2,13 @@
 title: "Compiling KasmVNC on NixOS"
 date: "2023-5-2"
 categories: [linux, devops, nix, kasm]
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
 execute:
   freeze: auto
+
 ---
 
 This is a living document, for the time being. Rather than a complete blogpost, this is a tracker of my progress, as well as a quick reference I can come back to.
@@ -33,7 +38,7 @@ The below is what I neeed for the compiliation commands to work. I don't know wh
 
 Perhaps I need to only run `make` in the KasmVNC/unix directory?
 
-```{bash}
+```{.bash .code-overflow-wrap}
 
 git clone https://github.com/TigerVNC/tigervnc
 
@@ -50,7 +55,7 @@ The build script can be found [here](https://github.com/kasmtech/KasmVNC/blob/4d
 
 But from this build script, I don't think all of it is necessary. Below, I will extract what commands are actually needed, from all the fluff, cruft, and hacks. 
 
-```{bash}
+```{.bash .code-overflow-wrap}
 
 cmake -D CMAKE_BUILD_TYPE=RelWithDebInfo . -DBUILD_VIEWER:BOOL=OFF \
   -DENABLE_GNUTLS:BOOL=OFF
@@ -62,8 +67,7 @@ Builds end up in `KasmVNC/unix/`
 
 Except the preliminary builds don't work. They error:
 
-```{bash}
-
+```{.bash .code-overflow-wrap}
 ~/vscode/tigervnc/KasmVNC/unix master ?1 ❯ ./vncserver 
 
 Can't locate List/MoreUtils.pm in @INC (you may need to install the List::MoreUtils module) (@INC contains: /usr/lib/perl5/5.36/site_perl /usr/share/perl5/site_perl /usr/lib/perl5/5.36/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5/5.36/core_perl /usr/share/perl5/core_perl) at ./vncserver line 38.
@@ -73,7 +77,7 @@ BEGIN failed--compilation aborted at ./vncserver line 38.
 
 The above is probably because a perl library is missing. After attempting to install the missing library using `pacman -S perl-list-moreutils` I get a different error.
 
-```{bash}
+```{.bash .code-overflow-wrap}
 
 ~/vscode/tigervnc/KasmVNC/unix master ?1 ❯ ./vncserver 
 
@@ -86,7 +90,7 @@ Obviously, this won't work. I must figure out why KasmVNC pacakges perl packages
 
 Alright, the vncserver command appears to be in the git repo, and rather than being a binary, it is a wrapper script to start an xvnc server. from the script:
 
-```
+```{perl}
 use KasmVNC::CliOption;
 use KasmVNC::ConfigKey;
 use KasmVNC::PatternValidator;
@@ -110,7 +114,7 @@ I think their fork of xvnc is located in `KasmVNC/unix/xserver/hw/vnc/xvnc.c`.
 
 But I get compilation errors:
 
-```
+```{.bash .code-overflow-wrap}
 
 [nix-shell:~/vscode/tigervnc/KasmVNC]$ make 
 [  3%] Built target os
@@ -133,7 +137,7 @@ I don't know why this happens. For those who don't know, make pretty much calls 
 
 Weirdly, I can't reproduce outside of the build script:
 
-```{bash}
+```{.bash .code-overflow-wrap}
 
 ~/vscode/tigervnc/KasmVNC master ?1 ❯ ld -lsdsakdfj
 ld: cannot find -lsdsakdfj: No such file or directory
@@ -151,7 +155,7 @@ I suspect the make scripts have some hacks that change working directory, or oth
 
 When commenting out the part of the `KasmVNC/Cmakelists.txt` file that appears to be related to libjpeg, the error when I run `make` changes.
 
-```{bash}
+```{.bash .code-overflow-wrap}
 [ 95%] Building CXX object unix/vncconfig/CMakeFiles/vncconfig.dir/vncconfig.cxx.o
 /home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/Surface.cxx:23:10: fatal error: FL/Fl_RGB_Image.H: No such file or directory
    23 | #include <FL/Fl_RGB_Image.H>
@@ -173,7 +177,7 @@ This is probably missing libraries.
 
 After installing fltk (`pacman -S fltk`), this error goes away, and I get a new, even harder to comprehend error. 
 
-```{bash}
+```{.bash .code-overflow-wrap}
 
 [ 97%] Building CXX object tests/CMakeFiles/decperf.dir/decperf.cxx.o
 /home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx: In constructor ‘PlatformPixelBuffer::PlatformPixelBuffer(int, int)’:
@@ -206,7 +210,7 @@ Within `KasmVNC/vncviewer/PlatformPixelBuffer.cxx`:
 I get a different error. 
 
 
-```{shell}
+```{.bash .code-overflow-wrap}
 
 [ 94%] Building CXX object tests/CMakeFiles/fbperf.dir/__/vncviewer/PlatformPixelBuffer.cxx.o
 /home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx: In constructor ‘PlatformPixelBuffer::PlatformPixelBuffer(int, int)’:
