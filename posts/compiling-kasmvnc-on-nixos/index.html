@@ -21,6 +21,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -157,41 +220,38 @@ ul.task-list li input[type="checkbox"] {
 <p>Reverse engineering KasmVNC’s build system.</p>
 <p>The below is what I neeed for the compiliation commands to work. I don’t know where Kasm runs these commands, or similar equivalents, this is just what I’ve figured out.</p>
 <p>Perhaps I need to only run <code>make</code> in the KasmVNC/unix directory?</p>
-<pre class="{bash}"><code>
-git clone https://github.com/TigerVNC/tigervnc
-
-cd tigervnc
-
-git clone https://github.com/kasmtech/KasmVNC
-
-cd KasmVNC
-
-cp ..vncserver .vncserver # this sets up build environment. I will still need to check if every single one of these things are necessary, but this works for now</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/TigerVNC/tigervnc</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> tigervnc</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/kasmtech/KasmVNC</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> KasmVNC</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ..vncserver .vncserver <span class="co"># this sets up build environment. I will still need to check if every single one of these things are necessary, but this works for now</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The build script can be found <a href="https://github.com/kasmtech/KasmVNC/blob/4d3a9b749adfcf89bde0b970c1c37481c92d585b/builder/build.sh#L63">here</a></p>
 <p>But from this build script, I don’t think all of it is necessary. Below, I will extract what commands are actually needed, from all the fluff, cruft, and hacks.</p>
-<pre class="{bash}"><code>
-cmake -D CMAKE_BUILD_TYPE=RelWithDebInfo . -DBUILD_VIEWER:BOOL=OFF \
-  -DENABLE_GNUTLS:BOOL=OFF
-
-make</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-D</span> CMAKE_BUILD_TYPE=RelWithDebInfo . <span class="at">-DBUILD_VIEWER:BOOL</span><span class="op">=</span>OFF <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-DENABLE_GNUTLS:BOOL</span><span class="op">=</span>OFF</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Builds end up in <code>KasmVNC/unix/</code></p>
 <p>Except the preliminary builds don’t work. They error:</p>
-<pre class="{bash}"><code>
-~/vscode/tigervnc/KasmVNC/unix master ?1 ❯ ./vncserver 
-
-Can't locate List/MoreUtils.pm in @INC (you may need to install the List::MoreUtils module) (@INC contains: /usr/lib/perl5/5.36/site_perl /usr/share/perl5/site_perl /usr/lib/perl5/5.36/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5/5.36/core_perl /usr/share/perl5/core_perl) at ./vncserver line 38.
-BEGIN failed--compilation aborted at ./vncserver line 38.
-</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/vscode/tigervnc/KasmVNC/unix</span> master <span class="pp">?</span>1 ❯ ./vncserver </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Can</span><span class="st">'t locate List/MoreUtils.pm in @INC (you may need to install the List::MoreUtils module) (@INC contains: /usr/lib/perl5/5.36/site_perl /usr/share/perl5/site_perl /usr/lib/perl5/5.36/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5/5.36/core_perl /usr/share/perl5/core_perl) at ./vncserver line 38.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">BEGIN failed--compilation aborted at ./vncserver line 38.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The above is probably because a perl library is missing. After attempting to install the missing library using <code>pacman -S perl-list-moreutils</code> I get a different error.</p>
-<pre class="{bash}"><code>
-~/vscode/tigervnc/KasmVNC/unix master ?1 ❯ ./vncserver 
-
-Can't locate KasmVNC/CliOption.pm in @INC (you may need to install the KasmVNC::CliOption module) (@INC contains: /usr/lib/perl5/5.36/site_perl /usr/share/perl5/site_perl /usr/lib/perl5/5.36/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5/5.36/core_perl /usr/share/perl5/core_perl) at ./vncserver line 42.
-BEGIN failed--compilation aborted at ./vncserver line 42.
-</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">~/vscode/tigervnc/KasmVNC/unix</span> master <span class="pp">?</span>1 ❯ ./vncserver </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Can</span><span class="st">'t locate KasmVNC/CliOption.pm in @INC (you may need to install the KasmVNC::CliOption module) (@INC contains: /usr/lib/perl5/5.36/site_perl /usr/share/perl5/site_perl /usr/lib/perl5/5.36/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5/5.36/core_perl /usr/share/perl5/core_perl) at ./vncserver line 42.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">BEGIN failed--compilation aborted at ./vncserver line 42.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Obviously, this won’t work. I must figure out why KasmVNC pacakges perl packages, where it puts them by default, and how to package them for Nix.</p>
 <p>Alright, the vncserver command appears to be in the git repo, and rather than being a binary, it is a wrapper script to start an xvnc server. from the script:</p>
-<pre><code>use KasmVNC::CliOption;
+<pre class="{perl}"><code>use KasmVNC::CliOption;
 use KasmVNC::ConfigKey;
 use KasmVNC::PatternValidator;
 use KasmVNC::EnumValidator;
@@ -207,68 +267,65 @@ use KasmVNC::Logger;
 <p>I need to find where this script runs kasmvnc, and also where the actual kasmvnc binary is.</p>
 <p>I think their fork of xvnc is located in <code>KasmVNC/unix/xserver/hw/vnc/xvnc.c</code>.</p>
 <p>But I get compilation errors:</p>
-<pre><code>
-[nix-shell:~/vscode/tigervnc/KasmVNC]$ make 
-[  3%] Built target os
-[ 13%] Built target rdr
-[ 30%] Built target network
-[ 31%] Built target Xregion
-[ 78%] Built target rfb
-[ 80%] Built target tx
-[ 81%] Built target unixcommon
-[ 81%] Linking CXX executable vncconfig
-/nix/store/178vvank67pg2ckr5ic5gmdkm3ri72f3-binutils-2.39/bin/ld: cannot find -lturbojpeg: No such file or directory
-collect2: error: ld returned 1 exit status
-make[2]: *** [unix/vncconfig/CMakeFiles/vncconfig.dir/build.make:157: unix/vncconfig/vncconfig] Error 1
-make[1]: *** [CMakeFiles/Makefile2:610: unix/vncconfig/CMakeFiles/vncconfig.dir/all] Error 2
-make: *** [Makefile:136: all] Error 2
-</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[nix-shell:~/vscode/tigervnc/KasmVNC]$</span> make </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span>  3%] Built target <span class="er">os</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> 13%] Built target <span class="er">rdr</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> 30%] Built target <span class="er">network</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> 31%] Built target <span class="er">Xregion</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> 78%] Built target <span class="er">rfb</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> 80%] Built target <span class="er">tx</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> 81%] Built target <span class="er">unixcommon</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> 81%] Linking CXX <span class="er">executable</span> <span class="ex">vncconfig</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/178vvank67pg2ckr5ic5gmdkm3ri72f3-binutils-2.39/bin/ld:</span> cannot find <span class="at">-lturbojpeg:</span> No such file or directory</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">collect2:</span> error: ld returned 1 exit status</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="va">make</span><span class="op">[</span><span class="dv">2</span><span class="op">]</span><span class="ex">:</span> <span class="pp">***</span> [unix/vncconfig/CMakeFiles/vncconfig.dir/build.make:157: unix/vncconfig/vncconfig] Error 1</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="va">make</span><span class="op">[</span><span class="dv">1</span><span class="op">]</span><span class="ex">:</span> <span class="pp">***</span> [CMakeFiles/Makefile2:610: unix/vncconfig/CMakeFiles/vncconfig.dir/all] Error 2</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="ex">make:</span> <span class="pp">***</span> [Makefile:136: all] Error 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I don’t know why this happens. For those who don’t know, make pretty much calls a set of scripts, called Makefiles. I will need to find where in these scripts, the error commands are run.</p>
 <p>Weirdly, I can’t reproduce outside of the build script:</p>
-<pre class="{bash}"><code>
-~/vscode/tigervnc/KasmVNC master ?1 ❯ ld -lsdsakdfj
-ld: cannot find -lsdsakdfj: No such file or directory
-~/vscode/tigervnc/KasmVNC master ?1 ❯ ld -lturbojpeg
-ld: warning: cannot find entry symbol _start; not setting start address
-~/vscode/tigervnc/KasmVNC master ?2 ❯ ld -ljpeg     
-ld: warning: cannot find entry symbol _start; not setting start address
-~/vscode/tigervnc/KasmVNC master ?2 ❯ ld -ljpeg-turbo
-ld: cannot find -ljpeg-turbo: No such file or directory
-~/vscode/tigervnc/KasmVNC master ?1 ❯ 
-</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">~/vscode/tigervnc/KasmVNC</span> master <span class="pp">?</span>1 ❯ ld <span class="at">-lsdsakdfj</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ld:</span> cannot find <span class="at">-lsdsakdfj:</span> No such file or directory</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">~/vscode/tigervnc/KasmVNC</span> master <span class="pp">?</span>1 ❯ ld <span class="at">-lturbojpeg</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ld:</span> warning: cannot find entry symbol _start<span class="kw">;</span> <span class="ex">not</span> setting start address</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">~/vscode/tigervnc/KasmVNC</span> master <span class="pp">?</span>2 ❯ ld <span class="at">-ljpeg</span>     </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ex">ld:</span> warning: cannot find entry symbol _start<span class="kw">;</span> <span class="ex">not</span> setting start address</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">~/vscode/tigervnc/KasmVNC</span> master <span class="pp">?</span>2 ❯ ld <span class="at">-ljpeg-turbo</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="ex">ld:</span> cannot find <span class="at">-ljpeg-turbo:</span> No such file or directory</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="ex">~/vscode/tigervnc/KasmVNC</span> master <span class="pp">?</span>1 ❯ </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I suspect the make scripts have some hacks that change working directory, or otherwise hide my installation of libjpeg.</p>
 <p>When commenting out the part of the <code>KasmVNC/Cmakelists.txt</code> file that appears to be related to libjpeg, the error when I run <code>make</code> changes.</p>
-<pre class="{bash}"><code>[ 95%] Building CXX object unix/vncconfig/CMakeFiles/vncconfig.dir/vncconfig.cxx.o
-/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/Surface.cxx:23:10: fatal error: FL/Fl_RGB_Image.H: No such file or directory
-   23 | #include &lt;FL/Fl_RGB_Image.H&gt;
-      |          ^~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[2]: *** [tests/CMakeFiles/fbperf.dir/build.make:104: tests/CMakeFiles/fbperf.dir/__/vncviewer/Surface.cxx.o] Error 1
-make[2]: *** Waiting for unfinished jobs....
-/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/Surface_X11.cxx:26:10: fatal error: FL/Fl_RGB_Image.H: No such file or directory
-   26 | #include &lt;FL/Fl_RGB_Image.H&gt;
-      |          ^~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[2]: *** [tests/CMakeFiles/fbperf.dir/build.make:118: tests/CMakeFiles/fbperf.dir/__/vncviewer/Surface_X11.cxx.o] Error 1
-/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:31:10: fatal error: FL/Fl.H: No such file or directory
-   31 | #include &lt;FL/Fl.H&gt;
-      |          ^~~~~~~~~</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> 95%] Building CXX <span class="er">object</span> <span class="ex">unix/vncconfig/CMakeFiles/vncconfig.dir/vncconfig.cxx.o</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/Surface.cxx:23:10:</span> fatal error: FL/Fl_RGB_Image.H: No such file or directory</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>   <span class="ex">23</span> <span class="kw">|</span> <span class="co">#include &lt;FL/Fl_RGB_Image.H&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span>          <span class="ex">^~~~~~~~~~~~~~~~~~~</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">compilation</span> terminated.</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="va">make</span><span class="op">[</span><span class="dv">2</span><span class="op">]</span><span class="ex">:</span> <span class="pp">***</span> [tests/CMakeFiles/fbperf.dir/build.make:104: tests/CMakeFiles/fbperf.dir/__/vncviewer/Surface.cxx.o] Error 1</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="va">make</span><span class="op">[</span><span class="dv">2</span><span class="op">]</span><span class="ex">:</span> <span class="pp">***</span> Waiting for unfinished jobs....</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/Surface_X11.cxx:26:10:</span> fatal error: FL/Fl_RGB_Image.H: No such file or directory</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>   <span class="ex">26</span> <span class="kw">|</span> <span class="co">#include &lt;FL/Fl_RGB_Image.H&gt;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span>          <span class="ex">^~~~~~~~~~~~~~~~~~~</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="ex">compilation</span> terminated.</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="va">make</span><span class="op">[</span><span class="dv">2</span><span class="op">]</span><span class="ex">:</span> <span class="pp">***</span> [tests/CMakeFiles/fbperf.dir/build.make:118: tests/CMakeFiles/fbperf.dir/__/vncviewer/Surface_X11.cxx.o] Error 1</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:31:10:</span> fatal error: FL/Fl.H: No such file or directory</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>   <span class="ex">31</span> <span class="kw">|</span> <span class="co">#include &lt;FL/Fl.H&gt;</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span>          <span class="ex">^~~~~~~~~</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This is probably missing libraries.</p>
 <p>After installing fltk (<code>pacman -S fltk</code>), this error goes away, and I get a new, even harder to comprehend error.</p>
-<pre class="{bash}"><code>
-[ 97%] Building CXX object tests/CMakeFiles/decperf.dir/decperf.cxx.o
-/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx: In constructor ‘PlatformPixelBuffer::PlatformPixelBuffer(int, int)’:
-/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:64:29: error: ‘uint8_t’ was not declared in this scope
-   64 |   setBuffer(width, height, (uint8_t*)xim-&gt;data,
-      |                             ^~~~~~~
-/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:38:1: note: ‘uint8_t’ is defined in header ‘&lt;cstdint&gt;’; did you forget to ‘#include &lt;cstdint&gt;’?
-   37 | #include "PlatformPixelBuffer.h"
-  +++ |+#include &lt;cstdint&gt;
-   38 | 
-/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:64:37: error: expected primary-expression before ‘)’ token
-   64 |   setBuffer(width, height, (uint8_t*)xim-&gt;data,
-      |                                     ^
-</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> 97%] Building CXX <span class="er">object</span> <span class="ex">tests/CMakeFiles/decperf.dir/decperf.cxx.o</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:</span> In constructor ‘PlatformPixelBuffer::PlatformPixelBuffer<span class="er">(</span><span class="ex">int,</span> int<span class="kw">)</span><span class="ex">’:</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:64:29:</span> error: ‘uint8_t’ was not declared in this scope</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>   <span class="ex">64</span> <span class="kw">|</span>   <span class="ex">setBuffer</span><span class="er">(</span><span class="ex">width,</span> height, <span class="er">(</span><span class="ex">uint8_t*</span><span class="kw">)</span><span class="ex">xim-</span><span class="op">&gt;</span>data,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span>                             <span class="ex">^~~~~~~</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:38:1:</span> note: ‘uint8_t’ is defined in header ‘<span class="op">&lt;</span>cstdint<span class="op">&gt;</span>’<span class="kw">;</span> <span class="ex">did</span> you forget to ‘#include <span class="op">&lt;</span>cstdint<span class="op">&gt;</span>’<span class="pp">?</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>   <span class="ex">37</span> <span class="kw">|</span> <span class="co">#include "PlatformPixelBuffer.h"</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">+++</span> <span class="kw">|</span><span class="ex">+#include</span> <span class="op">&lt;</span>cstdint<span class="op">&gt;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>   <span class="ex">38</span> <span class="kw">|</span> </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:64:37:</span> error: expected primary-expression before ‘<span class="kw">)</span><span class="ex">’</span> token</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>   <span class="ex">64</span> <span class="kw">|</span>   <span class="ex">setBuffer</span><span class="er">(</span><span class="ex">width,</span> height, <span class="er">(</span><span class="ex">uint8_t*</span><span class="kw">)</span><span class="ex">xim-</span><span class="op">&gt;</span>data,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span>                                     <span class="ex">^</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I suspect I have the wrong version of the tigervnc source code/libraries. I will need to investigate where Kasm’s build system downloads these vncviewer libraries from.</p>
 <p>After editing the errored file, to include the library:</p>
 <p>Within <code>KasmVNC/vncviewer/PlatformPixelBuffer.cxx</code>:</p>
@@ -276,13 +333,13 @@ make[2]: *** [tests/CMakeFiles/fbperf.dir/build.make:118: tests/CMakeFiles/fbper
 #include &lt;cstdint&gt;
 </code></pre>
 <p>I get a different error.</p>
-<pre class="{shell}"><code>
-[ 94%] Building CXX object tests/CMakeFiles/fbperf.dir/__/vncviewer/PlatformPixelBuffer.cxx.o
-/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx: In constructor ‘PlatformPixelBuffer::PlatformPixelBuffer(int, int)’:
-/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:66:3: error: ‘setBuffer’ was not declared in this scope; did you mean ‘setbuffer’?
-   66 |   setBuffer(width, height, (uint8_t*)xim-&gt;data,
-      |   ^~~~~~~~~
-      |   setbuffer</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> 94%] Building CXX <span class="er">object</span> <span class="ex">tests/CMakeFiles/fbperf.dir/__/vncviewer/PlatformPixelBuffer.cxx.o</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:</span> In constructor ‘PlatformPixelBuffer::PlatformPixelBuffer<span class="er">(</span><span class="ex">int,</span> int<span class="kw">)</span><span class="ex">’:</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:66:3:</span> error: ‘setBuffer’ was not declared in this scope<span class="kw">;</span> <span class="ex">did</span> you mean ‘setbuffer’<span class="pp">?</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>   <span class="ex">66</span> <span class="kw">|</span>   <span class="ex">setBuffer</span><span class="er">(</span><span class="ex">width,</span> height, <span class="er">(</span><span class="ex">uint8_t*</span><span class="kw">)</span><span class="ex">xim-</span><span class="op">&gt;</span>data,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span>   <span class="ex">^~~~~~~~~</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span>   <span class="ex">setbuffer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To be honest, I think I am going in the wrong direction. I think it’s likely that I have the wrong version of tigervnc or something. I will try to see how Kasm’s build scripts set this up.</p>
 <p>Okay, I will attempt to create a visual graph, documenting each step of KasmVNC’s build system, to build an ubuntu package. I will have hyperlinks to each of the scripts/dockerfiles, or other pieces of the github repo. Currently still working on figuring out how to use Graphviz.</p>
 <div class="cell">
