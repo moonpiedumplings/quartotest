@@ -1,14 +1,14 @@
 ---
-title: "Interactive Python Tutorial"
+title: "Experiments with Running python in the browser"
 date: "2023-5-22"
 categories: [python]
 execute:
   freeze: auto
 
-header-includes:  <script src="https://lucademenego99.github.io/icp-bundle/base/full.iife.js"></script>
+header-includes:  <script src="https://lucademenego99.github.io/icp-bundle/base/full.iife.js"></script><link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" /><script defer src="https://pyscript.net/latest/pyscript.js"></script><script src="https://modularizer.github.io/pyprez/pyprez.js"></script>
 ---
 
-I might make an interactive python tutorial here.
+My goal is an in browser python editor I can embed into a blog.
 
 Code is ran client side, so don't try to crash any server or anything like that.
 
@@ -31,3 +31,24 @@ print('\nSorted list is\n', elements)" />
 
 
 Awww, the input function doesn't seem to work. 
+
+
+Shift + enter/return to evaluate code of the below. 
+
+```{=html}
+<py-repl></py-repl>
+```
+
+This kinda works, but also has issues. Input fucntion still doesn't work. 
+
+
+Shift + enter/return to evaluate below.
+
+```{=html}
+<pyprez-editor>
+   import numpy as np
+   np.random.rand(5)
+</pyprez-editor>
+```
+
+This is cool, but the code isn't editable. It just resets itself for some reason. 
