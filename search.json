@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Jeffrey Fonseca’s Blog",
     "section": "",
-    "text": "Interactive Python Tutorial\n\n\n\n\n\n\n\npython\n\n\n\n\n\n\n\n\n\n\n\nMay 22, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCompiling KasmVNC on NixOS\n\n\n\n\n\n\n\nlinux\n\n\ndevops\n\n\nnix\n\n\nkasm\n\n\n\n\n\n\n\n\n\n\n\nMay 2, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNginx proxy manager\n\n\n\n\n\n\n\nnix\n\n\nlinux\n\n\ndevops\n\n\nnginx\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHow to get a subdomain from duckdns\n\n\n\n\n\n\n\nlinux\n\n\ndevops\n\n\n\n\n\n\n\n\n\n\n\nFeb 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWhy schools should be less aggressive with content blocking\n\n\n\n\n\n\n\nenglish\n\n\n\n\n\n\n\n\n\n\n\nFeb 1, 2023\n\n\n\n\n\n\n  \n\n\n\n\nKasmweb setup\n\n\n\n\n\n\n\nnix\n\n\nlinux\n\n\ndevops\n\n\nubuntu\n\n\nkasm\n\n\n\n\n\n\n\n\n\n\n\nJan 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSetting up cockpit\n\n\n\n\n\n\n\naws\n\n\nec2\n\n\ndocker\n\n\nlinux\n\n\n\n\ncockpit is a gui to manage linux servers.\n\n\n\n\n\n\nSep 30, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "Experiments with Running python in the browser\n\n\n\n\n\n\n\npython\n\n\n\n\n\n\n\n\n\n\n\nMay 22, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCompiling KasmVNC on NixOS\n\n\n\n\n\n\n\nlinux\n\n\ndevops\n\n\nnix\n\n\nkasm\n\n\n\n\n\n\n\n\n\n\n\nMay 2, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNginx proxy manager\n\n\n\n\n\n\n\nnix\n\n\nlinux\n\n\ndevops\n\n\nnginx\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHow to get a subdomain from duckdns\n\n\n\n\n\n\n\nlinux\n\n\ndevops\n\n\n\n\n\n\n\n\n\n\n\nFeb 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWhy schools should be less aggressive with content blocking\n\n\n\n\n\n\n\nenglish\n\n\n\n\n\n\n\n\n\n\n\nFeb 1, 2023\n\n\n\n\n\n\n  \n\n\n\n\nKasmweb setup\n\n\n\n\n\n\n\nnix\n\n\nlinux\n\n\ndevops\n\n\nubuntu\n\n\nkasm\n\n\n\n\n\n\n\n\n\n\n\nJan 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSetting up cockpit\n\n\n\n\n\n\n\naws\n\n\nec2\n\n\ndocker\n\n\nlinux\n\n\n\n\ncockpit is a gui to manage linux servers.\n\n\n\n\n\n\nSep 30, 2022\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/blocking/index.html",
@@ -44,9 +44,9 @@
   {
     "objectID": "posts/interactive-python-tutorial/index.html",
     "href": "posts/interactive-python-tutorial/index.html",
-    "title": "Interactive Python Tutorial",
+    "title": "Experiments with Running python in the browser",
     "section": "",
-    "text": "There is going to be an interactive python tutorial here.\nCode is ran client side, so don’t try to crash any server or anything like that."
+    "text": "My goal is an in browser python editor I can embed into a blog.\nCode is ran client side, so don’t try to crash any server or anything like that.\n\n\n                        \n                    \nAwww, the input function doesn’t seem to work.\nShift + enter/return to evaluate code of the below.\n\nThis kinda works, but also has issues. Input fucntion still doesn’t work.\nShift + enter/return to evaluate below. Or double click.\n\n   import numpy as np\n   np.random.rand(5)\n\nThis is cool, but the code isn’t editable. It just resets itself for some reason."
   },
   {
     "objectID": "posts/npm/index.html",
