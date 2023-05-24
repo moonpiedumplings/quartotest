@@ -226,6 +226,11 @@ To be honest, I think I am going in the wrong direction. I think it's likely tha
 
 Okay, I will attempt to create a visual graph, documenting each step of KasmVNC's build system, to build an ubuntu package. I will have hyperlinks to each of the scripts/dockerfiles, or other pieces of the github repo. Currently still working on figuring out how to use Graphviz. 
 
+
+::: {.panel-tabset}
+
+## Entry
+
 ```{dot}
 digraph {
    // Declare Nodes here
@@ -237,17 +242,27 @@ digraph {
 
 
    // Declare edges (connections) here
-   Entry -> BuildPackage [label="test label", URL="https://example.com"];
+   Entry -> BuildPackage
    BuildPackage -> BuildTarball
+}
+```
 
-   subgraph BuildTarball {
+## build-tarball
+
+```{dot}
+digraph BuildTarball {
+   node [shape="rectangle"];
       www [label="if some condition, then \n build and run dockerfile.www.build", URL="https://github.com/kasmtech/KasmVNC/blob/master/builder/dockerfile.www.build"]
 
 
       "build-tarball" -> www
    }
+```
 
-   subgraph BuildWWW {
+## BuildWWW
+```{dot}
+digraph BuildWWW {
+   node [shape="rectangle"]
       label = "dockerfile";
 
       buildwwwsh [label="ENTRYPOINT [ \"/src/build_www.sh\" ]", URL="https://github.com/kasmtech/KasmVNC/blob/master/builder/build_www.sh"]
@@ -258,7 +273,8 @@ digraph {
       "RUN npm install" -> buildwwwsh
 
    }
-}
 ```
 
-I will expand on this, and organize it further. But based on these beginnings, kasmvnc appears to be a perl script that either starts a sepreate webserver or serves a webserver (if there is a perl native way to do this?), which appears to be based on novnc, while it also starts the vnc server, which is based on tigervnc. 
+:::
+
+I will expand on this, and organize it further. But based on these beginnings, kasmvnc appears to be a perl script that either starts a sepreate webserver or serves a webserver (if there is a perl native way to do this?), which appears to be based on novnc, while it also starts the vnc server, which is based on tigervnc.
