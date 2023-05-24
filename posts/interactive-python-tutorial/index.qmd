@@ -52,3 +52,10 @@ Shift + enter/return to evaluate below.  Or double click.
 ```
 
 This is cool, but the code isn't editable. It just resets itself for some reason. 
+
+
+Maybe this will work? 
+
+```{=html}
+<iframe src="https://livecodes.io/?pyodide"></iframe>
+```
