@@ -89,9 +89,9 @@ BEGIN failed--compilation aborted at ./vncserver line 42.
 
 Obviously, this won't work. I must figure out why KasmVNC pacakges perl packages, where it puts them by default, and how to package them for Nix. 
 
-Alright, the vncserver command appears to be in the git repo, and rather than being a binary, it is a wrapper script to start an xvnc server. from the script:
+Alright, the vncserver command appears to be in the git repo, and rather than being a binary, it is a perl wrapper script to start an xvnc server. from the script:
 
-```{perl}
+```{.perl .code-overflow-wrap}
 use KasmVNC::CliOption;
 use KasmVNC::ConfigKey;
 use KasmVNC::PatternValidator;
