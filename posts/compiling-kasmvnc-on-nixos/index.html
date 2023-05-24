@@ -250,18 +250,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>Can't locate KasmVNC/CliOption.pm in @INC (you may need to install the KasmVNC::CliOption module) (@INC contains: /usr/lib/perl5/5.36/site_perl /usr/share/perl5/site_perl /usr/lib/perl5/5.36/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5/5.36/core_perl /usr/share/perl5/core_perl) at ./vncserver line 42.</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>BEGIN failed--compilation aborted at ./vncserver line 42.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Obviously, this won’t work. I must figure out why KasmVNC pacakges perl packages, where it puts them by default, and how to package them for Nix.</p>
-<p>Alright, the vncserver command appears to be in the git repo, and rather than being a binary, it is a wrapper script to start an xvnc server. from the script:</p>
-<pre class="{perl}"><code>use KasmVNC::CliOption;
-use KasmVNC::ConfigKey;
-use KasmVNC::PatternValidator;
-use KasmVNC::EnumValidator;
-use KasmVNC::Config;
-use KasmVNC::Users;
-use KasmVNC::TextOption;
-use KasmVNC::TextUI;
-use KasmVNC::Utils;
-use KasmVNC::Logger;
-</code></pre>
+<p>Alright, the vncserver command appears to be in the git repo, and rather than being a binary, it is a perl wrapper script to start an xvnc server. from the script:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode perl code-overflow-wrap code-with-copy"><code class="sourceCode perl"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use</span> <span class="fu">KasmVNC::CliOption</span>;</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use</span> <span class="fu">KasmVNC::ConfigKey</span>;</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">use</span> <span class="fu">KasmVNC::PatternValidator</span>;</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">use</span> <span class="fu">KasmVNC::EnumValidator</span>;</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">use</span> <span class="fu">KasmVNC::Config</span>;</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">use</span> <span class="fu">KasmVNC::Users</span>;</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">use</span> <span class="fu">KasmVNC::TextOption</span>;</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">use</span> <span class="fu">KasmVNC::TextUI</span>;</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">use</span> <span class="fu">KasmVNC::Utils</span>;</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">use</span> <span class="fu">KasmVNC::Logger</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>These perl modules/libraries can be found in <code>KasmVNC/unix/KasmVNC</code></p>
 <p>So that is what is necessary for the vncserver script to run. But is this script really necessary? Based on the names of the perl libraries, this script might not be adding any core functionalities to kasmvnc, only things like additional command line options, or loggers.</p>
 <p>I need to find where this script runs kasmvnc, and also where the actual kasmvnc binary is.</p>
