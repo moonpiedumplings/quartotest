@@ -253,9 +253,15 @@ digraph {
 digraph BuildTarball {
    node [shape="rectangle"];
       www [label="if some condition, then \n build and run dockerfile.www.build", URL="https://github.com/kasmtech/KasmVNC/blob/master/builder/dockerfile.www.build"]
+      incomplete [label="???, currrently in progress."]
+
+      BuildTarball [label="build-tarball", URL="https://github.com/kasmtech/KasmVNC/blob/master/builder/build-tarball"]
+      dockerbuild [label="Build and run the appropiate Dockerfile, \n which in this case dockerfile.ubuntu_bionic.build", URL="https://github.com/kasmtech/KasmVNC/blob/master/builder/dockerfile.ubuntu_bionic.build"]
 
 
-      "build-tarball" -> www
+      BuildTarball -> www
+      www -> dockerbuild
+      dockerbuild -> incomplete
    }
 ```
 
@@ -263,7 +269,6 @@ digraph BuildTarball {
 ```{dot}
 digraph BuildWWW {
    node [shape="rectangle"]
-      label = "dockerfile";
 
       buildwwwsh [label="ENTRYPOINT [ \"/src/build_www.sh\" ]", URL="https://github.com/kasmtech/KasmVNC/blob/master/builder/build_www.sh"]
 
@@ -275,6 +280,29 @@ digraph BuildWWW {
    }
 ```
 
+## dockerfile.ubuntu.build
+```{dot}
+digraph BuildonUbuntu {
+   node [shape="rectangle"]
+   Entry [label="Entry here.\nThis entire phase happens in a docker container"]
+   devpendencies [label="Install some dependencies.\nNotably, tightvncserver"]
+   Makeinstalls [label="build and install webp and libjpeg turbo", URL="https://github.com/kasmtech/KasmVNC/tree/master/builder/scripts"]buildsh [label="build.sh\n This is the command the built docker container runs", URL="https://github.com/kasmtech/KasmVNC/blob/master/builder/build.sh"]
+
+   Entry -> devpendencies 
+   devpendencies -> Makeinstalls
+   Makeinstalls -> "Install some more libs"
+   "Install some more libs" -> buildsh
+   
+}
+```
+:::: {.callout-note collapse="true"}
+## Note about dependencies install
+For some reason they use multiple build phases for the same step of installing packages. In addition to that, they don't clean the apt cache between build stages.
+::::
+:::: {.callout-note collapse="true"}
+## Note about webp and libjpeg-turbo
+They make and install — in the build dockerfile. I will end up skipping this step, as nix packages these, but why do they do that?
+::::
 :::
 
 I will expand on this, and organize it further. But based on these beginnings, kasmvnc appears to be a perl script that either starts a sepreate webserver or serves a webserver (if there is a perl native way to do this?), which appears to be based on novnc, while it also starts the vnc server, which is based on tigervnc.
