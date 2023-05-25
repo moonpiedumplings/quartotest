@@ -342,7 +342,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To be honest, I think I am going in the wrong direction. I think it’s likely that I have the wrong version of tigervnc or something. I will try to see how Kasm’s build scripts set this up.</p>
 <p>Okay, I will attempt to create a visual graph, documenting each step of KasmVNC’s build system, to build an ubuntu package. I will have hyperlinks to each of the scripts/dockerfiles, or other pieces of the github repo. Currently still working on figuring out how to use Graphviz.</p>
 <div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Entry</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">build-tarball</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">BuildWWW</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Entry</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">build-tarball</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">BuildWWW</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">dockerfile.ubuntu.build</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
@@ -382,32 +382,40 @@ BuildPackage-&gt;BuildTarball
 <div class="cell-output-display">
 <div>
 <p>
-<svg width="672" height="480" viewbox="0.00 0.00 228.51 193.60" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 189.6)">
+<svg width="672" height="480" viewbox="0.00 0.00 304.33 271.20" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 267.2)">
 <title>
 BuildTarball
 </title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-189.6 224.51,-189.6 224.51,4 -4,4"></polygon> <!-- www --> <g id="node1" class="node">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-267.2 300.33,-267.2 300.33,4 -4,4"></polygon> <!-- www --> <g id="node1" class="node">
 <title>
 www
 </title>
-<g id="a_node1"><a href="https://github.com/kasmtech/KasmVNC/blob/master/builder/dockerfile.www.build" title="if some condition, then \n build and run dockerfile.www.build"> <polygon fill="none" stroke="black" points="220.27,-113.4 0.24,-113.4 0.24,-72.2 220.27,-72.2 220.27,-113.4"></polygon> <text text-anchor="middle" x="110.26" y="-97" font-family="Times,serif" font-size="14.00">if some condition, then </text> <text text-anchor="middle" x="110.26" y="-80.2" font-family="Times,serif" font-size="14.00"> build and run dockerfile.www.build</text> </a> </g> </g> <!-- incomplete --> <g id="node2" class="node">
+<g id="a_node1"><a href="https://github.com/kasmtech/KasmVNC/blob/master/builder/dockerfile.www.build" title="if some condition, then \n build and run dockerfile.www.build"> <polygon fill="none" stroke="black" points="258.18,-191 38.15,-191 38.15,-149.8 258.18,-149.8 258.18,-191"></polygon> <text text-anchor="middle" x="148.16" y="-174.6" font-family="Times,serif" font-size="14.00">if some condition, then </text> <text text-anchor="middle" x="148.16" y="-157.8" font-family="Times,serif" font-size="14.00"> build and run dockerfile.www.build</text> </a> </g> </g> <!-- dockerbuild --> <g id="node4" class="node">
+<title>
+dockerbuild
+</title>
+<g id="a_node4"><a href="https://github.com/kasmtech/KasmVNC/blob/master/builder/dockerfile.ubuntu_bionic.build" title="Build and run the appropiate Dockerfile, \n which in this case dockerfile.ubuntu_bionic.build"> <polygon fill="none" stroke="black" points="296.49,-113.4 -0.16,-113.4 -0.16,-72.2 296.49,-72.2 296.49,-113.4"></polygon> <text text-anchor="middle" x="148.16" y="-97" font-family="Times,serif" font-size="14.00">Build and run the appropiate Dockerfile, </text> <text text-anchor="middle" x="148.16" y="-80.2" font-family="Times,serif" font-size="14.00"> which in this case dockerfile.ubuntu_bionic.build</text> </a> </g> </g> <!-- www&#45;&gt;dockerbuild --> <g id="edge2" class="edge">
+<title>
+www-&gt;dockerbuild
+</title>
+<path fill="none" stroke="black" d="M148.16,-149.54C148.16,-141.64 148.16,-132.38 148.16,-123.7"></path> <polygon fill="black" stroke="black" points="151.66,-123.53 148.16,-113.53 144.66,-123.53 151.66,-123.53"></polygon> </g> <!-- incomplete --> <g id="node2" class="node">
 <title>
 incomplete
 </title>
-<polygon fill="none" stroke="black" points="192.91,-36 27.6,-36 27.6,0 192.91,0 192.91,-36"></polygon> <text text-anchor="middle" x="110.26" y="-13.8" font-family="Times,serif" font-size="14.00">???, currrently in progress.</text> </g> <!-- www&#45;&gt;incomplete --> <g id="edge2" class="edge">
+<polygon fill="none" stroke="black" points="230.82,-36 65.5,-36 65.5,0 230.82,0 230.82,-36"></polygon> <text text-anchor="middle" x="148.16" y="-13.8" font-family="Times,serif" font-size="14.00">???, currrently in progress.</text> </g> <!-- BuildTarball --> <g id="node3" class="node">
 <title>
-www-&gt;incomplete
+BuildTarball
 </title>
-<path fill="none" stroke="black" d="M110.26,-71.91C110.26,-64.09 110.26,-54.99 110.26,-46.56"></path> <polygon fill="black" stroke="black" points="113.76,-46.39 110.26,-36.39 106.76,-46.39 113.76,-46.39"></polygon> </g> <!-- build&#45;tarball --> <g id="node3" class="node">
+<g id="a_node3"><a href="https://github.com/kasmtech/KasmVNC/blob/master/builder/build-tarball" title="build-tarball"> <polygon fill="none" stroke="black" points="190.86,-263.2 105.46,-263.2 105.46,-227.2 190.86,-227.2 190.86,-263.2"></polygon> <text text-anchor="middle" x="148.16" y="-241" font-family="Times,serif" font-size="14.00">build-tarball</text> </a> </g> </g> <!-- BuildTarball&#45;&gt;www --> <g id="edge1" class="edge">
 <title>
-build-tarball
+BuildTarball-&gt;www
 </title>
-<polygon fill="none" stroke="black" points="152.96,-185.6 67.55,-185.6 67.55,-149.6 152.96,-149.6 152.96,-185.6"></polygon> <text text-anchor="middle" x="110.26" y="-163.4" font-family="Times,serif" font-size="14.00">build-tarball</text> </g> <!-- build&#45;tarball&#45;&gt;www --> <g id="edge1" class="edge">
+<path fill="none" stroke="black" d="M148.16,-226.95C148.16,-219.29 148.16,-210.06 148.16,-201.34"></path> <polygon fill="black" stroke="black" points="151.66,-201.1 148.16,-191.1 144.66,-201.1 151.66,-201.1"></polygon> </g> <!-- dockerbuild&#45;&gt;incomplete --> <g id="edge3" class="edge">
 <title>
-build-tarball-&gt;www
+dockerbuild-&gt;incomplete
 </title>
-<path fill="none" stroke="black" d="M110.26,-149.35C110.26,-141.69 110.26,-132.46 110.26,-123.74"></path> <polygon fill="black" stroke="black" points="113.76,-123.5 110.26,-113.5 106.76,-123.5 113.76,-123.5"></polygon> </g> </g>
+<path fill="none" stroke="black" d="M148.16,-71.91C148.16,-64.09 148.16,-54.99 148.16,-46.56"></path> <polygon fill="black" stroke="black" points="151.66,-46.39 148.16,-36.39 144.66,-46.39 151.66,-46.39"></polygon> </g> </g>
 </svg>
 </p>
 </div>
@@ -419,50 +427,135 @@ build-tarball-&gt;www
 <div class="cell-output-display">
 <div>
 <p>
-<svg width="672" height="480" viewbox="0.00 0.00 249.30 356.80" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 352.8)">
+<svg width="672" height="480" viewbox="0.00 0.00 249.30 332.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 328)">
 <title>
 BuildWWW
 </title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-352.8 245.3,-352.8 245.3,4 -4,4"></polygon> <text text-anchor="middle" x="120.65" y="-8.2" font-family="Times,serif" font-size="14.00">dockerfile</text> <!-- buildwwwsh --> <g id="node1" class="node">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-328 245.3,-328 245.3,4 -4,4"></polygon> <!-- buildwwwsh --> <g id="node1" class="node">
 <title>
 buildwwwsh
 </title>
-<g id="a_node1"><a href="https://github.com/kasmtech/KasmVNC/blob/master/builder/build_www.sh" title="ENTRYPOINT [ &quot;/src/build_www.sh&quot; ]"> <polygon fill="none" stroke="black" points="241.45,-60.8 -0.15,-60.8 -0.15,-24.8 241.45,-24.8 241.45,-60.8"></polygon> <text text-anchor="middle" x="120.65" y="-38.6" font-family="Times,serif" font-size="14.00">ENTRYPOINT [ “/src/build_www.sh” ]</text> </a> </g> </g> <!-- COPY kasmweb/ /src/www/ --> <g id="node2" class="node">
+<g id="a_node1"><a href="https://github.com/kasmtech/KasmVNC/blob/master/builder/build_www.sh" title="ENTRYPOINT [ &quot;/src/build_www.sh&quot; ]"> <polygon fill="none" stroke="black" points="241.45,-36 -0.15,-36 -0.15,0 241.45,0 241.45,-36"></polygon> <text text-anchor="middle" x="120.65" y="-13.8" font-family="Times,serif" font-size="14.00">ENTRYPOINT [ “/src/build_www.sh” ]</text> </a> </g> </g> <!-- COPY kasmweb/ /src/www/ --> <g id="node2" class="node">
 <title>
 COPY kasmweb/ /src/www/
 </title>
-<polygon fill="none" stroke="black" points="208.58,-348.8 32.71,-348.8 32.71,-312.8 208.58,-312.8 208.58,-348.8"></polygon> <text text-anchor="middle" x="120.65" y="-326.6" font-family="Times,serif" font-size="14.00">COPY kasmweb/ /src/www/</text> </g> <!-- COPY builder/build_www.sh /src/ --> <g id="node3" class="node">
+<polygon fill="none" stroke="black" points="208.58,-324 32.71,-324 32.71,-288 208.58,-288 208.58,-324"></polygon> <text text-anchor="middle" x="120.65" y="-301.8" font-family="Times,serif" font-size="14.00">COPY kasmweb/ /src/www/</text> </g> <!-- COPY builder/build_www.sh /src/ --> <g id="node3" class="node">
 <title>
 COPY builder/build_www.sh /src/
 </title>
-<polygon fill="none" stroke="black" points="225.7,-276.8 15.6,-276.8 15.6,-240.8 225.7,-240.8 225.7,-276.8"></polygon> <text text-anchor="middle" x="120.65" y="-254.6" font-family="Times,serif" font-size="14.00">COPY builder/build_www.sh /src/</text> </g> <!-- COPY kasmweb/ /src/www/&#45;&gt;COPY builder/build_www.sh /src/ --> <g id="edge1" class="edge">
+<polygon fill="none" stroke="black" points="225.7,-252 15.6,-252 15.6,-216 225.7,-216 225.7,-252"></polygon> <text text-anchor="middle" x="120.65" y="-229.8" font-family="Times,serif" font-size="14.00">COPY builder/build_www.sh /src/</text> </g> <!-- COPY kasmweb/ /src/www/&#45;&gt;COPY builder/build_www.sh /src/ --> <g id="edge1" class="edge">
 <title>
 COPY kasmweb/ /src/www/-&gt;COPY builder/build_www.sh /src/
 </title>
-<path fill="none" stroke="black" d="M120.65,-312.5C120.65,-304.78 120.65,-295.51 120.65,-286.91"></path> <polygon fill="black" stroke="black" points="124.15,-286.9 120.65,-276.9 117.15,-286.9 124.15,-286.9"></polygon> </g> <!-- WORKDIR /src/www --> <g id="node4" class="node">
+<path fill="none" stroke="black" d="M120.65,-287.7C120.65,-279.98 120.65,-270.71 120.65,-262.11"></path> <polygon fill="black" stroke="black" points="124.15,-262.1 120.65,-252.1 117.15,-262.1 124.15,-262.1"></polygon> </g> <!-- WORKDIR /src/www --> <g id="node4" class="node">
 <title>
 WORKDIR /src/www
 </title>
-<polygon fill="none" stroke="black" points="190.97,-204.8 50.33,-204.8 50.33,-168.8 190.97,-168.8 190.97,-204.8"></polygon> <text text-anchor="middle" x="120.65" y="-182.6" font-family="Times,serif" font-size="14.00">WORKDIR /src/www</text> </g> <!-- COPY builder/build_www.sh /src/&#45;&gt;WORKDIR /src/www --> <g id="edge2" class="edge">
+<polygon fill="none" stroke="black" points="190.97,-180 50.33,-180 50.33,-144 190.97,-144 190.97,-180"></polygon> <text text-anchor="middle" x="120.65" y="-157.8" font-family="Times,serif" font-size="14.00">WORKDIR /src/www</text> </g> <!-- COPY builder/build_www.sh /src/&#45;&gt;WORKDIR /src/www --> <g id="edge2" class="edge">
 <title>
 COPY builder/build_www.sh /src/-&gt;WORKDIR /src/www
 </title>
-<path fill="none" stroke="black" d="M120.65,-240.5C120.65,-232.78 120.65,-223.51 120.65,-214.91"></path> <polygon fill="black" stroke="black" points="124.15,-214.9 120.65,-204.9 117.15,-214.9 124.15,-214.9"></polygon> </g> <!-- RUN npm install --> <g id="node5" class="node">
+<path fill="none" stroke="black" d="M120.65,-215.7C120.65,-207.98 120.65,-198.71 120.65,-190.11"></path> <polygon fill="black" stroke="black" points="124.15,-190.1 120.65,-180.1 117.15,-190.1 124.15,-190.1"></polygon> </g> <!-- RUN npm install --> <g id="node5" class="node">
 <title>
 RUN npm install
 </title>
-<polygon fill="none" stroke="black" points="176.32,-132.8 64.98,-132.8 64.98,-96.8 176.32,-96.8 176.32,-132.8"></polygon> <text text-anchor="middle" x="120.65" y="-110.6" font-family="Times,serif" font-size="14.00">RUN npm install</text> </g> <!-- WORKDIR /src/www&#45;&gt;RUN npm install --> <g id="edge3" class="edge">
+<polygon fill="none" stroke="black" points="176.32,-108 64.98,-108 64.98,-72 176.32,-72 176.32,-108"></polygon> <text text-anchor="middle" x="120.65" y="-85.8" font-family="Times,serif" font-size="14.00">RUN npm install</text> </g> <!-- WORKDIR /src/www&#45;&gt;RUN npm install --> <g id="edge3" class="edge">
 <title>
 WORKDIR /src/www-&gt;RUN npm install
 </title>
-<path fill="none" stroke="black" d="M120.65,-168.5C120.65,-160.78 120.65,-151.51 120.65,-142.91"></path> <polygon fill="black" stroke="black" points="124.15,-142.9 120.65,-132.9 117.15,-142.9 124.15,-142.9"></polygon> </g> <!-- RUN npm install&#45;&gt;buildwwwsh --> <g id="edge4" class="edge">
+<path fill="none" stroke="black" d="M120.65,-143.7C120.65,-135.98 120.65,-126.71 120.65,-118.11"></path> <polygon fill="black" stroke="black" points="124.15,-118.1 120.65,-108.1 117.15,-118.1 124.15,-118.1"></polygon> </g> <!-- RUN npm install&#45;&gt;buildwwwsh --> <g id="edge4" class="edge">
 <title>
 RUN npm install-&gt;buildwwwsh
 </title>
-<path fill="none" stroke="black" d="M120.65,-96.5C120.65,-88.78 120.65,-79.51 120.65,-70.91"></path> <polygon fill="black" stroke="black" points="124.15,-70.9 120.65,-60.9 117.15,-70.9 124.15,-70.9"></polygon> </g> </g>
+<path fill="none" stroke="black" d="M120.65,-71.7C120.65,-63.98 120.65,-54.71 120.65,-46.11"></path> <polygon fill="black" stroke="black" points="124.15,-46.1 120.65,-36.1 117.15,-46.1 124.15,-46.1"></polygon> </g> </g>
 </svg>
 </p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="672" height="480" viewbox="0.00 0.00 290.29 348.80" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 344.8)">
+<title>
+BuildonUbuntu
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-344.8 286.29,-344.8 286.29,4 -4,4"></polygon> <!-- Entry --> <g id="node1" class="node">
+<title>
+Entry
+</title>
+<polygon fill="none" stroke="black" points="282.43,-340.6 -0.14,-340.6 -0.14,-299.4 282.43,-299.4 282.43,-340.6"></polygon> <text text-anchor="middle" x="141.14" y="-324.2" font-family="Times,serif" font-size="14.00">Entry here.</text> <text text-anchor="middle" x="141.14" y="-307.4" font-family="Times,serif" font-size="14.00">This entire phase happens in a docker container</text> </g> <!-- devpendencies --> <g id="node2" class="node">
+<title>
+devpendencies
+</title>
+<polygon fill="none" stroke="black" points="224.6,-263 57.69,-263 57.69,-221.8 224.6,-221.8 224.6,-263"></polygon> <text text-anchor="middle" x="141.14" y="-246.6" font-family="Times,serif" font-size="14.00">Install some dependencies.</text> <text text-anchor="middle" x="141.14" y="-229.8" font-family="Times,serif" font-size="14.00">Notably, tightvncserver</text> </g> <!-- Entry&#45;&gt;devpendencies --> <g id="edge1" class="edge">
+<title>
+Entry-&gt;devpendencies
+</title>
+<path fill="none" stroke="black" d="M141.14,-299.14C141.14,-291.24 141.14,-281.98 141.14,-273.3"></path> <polygon fill="black" stroke="black" points="144.64,-273.13 141.14,-263.13 137.64,-273.13 144.64,-273.13"></polygon> </g> <!-- Makeinstalls --> <g id="node3" class="node">
+<title>
+Makeinstalls
+</title>
+<g id="a_node3"><a href="https://github.com/kasmtech/KasmVNC/tree/master/builder/scripts" title="build and install webp and libjpeg turbo"> <polygon fill="none" stroke="black" points="260.83,-185.6 21.46,-185.6 21.46,-149.6 260.83,-149.6 260.83,-185.6"></polygon> <text text-anchor="middle" x="141.14" y="-163.4" font-family="Times,serif" font-size="14.00">build and install webp and libjpeg turbo</text> </a> </g> </g> <!-- devpendencies&#45;&gt;Makeinstalls --> <g id="edge2" class="edge">
+<title>
+devpendencies-&gt;Makeinstalls
+</title>
+<path fill="none" stroke="black" d="M141.14,-221.51C141.14,-213.69 141.14,-204.59 141.14,-196.16"></path> <polygon fill="black" stroke="black" points="144.64,-195.99 141.14,-185.99 137.64,-195.99 144.64,-195.99"></polygon> </g> <!-- Install some more libs --> <g id="node5" class="node">
+<title>
+Install some more libs
+</title>
+<polygon fill="none" stroke="black" points="211.18,-113.6 71.11,-113.6 71.11,-77.6 211.18,-77.6 211.18,-113.6"></polygon> <text text-anchor="middle" x="141.14" y="-91.4" font-family="Times,serif" font-size="14.00">Install some more libs</text> </g> <!-- Makeinstalls&#45;&gt;Install some more libs --> <g id="edge3" class="edge">
+<title>
+Makeinstalls-&gt;Install some more libs
+</title>
+<path fill="none" stroke="black" d="M141.14,-149.3C141.14,-141.58 141.14,-132.31 141.14,-123.71"></path> <polygon fill="black" stroke="black" points="144.64,-123.7 141.14,-113.7 137.64,-123.7 144.64,-123.7"></polygon> </g> <!-- buildsh --> <g id="node4" class="node">
+<title>
+buildsh
+</title>
+<g id="a_node4"><a href="https://github.com/kasmtech/KasmVNC/blob/master/builder/build.sh" title="build.sh\n this is the docker containers entry"> <polygon fill="none" stroke="black" points="245.2,-41.4 37.09,-41.4 37.09,-0.2 245.2,-0.2 245.2,-41.4"></polygon> <text text-anchor="middle" x="141.14" y="-25" font-family="Times,serif" font-size="14.00">build.sh</text> <text text-anchor="middle" x="141.14" y="-8.2" font-family="Times,serif" font-size="14.00"> this is the docker containers entry</text> </a> </g> </g> <!-- Install some more libs&#45;&gt;buildsh --> <g id="edge4" class="edge">
+<title>
+Install some more libs-&gt;buildsh
+</title>
+<path fill="none" stroke="black" d="M141.14,-77.35C141.14,-69.69 141.14,-60.46 141.14,-51.74"></path> <polygon fill="black" stroke="black" points="144.64,-51.5 141.14,-41.5 137.64,-51.5 144.64,-51.5"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note about dependencies install
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For some reason they use multiple build phases for the same step of installing packages. In addition to that, they don’t clean the apt cache between build stages.</p>
+</div>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note about webp and libjpeg-turbo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>They make and install — in the build dockerfile. I will end up skipping this step, as nix packages these, but why is that?</p>
 </div>
 </div>
 </div>
