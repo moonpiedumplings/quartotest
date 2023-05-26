@@ -6,6 +6,7 @@ project:
     - "!welcome/"
     - "!2023-1-18-Observable JS in Quarto.qmd"  
     - "!2023-1-17-Jekyll on Windows and Mac.qmd"
+    - "!playground/"
 
 website:
   title: "Quartotest"
