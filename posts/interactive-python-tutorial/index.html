@@ -132,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
 
 
 
@@ -164,7 +164,25 @@ print('\nSorted list is\n', elements)">
 </pyprez-editor>
 <p>This is cool, but the code isn’t editable. It just resets itself for some reason.</p>
 <p>Maybe this will work?</p>
-<iframe src="https://livecodes.io/?pyodide"></iframe>
+<div class="column-body-outset">
+<div id="livecodes-wgmljgev7lf">
+  <span>Open the project <a href="https://livecodes.io/?x=id/2dde2u4eaik" target="_blank">Untitled Project</a> in <a href="https://livecodes.io/" target="_blank">LiveCodes</a></span>
+</div>
+
+<script src="https://livecodes.io/sdk/livecodes.umd.js"></script>
+<script>
+  const options = {
+    "config": {
+      "tools": {
+        "status": "full"
+      }
+    },
+    "import": "id/2dde2u4eaik",
+    "loading": "eager"
+  };
+  livecodes.createPlayground("#livecodes-wgmljgev7lf", options);
+</script>
+</div>
 
 
 

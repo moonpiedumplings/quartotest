@@ -46,7 +46,7 @@
     "href": "posts/interactive-python-tutorial/index.html",
     "title": "Experiments with Running python in the browser",
     "section": "",
-    "text": "My goal is an in browser python editor I can embed into a blog.\nCode is ran client side, so don’t try to crash any server or anything like that.\n\n\n                        \n                    \nAwww, the input function doesn’t seem to work.\nShift + enter/return to evaluate code of the below.\n\nThis kinda works, but also has issues. Input fucntion still doesn’t work.\nShift + enter/return to evaluate below. Or double click.\n\n   import numpy as np\n   np.random.rand(5)\n\nThis is cool, but the code isn’t editable. It just resets itself for some reason.\nMaybe this will work?"
+    "text": "My goal is an in browser python editor I can embed into a blog.\nCode is ran client side, so don’t try to crash any server or anything like that.\n\n\n                        \n                    \nAwww, the input function doesn’t seem to work.\nShift + enter/return to evaluate code of the below.\n\nThis kinda works, but also has issues. Input fucntion still doesn’t work.\nShift + enter/return to evaluate below. Or double click.\n\n   import numpy as np\n   np.random.rand(5)\n\nThis is cool, but the code isn’t editable. It just resets itself for some reason.\nMaybe this will work?\n\n\n  Open the project Untitled Project in LiveCodes"
   },
   {
     "objectID": "posts/npm/index.html",
