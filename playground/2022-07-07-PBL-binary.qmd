@@ -19,9 +19,9 @@ week: 13
 format: html
 execute:
   freeze: auto
-header-includes: <script src="https://cdn.jsdelivr.net/npm/liquidjs/dist/liquid.browser.umd.js"></script>
 
 ---
+
 
 
 # Test text
@@ -30,8 +30,86 @@ test text
 
 ${ freeze }
 
+
+| Header 1   | Header 2   |
+|------------|------------|
+| * Item 1   |* Bullet 1 |
+| * Item 2   |* Bullet 2 |
+
+| Header 1   | Header 2           |
+|------------|--------------------|
+| Content 1  | Line 1<br>Line 2   |
+| Content 2  | Line 3<br>Line 4   |
+
 ```{python}
 #| output: asis
+#| echo: false
+
+test = f'''
+:::{{.column-body-outset}}
+Outset content...
+:::
+'''
+
+print(test)
+
+```
+
+
+```{python}
+#| output: asis
+#| echo: false
+
+word_list = ['apple', 'banana', 'carrot', 'dog', 'elephant', 'flower', "funny"]
+
+def lister():
+    yeet = ""
+    for word in word_list:
+        yeet = yeet + word + "<br>"
+    return yeet
+
+
+test = f'''
+| Header 1   | Header 2           |
+|------------|--------------------|
+| Content 1  | {lister()} |
+| Content 2  | Line 3<br>Line 4   |\n| Content 3 | Line 4 |
+'''
+
+print(test)
+```
+
+```{python}
+#| output: asis
+import os
+
+def print_files_in_directory(directory):
+    for file_name in os.listdir(directory):
+        file_path = os.path.join(directory, file_name)
+        if os.path.isfile(file_path):
+            print(f"- {file_name}\n")
+
+# Replace 'directory_path' with the path to your desired directory
+directory_path = '.'
+
+print("Files in directory:\n")
+print_files_in_directory(directory_path)
+```
+
+This is a paragraph with <strong>bold</strong> text.
+
+
+```{python}
+#| output: asis
+
+testtext = '''
+\```{=html}\n
+This is a paragraph with <strong>bold</strong> text.<br>test line break
+\```
+
+'''
+
+print(f"{testtext}")
 
 print("google.com")
 ```

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -98,7 +98,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="2022-07-07-PBL-binary_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="2022-07-07-PBL-binary_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="2022-07-07-PBL-binary_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="https://cdn.jsdelivr.net/npm/liquidjs/dist/liquid.browser.umd.js"></script>
 
 
 </head>
@@ -107,7 +106,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -142,11 +141,135 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="test-text" class="level1">
+<section id="test-text" class="level1 page-columns page-full">
 <h1>Test text</h1>
 <p>test text</p>
 <p>${ freeze }</p>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"google.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Header 1</th>
+<th>Header 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>* Item 1</td>
+<td>* Bullet 1</td>
+</tr>
+<tr class="even">
+<td>* Item 2</td>
+<td>* Bullet 2</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Header 1</th>
+<th>Header 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Content 1</td>
+<td>Line 1<br>Line 2</td>
+</tr>
+<tr class="even">
+<td>Content 2</td>
+<td>Line 3<br>Line 4</td>
+</tr>
+</tbody>
+</table>
+<div class="column-body-outset">
+<p>Outset content…</p>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 62%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Header 1</th>
+<th>Header 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Content 1</td>
+<td>apple<br>banana<br>carrot<br>dog<br>elephant<br>flower<br>funny<br></td>
+</tr>
+<tr class="even">
+<td>Content 2</td>
+<td>Line 3<br>Line 4</td>
+</tr>
+<tr class="odd">
+<td>Content 3</td>
+<td>Line 4</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_files_in_directory(directory):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> file_name <span class="kw">in</span> os.listdir(directory):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        file_path <span class="op">=</span> os.path.join(directory, file_name)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> os.path.isfile(file_path):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"- </span><span class="sc">{</span>file_name<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace 'directory_path' with the path to your desired directory</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>directory_path <span class="op">=</span> <span class="st">'.'</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Files in directory:</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>print_files_in_directory(directory_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Files in directory:</p>
+<ul>
+<li><p>2022-07-07-PBL-binary copy.html</p></li>
+<li><p>2022-07-07-PBL-binary.qmd</p></li>
+<li><p>2022-08-22-toolcheck.ipynb</p></li>
+<li><p>2022-08-26-pythonquiz.ipynb</p></li>
+<li><p>2022-9-01-Dictionaries.ipynb</p></li>
+<li><p>2022-09-28-Javascript tutorial.ipynb</p></li>
+<li><p>2022-10-03-AP-error_testing.ipynb</p></li>
+<li><p>2022-10-03-PBL-python_rapidapi.ipynb</p></li>
+<li><p>2022-10-09-Stocks API fun.ipynb</p></li>
+<li><p>2022-11-10-finalcorrections.md</p></li>
+<li><p>2022-11-14-AP-binary_logic.md</p></li>
+<li><p>2022-11-28-1-2 Lesson Homework copy.ipynb</p></li>
+<li><p>2022-11-29-3-4 Lessson HW copy.ipynb</p></li>
+<li><p>2022-11-29-3-4 Lessson HW.ipynb</p></li>
+<li><p>2022-11-30-randomvalues.ipynb</p></li>
+<li><p>2022-11-30-teaching-time.ipynb</p></li>
+<li><p>2022-12-2-Simulations Fun.ipynb</p></li>
+<li><p>2022-12-05-final_Iteration_lesson.ipynb</p></li>
+<li><p>2022-12-06-lessonComplete.ipynb</p></li>
+<li><p>2022-12-07-developing-procedures.ipynb</p></li>
+<li><p>2022-12-dd-lesson.ipynb</p></li>
+<li><p>2023-1-19-calculator.qmd</p></li>
+<li><p>grades.qmd</p></li>
+<li><p>test.py</p></li>
+<li><p>cptquiz.py</p></li>
+<li><p>cptquiz.py.bac</p></li>
+<li><p>CPT Quiz.pdf</p></li>
+<li><p>store</p></li>
+<li><p>2023-1-19-calculator.html</p></li>
+<li><p>2022-07-07-PBL-binary.html</p></li>
+<li><p>2022-07-07-PBL-binary.ipynb</p></li>
+</ul>
+<p>This is a paragraph with <strong>bold</strong> text.</p>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>testtext <span class="op">=</span> <span class="st">'''</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">\```{=html}</span><span class="ch">\n</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">This is a paragraph with &lt;strong&gt;bold&lt;/strong&gt; text.&lt;br&gt;test line break</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">\```</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">'''</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>testtext<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"google.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>```{=html}</p>
+<p>This is a paragraph with <strong>bold</strong> text.<br>test line break ```</p>
 <p>google.com</p>
 <table class="table">
 <thead>
@@ -168,7 +291,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>code block</code></p>
 <p>{{&lt; include grades.qmd &gt;}}</p>
 </section>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="6">
 <section id="sample-title-1" class="level1 cell-output cell-output-display">
 <h1>Sample Title</h1>
 <p><code>Code block</code></p>

@@ -291,8 +291,7 @@ digraph BuildonUbuntu {
    Entry -> devpendencies 
    devpendencies -> Makeinstalls
    Makeinstalls -> "Install some more libs"
-   "Install some more libs" -> buildsh
-   
+   "Install some more libs" -> buildsh  
 }
 ```
 :::: {.callout-note collapse="true"}
