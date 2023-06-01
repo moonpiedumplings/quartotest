@@ -1,0 +1,15 @@
+---
+title: "What is the Nix package manager?"
+date: "2023-6-1"
+categories: [linux, devops, nix, kasm]
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    code-block-background: true
+execute:
+  freeze: auto
+---
+
+
+
