@@ -16,7 +16,7 @@ This is a living document, for the time being. Rather than a complete blogpost, 
 
 # What is this?
 
-Kasmweb is a software to create remote desktops, that exist within docker containers, and allow users to access them, all from a browser based GUI. 
+Kasmweb is a software to create remote desktops, that exist within docker containers, and allow users to access t·hem, all from a browser based GUI. 
 
 Kasmvnc is the VNC server part of kasm web, a custom fork of previous existing features, enhanced with more performance, and most importantly, a web native setup. Incompatible with existing VNC protocols, the only way to access Kasmvnc is through the http/https serive it offers, the web based VNC ui. 
 
@@ -305,3 +305,5 @@ They make and install — in the build dockerfile. I will end up skipping this s
 :::
 
 I will expand on this, and organize it further. But based on these beginnings, kasmvnc appears to be a perl script that either starts a sepreate webserver or serves a webserver (if there is a perl native way to do this?), which appears to be based on novnc, while it also starts the vnc server, which is based on tigervnc.
+
+However, I am still confused about one thing: Where does it download the vnc server source code.  
