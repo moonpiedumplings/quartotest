@@ -29,7 +29,7 @@ Then, you can manually input your server's ip address into the duckdns website.
 
 In your nginx confiuration file, make sure you set your nginx configuration file to be your domain name.
 
-```{t}
+```{.default}
 server {
     listen 80;
     listen [::]:80;
