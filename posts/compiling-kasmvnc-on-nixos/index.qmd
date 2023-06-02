@@ -9,22 +9,21 @@ format:
     code-block-background: true
 execute:
   freeze: auto
-
 ---
 
 This is a living document, for the time being. Rather than a complete blogpost, this is a tracker of my progress, as well as a quick reference I can come back to.
 
 # What is this?
 
-Kasmweb is a software to create remote desktops, that exist within docker containers, and allow users to access t·hem, all from a browser based GUI. 
+Kasmweb is a software to create remote desktops, that exist within docker containers, and allow users to access t·hem, all from a browser based GUI.
 
-Kasmvnc is the VNC server part of kasm web, a custom fork of previous existing features, enhanced with more performance, and most importantly, a web native setup. Incompatible with existing VNC protocols, the only way to access Kasmvnc is through the http/https serive it offers, the web based VNC ui. 
+Kasmvnc is the VNC server part of kasm web, a custom fork of previous existing features, enhanced with more performance, and most importantly, a web native setup. Incompatible with existing VNC protocols, the only way to access Kasmvnc is through the http/https serive it offers, the web based VNC ui.
 
-KasmVNC is an amazing piece of software, but development for it is not truly, fully public. This is present in their build system. Their build system is a series of bash scripts, that call docker containers, which call more bash scripts, to finally compile the software, and package it, all in one. 
+KasmVNC is an amazing piece of software, but development for it is not truly, fully public. This is present in their build system. Their build system is a series of bash scripts, that call docker containers, which call more bash scripts, to finally compile the software, and package it, all in one.
 
-As part of the scripts they have to compile kasm, lots of static linking happens. They do this because not all distros package the most updated, performant versions of the libraries that kasmvnc uses. 
+As part of the scripts they have to compile kasm, lots of static linking happens. They do this because not all distros package the most updated, performant versions of the libraries that kasmvnc uses.
 
-But Nixos, the distro I want to package KasmVNC for, does. In addition to that, it is completely incompatible with the hacked together build system that kasm uses. In order to package KasmVNC for Nixos, I must reverse engineer their build system, and bit by bit, port it to NixOS. 
+But Nixos, the distro I want to package KasmVNC for, does. In addition to that, it is completely incompatible with the hacked together build system that kasm uses. In order to package KasmVNC for Nixos, I must reverse engineer their build system, and bit by bit, port it to NixOS.
 
 # Nixos Build System
 
@@ -32,14 +31,13 @@ How the nixos build system works. I will do later, but here I will document, ste
 
 # KasmVNC's Build System
 
-Reverse engineering KasmVNC's build system. 
+Reverse engineering KasmVNC's build system.
 
-
-The below is what I neeed for the compiliation commands to work. I don't know where Kasm runs these commands, or similar equivalents, this is just what I've figured out. 
+The below is what I neeed for the compiliation commands to work. I don't know where Kasm runs these commands, or similar equivalents, this is just what I've figured out.
 
 Perhaps I need to only run `make` in the KasmVNC/unix directory?
 
-```{.default .code-overflow-wrap}
+``` {.default .code-overflow-wrap}
 
 git clone https://github.com/TigerVNC/tigervnc
 
@@ -54,9 +52,9 @@ cp ..vncserver .vncserver # this sets up build environment. I will still need to
 
 The build script can be found [here](https://github.com/kasmtech/KasmVNC/blob/4d3a9b749adfcf89bde0b970c1c37481c92d585b/builder/build.sh#L63)
 
-But from this build script, I don't think all of it is necessary. Below, I will extract what commands are actually needed, from all the fluff, cruft, and hacks. 
+But from this build script, I don't think all of it is necessary. Below, I will extract what commands are actually needed, from all the fluff, cruft, and hacks.
 
-```{.default .code-overflow-wrap}
+``` {.default .code-overflow-wrap}
 
 cmake -D CMAKE_BUILD_TYPE=RelWithDebInfo . -DBUILD_VIEWER:BOOL=OFF \
   -DENABLE_GNUTLS:BOOL=OFF
@@ -68,30 +66,28 @@ Builds end up in `KasmVNC/unix/`
 
 Except the preliminary builds don't work. They error:
 
-```{.default .code-overflow-wrap}
+``` {.default .code-overflow-wrap}
 ~/vscode/tigervnc/KasmVNC/unix master ?1 ❯ ./vncserver 
 
 Can't locate List/MoreUtils.pm in @INC (you may need to install the List::MoreUtils module) (@INC contains: /usr/lib/perl5/5.36/site_perl /usr/share/perl5/site_perl /usr/lib/perl5/5.36/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5/5.36/core_perl /usr/share/perl5/core_perl) at ./vncserver line 38.
 BEGIN failed--compilation aborted at ./vncserver line 38.
-
 ```
 
 The above is probably because a perl library is missing. After attempting to install the missing library using `pacman -S perl-list-moreutils` I get a different error.
 
-```{.default .code-overflow-wrap}
+``` {.default .code-overflow-wrap}
 
 ~/vscode/tigervnc/KasmVNC/unix master ?1 ❯ ./vncserver 
 
 Can't locate KasmVNC/CliOption.pm in @INC (you may need to install the KasmVNC::CliOption module) (@INC contains: /usr/lib/perl5/5.36/site_perl /usr/share/perl5/site_perl /usr/lib/perl5/5.36/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5/5.36/core_perl /usr/share/perl5/core_perl) at ./vncserver line 42.
 BEGIN failed--compilation aborted at ./vncserver line 42.
-
 ```
 
-Obviously, this won't work. I must figure out why KasmVNC pacakges perl packages, where it puts them by default, and how to package them for Nix. 
+Obviously, this won't work. I must figure out why KasmVNC pacakges perl packages, where it puts them by default, and how to package them for Nix.
 
 Alright, the vncserver command appears to be in the git repo, and rather than being a binary, it is a perl wrapper script to start an xvnc server. from the script:
 
-```{.perl .code-overflow-wrap}
+``` {.perl .code-overflow-wrap}
 use KasmVNC::CliOption;
 use KasmVNC::ConfigKey;
 use KasmVNC::PatternValidator;
@@ -102,20 +98,19 @@ use KasmVNC::TextOption;
 use KasmVNC::TextUI;
 use KasmVNC::Utils;
 use KasmVNC::Logger;
-
 ```
 
 These perl modules/libraries can be found in `KasmVNC/unix/KasmVNC`
 
-So that is what is necessary for the vncserver script to run. But is this script really necessary? Based on the names of the perl libraries, this script might not be adding any core functionalities to kasmvnc, only things like additional command line options, or loggers. 
+So that is what is necessary for the vncserver script to run. But is this script really necessary? Based on the names of the perl libraries, this script might not be adding any core functionalities to kasmvnc, only things like additional command line options, or loggers.
 
-I need to find where this script runs kasmvnc, and also where the actual kasmvnc binary is. 
+I need to find where this script runs kasmvnc, and also where the actual kasmvnc binary is.
 
-I think their fork of xvnc is located in `KasmVNC/unix/xserver/hw/vnc/xvnc.c`.  
+I think their fork of xvnc is located in `KasmVNC/unix/xserver/hw/vnc/xvnc.c`.
 
 But I get compilation errors:
 
-```{.default .code-overflow-wrap}
+``` {.default .code-overflow-wrap}
 
 [nix-shell:~/vscode/tigervnc/KasmVNC]$ make 
 [  3%] Built target os
@@ -131,14 +126,13 @@ collect2: error: ld returned 1 exit status
 make[2]: *** [unix/vncconfig/CMakeFiles/vncconfig.dir/build.make:157: unix/vncconfig/vncconfig] Error 1
 make[1]: *** [CMakeFiles/Makefile2:610: unix/vncconfig/CMakeFiles/vncconfig.dir/all] Error 2
 make: *** [Makefile:136: all] Error 2
-
 ```
 
-I don't know why this happens. For those who don't know, make pretty much calls a set of scripts, called Makefiles. I will need to find where in these scripts, the error commands are run. 
+I don't know why this happens. For those who don't know, make pretty much calls a set of scripts, called Makefiles. I will need to find where in these scripts, the error commands are run.
 
 Weirdly, I can't reproduce outside of the build script:
 
-```{.default .code-overflow-wrap}
+``` {.default .code-overflow-wrap}
 
 ~/vscode/tigervnc/KasmVNC master ?1 ❯ ld -lsdsakdfj
 ld: cannot find -lsdsakdfj: No such file or directory
@@ -149,14 +143,13 @@ ld: warning: cannot find entry symbol _start; not setting start address
 ~/vscode/tigervnc/KasmVNC master ?2 ❯ ld -ljpeg-turbo
 ld: cannot find -ljpeg-turbo: No such file or directory
 ~/vscode/tigervnc/KasmVNC master ?1 ❯ 
-
 ```
 
-I suspect the make scripts have some hacks that change working directory, or otherwise hide my installation of libjpeg. 
+I suspect the make scripts have some hacks that change working directory, or otherwise hide my installation of libjpeg.
 
 When commenting out the part of the `KasmVNC/Cmakelists.txt` file that appears to be related to libjpeg, the error when I run `make` changes.
 
-```{.default .code-overflow-wrap}
+``` {.default .code-overflow-wrap}
 [ 95%] Building CXX object unix/vncconfig/CMakeFiles/vncconfig.dir/vncconfig.cxx.o
 /home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/Surface.cxx:23:10: fatal error: FL/Fl_RGB_Image.H: No such file or directory
    23 | #include <FL/Fl_RGB_Image.H>
@@ -174,11 +167,11 @@ make[2]: *** [tests/CMakeFiles/fbperf.dir/build.make:118: tests/CMakeFiles/fbper
       |          ^~~~~~~~~
 ```
 
-This is probably missing libraries. 
+This is probably missing libraries.
 
-After installing fltk (`pacman -S fltk`), this error goes away, and I get a new, even harder to comprehend error. 
+After installing fltk (`pacman -S fltk`), this error goes away, and I get a new, even harder to comprehend error.
 
-```{.default .code-overflow-wrap}
+``` {.default .code-overflow-wrap}
 
 [ 97%] Building CXX object tests/CMakeFiles/decperf.dir/decperf.cxx.o
 /home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx: In constructor ‘PlatformPixelBuffer::PlatformPixelBuffer(int, int)’:
@@ -192,21 +185,19 @@ After installing fltk (`pacman -S fltk`), this error goes away, and I get a new,
 /home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:64:37: error: expected primary-expression before ‘)’ token
    64 |   setBuffer(width, height, (uint8_t*)xim->data,
       |                                     ^
-
 ```
 
-I suspect I have the wrong version of the tigervnc source code/libraries. I will need to investigate where Kasm's build system downloads these vncviewer libraries from.  
-
+I suspect I have the wrong version of the tigervnc source code/libraries. I will need to investigate where Kasm's build system downloads these vncviewer libraries from.
 
 After editing the errored file, to include the library:
 
 Within `KasmVNC/vncviewer/PlatformPixelBuffer.cxx`:
 
-```{C++}
+\`\`\`{C++}
 
 #include <cstdint>
 
-```
+```         
 
 I get a different error. 
 
@@ -223,12 +214,9 @@ I get a different error.
 
 To be honest, I think I am going in the wrong direction. I think it's likely that I have the wrong version of tigervnc or something. I will try to see how Kasm's build scripts set this up.
 
+Okay, I will attempt to create a visual graph, documenting each step of KasmVNC's build system, to build an ubuntu package. I will have hyperlinks to each of the scripts/dockerfiles, or other pieces of the github repo. Currently still working on figuring out how to use Graphviz.
 
-Okay, I will attempt to create a visual graph, documenting each step of KasmVNC's build system, to build an ubuntu package. I will have hyperlinks to each of the scripts/dockerfiles, or other pieces of the github repo. Currently still working on figuring out how to use Graphviz. 
-
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## Entry
 
 ```{dot}
@@ -266,6 +254,7 @@ digraph BuildTarball {
 ```
 
 ## BuildWWW
+
 ```{dot}
 digraph BuildWWW {
    node [shape="rectangle"]
@@ -281,6 +270,7 @@ digraph BuildWWW {
 ```
 
 ## dockerfile.ubuntu.build
+
 ```{dot}
 digraph BuildonUbuntu {
    node [shape="rectangle"]
@@ -294,16 +284,20 @@ digraph BuildonUbuntu {
    "Install some more libs" -> buildsh  
 }
 ```
-:::: {.callout-note collapse="true"}
+
+::: {.callout-note collapse="true"}
 ## Note about dependencies install
+
 For some reason they use multiple build phases for the same step of installing packages. In addition to that, they don't clean the apt cache between build stages.
-::::
-:::: {.callout-note collapse="true"}
+:::
+
+::: {.callout-note collapse="true"}
 ## Note about webp and libjpeg-turbo
-They make and install — in the build dockerfile. I will end up skipping this step, as nix packages these, but why do they do that?
-::::
+
+They make and install --- in the build dockerfile. I will end up skipping this step, as nix packages these, but why do they do that?
+:::
 :::
 
 I will expand on this, and organize it further. But based on these beginnings, kasmvnc appears to be a perl script that either starts a sepreate webserver or serves a webserver (if there is a perl native way to do this?), which appears to be based on novnc, while it also starts the vnc server, which is based on tigervnc.
 
-However, I am still confused about one thing: Where does it download the vnc server source code.  
+However, I am still confused about one thing: Where does it download the vnc server source code.
