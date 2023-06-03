@@ -2,7 +2,6 @@
 let 
     pandoc = null;
 
-
     extraRPackages = [];
     extraPythonPackages = ps: with ps; [];
 
@@ -13,12 +12,13 @@ let
             url = "https://github.com/quarto-dev/quarto-cli/releases/download/v${version}/quarto-${version}-linux-amd64.tar.gz";
             sha256 = "sha256-vvnrIUhjsBXkJJ6VFsotRxkuccYOGQstIlSNWIY5nuE=";
         };
+        patches = [];
         preFixup = ''
             wrapProgram $out/bin/quarto \
             --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.deno ]} \
             --prefix QUARTO_PANDOC : $out/bin/tools/pandoc \
             --prefix QUARTO_ESBUILD : ${pkgs.esbuild}/bin/esbuild \
-            --prefix QUARTO_DART_SASS : ${pkgs.nodePackages.sass}/bin/sass \
+            --prefix QUARTO_DART_SASS : $out/bin/tools/dart-sass/sass \
             --prefix QUARTO_R : ${pkgs.rWrapper.override { packages = [ pkgs.rPackages.rmarkdown ] ++ extraRPackages; }}/bin/R \
             --prefix QUARTO_PYTHON : ${pkgs.python3.withPackages (ps: with ps; [ jupyter ipython ] ++ (extraPythonPackages ps))}/bin/python3
         '';
@@ -36,5 +36,5 @@ let
 in
     pkgs.mkShell {
 
-        packages = with pkgs; [ python310Full quarto jupyter deno ];
+        packages = with pkgs; [ python310Full quarto jupyter ];
     }
