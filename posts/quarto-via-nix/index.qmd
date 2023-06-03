@@ -1,0 +1,64 @@
+---
+title: "Packaging quarto using nix"
+date: "2023-6-1"
+categories: [nix, quarto]
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    code-block-background: true
+execute:
+  freeze: auto
+---
+
+This is complete, but I have to extract all my notes and put them onto this blog.
+
+# What is quarto?
+
+To explain quarto, I first have to explain jupyter notebooks, and quarto's predecessor, fastpages.
+
+[Fastpages](https://github.com/fastai/fastpages) is a blogging platform built on jekyll, a static site generator. Static sites are websites that do not connect to a backend server, the user's browser does all the rendering. Static site generators do all the hard work of creating these, by converting a very human readable format, like markdown, to pretty looking html, which is what browsers render.
+
+Fastpages adds onto the features of jekyll, by adding support for juptyer notebooks. Jupyter is a technology that allows users to combine code, multimedia, and text into a single document, for any purposes that one might use it. It's usually popular for data science, as code is used to generate diagrams, but I really like it for testing snippets of code, as you can have multiple pieces of code in one document, and then run and debug them independently of eachoter. Fastpagess can convert all of this, even automatically running code and creating any interactive elements, and then putting it all up on the internet as a static site.
+
+Fastpages is also deprecated. On the github page, which is archived, it recommends you switch to quarto.
+
+Quarto adds more features on top of fastpages, while also removing some features. Fastpages is primarily designed for blogging, whereas quarto also has support for generating books, pdf's, and websites.
+
+However, quarto lacks some features, as it it uses it's own static site generator, rather than jekyll. The biggest and most noticable one, is the Liquid template language that my computer science teacher uses to dynamically render his schedule page.
+
+But for my purposes, quarto works fine. This blogpost you are reading, was generated using quarto.
+
+# What is nix?
+
+Nix is multiple things. Nix is a linux distribution, an package repository, a package manager, a programming language, and a configuration as code system.
+
+Right now, I am trying to use it as a package manager --- specifically, to give myself the quarto tool.
+
+I've selected nix because it focuses on reproducible builds, across Mac, and Linux and x86_64, and arm64. This enables a multitude of devices to get packages with an identical configuration to me.
+
+# Using Nix
+
+``` {.nix .code-overflow-wrap}
+{ pkgs ? import <nixpkgs> {} } :
+    pkgs.mkShell {
+        packages = with pkgs; [ python310Full quarto jupyter pandoc deno ];
+    }
+```
+
+This is a sample `shell.nix` file. If you run the `nix-shell` command line tool while in the same working directory, or using the filename as an argument, it will use this bit of nix code to create an shell environment for you.
+
+Nix is a functional programming langauge. Unlike a language like python or java, where everything is an object, in nix, everything is a function. The colon `:` creates a
+
+The above shell.nix works great. However, it installs an older version of quarto, 1.2, as only an older version of quarto is packaged in the nixpkgs repository. I want the newest version, 1.3.
+
+# Packaging quarto
+
+Nix is very poorly documented. The recommended way of getting help with nix is to ask for help on the discord. So that is what I did. The first thing I asked was how to get a newer version of quarto:
+
+I started out by asking how to update the version of the quarto package. I started out to do so on my own, by cloning the nixpkgs github repo, and attempting to build nixpkgs, but I couldn't figure out how to build it at first, which is when I asked.
+
+![](./quartodiscord/firstask.png)
+
+Which didn't work, because I did not want to download the whole nixpkgs. I wanted to store the nix derivation to build, 
+

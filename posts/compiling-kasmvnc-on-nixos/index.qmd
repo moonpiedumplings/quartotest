@@ -301,3 +301,9 @@ They make and install --- in the build dockerfile. I will end up skipping this s
 I will expand on this, and organize it further. But based on these beginnings, kasmvnc appears to be a perl script that either starts a sepreate webserver or serves a webserver (if there is a perl native way to do this?), which appears to be based on novnc, while it also starts the vnc server, which is based on tigervnc.
 
 However, I am still confused about one thing: Where does it download the vnc server source code.
+
+
+
+# The easy way
+
+After I packaged quarto, I realized 
