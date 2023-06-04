@@ -2,38 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/about.html</loc>
-    <lastmod>2023-06-01T17:01:39.127Z</lastmod>
+    <lastmod>2023-06-04T09:40:04.897Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/index.html</loc>
-    <lastmod>2023-06-01T17:01:39.631Z</lastmod>
+    <lastmod>2023-06-04T09:40:05.565Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/posts/blocking/index.html</loc>
-    <lastmod>2023-06-01T17:01:40.094Z</lastmod>
+    <lastmod>2023-06-04T09:40:05.931Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/posts/cockpit-setup/index.html</loc>
-    <lastmod>2023-06-01T17:01:40.484Z</lastmod>
+    <lastmod>2023-06-04T09:40:06.207Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/posts/compiling-kasmvnc-on-nixos/index.html</loc>
-    <lastmod>2023-06-01T17:01:41.874Z</lastmod>
+    <lastmod>2023-06-04T09:40:07.061Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/posts/duckdns/index.html</loc>
-    <lastmod>2023-06-01T17:01:42.194Z</lastmod>
+    <lastmod>2023-06-04T09:40:07.273Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/posts/interactive-python-tutorial/index.html</loc>
-    <lastmod>2023-06-01T17:01:42.537Z</lastmod>
+    <lastmod>2023-06-04T09:40:07.501Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/posts/npm/index.html</loc>
-    <lastmod>2023-06-01T17:01:42.877Z</lastmod>
+    <lastmod>2023-06-04T09:40:07.813Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/moonpiedumplings/quartotest/posts/quarto-via-nix/index.html</loc>
+    <lastmod>2023-06-04T09:40:08.231Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/moonpiedumplings/quartotest/posts/setting-up-kasm/index.html</loc>
-    <lastmod>2023-06-01T17:01:43.774Z</lastmod>
+    <lastmod>2023-06-04T09:40:09.777Z</lastmod>
   </url>
 </urlset>

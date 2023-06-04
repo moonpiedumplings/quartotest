@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-05-22">
+<meta name="dcterms.date" content="2023-06-01">
 
-<title>Quartotest - Experiments with Running python in the browser</title>
+<title>Quartotest - Packaging quarto using nix</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -60,7 +94,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="https://lucademenego99.github.io/icp-bundle/base/full.iife.js"></script><link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"><script defer="" src="https://pyscript.net/latest/pyscript.js"></script><script src="https://modularizer.github.io/pyprez/pyprez.js"></script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -108,9 +141,10 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Experiments with Running python in the browser</h1>
+      <h1 class="title">Packaging quarto using nix</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">python</div>
+                <div class="quarto-category">nix</div>
+                <div class="quarto-category">quarto</div>
               </div>
                   </div>
   </div>
@@ -122,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 22, 2023</p>
+        <p class="date">June 1, 2023</p>
       </div>
     </div>
     
@@ -135,73 +169,35 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<p>My goal is an in browser python editor I can embed into a blog.</p>
-<p>Code is ran client side, so don’t try to crash any server or anything like that.</p>
-
-<div class="col fragment" data-fragment-index="2" style="height: min(30vw, 60vh); margin: min(1vw, 2vh)">
-                        <python-editor contenteditable="true" theme="dark" code="elements = [39,12,18,85,72,10,2,18]
-
-print('Unsorted list is\n', elements)
-
-# Sort the list (with bubblesort)
-for n in range(len(elements)-1, 0, -1):
-  for i in range(n):
-    if elements[i] > elements[i+1]:
-      elements[i], elements[i+1] = elements[i+1], elements[i]
-
-print('\nSorted list is\n', elements)">
-                    </python-editor></div>
-<p>Awww, the input function doesn’t seem to work.</p>
-<p>Shift + enter/return to evaluate code of the below.</p>
-<py-repl></py-repl>
-<p>This kinda works, but also has issues. Input fucntion still doesn’t work.</p>
-<p>Shift + enter/return to evaluate below. Or double click.</p>
-<pyprez-editor>
-   import numpy as np
-   np.random.rand(5)
-</pyprez-editor>
-<p>This is cool, but the code isn’t editable. It just resets itself for some reason.</p>
-<p>Maybe this will work?</p>
-<div class="column-body-outset">
-<div id="livecodes-p6y2nroaetk" data-height="500">
-  <span>Open the project <a href="https://livecodes.io/?x=id/sigh8eg62zv" target="_blank">Untitled Project</a> in <a href="https://livecodes.io/" target="_blank">LiveCodes</a></span>
-</div>
-
-<script src="https://livecodes.io/sdk/livecodes.umd.js"></script>
-<script>
-  const options = {
-    appUrl: 'https://dev.livecodes.io/',
-    params: {
-      autoupdate: false,
-      console: "full"
-      },
-    "config": {
-      "tools": {
-        "status": "full"
-      }
-    },
-    "import": "id/sigh8eg62zv",
-    "loading": "eager"
-  };
-  livecodes.createPlayground("#livecodes-p6y2nroaetk", options);
-</script>
-<div class="livecodes" style="height: 300px; border: 1px solid black; border-radius: 5px;" data-options="{appUrl: &quot;https://dev.livecodes.io/&quot;,params: {autoupdate: false, console: &quot;full&quot;},&quot;config&quot;:{&quot;activeEditor&quot;:&quot;script&quot;,&quot;tools&quot;:{&quot;status&quot;:&quot;full&quot;}},&quot;loading&quot;:&quot;eager&quot;}">
-<pre data-lang="html"></pre>
-<pre data-lang="css"></pre>
-<pre data-lang="pyodide">yeet = input("test")
-
-print(yeet)</pre>
-</div>
-<script defer="" src="https://livecodes.io/sdk/livecodes.umd.js" data-prefill=""></script>
-
-</div>
+<section id="what-is-quarto" class="level1">
+<h1>What is quarto?</h1>
+<p>To explain quarto, I first have to explain jupyter notebooks, and quarto’s predecessor, fastpages.</p>
+<p><a href="https://github.com/fastai/fastpages">Fastpages</a> is a blogging platform built on jekyll, a static site generator. Static sites are websites that do not connect to a backend server, the user’s browser does all the rendering. Static site generators do all the hard work of creating these, by converting a very human readable format, like markdown, to pretty looking html, which is what browsers render.</p>
+<p>Fastpages adds onto the features of jekyll, by adding support for juptyer notebooks. Jupyter is a technology that allows users to combine code, multimedia, and text into a single document, for any purposes that one might use it. It’s usually popular for data science, as code is used to generate diagrams, but I really like it for testing snippets of code, as you can have multiple pieces of code in one document, and then run and debug them independently of eachoter. Fastpagess can convert all of this, even automatically running code and creating any interactive elements, and then putting it all up on the internet as a static site.</p>
+<p>Fastpages is also deprecated. On the github page, which is archived, it recommends you switch to quarto.</p>
+<p>Quarto adds more features on top of fastpages, while also removing some features. Fastpages is primarily designed for blogging, whereas quarto also has support for generating books, pdf’s, and websites.</p>
+<p>However, quarto lacks some features, as it it uses it’s own static site generator, rather than jekyll. The biggest and most noticable one, is the Liquid template language that my computer science teacher uses to dynamically render his schedule page.</p>
+<p>But for my purposes, quarto works fine. This blogpost you are reading, was generated using quarto.</p>
+</section>
+<section id="what-is-nix" class="level1">
+<h1>What is nix?</h1>
+<p>Nix is multiple things. Nix is a linux distribution, an package repository, a package manager, a programming language, and a configuration as code system.</p>
+<p>Right now, I am trying to use it as a package manager — specifically, to give myself the quarto tool.</p>
+</section>
+<section id="using-nix" class="level1">
+<h1>Using Nix</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode nix code-overflow-wrap code-with-copy"><code class="sourceCode nix"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">{</span> <span class="va">pkgs</span> <span class="op">?</span> <span class="bu">import</span> &lt;nixpkgs&gt; <span class="op">{}</span> <span class="op">}</span> :</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    pkgs.mkShell <span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">packages</span> <span class="op">=</span> <span class="kw">with</span> pkgs<span class="op">;</span> <span class="op">[</span> python310Full quarto jupyter <span class="op">];</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

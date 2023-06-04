@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/quarto-via-nix/index.html",
       "/posts/interactive-python-tutorial/index.html",
       "/posts/compiling-kasmvnc-on-nixos/index.html",
       "/posts/npm/index.html",
