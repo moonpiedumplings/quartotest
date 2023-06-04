@@ -338,7 +338,7 @@ Here's [doctemplates](https://search.nixos.org/packages?channel=22.11&show=haske
 
 Here's [gridtables](https://search.nixos.org/packages?channel=22.11&show=haskellPackages.doctemplates_0_10_0_2&from=0&size=50&sort=relevance&type=packages&query=doctemplates)
 
-And so on. It was like, even though pandoc required these packages, it couldn't see them. 
+And so on. It was like, even though pandoc required these packages, it couldn't see them. They all had the format packagename_version, as opposed to simply packagename, which would be an older package. 
 
 So I asked on discord, again.
 
@@ -396,6 +396,273 @@ Warning:
 error: builder for '/nix/store/ibawyigbdn9bs1gs9hc0mgzqraqfxhy0-pandoc-3.1.2.drv' failed with exit code 1
 ```
 
-Essentially, a dependency error. 
+Essentially, a dependency error. Doctemplates also required a package that wasn't under the default of `packagename`, but rather `packagename_version`. 
+
+Another user proceeded to chime in with their solution: 
+
+<details><summary>See cdepillabout's solution</summary>
+
+```{.nix .code-overflow-wrap}
+let
+  pkgs = import <nixpkgs> {};
+
+  pandoc = pkgs.haskellPackages.pandoc_3_1_2.overrideScope (hfinal: hprev: {
+    doctemplates = hprev.doctemplates_0_11;
+    gridtables = hprev.gridtables_0_1_0_0;
+    jira-wiki-markup = hprev.jira-wiki-markup_1_5_1;
+    mime-types = hprev.mime-types_0_1_1_0;
+    pandoc-types = hprev.pandoc-types_1_23;
+    texmath = hprev.texmath_0_12_7_1;
+  });
+in
+  pkgs.mkShell {
+    packages = [pandoc];
+  }
+```
+</details>
+
+And this worked! Except it didn't.
+
+```{.default .code-overflow-wrap}
+[nix-shell:~/vscode/quartotest]$ pandoc
+bash: pandoc: command not found
+
+[nix-shell:~/vscode/quartotest]$ which pandoc
+which: no pandoc in (/nix/store/kbcrs84s1x8yd5bp1nq6q6ihda8nd2lp-bash-interactive-5.2-p15/bin:/nix/store/a9q4y7vw1fgs990bs5mpd3p50mc0iz27-python3-3.10.11/bin:/nix/store/nh8iz5l2zn5nbk19qxdw575a5fhfcajw-quarto-1.3.361/bin:/nix/store/ar2lzr4kr4pi1zgx3w8hl6fkny3bql53-python3.10-notebook-6.5.2/bin:/nix/store/ai5lxg5vzjsfk9zkyn65ndq81na2mm5c-python3.10-babel-2.12.1/bin:/nix/store/95cxzy2hpizr23343b8bskl4yacf4b3l-python3-3.10.11/bin:/nix/store/5ii8sm9yh01ny05bl1wjdv6pkdjb8bw0-python3.10-jupyter-core-5.2.0/bin:/nix/store/pkgr71n4dy7h9lp00paf6k3llfa95ig0-python3.10-Send2Trash-1.8.1b0/bin:/nix/store/x1kk4hlx0zl12igvr6v0pk2cq2720fbh-python3.10-jupyter_client-8.0.3/bin:/nix/store/9icvaw0dgk7258m564xlh513nz6xis1m-python3.10-nbformat-5.7.3/bin:/nix/store/6svh49hf9pq5hwavgyb642v5a0pjnn4a-python3.10-jsonschema-4.17.3/bin:/nix/store/15jn0r39wg0ripjzjfxj9arcv53qxck9-python3.10-nbclassic-0.5.2/bin:/nix/store/jjy30kw6pw2mq54ig6lrm84ds91a9snf-python3.10-ipython-8.11.0/bin:/nix/store
+```
+
+Apparently, in pandoc 3.0, the binary and the library have been split into two seperate packages. In nixpkgs, the library can be found in the haskellPackages.pandoc_3_1_2, and the binary can be found in haskellPackages.pandoc-cli.
+
+```{.default .code-overflow-wrap}
+nix-shell -p haskellPackages.pandoc-cli
+
+Setup: Encountered missing or private dependencies:
+doctemplates >=0.11 && <0.12, pandoc >=3.0
+...
+error: builder for '/nix/store/hzzqnffj08r9qc0xi3b4ydi7w91dn4m0-pandoc-server-0.1.drv' failed with exit code 1
+error: 1 dependencies of derivation '/nix/store/arbq7vgw539xyd4l0y5x3jyhhra30v91-pandoc-cli-0.1.1.drv' failed to build
+```
+
+The pandoc-cli package is broken, for the exact same error that the pandoc library won't compile for. 
+
+So I try my own override:
+
+```{.nix .code-overflow-wrap}
+{ pkgs ? import <nixpkgs> {} } :
+let
+    quarto = pkgs.quarto.overrideAttrs (oldAttrs: rec {
+        version = "1.3.361";
+        src = pkgs.fetchurl {
+            url = "https://github.com/quarto-dev/quarto-cli/releases/download/v${version}/quarto-${version}-linux-amd64.tar.gz";
+            sha256 = "sha256-vvnrIUhjsBXkJJ6VFsotRxkuccYOGQstIlSNWIY5nuE=";
+        };
+    });
+    pandoc = pkgs.haskellPackages.pandoc_3_1_2.overrideScope (hfinal: hprev: {
+        doctemplates = hprev.doctemplates_0_11;
+        gridtables = hprev.gridtables_0_1_0_0;
+        jira-wiki-markup = hprev.jira-wiki-markup_1_5_1;
+        mime-types = hprev.mime-types_0_1_1_0;
+        pandoc-types = hprev.pandoc-types_1_23;
+        texmath = hprev.texmath_0_12_7_1;
+      });
+    pandoc-cli = pkgs.haskellPackages.pandoc-cli.overrideScope (hfinal: hprev: {
+        hslua-core = hprev.hslua-core_2_3_1;
+        lua = hprev.lua_2_3_1;
+    });
+in
+    pkgs.mkShell {
+        packages = [ pkgs.python310Full quarto pkgs.jupyter pandoc pandoc-cli pkgs.deno ];
+    }
+```
+
+But this also errors:
+
+```{.default .code-overflow-wrap}
+Using Parsec parser
+Configuring tasty-hslua-1.0.2...
+
+Setup: Encountered missing or private dependencies:
+hslua-core >=2.0 && <2.3
+
+error: builder for '/nix/store/nmhz8xnc24xw86q573v515n3q8m9l0y5-tasty-hslua-1.0.2.drv' failed with exit code 1
+error: 1 dependencies of derivation '/nix/store/8q4ni7s2am50xbbbkcdjk85szyvq3jk8-hslua-2.2.1.drv' failed to build
+error: 1 dependencies of derivation '/nix/store/hcysycpqkqv4kd3qmkwzyi7pkaqszqyy-hslua-marshalling-2.2.1.drv' failed to build
+error: 1 dependencies of derivation '/nix/store/h4c32n03d305njipsiw4rzc8rq52l2bc-hslua-packaging-2.2.1.drv' failed to build
+error: 1 dependencies of derivation '/nix/store/y655vw1bdq8a9j818k16y7228nlsf86y-hslua-cli-1.4.1.drv' failed to build
+error: 1 dependencies of derivation '/nix/store/xkkp4cj1yfwjpczc6k7y08gxdqdbfh4n-pandoc-2.19.2.drv' failed to build
+error: 1 dependencies of derivation '/nix/store/sc44mnc1ngxfxi7h3f6qrrvnvldla4w3-pandoc-cli-0.1.1.drv' failed to build
+~/vscode/quartotest master !4 ?9 ❯                                                                                        
+```
+
+But the hslua-core version I want was packaged in nixpkgs, similar to doctemplates, or gridtables. So I did a further override.
+
+```{.nix .code-overflow-wrap}
+{ pkgs ? import <nixpkgs> {} } :
+let
+    quarto = pkgs.quarto.overrideAttrs (oldAttrs: rec {
+        version = "1.3.361";
+        src = pkgs.fetchurl {
+            url = "https://github.com/quarto-dev/quarto-cli/releases/download/v${version}/quarto-${version}-linux-amd64.tar.gz";
+            sha256 = "sha256-vvnrIUhjsBXkJJ6VFsotRxkuccYOGQstIlSNWIY5nuE=";
+        };
+    });
+    pandoc = pkgs.haskellPackages.pandoc_3_1_2.overrideScope (hfinal: hprev: {
+        doctemplates = hprev.doctemplates_0_11;
+        gridtables = hprev.gridtables_0_1_0_0;
+        jira-wiki-markup = hprev.jira-wiki-markup_1_5_1;
+        mime-types = hprev.mime-types_0_1_1_0;
+        pandoc-types = hprev.pandoc-types_1_23;
+        texmath = hprev.texmath_0_12_7_1;
+        tasty-hslua = hprev.tasty-hslua_1_1_0;
+        hslua-marshalling = hprev.hslua-marshalling_2_3_0;
+        hslua-aeson = hprev.hslua-aeson_2_3_0_1;
+        hslua = hprev.hslua_2_3_0;
+      });
+    pandoc-cli = pkgs.haskellPackages.pandoc-cli.overrideScope (hfinal: hprev: {
+        hslua-core = hprev.hslua-core_2_3_1;
+        lua = hprev.lua_2_3_1;
+        tasty-hslua = hprev.tasty-hslua_1_1_0;
+        hslua-marshalling = hprev.hslua-marshalling_2_3_0;
+        hslua-aeson = hprev.hslua-aeson_2_3_0_1;
+        hslua = hprev.hslua_2_3_0;
+    });
+in
+    pkgs.mkShell {
+        packages = [ pkgs.python310Full quarto pkgs.jupyter pandoc pandoc-cli pkgs.deno ];
+    }
+```
+
+Which still errors:
+
+```{.default .code-overflow-wrap}
+Using Parsec parser
+Configuring hslua-typing-0.1.0...
+
+Setup: Encountered missing or private dependencies:
+hslua-core >=2.3 && <2.4, hslua-marshalling >=2.3 && <2.4
+
+error: builder for '/nix/store/kbmfxjy0ycwwg6r6zsp9q9v1pfkmggnw-hslua-typing-0.1.0.drv' failed with exit code 1
+error: 1 dependencies of derivation '/nix/store/nj4smnyrkaf52qx98r1wa0r1gdnjbwxk-hslua-2.3.0.drv' failed to build
+```
+
+I quickly realized, that the updated set of haskell packages in nixpkgs, is broken all the way down. I found a relevant [github issue](https://github.com/NixOS/nixpkgs/issues/221165). In this issue, somene had modified the derivation of the haskellPackages, to get pandoc-cli to work. 
+
+I used their fork of nixpkgs to give myself pandoc-cli. 
+
+
+```{.default .code-overflow-wrap}
+~/vscode/quartotest master +3 !1 ❯ nix-shell -p haskellPackages.pandoc-cli -I nixpkgs=https://github.com/seam345/nixpkgs/archive/89e6e477c8357a087e863db562d2fa8d9fe5ba29.tar.gz
+pa
+[nix-shell:~/vscode/quartotest]$ pandoc --version
+pandoc 3.1
+Features: +server +lua
+Scripting engine: Lua 5.4
+User data directory: /home/moonpie/.local/share/pandoc
+Copyright (C) 2006-2023 John MacFarlane. Web:  https://pandoc.org
+This is free software; see the source for copying conditions. There is no
+warranty, not even for merchantability or fitness for a particular purpose.
+
+```
+
+This actually worked, and I got pandoc-cli with  the 3.0 version of pandoc.
+
+Later, cdepillabout chimed in again. Here is their solution:
+
+```{.nix .code-overflow-wrap}
+let
+  nixpkgs-src = fetchTarball {
+    # nixpkgs-unstable as of 2023-05-31
+    url = "https://github.com/NixOS/nixpkgs/archive/58c85835512b0db938600b6fe13cc3e3dc4b364e.tar.gz";
+    sha256 = "0bkhaiaczj25s6hji2k9pm248jhfbiaqcfcsfk92bbi7kgzzzpif";
+  };
+
+  my-overlay = final: prev: {
+
+    pandoc_1_3 =
+      let
+        inherit (final.haskell.lib.compose) disableCabalFlag markUnbroken;
+      in
+      final.lib.pipe
+        final.haskellPackages.pandoc-cli
+        [
+          markUnbroken
+          (disableCabalFlag "lua")
+          (p: p.overrideScope (hfinal: hprev: {
+            doctemplates = hprev.doctemplates_0_11;
+            gridtables = hprev.gridtables_0_1_0_0;
+            hslua-cli = null;
+            jira-wiki-markup = hprev.jira-wiki-markup_1_5_1;
+            mime-types = hprev.mime-types_0_1_1_0;
+            pandoc = hprev.pandoc_3_1_2;
+            pandoc-lua-engine = null;
+            pandoc-server = markUnbroken hprev.pandoc-server;
+            pandoc-types = hprev.pandoc-types_1_23;
+            texmath = hprev.texmath_0_12_7_1;
+          }))
+        ];
+
+    quarto_1_3 =
+      let
+        quarto-version = "1.3.361";
+      in
+      (final.quarto.override { pandoc = final.pandoc_1_3; }).overrideAttrs (oldAttrs: {
+        version = quarto-version;
+        src = final.fetchurl {
+          url = "https://github.com/quarto-dev/quarto-cli/releases/download/v${quarto-version}/quarto-${quarto-version}-linux-amd64.tar.gz";
+          sha256 = "sha256-vvnrIUhjsBXkJJ6VFsotRxkuccYOGQstIlSNWIY5nuE=";
+        };
+      });
+  };
+
+  pkgs = import nixpkgs-src { overlays = [ my-overlay ]; };
+
+in
+
+pkgs.quarto_1_3
+```
+
+Although I modified it a bit, to be 
+
+```{.nix .code-overflow-wrap}
+...
+in
+pkgs.mkShell {
+  packages = [pkgs.quarto_1_3];
+}
+```
+Because it is the mkShell package that creates the shell environment. 
+
+This solution works, and gets me quarto 1.3, and also replaces the default dependency of quarto, on pandoc 2.1.9, with one on pandoc-cli. 
+
+
+```{.default .code-overflow-wrap}
+[nix-shell:~/vscode/quartotest]$ quarto pandoc --version
+pandoc 3.1.2
+Features: +server -lua
+Scripting engine: none
+User data directory: /home/moonpie/.local/share/pandoc
+Copyright (C) 2006-2023 John MacFarlane. Web:  https://pandoc.org
+This is free software; see the source for copying conditions. There is no
+warranty, not even for merchantability or fitness for a particular purpose.
+
+```
+
+However, it has a caveat. It compiles pandoc without lua support, as those packages where the ones that were broken in nixpkgs. 
+
+But apparently, quarto needs lua suppport.
+
+
+```{.default .code-overflow-wrap}
+[nix-shell:~/vscode/quartotest]$ quarto render
+[1/9] about.qmd
+This version of pandoc has been compiled without Lua support.
+```
+
+So yeah. That doesn't work.
+
+But meanwhile, the quarto team responded to a question I asked on their github discussion page.
+
+
+
 
 
