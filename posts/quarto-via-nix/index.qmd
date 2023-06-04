@@ -11,7 +11,7 @@ execute:
   freeze: auto
 ---
 
-This is complete, but I have to extract all my notes and put them onto this blog.
+This project is complete, but I have to extract all my notes and put them onto this blog, whiich I haven't finished doing yet.
 
 # What is quarto?
 
@@ -342,6 +342,60 @@ And so on. It was like, even though pandoc required these packages, it couldn't 
 
 So I asked on discord, again.
 
+![](./quartodiscord/pandocnobbzintro.png)
 
+This one user, NobbZ, helps people so much that people joke that he *is* the documentation.
+
+I tried their solution, and it didn't work. Apparently, this solution was designed for the newer feature of nix, flakes, which I wasn't using. 
+
+But with some adjustment, I managed to figure out how to use the `override` feature on my own, with the same solution that NobbZ sent me seconds later:
+
+<details><summary>Trying to get override working</summary>
+
+```{.nix .code-overflow-wrap}
+{ pkgs ? import <nixpkgs> {} } :
+let
+    quarto = pkgs.quarto.overrideAttrs (oldAttrs: rec {
+        version = "1.3.361";
+        src = pkgs.fetchurl {
+            url = "https://github.com/quarto-dev/quarto-cli/releases/download/v${version}/quarto-${version}-linux-amd64.tar.gz";
+            sha256 = "sha256-vvnrIUhjsBXkJJ6VFsotRxkuccYOGQstIlSNWIY5nuE=";
+        };
+    });
+   /* pandoc = pkgs.haskellPackages.callCabal2nix "pandoc" (fetchTarball {
+        url = "https://github.com/jgm/pandoc/archive/refs/tags/3.1.2.tar.gz";
+        sha256 = "1h928w4ghbxg5whq7d9nkrfll2abvmbkc45adfgv35rfhcpkiiv9";
+    }) {};*/
+    doctemplates = pkgs.haskellPackages.doctemplates_0_11;
+    gridtables = pkgs.haskellPackages.gridtables_0_1_0_0;
+    jira-wiki-markup = pkgs.haskellPackages.jira-wiki-markup_1_5_1;
+    mime-types = pkgs.haskellPackages.mime-types_0_1_1_0;
+    pandoc-types = pkgs.haskellPackages.pandoc-types_1_23;
+    texmath = pkgs.haskellPackages.texmath_0_12_7_1;
+    pandoc = pkgs.haskellPackages.pandoc_3_1_2.override {inherit doctemplates gridtables jira-wiki-markup mime-types pandoc-types texmath;};
+in
+    pkgs.mkShell {
+        packages = with pkgs; [ python310Full quarto jupyter pandoc deno mkpasswd ];
+    }
+```
+</details>
+
+Except this errors: 
+
+```{.default .code-overflow-wrap}
+Warning:
+    This package indirectly depends on multiple versions of the same package. This is very likely to cause a compile failure.
+      package http-client (http-client-0.7.13.1-52kzOBAMbxmJrzoQZgatPf) requires mime-types-0.1.0.9-Gdz1G1mhqziCfo3C8KZHz7
+      package pandoc (pandoc-3.1.2) requires mime-types-0.1.1.0-4FUch8wD40c6kQtGdyJOSM
+      package texmath (texmath-0.12.7.1-BbrGid5okuSI4hfeGBAcF8) requires pandoc-types-1.22.2.1-1cCcarshT2W3DaxppqWytd
+      package commonmark-pandoc (commonmark-pandoc-0.2.1.3-OwUzhyyJ0cDzxfYXzbAci) requires pandoc-types-1.22.2.1-1cCcarshT2W3DaxppqWytd
+      package citeproc (citeproc-0.8.1-LP74PTBZCEoHiNCfXfUYdM) requires pandoc-types-1.22.2.1-1cCcarshT2W3DaxppqWytd
+      package pandoc (pandoc-3.1.2) requires pandoc-types-1.23-AC7tSm0fcRIGMZsmro9kaK
+      package pandoc (pandoc-3.1.2) requires pandoc-types-1.23-AC7tSm0fcRIGMZsmro9kaK
+** abort because of serious configure-time warning from Cabal
+error: builder for '/nix/store/ibawyigbdn9bs1gs9hc0mgzqraqfxhy0-pandoc-3.1.2.drv' failed with exit code 1
+```
+
+Essentially, a dependency error. 
 
 
