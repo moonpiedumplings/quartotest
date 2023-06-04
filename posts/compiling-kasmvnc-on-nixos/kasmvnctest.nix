@@ -29,7 +29,8 @@ stdenv.mkDerivation rec {
   preFixup = ''
         wrapProgram $out/bin/vncserver \
          --prefix PERLLIB : $out/bin  \
-         --prefix PERLLIB : ${perl536Packages.ModuleBuildTiny}/lib
+         --prefix PERLLIB : ${perl536Packages.YAMLTiny}/lib/perl5/site_perl/5.36.0 \
+         --prefix PERLLIB : ${perl536Packages.HashMergeSimple}/lib/perl5/site_perl/5.36.0
   '';
 
   installPhase = ''
@@ -53,7 +54,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Kasmvnc";
     longDescription = ''
-        Kasmvnc
+        Long description here
     '';
     homepage = "";
     changelog = "https://github.com/kasmtech/KasmVNC/releases/tag/v${version}";

@@ -8,14 +8,14 @@ format:
     code-summary: "Show the code"
     code-block-background: true
 execute:
-  freeze: auto
+  freeze: true
 ---
 
 This is a living document, for the time being. Rather than a complete blogpost, this is a tracker of my progress, as well as a quick reference I can come back to.
 
 # What is this?
 
-Kasmweb is a software to create remote desktops, that exist within docker containers, and allow users to access t·hem, all from a browser based GUI.
+Kasmweb is a software to create remote desktops, that exist within docker containers, and allow users to access them, all from a browser based GUI.
 
 Kasmvnc is the VNC server part of kasm web, a custom fork of previous existing features, enhanced with more performance, and most importantly, a web native setup. Incompatible with existing VNC protocols, the only way to access Kasmvnc is through the http/https serive it offers, the web based VNC ui.
 
@@ -207,17 +207,20 @@ I get a different error.
 [ 94%] Building CXX object tests/CMakeFiles/fbperf.dir/__/vncviewer/PlatformPixelBuffer.cxx.o
 /home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx: In constructor ‘PlatformPixelBuffer::PlatformPixelBuffer(int, int)’:
 /home/moonpie/vscode/tigervnc/KasmVNC/vncviewer/PlatformPixelBuffer.cxx:66:3: error: ‘setBuffer’ was not declared in this scope; did you mean ‘setbuffer’?
-   66 |   setBuffer(width, height, (uint8_t*)xim->data,
-      |   ^~~~~~~~~
-      |   setbuffer
-```
+   66 |   setBuffer(width, height, (uint8_t*)xim->d﻿tion. 
+```   
 
-To be honest, I think I am going in the wrong direction. I think it's likely that I have the wrong version of tigervnc or something. I will try to see how Kasm's build scripts set this up.
+   
+
+I think it's likely that I have the wrong version of tigervnc or something. I will try to see how Kasm's build scripts set this up.
 
 Okay, I will attempt to create a visual graph, documenting each step of KasmVNC's build system, to build an ubuntu package. I will have hyperlinks to each of the scripts/dockerfiles, or other pieces of the github repo. Currently still working on figuring out how to use Graphviz.
 
-::: panel-tabset
+
+::: {.panel-tabset}
+
 ## Entry
+
 
 ```{dot}
 digraph {
@@ -285,17 +288,17 @@ digraph BuildonUbuntu {
 }
 ```
 
-::: {.callout-note collapse="true"}
+:::: {.callout-note collapse="true"}
 ## Note about dependencies install
 
 For some reason they use multiple build phases for the same step of installing packages. In addition to that, they don't clean the apt cache between build stages.
-:::
+::::
 
-::: {.callout-note collapse="true"}
+:::: {.callout-note collapse="true"}
 ## Note about webp and libjpeg-turbo
 
 They make and install --- in the build dockerfile. I will end up skipping this step, as nix packages these, but why do they do that?
-:::
+::::
 :::
 
 I will expand on this, and organize it further. But based on these beginnings, kasmvnc appears to be a perl script that either starts a sepreate webserver or serves a webserver (if there is a perl native way to do this?), which appears to be based on novnc, while it also starts the vnc server, which is based on tigervnc.
@@ -306,4 +309,80 @@ However, I am still confused about one thing: Where does it download the vnc ser
 
 # The easy way
 
-After I packaged quarto, I realized 
+
+After I packaged quarto, I realized that I can actually package the kasmvnc binary using nix. I have decided to do this for now.
+
+Here is first attempt for this.
+
+<details>
+
+<summary>First try!</summary>
+
+```{.nix .code-fold-true}
+
+{
+    stdenv,
+    lib,
+    fetchurl,
+    makeWrapper,
+    perl536Packages
+} :
+
+stdenv.mkDerivation rec {
+  pname = "kasmvnc";
+  version = "1.1.0";
+  src = fetchurl {
+    url = "https://github.com/kasmtech/KasmVNC/releases/download/v${version}/kasmvnc.alpine_317_x86_64.tgz";
+    sha256 = "sha256-j/3PUwBd8XygBKYfFdAwN15cwxDPf3vbEwbLy1laxSU=";
+  };
+
+  nativeBuildInputs = [
+  ];
+
+  patches = [
+  ];
+
+  postPatch = ''
+  '';
+
+  dontStrip = true;
+
+  preFixup = ''
+  '';
+
+  installPhase = ''
+      runHook preInstall
+
+      mkdir -p $out/bin $out/share $out/man $out/etc $out/lib
+
+      echo here
+      ls
+      ls local/bin
+
+      mv local/etc/* $out/etc
+      mv local/share/* $out/share
+      mv local/man/* $out/man
+      mv local/lib/* $out/lib
+      mv local/bin/* $out/bin
+
+      runHook preInstall
+  '';
+
+  meta = with lib; {
+    description = "Kasmvnc";
+    longDescription = ''
+        Long description here
+    '';
+    homepage = "";
+    changelog = "https://github.com/kasmtech/KasmVNC/releases/tag/v${version}";
+    license = licenses.gpl2Plus;
+    maintainers = with maintainers; [ moonpiedumplings ];
+    platforms = [ "x86_64-linux" ];
+    sourceProvenance = with sourceTypes; [ binaryNativeCode binaryBytecode ];
+  };
+}
+```
+
+</details>
+
+I'm going to write further elaboration, but I need to finish by quarto via nix post, as that provides a lot of explanations as to how I got here.
