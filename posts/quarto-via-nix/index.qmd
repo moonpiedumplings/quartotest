@@ -52,6 +52,96 @@ Nix is a functional programming langauge. Unlike a language like python or java,
 
 The above shell.nix works great. However, it installs an older version of quarto, 1.2, as only an older version of quarto is packaged in the nixpkgs repository. I want the newest version, 1.3.
 
+Here is the code used to create the quarto package, called a derivation:
+
+<details><summary>Show derivation</summary>
+
+```{.nix .code-overflow-wrap}
+
+{ stdenv
+, lib
+, pandoc
+, esbuild
+, deno
+, fetchurl
+, nodePackages
+, rWrapper
+, rPackages
+, extraRPackages ? []
+, makeWrapper
+, python3
+, extraPythonPackages ? ps: with ps; []
+}:
+
+stdenv.mkDerivation rec {
+  pname = "quarto";
+  version = "1.2.475";
+  src = fetchurl {
+    url = "https://github.com/quarto-dev/quarto-cli/releases/download/v${version}/quarto-${version}-linux-amd64.tar.gz";
+    sha256 = "sha256-oyKjDlTKt2fIzirOqgNRrpuM7buNCG5mmgIztPa28rY=";
+  };
+
+  nativeBuildInputs = [
+    makeWrapper
+  ];
+
+  patches = [
+    ./fix-deno-path.patch
+  ];
+
+  postPatch = ''
+    # Compat for Deno >=1.26
+    substituteInPlace bin/quarto.js \
+      --replace 'Deno.setRaw(stdin.rid, ' 'Deno.stdin.setRaw(' \
+      --replace 'Deno.setRaw(Deno.stdin.rid, ' 'Deno.stdin.setRaw('
+  '';
+
+  dontStrip = true;
+
+  preFixup = ''
+    wrapProgram $out/bin/quarto \
+      --prefix PATH : ${lib.makeBinPath [ deno ]} \
+      --prefix QUARTO_PANDOC : ${pandoc}/bin/pandoc \
+      --prefix QUARTO_ESBUILD : ${esbuild}/bin/esbuild \
+      --prefix QUARTO_DART_SASS : ${nodePackages.sass}/bin/sass \
+      --prefix QUARTO_R : ${rWrapper.override { packages = [ rPackages.rmarkdown ] ++ extraRPackages; }}/bin/R \
+      --prefix QUARTO_PYTHON : ${python3.withPackages (ps: with ps; [ jupyter ipython ] ++ (extraPythonPackages ps))}/bin/python3
+  '';
+
+  installPhase = ''
+      runHook preInstall
+
+      mkdir -p $out/bin $out/share
+
+      rm -r bin/tools
+
+      mv bin/* $out/bin
+      mv share/* $out/share
+
+      runHook preInstall
+  '';
+
+  meta = with lib; {
+    description = "Open-source scientific and technical publishing system built on Pandoc";
+    longDescription = ''
+        Quarto is an open-source scientific and technical publishing system built on Pandoc.
+        Quarto documents are authored using markdown, an easy to write plain text format.
+    '';
+    homepage = "https://quarto.org/";
+    changelog = "https://github.com/quarto-dev/quarto-cli/releases/tag/v${version}";
+    license = licenses.gpl2Plus;
+    maintainers = with maintainers; [ mrtarantoga ];
+    platforms = [ "x86_64-linux" ];
+    sourceProvenance = with sourceTypes; [ binaryNativeCode binaryBytecode ];
+  };
+}
+
+```
+
+</details>
+
+I don't want to bore you with details, but in short, it downloads an older version of quarto than the newest. 
+
 # Packaging quarto
 
 Nix is very poorly documented. The recommended way of getting help with nix is to ask for help on the discord. So that is what I did. The first thing I asked was how to get a newer version of quarto:
@@ -60,5 +150,198 @@ I started out by asking how to update the version of the quarto package. I start
 
 ![](./quartodiscord/firstask.png)
 
-Which didn't work, because I did not want to download the whole nixpkgs. I wanted to store the nix derivation to build, 
+Which didn't work, because I did not want to download the whole nixpkgs. I wanted to store the nix derivation to build. The answer: use an ovveride:
+
+I was then told to use the overrideAttrs function, which overrides specific attributes, essentially variables, of the derivation, another type of function, used to build the program.
+
+My first attempt was not too good.
+
+<details><summary>Show first attempt</summary>
+
+```{.nix .code-overflow-wrap}
+
+{ pkgs ? import <nixpkgs> {} } :
+let 
+quarto = pkgs.quarto.overrideAttrs (oldAttrs: rec {
+            version = "1.3.361";
+        });
+in
+    pkgs.mkShell {
+        packages = with pkgs; [ python310Full quarto jupyter pandoc deno mkpasswd ];
+    }
+
+```
+
+</details>
+
+A simple shell.nix that replaced the `version` attribute of quarto. I shared this excitedly, thinking I had figured this out on my own, only to be told that this change was purely cosmetic, and the new version of quarto wasn't actually installed. And they were right. 
+
+
+<details><summary>Well, this sucks</summary>
+
+```{.default .code-overflow-wrap}
+[nix-shell:~/vscode/quartotest]$ which quarto
+/nix/store/9qy0kpll3r755c6i0717405dilhffdrd-quarto-1.3.361/bin/quarto
+```
+It looks right, until you check deeper:
+```{.default .code-overflow-wrap}
+[nix-shell:~/vscode/quartotest]$ quarto --version
+1.2.475
+```
+</details>
+
+So a deeper override was needed. I needed to override the `src` attribute, which determines where to download the files used to package the application. 
+
+<details><summary>Second attempt!</summary>
+
+```{.nix .code-overflow-wrap}
+
+{ pkgs ? import <nixpkgs> {} } :
+let 
+quarto = pkgs.quarto.overrideAttrs (oldAttrs: rec {
+            version = "1.3.361";
+            src = fetchurl {
+    url = "https://github.com/quarto-dev/quarto-cli/releases/download/v${version}/quarto-${version}-linux-amd64.tar.gz";
+    sha256 = "sha256-VEYUEI4xzQPXlyTbCThAW2npBCZNPDJ5x2cWnkNz7RE=";
+  };
+        });
+in
+    pkgs.mkShell {
+        packages = with pkgs; [ python310Full quarto jupyter pandoc deno mkpasswd ];
+    }
+```
+</details>
+
+But this errored as well. 
+
+```{.default .code-overflow-wrap}
+~/vscode/quartotest master !4 ?1 ❯ nix-shell                                                                                                                         2m 56s
+error: undefined variable 'fetchurl'
+
+       at /home/moonpie/vscode/quartotest/shell.nix:5:19:
+
+            4|             version = "1.3.361";
+            5|             src = fetchurl {
+             |                   ^
+            6|     url = "https://github.com/quarto-dev/quarto-cli/releases/download/v${version}/quarto-${version}-lin
+```
+
+I was confused? Why did this error? I had copied exactly what was in the derivation used to build the package?
+
+Later, I figured out why. When a package is built, the dependencies are declared in the beginning of the package:
+
+```{.nix .code-overflow-wrap}
+
+{ 
+  Dependencies_Here
+} : stdenv.mkDerivation.restofpackage
+```
+
+In nix, every single thing is a function. When creation a function in nix, the curly brackets before the function declare the arguments that the function will take:
+
+```{.nix .code-overflow-wrap}
+function = {arg1, arg2} : functionhere
+```
+
+But when creating a package, this syntax plays another role. The arguments of the function act as a dependency list, by declaring what packages are necessary to build the derivation. This prevents the build from being tainted by anything that is not explicitly declared. However, because overrides are not the same as derivations, they act differently.
+
+But to get around this error when using the override function:
+
+<details><summary>Success!</summary>
+
+```{.nix .code-overflow-wrap}
+{ pkgs ? import <nixpkgs> {} } :
+let 
+quarto = pkgs.quarto.overrideAttrs (oldAttrs: rec {
+            version = "1.3.361";
+            src = pkgs.fetchurl {
+    url = "https://github.com/quarto-dev/quarto-cli/releases/download/v${version}/quarto-${version}-linux-amd64.tar.gz";
+    sha256 = "sha256-vvnrIUhjsBXkJJ6VFsotRxkuccYOGQstIlSNWIY5nuE=";
+  };
+        });
+in
+    pkgs.mkShell {
+        packages = with pkgs; [ python310Full quarto jupyter pandoc deno mkpasswd ];
+    }
+```
+</details>
+
+And it worked: 
+
+```{.default .code-overflow-wrap}
+[nix-shell:/tmp/test]$ quarto --version
+1.3.361
+```
+
+Except it didn't. When I actually tried to render my project:
+
+```{.default .code-overflow-wrap}
+[nix-shell:~/vscode/quartotest]$ quarto render
+[1/4] about.qmd
+Could not find data file templates/styles.citations.html
+```
+
+Since this file couldn't be found on my system, I tried to find it on the internet. 
+
+And find it I did, in the data-files section of the [information about the pandoc 3.1 package](https://hackage.haskell.org/package/pandoc-3.1/pandoc.cabal)
+
+```{.default .code-overflow-wrap}
+data-files:
+                 -- templates
+                 data/templates/styles.html
+                 data/templates/styles.citations.html
+```
+
+First, I checked what version of the pandoc that Nix had in their repositories. They only had 2.1.9, which was too old for the version of quarto I had. 
+
+But just in case, [I asked on the github discussions page for quarto](https://github.com/quarto-dev/quarto-cli/discussions/5754). And yes, quarto 1.4, the version I wanted, did require pandoc 3.0, which nix did not have packaged. 
+
+Except it did, although the package wasn't in the dependencies. So I first tried to install it independently, using the `nix-shell -p package tool`
+
+<details><summary>Except I got an error</summary>
+
+```{.default .code-overflow-wrap}
+~/vscode/test ❯ nix-shell -p haskellPackages.pandoc_3_1_2
+this derivation will be built:
+  /nix/store/63pnk32wsdczfk3nkl071w9y69yy5wmi-pandoc-3.1.2.drv
+building '/nix/store/63pnk32wsdczfk3nkl071w9y69yy5wmi-pandoc-3.1.2.drv'...
+setupCompilerEnvironmentPhase
+Build with /nix/store/4wjl91hrizxghwqy18a1337gq2y9mh40-ghc-9.2.7.
+unpacking sources
+unpacking source archive /nix/store/7ncxphrr3nff9jb3j4w9ksl6ggznqhm6-pandoc-3.1.2.tar.gz
+source root is pandoc-3.1.2
+setting SOURCE_DATE_EPOCH to timestamp 1000000000 of file pandoc-3.1.2/xml-light/Text/Pandoc/XML/Light/Types.hs
+patching sources
+compileBuildDriverPhase
+setupCompileFlags: -package-db=/build/tmp.yaRUozaznX/setup-package.conf.d -j16 +RTS -A64M -RTS -threaded -rtsopts
+[1 of 1] Compiling Main             ( /nix/store/4mdp8nhyfddh7bllbi7xszz7k9955n79-Setup.hs, /build/tmp.yaRUozaznX/Main.o )
+Linking Setup ...
+configuring
+configureFlags: --verbose --prefix=/nix/store/7983f3r6gpgvf17dn1k2c05wma708xdn-pandoc-3.1.2 --libdir=$prefix/lib/$compiler --libsubdir=$abi/$libname --datadir=/nix/store/zdc55i48g6hpbwckiwk6s6iraf30hh99-pandoc-3.1.2-data/share/ghc-9.2.7 --with-gcc=gcc --package-db=/build/tmp.yaRUozaznX/package.conf.d --ghc-options=-j16 +RTS -A64M -RTS --disable-split-objs --enable-library-profiling --profiling-detail=exported-functions --disable-profiling --enable-shared --disable-coverage --enable-static --disable-executable-dynamic --enable-tests --disable-benchmarks --enable-library-vanilla --disable-library-for-ghci --ghc-option=-split-sections -f-trypandoc --extra-lib-dirs=/nix/store/4g9phbpakh51bbw2n391vipz9r5z56kw-ncurses-6.4/lib --extra-lib-dirs=/nix/store/mnq0hqsqivdbaqzmzc287l0z9zw8dp15-libffi-3.4.4/lib --extra-lib-dirs=/nix/store/0ssnwyy41aynhav7jr4dz1y01lfzi86f-gmp-with-cxx-6.2.1/lib
+Using Parsec parser
+Configuring pandoc-3.1.2...
+Setup: Encountered missing or private dependencies:
+doctemplates >=0.11 && <0.12,
+gridtables >=0.1 && <0.2,
+jira-wiki-markup >=1.5.1 && <1.6,
+mime-types >=0.1.1 && <0.2,
+pandoc-types >=1.23 && <1.24,
+texmath >=0.12.7 && <0.13
+
+error: builder for '/nix/store/63pnk32wsdczfk3nkl071w9y69yy5wmi-pandoc-3.1.2.drv' failed with exit code 1
+```
+</details>
+
+Except all the dependencies that the error message wanted, existed in nixpkgs. 
+
+Here's [doctemplates](https://search.nixos.org/packages?channel=22.11&show=haskellPackages.doctemplates_0_10_0_2&from=0&size=50&sort=relevance&type=packages&query=doctemplates)
+
+Here's [gridtables](https://search.nixos.org/packages?channel=22.11&show=haskellPackages.doctemplates_0_10_0_2&from=0&size=50&sort=relevance&type=packages&query=doctemplates)
+
+And so on. It was like, even though pandoc required these packages, it couldn't see them. 
+
+So I asked on discord, again.
+
+
+
 
