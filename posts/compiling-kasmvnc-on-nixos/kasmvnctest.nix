@@ -19,6 +19,7 @@ stdenv.mkDerivation rec {
   ];
 
   patches = [
+    ./vncserver.patch
   ];
 
   postPatch = ''
@@ -30,7 +31,10 @@ stdenv.mkDerivation rec {
         wrapProgram $out/bin/vncserver \
          --prefix PERLLIB : $out/bin  \
          --prefix PERLLIB : ${perl536Packages.YAMLTiny}/lib/perl5/site_perl/5.36.0 \
-         --prefix PERLLIB : ${perl536Packages.HashMergeSimple}/lib/perl5/site_perl/5.36.0
+         --prefix PERLLIB : ${perl536Packages.HashMergeSimple}/lib/perl5/site_perl/5.36.0 \
+         --prefix VNCDEFAULTS : "$out/share/kasmvnc/kasmvnc_defaults.yaml" \
+         --prefix NIXETC : "$out/etc" \
+         --prefix SELECTDE : "$out/lib/kasmvnc/select-de.sh"
   '';
 
   installPhase = ''

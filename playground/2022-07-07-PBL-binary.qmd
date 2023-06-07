@@ -55,6 +55,10 @@ print(test)
 
 ```
 
+```{python}
+import os
+print(os.getenv("QUARTO_PYTHON"))   
+```
 
 
 
