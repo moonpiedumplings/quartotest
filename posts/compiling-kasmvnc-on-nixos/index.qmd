@@ -193,7 +193,7 @@ After editing the errored file, to include the library:
 
 Within `KasmVNC/vncviewer/PlatformPixelBuffer.cxx`:
 
-\`\`\`{C++}
+```{C++}
 
 #include <cstdint>
 

@@ -899,7 +899,6 @@ Here is my derivation:
 <details><summary>Show derivation:</summary>
 
 ```{.nix .code-overflow-wrap}
-
 { stdenv
 , lib
 , esbuild
@@ -915,8 +914,9 @@ Here is my derivation:
 }:
 
 stdenv.mkDerivation rec {
+  pname = "quarto";
   version = "1.3.361";
-        src = pkgs.fetchurl {
+        src = fetchurl {
             url = "https://github.com/quarto-dev/quarto-cli/releases/download/v${version}/quarto-${version}-linux-amd64.tar.gz";
             sha256 = "sha256-vvnrIUhjsBXkJJ6VFsotRxkuccYOGQstIlSNWIY5nuE=";
         };
@@ -940,12 +940,13 @@ stdenv.mkDerivation rec {
 
   preFixup = ''
             wrapProgram $out/bin/quarto \
-            --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.deno ]} \
+            --prefix PATH : ${lib.makeBinPath [ deno ]} \
             --prefix QUARTO_PANDOC : $out/bin/tools/pandoc \
-            --prefix QUARTO_ESBUILD : ${pkgs.esbuild}/bin/esbuild \
+            --prefix QUARTO_ESBUILD : ${esbuild}/bin/esbuild \
             --prefix QUARTO_DART_SASS : $out/bin/tools/dart-sass/sass \
-            --prefix QUARTO_R : ${pkgs.rWrapper.override { packages = [ pkgs.rPackages.rmarkdown ] ++ extraRPackages; }}/bin/R \
-            --prefix QUARTO_PYTHON : ${pkgs.python3}/bin/python3
+            --prefix QUARTO_R : ${rWrapper.override { packages = [ rPackages.rmarkdown ] ++ extraRPackages; }}/bin/R \
+            --prefix QUARTO_PYTHON : ${python3}/bin/python3
+    '';
 
   installPhase = ''
             runHook preInstall
@@ -981,14 +982,19 @@ stdenv.mkDerivation rec {
 And here is the shell.nix that summons this package:
 
 ```{.nix .code-overflow-wrap}
-{
-    pkgs ? import <nixpkgs> {},
-} :
-
-let quarto = callPackage ./env/quarto.nix {}; in
-pkgs.mkShell {
-    packages = with pkgs; [ python310Full quarto juptyer ];
-}
+let
+    pkgs = import <nixpkgs> {};
+    quarto = pkgs.callPackage ./env/quarto.nix {};
+in
+    pkgs.mkShell {
+        packages = with pkgs; [ python310Full quarto jupyter ];
+    }
 ```
+
+# Conclusion and How to Use
+
+Now, users who have cloned the [repo for this blog](https://github.com/moonpidumplings/quartotest), can simply install nix, and run `nix-shell` in the root directory of the repo in order for them to get quarto, python, and jupyter, the dependencies I rely on for this project. Because of the way nix, works it is easy to modify my `shell.nix`, and add more dependencies, like R or more extra language support via juptyer kernels. 
+
+My usual workflow is to open a terminal in this git repo, and type `nix-shell`, and then `code .`, which gives me vscode with quarto (I have the quarto vscode extension installed), python, and jupyter. 
 
 
