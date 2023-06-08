@@ -540,7 +540,7 @@ Note about webp and libjpeg-turbo
 <section id="the-easy-way" class="level1">
 <h1>The easy way</h1>
 <p>After I packaged quarto, I realized that I can actually package the kasmvnc binary using nix. I have decided to do this for now.</p>
-<p>Here is first attempt for this.</p>
+<p>Here is first attempt for this. Now, kasmvnc’s packaging system is weird, in that they do not offer a binary tarball for their packages. So, I have decided to convert their alpine package into something I can use, because based on a cursory look into all the packages, it seems to be the easiest to package for Nix/Nixos.</p>
 <details>
 <summary>
 First try!
@@ -608,7 +608,8 @@ First try!
 <span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>  <span class="op">};</span></span>
 <span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>I’m going to write further elaboration, but I need to finish by quarto via nix post, as that provides a lot of explanations as to how I got here.</p>
+<p>This is my first attempt at a derivation. I installed it using a simple <code>shell.nix</code>, that uses the nix <code>callPackage</code> function to build the kasmvnc nix package, and make it available in my current shell.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode nix code-overflow-wrap code-with-copy"><code class="sourceCode nix"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
