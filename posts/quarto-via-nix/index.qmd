@@ -7,6 +7,8 @@ format:
     code-fold: true
     code-summary: "Show the code"
     code-block-background: true
+    include-in-header: 
+      text: <meta http-equiv="Refresh" content="0; url='https://moonpiedumplings.github.io/projects/quarto-via-nix'" />
 execute:
   freeze: auto
 ---

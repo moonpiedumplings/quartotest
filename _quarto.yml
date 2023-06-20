@@ -7,16 +7,15 @@ project:
     - "!2023-1-18-Observable JS in Quarto.qmd"  
     - "!2023-1-17-Jekyll on Windows and Mac.qmd"
     - "!playground/"
-
 website:
-  title: "Quartotest"
+  title: "Jeffrey Fonseca's old blog"
   navbar:
+    left:
+      - text: "NEW BLOG HERE"
+        href: https://moonpiedumplings.github.io/
     right:
-      - about.qmd
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/moonpiedumplings
 format:
   html:
     theme: darkly

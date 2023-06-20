@@ -4,8 +4,13 @@ date: "2023-5-22"
 categories: [python]
 execute:
   freeze: auto
-
-header-includes:  <script src="https://lucademenego99.github.io/icp-bundle/base/full.iife.js"></script><link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" /><script defer src="https://pyscript.net/latest/pyscript.js"></script><script src="https://modularizer.github.io/pyprez/pyprez.js"></script>
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    code-block-background: true
+    include-in-header: 
+      text: <meta http-equiv="Refresh" content="0; url='https://moonpiedumplings.github.io/playground/interactive-python-tutorial'" />
 ---
 
 My goal is an in browser python editor I can embed into a blog.

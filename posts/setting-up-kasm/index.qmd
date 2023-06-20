@@ -4,6 +4,13 @@ date: "2023-1-26"
 categories: [nix, linux, devops, ubuntu, kasm]
 execute:
   freeze: auto
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    code-block-background: true
+    include-in-header: 
+      text: <meta http-equiv="Refresh" content="0; url='https://moonpiedumplings.github.io/projects/setting-up-kasm'" />
 ---
 
 School chromebooks cannot be used for computer science. Due to a content blocking setup that is more restrictive than the Great Firewall of China, school chromebooks cannot install the necessary digital tools for software development. 

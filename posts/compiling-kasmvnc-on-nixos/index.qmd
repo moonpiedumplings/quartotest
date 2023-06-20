@@ -2,13 +2,15 @@
 title: "Compiling KasmVNC on NixOS"
 date: "2023-5-2"
 categories: [linux, devops, nix, kasm]
+execute:
+  freeze: true
 format:
   html:
     code-fold: true
     code-summary: "Show the code"
     code-block-background: true
-execute:
-  freeze: true
+    include-in-header: 
+      text: <meta http-equiv="Refresh" content="0; url='https://moonpiedumplings.github.io/projects/compiling-kasmvnc-on-nixos'" />
 ---
 
 This is a living document, for the time being. Rather than a complete blogpost, this is a tracker of my progress, as well as a quick reference I can come back to.

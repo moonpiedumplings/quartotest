@@ -1,5 +1,5 @@
 ---
-title: "Jeffrey Fonseca's Blog"
+title: "Jeffrey Fonseca's old blog, all links will redirect"
 listing:
   contents: posts
   sort: "date desc"

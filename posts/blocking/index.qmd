@@ -4,6 +4,13 @@ date: "2023-2-1"
 categories: [english]
 execute:
   freeze: auto
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    code-block-background: true
+    include-in-header: 
+      text: <meta http-equiv="Refresh" content="0; url='https://moonpiedumplings.github.io/blog/blocking'" />
 ---
 
 
