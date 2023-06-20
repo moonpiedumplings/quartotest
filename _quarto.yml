@@ -20,9 +20,6 @@ format:
   html:
     theme: darkly
     css: styles.css
-comments:
-  utterances:
-    repo: moonpiedumplings/quartotest
 
 
 
