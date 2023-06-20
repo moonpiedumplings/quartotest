@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2023-06-01">
 
-<title>Quartotest - Packaging quarto using nix</title>
+<title>Jeffrey Fonseca’s old blog - Packaging quarto using nix</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,6 +94,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta http-equiv="Refresh" content="0; url='https://moonpiedumplings.github.io/projects/quarto-via-nix'">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -107,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Quartotest</span>
+    <span class="navbar-title">Jeffrey Fonseca’s old blog</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -115,18 +116,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="https://moonpiedumplings.github.io/" rel="" target="">
+ <span class="menu-text">NEW BLOG HERE</span></a>
   </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/moonpiedumplings" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -174,15 +172,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>Skip to the conclusion if you want to know how to use the efforts of my hard work.</p>
+<p>This project is complete, but I have to extract all my notes and put them onto this blog, whiich I haven’t finished doing yet.</p>
 <section id="what-is-quarto" class="level1">
 <h1>What is quarto?</h1>
 <p>To explain quarto, I first have to explain jupyter notebooks, and quarto’s predecessor, fastpages.</p>
 <p><a href="https://github.com/fastai/fastpages">Fastpages</a> is a blogging platform built on jekyll, a static site generator. Static sites are websites that do not connect to a backend server, the user’s browser does all the rendering. Static site generators do all the hard work of creating these, by converting a very human readable format, like markdown, to pretty looking html, which is what browsers render.</p>
-<p>Fastpages adds onto the features of jekyll, by adding support for jupyter notebooks. Jupyter is a technology that allows users to combine code, multimedia, and text into a single document, for any purposes that one might use it. It’s usually popular for data science, as code is used to generate diagrams, but I really like it for testing snippets of code, as you can have multiple pieces of code in one document, and then run and debug them independently of eachother. Fastpagess can convert all of this, even automatically running code and creating any interactive elements, and then putting it all up on the internet as a static site.</p>
+<p>Fastpages adds onto the features of jekyll, by adding support for juptyer notebooks. Jupyter is a technology that allows users to combine code, multimedia, and text into a single document, for any purposes that one might use it. It’s usually popular for data science, as code is used to generate diagrams, but I really like it for testing snippets of code, as you can have multiple pieces of code in one document, and then run and debug them independently of eachoter. Fastpagess can convert all of this, even automatically running code and creating any interactive elements, and then putting it all up on the internet as a static site.</p>
 <p>Fastpages is also deprecated. On the github page, which is archived, it recommends you switch to quarto.</p>
 <p>Quarto adds more features on top of fastpages, while also removing some features. Fastpages is primarily designed for blogging, whereas quarto also has support for generating books, pdf’s, and websites.</p>
-<p>However, quarto lacks some features, as it uses it’s own static site generator, rather than jekyll. The biggest and most noticable one, is the Liquid template language that my computer science teacher uses to dynamically render his schedule page.</p>
+<p>However, quarto lacks some features, as it it uses it’s own static site generator, rather than jekyll. The biggest and most noticable one, is the Liquid template language that my computer science teacher uses to dynamically render his schedule page.</p>
 <p>But for my purposes, quarto works fine. This blogpost you are reading, was generated using quarto.</p>
 </section>
 <section id="what-is-nix" class="level1">
@@ -198,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">packages</span> <span class="op">=</span> <span class="kw">with</span> pkgs<span class="op">;</span> <span class="op">[</span> python310Full quarto jupyter pandoc deno <span class="op">];</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This is a sample <code>shell.nix</code> file. If you run the <code>nix-shell</code> command line tool while in the same working directory, or using the filename as an argument, it will use this bit of nix code to create an shell environment for you.</p>
-<p>Nix is a functional programming langauge. Unlike a language like python or java, where everything is an object, in nix, everything is a function. The colon <code>:</code> declares the arguments for a function. The <code>?</code> declares a default argument for the variable, pkgs, to be used in the function. This is important, because without this declarion, the program does now know where to get packages from.</p>
+<p>Nix is a functional programming langauge. Unlike a language like python or java, where everything is an object, in nix, everything is a function. The colon <code>:</code> creates a</p>
 <p>The above shell.nix works great. However, it installs an older version of quarto, 1.2, as only an older version of quarto is packaged in the nixpkgs repository. I want the newest version, 1.3.</p>
 <p>Here is the code used to create the quarto package, called a derivation:</p>
 <details>

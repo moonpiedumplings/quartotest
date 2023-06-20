@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2023-05-02">
 
-<title>Quartotest - Compiling KasmVNC on NixOS</title>
+<title>Jeffrey Fonseca’s old blog - Compiling KasmVNC on NixOS</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,6 +94,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta http-equiv="Refresh" content="0; url='https://moonpiedumplings.github.io/projects/compiling-kasmvnc-on-nixos'">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -107,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Quartotest</span>
+    <span class="navbar-title">Jeffrey Fonseca’s old blog</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -115,18 +116,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="https://moonpiedumplings.github.io/" rel="" target="">
+ <span class="menu-text">NEW BLOG HERE</span></a>
   </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/moonpiedumplings" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -540,7 +538,7 @@ Note about webp and libjpeg-turbo
 <section id="the-easy-way" class="level1">
 <h1>The easy way</h1>
 <p>After I packaged quarto, I realized that I can actually package the kasmvnc binary using nix. I have decided to do this for now.</p>
-<p>Here is first attempt for this. Now, kasmvnc’s packaging system is weird, in that they do not offer a binary tarball for their packages. So, I have decided to convert their alpine package into something I can use, because based on a cursory look into all the packages, it seems to be the easiest to package for Nix/Nixos.</p>
+<p>Here is first attempt for this.</p>
 <details>
 <summary>
 First try!
@@ -608,8 +606,7 @@ First try!
 <span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>  <span class="op">};</span></span>
 <span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>This is my first attempt at a derivation. I installed it using a simple <code>shell.nix</code>, that uses the nix <code>callPackage</code> function to build the kasmvnc nix package, and make it available in my current shell.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode nix code-overflow-wrap code-with-copy"><code class="sourceCode nix"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I’m going to write further elaboration, but I need to finish by quarto via nix post, as that provides a lot of explanations as to how I got here.</p>
 
 
 </section>
